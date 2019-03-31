@@ -1,0 +1,276 @@
+a i.fas {
+    text-decoration: none !important;
+}
+nav#navbar-left{
+    display:-ms-grid;
+    display:grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 67px 1fr min-content;
+    grid-template-columns: 1fr;
+    grid-template-rows: 67px 1fr min-content;
+    height: 100%;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-area: 1 / 1 / span 3 / span 1;
+    border-right: 1px solid $light-gray;
+}
+nav#navbar-left.closed {
+    -ms-grid-columns: 67px;
+    grid-template-columns: 67px;
+}
+
+nav#navbar-left.opened {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+nav#navbar-left.opened a.tooltips .tooltip-wrapper {
+    visibility: hidden;
+}
+
+#nav-left-header {
+    -ms-grid-column: 1;
+    background-color: black;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: min-content 1fr min-content;
+    grid-template-columns: min-content 1fr min-content;
+}
+#nav-left-header #hamburger-left {
+    -ms-grid-column: 1;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+}
+
+#nav-left-header #nav-left-title {
+    -ms-grid-column: 2;
+    height: 100%;
+    width: 100%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    -ms-grid-rows: auto;
+    text-align: center;
+}
+#nav-left-header #hamburger-right {
+    -ms-grid-column: 2;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+}
+
+#nav-left-header i {
+    font-size: 20px;
+    width: 67px;
+    color: white;
+    align-self: center;
+    justify-self: center;
+    z-index: 9;
+}
+
+#nav-left-header #hamburger-left:hover i, 
+#nav-left-header #hamburger-right:hover i {
+    color: $light-gray;
+}
+
+#nav-left-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -ms-grid-column: 2;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content; 
+}
+.left-row {
+    height: 67px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 67px 1fr;
+    grid-template-columns: 67px 1fr;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 100;
+    
+}
+.left-row:hover,
+.left-row-dropdown:hover {
+    background-color: $light-gray;
+    font-weight: 400;
+}
+
+.left-row-dropdown {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: min-content min-content;
+}
+.left-row-dropdown-header {
+    height: 67px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 67px 1fr min-content;
+    grid-template-columns: 67px 1fr min-content;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 100;
+}
+
+.left-content-dropdown-column {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    padding: 0 7px;
+}
+.left-content-dropdown-column i {
+    font-size: 20px;
+    color: $dark-gray;
+    z-index: 9;
+
+}
+
+.left-row-dropdown[status=closed] i#up,
+.left-row-dropdown[status=opened] i#down {
+    display: none;
+}
+
+.left-row-dropdown[status=closed] .left-content-sub-menu {
+    display: none;
+}
+
+nav#navbar-left.opened .left-row-dropdown[status=opened] .left-content-sub-menu {
+    border-top: 1px solid $dark-gray;
+    border-bottom: 1px solid $dark-gray;
+    background-color: $light-gray;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: min-content;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 40px;
+    
+}
+nav#navbar-left.opened .left-row-dropdown[status=opened] .left-content-sub-menu a {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    display: flex;
+    align-self: center;
+    text-align: left;
+    color: $dark-gray;
+    cursor: pointer;
+    padding-left: 50px;
+    height: 100%;
+    align-items: center;
+    justify-content: left;
+}
+nav#navbar-left.opened .left-row-dropdown[status=opened] .left-content-sub-menu a:hover {
+    background-color: $dark-gray;
+    color: $white;
+}
+nav#navbar-left.opened .left-row-dropdown[status=opened] .left-content-sub-menu a i {
+    padding-right: 10px;
+}
+nav#navbar-left.opened .left-row-dropdown[status=opened] .left-content-sub-menu h4 {
+    display:none;
+}
+nav#navbar-left.closed .left-row-dropdown[status=opened] .left-content-sub-menu {
+    border: 1px solid $dark-gray;
+    z-index: 9999;
+    min-width: 200px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 68px;
+    background-color: $white;
+    padding-bottom: 50px;
+    
+}
+nav#navbar-left.closed .left-row-dropdown[status=opened] .left-content-sub-menu::after {
+    content: " ";
+    position: absolute;
+    top: 27px;
+    right: 100%; /* To the left of the tooltip */
+    margin-top: -5px;
+    border-width: 12px;
+    border-style: solid;
+    border-color: transparent $dark-gray transparent transparent;
+}
+nav#navbar-left.closed .left-row-dropdown[status=opened] .left-content-sub-menu h4 {
+    display:block;
+    background-color: $dark-gray;
+    color: $white;
+    text-align: center;
+    margin:0;
+}
+nav#navbar-left.closed .left-row-dropdown[status=opened] .left-content-sub-menu a {
+    height: 25px;
+    cursor: pointer;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: $dark-gray;
+}
+nav#navbar-left.closed .left-row-dropdown[status=opened] .left-content-sub-menu a:hover {
+    background-color: $light-gray;
+}
+nav#navbar-left.closed .left-row-dropdown[status=opened] .left-content-sub-menu a i {
+    padding-right: 10px;
+}
+.left-content-min-row {
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+}
+.left-content-min-row i {
+    font-size: 20px;
+    width: 100%;
+    color: $dark-gray;
+    z-index: 9;
+}
+.left-content-max-row {
+    font-size: 1.1rem;
+    width: 100%;
+    color: $dark-gray;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+.left-content-max-row p {
+}
+
+#nav-left-footer {
+    -ms-grid-footer: 3;
+} 
+
+.active {
+    background-color: $teal;
+}
+.active i, .active p {
+    color: $white;
+}
+
+#logo-link {
+    width: 67px;
+    height: 67px;
+    background-color: black;
+    border-radius: 50%;
+    margin: 0 65px 0 5px;
+    background-image: url("../images/Shogun_Logo.png");
+    background-size:     50px 50px;
+    background-repeat:   no-repeat;
+    background-position: center center; 
+}

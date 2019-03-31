@@ -1,0 +1,46 @@
+.alert {
+    display: flex;
+    height: 67px;
+    width: 100%;
+}
+.alert article {
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+}
+.alert-none {
+    height: 0px !important;
+    width: 0px !important;
+    display:none !important;
+}
+.alert-danger {
+    background-color: $danger-background;
+    border: 1px solid $danger-border;
+    color: $danger-color;
+}
+.alert-info {
+    background-color: $info-background;
+    border: 1px solid $info-border;
+    color: $info-color;
+}
+.alert-primary {
+    background-color: $primary-background;
+    border: 1px solid $primary-border;
+    color: $primary-color;
+}
+.alert-secondary {
+    background-color: $secondary-background;
+    border: 1px solid $secondary-border;
+    color: $secondary-color;
+}
+.alert-success {
+    background-color: $success-background;
+    border: 1px solid $success-border;
+    color: $success-color;
+}
+.alert-warning {
+    background-color: $warning-background;
+    border: 1px solid $warning-border;
+    color: $warning-color;
+}

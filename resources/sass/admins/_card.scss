@@ -1,0 +1,57 @@
+.card {
+    border: 1px solid $light-gray;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    -ms-grid-rows: min-content min-content auto min-content;
+    grid-template-rows: 50px min-content 1fr 50px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.card-header {
+    -ms-grid-row: 1;
+    height: 50px;
+    font-weight: 100;
+    text-align: center;
+    background-color: $black;
+    color: $white;
+}
+.card-header h3 {
+    font-weight: lighter;
+}
+.card-chart {
+    -ms-grid-row: 2;
+}
+.card-body {
+    -ms-grid-row: 3;
+    overflow: hidden;
+}
+.card-footer {
+    -ms-grid-row: 4;
+    height: 50px;
+    background-color: $black;
+    display: flex;
+    padding: 0 5px;
+ 
+}
+
+#footer-container {
+    height: 100%;
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.card-primary {
+    border: 1px solid $light-gray;
+}
+
+.card-primary .card-header {
+    background-color: $teal;
+    color: $white;
+}
+
+.card-primary .card-footer {
+    background-color: $teal;
+}

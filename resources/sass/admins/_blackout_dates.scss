@@ -1,0 +1,29 @@
+.mx-datepicker {
+    width: 100% !important;
+}
+
+#blackoutdates-article {
+    overflow: hidden;
+}
+
+#blackoutdates-container, #blackoutdates-element {
+    height: 100%;
+}
+
+#blackoutdates-element {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: min-content 1fr;
+    grid-template-rows: min-content 1fr;
+    height: 100%;
+}
+
+#blackoutdates-fieldset {
+    height: calc(100% - 25px);
+    overflow: hidden;
+}
+
+#blackout-grid-container {
+    height: calc(100% - 10px);
+    overflow: auto;
+}

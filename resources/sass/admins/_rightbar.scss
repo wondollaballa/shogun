@@ -1,0 +1,141 @@
+nav#navbar-right.opened {
+    display:-ms-grid;
+    display:grid;
+    -ms-grid-columns: min-content;
+    -ms-grid-rows: 67px 1fr min-content;
+    grid-template-columns: min-content;
+    grid-template-rows: 67px 1fr min-content;
+    height: 100%;
+    -ms-grid-column: 3;
+    grid-column: 3;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 3;
+    grid-row: 1 / 4;
+    border-left: 1px solid $light-gray;
+    background-color: $white;
+    z-index:2;
+}
+
+nav#navbar-right.closed {
+    display:-ms-grid;
+    display:grid;
+    -ms-grid-columns: 67px;
+    -ms-grid-rows: 67px;
+    grid-template-columns: 67px;
+    grid-template-rows: 67px;
+    height: 100%;
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 1;
+    border-left: 1px solid $light-gray;
+}
+
+
+
+
+#nav-right-header {
+    -ms-grid-column: 1;
+    background-color: white;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr min-content;
+    grid-template-columns: 1fr min-content;
+}
+
+#nav-right-header #hamburger-right {
+    -ms-grid-column: 2;
+    grid-column: 2;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+}
+
+#nav-right-header i {
+    font-size: 20px;
+    width: 67px;
+    color: $dark-gray;
+    align-self: center;
+    justify-self: center;
+}
+
+#nav-right-header #hamburger-left:hover i, 
+#nav-right-header #hamburger-right:hover i {
+    color: $light-gray;
+}
+
+#nav-right-header #maximize {
+
+}
+
+
+#nav-right-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -ms-grid-row: 2;
+    grid-row: 2;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: min-content;
+    grid-template-columns: -min-content;
+    grid-auto-rows: 50px; 
+}
+.right-row {
+    height: 50px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: minmax(min-content, 183px) 67px;
+    grid-template-columns: minmax(min-content, 183px) 67px;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    text-decoration: none;
+    color: $dark-gray;
+    cursor: pointer;
+}
+
+.right-row:hover {
+    background-color: $light-gray;
+}
+
+.right-row span {
+    -ms-grid-column: 1;
+    text-align: right;
+    padding-left: 25px;
+}
+.right-row div {
+    -ms-grid-column: 2;
+    text-align: center;
+
+}
+.right-content-min-row {
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    width: 67px;
+    
+}
+.right-content-min-row i {
+    font-size: 20px;
+    width: 100%;
+    color: $dark-gray;
+}
+.right-content-max-row {
+    font-size: 1.1rem;
+    width: 100%;
+    color: $dark-gray;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
+    width: 183px;
+}
+
+
+#nav-right-footer {
+    -ms-grid-row: 3;
+}

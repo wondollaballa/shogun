@@ -1,0 +1,2 @@
+export let window: any = {};
+

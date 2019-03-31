@@ -1,0 +1,44 @@
+/* Form errors */ 
+.errors label, 
+.errors input, 
+.errors textarea,
+.errors select,
+.errors span {
+    color: $error !important;
+}
+
+.errors input::-webkit-input-placeholder, /* Chrome/Opera/Safari */
+.errors input::-moz-placeholder, /* Firefox 19+ */
+.errors input:-ms-input-placeholder, /* IE 10+ */
+.errors input:-moz-placeholder, /* Firefox 18- */
+.errors input::placeholder,
+.errors textarea::-webkit-input-placeholder, /* Chrome/Opera/Safari */
+.errors textarea::-moz-placeholder, /* Firefox 19+ */
+.errors textarea:-ms-input-placeholder, /* IE 10+ */
+.errors textarea:-moz-placeholder 
+.errors textarea::placeholder,
+.errors select::-webkit-input-placeholder, /* Chrome/Opera/Safari */
+.errors select::-moz-placeholder, /* Firefox 19+ */
+.errors select:-ms-input-placeholder, /* IE 10+ */
+.errors select:-moz-placeholder,
+.errors select::placeholder { 
+    color: $error !important;
+}
+
+.errors input, 
+.errors select
+.errors textarea{
+    border: 1px solid $error !important;
+}
+
+.pure-button-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.form-div {
+    margin-bottom: 15px;
+}
+

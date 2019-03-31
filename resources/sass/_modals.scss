@@ -1,0 +1,82 @@
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal.opened {
+    display:block;
+}
+
+/* Modal Content/Box */
+.modal-dialog {
+    display:grid;
+    grid-template-rows: 50px 1fr 50px;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 70vw; /* Could be more or less, depending on screen size */
+}
+
+.modal-header {
+    display:-ms-grid;
+    display:grid;
+    -ms-grid-columns: 1fr 67px;
+    grid-template-columns: 1fr 67px;
+}
+
+.modal-header p{
+    margin: 0;
+    padding-left: 15px;
+    font-weight: 100;
+    font-size: 18px;
+    display: flex;
+    justify-self: left;
+    align-self: center;
+    
+}
+
+.modal-header span {
+    display: flex;
+    font-size: 25px;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+
+}
+
+.modal-body {
+    padding: 5px 15px;
+}
+
+.modal-footer {
+    padding: 5px 15px;
+    margin: 0;
+    display: flex;
+    align-content: center;
+    justify-content: left;
+}
+
+.modal-header span:hover {
+    color: red;
+}
+
+
+/* The Close Button */
+.button-error {
+    background-color: $error;
+    color: $white;
+}
+
+.button-error:hover {
+    background-color: $danger-background;
+    
+}

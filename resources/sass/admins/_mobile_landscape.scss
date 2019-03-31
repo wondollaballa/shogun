@@ -1,0 +1,18 @@
+
+#reservation-form-card {
+    height: 675px;
+}
+
+#search-results {
+    width: calc(100vw);
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    border-top: unset;
+    border-left: 1px solid $light-gray;
+    border-right: 1px solid $light-gray;
+    border-bottom: 1px solid $light-gray;
+    border-radius: 0 0 10px 10px;
+    background-color: #ffffff;
+    z-index: 99999;
+}

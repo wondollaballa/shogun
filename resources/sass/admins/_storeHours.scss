@@ -1,0 +1,29 @@
+#store-hours {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: min-content min-content repeat(2, minmax(10px, 1fr));
+    grid-template-columns: min-content min-content repeat(2, minmax(10px, 1fr));
+    -ms-grid-rows: auto;
+    grid-auto-rows: 50px;
+}
+
+.storehours-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-bottom: 1px solid $light-gray;
+    height: 100%;
+    width: 100%;
+}
+
+.storehours-day {
+    display: flex;
+    align-items: center;
+    justify-self: right;
+}
+
+.storehours-other {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
