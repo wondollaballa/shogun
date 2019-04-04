@@ -18,7 +18,8 @@
             </div>
         </div>
         <div id="nav-left-content">
-            <a href="/dashboard" class="menu-item-header left-row active">
+            <a href="/dashboard" class="menu-item-header left-row active" :class="state === 'closed' ? 'menu-closed': 'menu-opened'">
+                <span class="notifications" :class="[reservationCount > 0 ? 'notifications-alive' : 'notifications-dead', animateNotificationCounts ? 'animated bounce' : '']" >{{ reservationCount }}</span>
                 <div class="left-content-min-row tooltips">
                     <i class="fas fa-columns"></i>
                     <span class="tooltip-wrapper" v-if="state === 'closed'">
@@ -29,8 +30,10 @@
                     <p>Dashboard</p>
                 </div>
             </a>
-            <div class="left-row-dropdown" status="closed" @click="toggleDropdown">
+
+            <div class="left-row-dropdown" status="closed" :class="state === 'closed' ? 'menu-closed': 'menu-opened'" @click="toggleDropdown">
                 <div class="menu-item-header left-row-dropdown-header">
+                    <span class="notifications" :class="totalReservationCount > 0 ? 'notifications-alive' : 'notifications-dead'">{{ totalReservationCount }}</span>
                     <div class="left-content-min-row tooltips">
                         <i class="fas fa-clipboard-list"></i>
                         <span class="tooltip-wrapper" v-if="state === 'closed'">
@@ -61,7 +64,8 @@
                     </a>
                 </div>
             </div>
-            <a href="/dashboard" class="menu-item-header left-row">
+            <a href="/dashboard" class="menu-item-header left-row" :class="state === 'closed' ? 'menu-closed': 'menu-opened'">
+                <span class="notifications" :class="messagesCount > 0 ? 'notifications-alive' : 'notifications-dead'">{{ messagesCount }}</span>
                 <div class="left-content-min-row tooltips">
                     <i class="fas fa-envelope-square"></i>
                     <span class="tooltip-wrapper" v-if="state === 'closed'">

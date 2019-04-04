@@ -1,5 +1,5 @@
 <?php
-
+use App\Events\ReservationEvent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,11 +87,11 @@ Route::domain(env('APP_SUB_URL'))->group(function () {
 
             // Reservations
             Route::get('/reservations', 'ReservationsController@index')->name('reservations.index');
-            Route::get('/reservations/event/{reservation}', 'ReservationsController@event')->name('reservations.event');
             Route::post('/reservations/make', 'ReservationsController@make')->name('reservations.make');
             Route::post('/reservations/search', 'ReservationsController@search')->name('reservations.search');    
             Route::post('/reservations/postManage', 'ReservationsController@postManage')->name('reservations.postManage');    
             Route::get('/reservations/manage', 'ReservationsController@manage')->name('reservations.manage');
+            Route::get('/reservations/setEvent', 'ReservationsController@setEvent')->name('reservations.setEvent');
 
             // Rules
             Route::patch('/rules/{rules}', 'RulesController@update')->name('rules.update'); 

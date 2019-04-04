@@ -38,6 +38,9 @@ class ReservationEvent implements ShouldBroadcast
     {
         $reservations = new Reservation();
         
-        return ['data' => $reservations->makeCalendar()];
+        return [
+            'data' => $reservations->makeCalendar(),
+            'notifications' => $reservations->makeNotifications()
+        ];
     }
 }

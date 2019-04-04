@@ -8,7 +8,6 @@ use App\Rule;
 use App\Events\CalendarPushed;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Events\ReservationEvent;
 
 class AdminController extends Controller
 {
@@ -23,11 +22,11 @@ class AdminController extends Controller
         $res = new Reservation();
         $reservations = $res->prepareForAdmin();
         $calendar = $res->makeCalendar();
+        $leftbarNotificationCount = $res->makeNotifications();
         $store_hours = $rule->fullCalendarBusinessHours();
         $interval = $rule->fullCalendarSlotDuration();
         $intervalLabel = $rule->fullCalendarSlotDurationLabel();
-
-        return view('admins.index', compact(['store_hours','interval','intervalLabel', 'calendar']));
+        return view('admins.index', compact(['store_hours','interval','intervalLabel', 'calendar','leftbarNotificationCount']));
     }
 
     public function signin(Request $request)
@@ -108,6 +107,7 @@ class AdminController extends Controller
     {
         //
     }
+
     
     public function authenticate(Request $request)
     {

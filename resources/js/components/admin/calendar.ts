@@ -107,13 +107,16 @@ export default class Calendar extends Vue  {
             const resEvent = "ReservationEvent";
             (window as any).Echo.channel('reservation-event').listen(resEvent, (e: any) => {
                 const allEvents: IEvents = JSON.parse(e.data);
-                this.eventDay = ('daily' in allEvents) ? allEvents['daily'] : [];
+                if (allEvents) {
+                    this.eventDay = ('daily' in allEvents) ? allEvents['daily'] : [];
+                    this.updateEvents();
+                    const msg = 'A new reservation has been made.';
+                    const type = 'success';
+                    this.$root.$emit('toast', msg, type);
+                    // add animation for new reservation to the left sidebar notifications
+                    this.$root.$emit('animate-reservation-notifications');
+                }
 
-                // this.calendar.fullCalendar('removeEvents');
-                this.updateEvents();
-                const msg = 'A new reservation has been made.';
-                const type = 'success';
-                this.$root.$emit('toast', msg, type);
             });
         }
     }

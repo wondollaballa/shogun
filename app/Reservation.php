@@ -64,7 +64,7 @@ class Reservation extends Model
         $now = Carbon::now('America/Chicago')->format('Y-m-d 00:00:00');
         $rule = Rule::find(1);
         $interval = $rule->interval;
-        $reservations = Reservation::where('requested', '>=', $now)->get();
+        $reservations = $this->where('requested', '>=', $now)->get();
         $calendar = [
             'monthly' => [],
             'weekly' => [],
@@ -104,13 +104,35 @@ class Reservation extends Model
         return json_encode($calendar);
     }
 
+    public function makeNotifications() {
+        // $location = 'America/Chicago';
+        $location = 'Asia/Seoul';
+        $start = Carbon::now($location)->format('Y-m-d 00:00:00');
+        $end = Carbon::now($location)->format('Y-m-d 23:59:59');
+        // today - all remaining 
+        $todayCount = $this->whereBetween('requested',[$start, $end])->whereNull('seated_at')->count();
+        
+        // all
+        $allCount = $this->where('requested', '>=', $start)->whereNull('seated_at')->count();
+        // messages
+        $messageCount = 0; // TODO 
+
+        return [
+            'today' => $todayCount,
+            'all' => $allCount,
+            'messages' => $messageCount
+        ];
+    }
+
     public function searchResultWithFormat($search) {
         if ($search == '') {
             return json_encode([]);
         }
         $searchString = "%$search%";
         $now = Carbon::now('America/Chicago')->format('Y-m-d 00:00:00');
+
         $result = $this->where('name', 'like', $searchString)
+            ->where('requested','>=', $now)
             ->orWhere('phone','like', $searchString)
             ->where('requested','>=', $now)
             ->orderBy('requested','desc')

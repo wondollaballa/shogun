@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Reservation;
 use App\Rule;
+use App\Events\NotificationsEvent;
 use App\Events\ReservationEvent;
 use Illuminate\Http\Request;
 
@@ -44,16 +45,15 @@ class ReservationsController extends Controller
         $reservations->save();
         
         event(new ReservationEvent());
+        event(new NotificationsEvent());
         return response()->json(['success'=>'Reservation is successfully added to calendar!']);
 
         
     }
 
-    public function event($id) {
-        $reservation = Reservation::find($id);
-        $res = $reservation->prepareForAdminById();
-        // $event = $reservation->getEventById();
-        return response()->json($res);
+    public function setEvent() {
+        event(new NotificationsEvent());
+        return response()->json(['success'=>'Event has been sent']);
     }
 
     public function search(Request $request) {

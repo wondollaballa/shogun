@@ -16,3 +16,27 @@
     background-color: #ffffff;
     z-index: 99999;
 }
+
+.container-rules {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: "a a a b b b"
+                         "a a a b b b"
+                         "a a a b b b"
+                         "c c c c c c"
+                         "c c c c c c";
+    padding: 0;
+    margin: 0;
+}
+
+.container-rules #card-basic {
+    grid-area: c;
+}
+
+.container-rules #card-blackout {
+    grid-area: a;
+}
+
+.container-rules #card-storehours {
+    grid-area: b;
+}
