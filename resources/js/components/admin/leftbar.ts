@@ -2,23 +2,8 @@ import Vue from 'vue'
 import Component from 'vue-class-component'
 import axios from 'axios'
 import window from '../../bootstrap';
+import { ILeftbar, INotificationsCount } from '../../interfaces/interfaces'
 
-interface INotificationsCount {
-    today: number,
-    all: number,
-    messages: number
-}
-
-interface ILeftbar {
-    title: string;
-    titleSrc: string;
-    state: string;
-    logoutSrc: string;
-    reservationCount: number;
-    totalReservationCount: number;
-    messagesCount: number;
-    animateNotificationCounts: boolean;
-}
 @Component({
     props: {
 

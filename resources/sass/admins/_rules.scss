@@ -1,5 +1,4 @@
 .main-content {
-    padding: 10px;
     overflow-x: hidden;
 }
 .container-rules {
@@ -7,6 +6,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
     grid-auto-rows: auto;
-    gap: 10px;
+    gap: 3px;
     min-height: 600px;
+    padding: 10px;
 }

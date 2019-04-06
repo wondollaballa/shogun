@@ -88,6 +88,7 @@ Route::domain(env('APP_SUB_URL'))->group(function () {
             // Reservations
             Route::get('/reservations', 'ReservationsController@index')->name('reservations.index');
             Route::post('/reservations/make', 'ReservationsController@make')->name('reservations.make');
+            Route::post('/reservations/expired', 'ReservationsController@expired')->name('reservations.expired');
             Route::post('/reservations/search', 'ReservationsController@search')->name('reservations.search');    
             Route::post('/reservations/postManage', 'ReservationsController@postManage')->name('reservations.postManage');    
             Route::get('/reservations/manage', 'ReservationsController@manage')->name('reservations.manage');

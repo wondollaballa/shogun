@@ -6,32 +6,7 @@ import * as moment from 'moment';
 import axios from 'axios'
 import window from '../../bootstrap';
 import { Debounce } from 'typescript-debounce'
-
-interface IEvent {
-    id?: string,
-    title: string,
-    start: string,
-    end?: string | null,
-    allDay?: boolean,
-    url?: string,
-    classNames?: string[],
-    editable?: boolean | null,
-    startEditable?: boolean | null,
-    durationEditable?: boolean | null,
-    resourceEditable?: boolean | null,
-    rendering?: string, // normal, background, inverse-background
-    overlap?: string | boolean,
-    constraint?: string,
-    backgroundColor?: string,
-    borderColor?: string,
-    textColor?: string,
-    extendedProps?: string,
-    source?: string
-}
-
-interface IEvents {
-    'daily': IEvent[];
-}
+import { IEvents } from '../../interfaces/interfaces'
 
 @Component({
     props: {
@@ -42,15 +17,6 @@ interface IEvents {
     }
 })
 export default class Calendar extends Vue  {
-    // @Prop({ type: String, default : '' })
-    // storeHours: string = '';
-    // @Prop({ type: String, default: '' })
-    // timeInterval: string = '';
-    // @Prop({ type: String, default: '' })
-    // timeLabel: string = '';
-    // @Prop({ type: String, default: '' })
-    // events: string = '';
-
     calendar: JQuery = $('#calendar')
     eventDay: any[] = [];
     
@@ -65,16 +31,11 @@ export default class Calendar extends Vue  {
         return this.$props.timeLabel;
     }
 
-    // @Watch('eventDay')
-    // onEventDayChanged() {
-        
-    // }
     // Lifecycle hooks
     created() {
         this.$root.$on("set-month", this.setMonth);
         this.$root.$on("set-week", this.setWeek);
         this.$root.$on("set-day", this.setDay);
-       
     }
     mounted() {
         window.addEventListener('resize', this.resizeCalendar);
@@ -115,6 +76,15 @@ export default class Calendar extends Vue  {
                     this.$root.$emit('toast', msg, type);
                     // add animation for new reservation to the left sidebar notifications
                     this.$root.$emit('animate-reservation-notifications');
+                }
+
+            });
+            const expiredEvent = "ExpiredEvent";
+            (window as any).Echo.channel('expired-event').listen(expiredEvent, (e: any) => {
+                const allEvents: IEvents = JSON.parse(e.data);
+                if (allEvents) {
+                    this.eventDay = ('daily' in allEvents) ? allEvents['daily'] : [];
+                    this.updateEvents();
                 }
 
             });

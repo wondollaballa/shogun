@@ -29,13 +29,17 @@ mix.ts('resources/js/app.ts', 'public/js')
                   appendTsSuffixTo: [/\.vue$/]
                },
                exclude: /node_modules/,
-            }
+            },
+            
          ],
-
+         loaders: [
+            {
+               test: /\.worker\.ts$/,
+               use: { loader: 'worker-loader' }
+            },
+         ]
       },
       resolve: {
          extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"]
-      },
-
-
+      }
    }).copyDirectory('resources/images', 'public/images').sourceMaps();

@@ -1,19 +1,6 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
-
-interface IBlackoutDate {
-    [date: string]: string
-}
-interface ISet {
-    [key: number]: string
-}
-
-interface IBlackoutDates {
-    selectedDate: string,
-    date1: string,
-    dates: IBlackoutDate[],
-    set: ISet[]
-}
+import { IBlackoutDates } from '../../interfaces/interfaces';
 
 @Component({
     props: {

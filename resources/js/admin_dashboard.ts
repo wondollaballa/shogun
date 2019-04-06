@@ -28,6 +28,7 @@ Vue.component('admin-alert', require('./components/admin/Alert.vue'));
 Vue.component('admin-card', require('./components/admin/Card.vue'));
 Vue.component('admin-modal', require('./components/admin/Modal.vue'));
 Vue.component('admin-calendar', require('./components/admin/Calendar.vue'));
+Vue.component('dashboard-page', require('./components/admin/Dashboard.vue'));
 Vue.component('title-badge', require('./components/admin/TitleBadge.vue'));
 Vue.component('blackout-dates', require('./components/admin/BlackoutDates.vue'));
 Vue.component('calendar-detail', require('./components/admin/CalendarDetail.vue'));

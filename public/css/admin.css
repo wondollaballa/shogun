@@ -5957,6 +5957,7 @@ body {
   grid-auto-rows: auto;
   height: calc(100vh - 90px);
   min-height: 600px;
+  padding: 10px;
 }
 
 nav#navbar {
@@ -6771,7 +6772,6 @@ fieldset {
 }
 
 .main-content {
-  padding: 10px;
   overflow-x: hidden;
 }
 
@@ -6780,8 +6780,9 @@ fieldset {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-auto-rows: auto;
-  gap: 10px;
+  gap: 3px;
   min-height: 600px;
+  padding: 10px;
 }
 
 .toast {

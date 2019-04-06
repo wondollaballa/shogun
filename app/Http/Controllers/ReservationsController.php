@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Reservation;
 use App\Rule;
+use App\Events\ExpiredEvent;
 use App\Events\NotificationsEvent;
 use App\Events\ReservationEvent;
 use Illuminate\Http\Request;
@@ -61,6 +62,16 @@ class ReservationsController extends Controller
         $reservations = new Reservation();
         $searchResult = $reservations->searchResultWithFormat($search);
         return response()->json($searchResult);
+    }
+
+    public function expired(Request $request) {
+    
+        $requested = $request->requested;
+        $reservations = new Reservation();
+        $updated = $reservations->setExpired($requested);
+        event(new ExpiredEvent());
+        event(new NotificationsEvent());
+        return response()->json($updated);
     }
 
     /**

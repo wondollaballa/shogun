@@ -79,13 +79,19 @@ class Reservation extends Model
                 $monthKey = Carbon::createFromFormat('Y-m-d H:i:s', $value->requested)->format('Ym');
                 $dayTime = Carbon::createFromFormat('Y-m-d H:i:s', $value->requested)->format('g:ia');
                 $end = Carbon::createFromFormat('Y-m-d H:i:s', $value->requested)->addMinutes($interval)->format('Y-m-d H:i:s');
+                $eventBackgroundColor = ($value->expired || $value->status > 1) ? '#e5e5e5' : '#BEFFC5';
+                $eventBorderColor = ($value->expired || $value->status > 1) ? '#5e5e5e' : '#00C615';
+                $eventTextColor = ($value->expired || $value->status > 1) ? '#5e5e5e' : '#005E0A';
                 array_push($calendar['daily'],[
                     'id' => $value->id,
                     'title' => "$value->party_size, $value->name",
                     'start' => $value->requested,
                     'end' => $end,
                     'editable' => true,
-                    'durationEditable' => false
+                    'durationEditable' => false,
+                    'backgroundColor' => $eventBackgroundColor,
+                    'borderColor' => $eventBorderColor,
+                    'textColor' => $eventTextColor
                 ]);
 
                 if (array_key_exists($monthKey, $calendar['monthly'])) {
@@ -105,15 +111,22 @@ class Reservation extends Model
     }
 
     public function makeNotifications() {
-        // $location = 'America/Chicago';
-        $location = 'Asia/Seoul';
+        $location = env('APP_TIMEZONE_SEOUL');
         $start = Carbon::now($location)->format('Y-m-d 00:00:00');
         $end = Carbon::now($location)->format('Y-m-d 23:59:59');
         // today - all remaining 
-        $todayCount = $this->whereBetween('requested',[$start, $end])->whereNull('seated_at')->count();
+        $todayCount = $this->whereBetween('requested',[$start, $end])
+            ->whereNull('seated_at')
+            ->where('status',1)
+            ->where('no_show',false)
+            ->count();
         
         // all
-        $allCount = $this->where('requested', '>=', $start)->whereNull('seated_at')->count();
+        $allCount = $this->where('requested', '>=', $start)
+            ->whereNull('seated_at')
+            ->where('status',1)
+            ->where('no_show',false)
+            ->count();
         // messages
         $messageCount = 0; // TODO 
 
@@ -149,6 +162,18 @@ class Reservation extends Model
 
         return json_encode($result);
         
+    }
+
+    public function setExpired($requested) {
+        $rules = Rule::find(1);
+        $interval = $rules->interval;
+        $check = Carbon::createFromFormat('Y-m-d H:i:s', $requested)->subMinutes($interval)->format('Y-m-d H:i:s');
+        if($this->where('requested','<',$check)->where('status',1)->where('no_show',false)->update(['no_show'=> true, 'status' => 2 ])) {
+            return true;
+        }
+
+        return false;
+
     }
 
     private function formatPhone($phone_number) {

@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<dashboard-page class="container">
     <admin-card header footer id="card-reservation" class="card-primary">
         <h3 class="" slot="header">Reservations</h3>
         <admin-calendar store-hours="{{ $store_hours }}" time-interval="{{ $interval }}" events="{{ $calendar }}"></admin-calendar>
@@ -17,7 +17,7 @@
             <button id="month" type="button" class="calendar-views pure-button pure-button-secondary">Month</button>
         </div>
     </admin-card>
-</div>
+</dashboard-page>
 @endsection
 
 @section('modals')
