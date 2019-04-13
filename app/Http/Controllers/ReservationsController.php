@@ -120,6 +120,7 @@ class ReservationsController extends Controller
         
         if($resEvents) {
             $calendar = $reservation->makeCalendar(true);
+            event(new NotificationsEvent());
             return response()->json(['status'=>true, 'message'=>'Successfully updated reservation', 'calendar'=>$calendar]);
         }
         
@@ -220,7 +221,4 @@ class ReservationsController extends Controller
 
         response()->json(['error'=>'There were problems with deleting your reservation. Please try again.']);
     }
-
-    
-
 }

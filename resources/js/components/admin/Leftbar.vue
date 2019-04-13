@@ -54,10 +54,6 @@
                         <i class="fas fa-calendar-check"></i>
                         <span>Rules</span>
                     </a>
-                    <a href="/dashboard">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Calendar</span>
-                    </a>
                     <a href="/reservations">
                         <i class="fas fa-calendar-plus"></i>
                         <span>New Reservation</span>
