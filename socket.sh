@@ -1,2 +1,3 @@
-redis-server
+# redis-server
+# sleep
 laravel-echo-server start

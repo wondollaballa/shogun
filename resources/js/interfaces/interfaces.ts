@@ -1,6 +1,7 @@
 //#region worker
 export enum MessageType {
     Start,
+    Pause,
     Restart,
     UpdateCalendar,
     Test,
@@ -10,6 +11,10 @@ export enum MessageType {
 export interface IExpiredReservations {
     type: MessageType.Expired,
     datetime: string
+}
+
+export interface IWorkerPause {
+    type: MessageType.Pause
 }
 
 export interface IWorkerRestart {
@@ -32,6 +37,7 @@ export interface ITest {
 }
 
 export type Message = IWorkerStart | 
+    IWorkerPause | 
     IWorkerRestart | 
     IUpdateCalendar | 
     ITest | 
@@ -91,6 +97,92 @@ export interface INotificationsCount {
     today: number,
     all: number,
     messages: number
+}
+
+export interface IReservation {
+    id: number,
+    customer_id: number,
+    name: string,
+    phone: string,
+    email: string,
+    large_party: number,
+    party_size: number,
+    requested: string,
+    requested_formatted?: string,
+    special_request: string,
+    no_show: boolean,
+    arrived_at: string,
+    seated_at: string,
+    seat_id: number,
+    status: number,
+    deleted_at: string,
+    created_at: string,
+    updated_at: string
+}
+
+export interface IOldReservation {
+    id: number,
+    customer_id: number,
+    name: string,
+    phone: string,
+    email: string,
+    large_party: number,
+    party_size: number,
+    requested: string,
+    requested_formatted?: string,
+    special_request: string,
+    no_show: boolean,
+    arrived_at: string,
+    seated_at: string,
+    seat_id: number,
+    status: number,
+    deleted_at: string,
+    created_at: string,
+    updated_at: string
+}
+
+export interface IReservationModal {
+    reservation: IReservation,
+    rules: IRules
+}
+
+export interface IRules {
+    notAfter: string,
+    disabledDays: string[],
+    interval: number
+}
+
+export interface IErrors {
+    name: string[],
+    phone: string[],
+    email: string[],
+    party_size: string[],
+    requested: string[],
+    special_request: string[]
+}
+export interface IReservationForm {
+    notAfter: string,
+    blackouts: string,
+    interval: number,
+    name: string,
+    nameValidated: boolean,
+    nameErrorMessage: string,
+    phone: string,
+    phoneValidated: boolean,
+    phoneErrorMessage: string,
+    email: string,
+    emailValidated: boolean,
+    emailErrorMessage: string,
+    partySize: number,
+    partySizeValidated: boolean,
+    partySizeErrorMessage: string,
+    requested: string,
+    requestedValidated: boolean,
+    requestedErrorMessage: string,
+    specialRequest: string,
+    specialRequestValidated: boolean,
+    specialRequestErrorMessage: string,
+    showValidation: boolean
 }
 
 export interface ISet {

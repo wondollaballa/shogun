@@ -87,13 +87,19 @@ Route::domain(env('APP_SUB_URL'))->group(function () {
 
             // Reservations
             Route::get('/reservations', 'ReservationsController@index')->name('reservations.index');
+            Route::post('/reservations/destroy/{reservation}', 'ReservationsController@destroy')->name('reservations.destroy');
             Route::post('/reservations/make', 'ReservationsController@make')->name('reservations.make');
             Route::post('/reservations/expired', 'ReservationsController@expired')->name('reservations.expired');
             Route::post('/reservations/search', 'ReservationsController@search')->name('reservations.search');    
             Route::post('/reservations/postManage', 'ReservationsController@postManage')->name('reservations.postManage');    
             Route::get('/reservations/manage', 'ReservationsController@manage')->name('reservations.manage');
+            Route::post('/reservations/make-events-with-editable', 'ReservationsController@makeEventsWithEditable')->name('reservations.makeEventsWithEditable');
+            Route::get('/reservations/get-event/{reservation}', 'ReservationsController@getEvent')->name('reservations.getEvent');
             Route::get('/reservations/setEvent', 'ReservationsController@setEvent')->name('reservations.setEvent');
-
+            Route::post('/reservations/seat/{reservation}', 'ReservationsController@seat')->name('reservations.seat');  
+            Route::post('/reservations/store/{reservation}', 'ReservationsController@store')->name('reservations.store'); 
+            Route::post('/reservations/unseat/{reservation}', 'ReservationsController@unseat')->name('reservations.unseat'); 
+            Route::post('/reservations/update-time/{reservation}', 'ReservationsController@updateTime')->name('reservations.updateTime');    
             // Rules
             Route::patch('/rules/{rules}', 'RulesController@update')->name('rules.update'); 
             Route::post('/rules/blackout', 'RulesController@blackout')->name('rules.blackout');

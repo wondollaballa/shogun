@@ -2,40 +2,11 @@ import Vue from 'vue'
 import Component from 'vue-class-component'
 import axios from 'axios'
 import * as moment from 'moment';
-import { format } from 'util';
+import { IReservationForm, IErrors } from '../../interfaces/interfaces';
+import { Debounce } from 'typescript-debounce';
+import { Watch } from 'vue-property-decorator';
+import { AsYouType } from 'libphonenumber-js'
 
-interface IErrors {
-    name: string[],
-    phone: string[],
-    email: string[],
-    party_size: string[],
-    requested: string[],
-    special_request: string[]
-}
-interface IReservationForm {
-    notAfter: string,
-    blackouts: string,
-    interval: number,
-    name: string,
-    nameValidated: boolean,
-    nameErrorMessage: string,
-    phone: string,
-    phoneValidated: boolean,
-    phoneErrorMessage: string,
-    email: string,
-    emailValidated: boolean,
-    emailErrorMessage: string,
-    partySize: number,
-    partySizeValidated: boolean,
-    partySizeErrorMessage: string,
-    requested: string,
-    requestedValidated: boolean,
-    requestedErrorMessage: string,
-    specialRequest: string,
-    specialRequestValidated: boolean,
-    specialRequestErrorMessage: string,
-    showValidation: boolean
-}
 @Component({
     props: {
         reservationRules: String
@@ -104,9 +75,20 @@ export default class ReservationForm extends Vue implements IReservationForm {
         console.log('destroyed')
         this.$root.$off('update-selected-date-time', this.setRequested);
     }
-    
 
     // methods
+    @Watch('phone')
+    onChangePhone() 
+    {
+        this.formatPhone();
+    }
+    // methods
+    @Debounce({millisecondsDelay: 1000})
+    private formatPhone() {
+        const phone: any = new AsYouType('US').input(this.phone);
+        this.phone = phone;
+    }
+
     private setRequested(dateTime: string) {
         this.requested = moment(dateTime).format('MM/DD/YYYY h:mma');
     }

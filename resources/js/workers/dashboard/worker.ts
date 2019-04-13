@@ -28,6 +28,7 @@ class DashboardPageWorker {
 
     }
 
+
     public restartTimer() {
         this.timer.start();
     }
@@ -68,6 +69,10 @@ function processMessage(event: Message): void {
             dashboard.restartTimer();
             return;
         break;
+
+        case MessageType.Pause:
+            dashboard.stopTimer();
+            return;
 
         case MessageType.Test:
             return;

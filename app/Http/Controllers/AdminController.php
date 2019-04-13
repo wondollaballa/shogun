@@ -19,6 +19,7 @@ class AdminController extends Controller
     public function index()
     {
         $rule = Rule::find(1);
+        $reservation_rules = $rule->prepareForReservation(date('Y'), date('m'));
         $res = new Reservation();
         $reservations = $res->prepareForAdmin();
         $calendar = $res->makeCalendar();
@@ -26,7 +27,14 @@ class AdminController extends Controller
         $store_hours = $rule->fullCalendarBusinessHours();
         $interval = $rule->fullCalendarSlotDuration();
         $intervalLabel = $rule->fullCalendarSlotDurationLabel();
-        return view('admins.index', compact(['store_hours','interval','intervalLabel', 'calendar','leftbarNotificationCount']));
+        return view('admins.index', compact([
+            'store_hours',
+            'interval',
+            'intervalLabel', 
+            'calendar',
+            'leftbarNotificationCount',
+            'reservation_rules'
+        ]));
     }
 
     public function signin(Request $request)

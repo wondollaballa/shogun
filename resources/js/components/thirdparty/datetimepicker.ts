@@ -25,6 +25,7 @@ interface IDateTimePicker {
 }
 @Component({
     props: {
+        dateTimeRequested: String,
         blackouts: String,
         notAfter: String,
         interval: Number
@@ -47,6 +48,7 @@ export default class DateTimePicker extends Vue implements IDateTimePicker {
             }
         }
     }
+
     public get timePickerOptions() {
         const step = (this.$props.interval < 60) ? (this.$props.interval < 10) ? '00:0'+this.$props.interval : '00:'+this.$props.interval : '01:00';
         return {
@@ -63,24 +65,31 @@ export default class DateTimePicker extends Vue implements IDateTimePicker {
     created() {
         console.log('created')
         this.$root.$on('update-default-date-time', this.setDefaultDateTime);
+        this.$root.$on('force-date-time', this.forceDateTime);
+
     }
     mounted() {
-        
+        this.setDefaultDateTime();
     }
     updated() {
         // send data to blackout dates
         console.log('something updated');
-        this.$root.$emit('update-selected-date-time', this.dateTime);
         
+        this.$root.$emit('update-selected-date-time', this.dateTime);
+        this.$root.$emit('update-reservation-date-time', this.dateTime);
     }
     destroyed() {
         console.log('destroyed')
         this.$root.$off('update-default-date-time', this.setDefaultDateTime);
+        this.$root.$off('force-date-time', this.forceDateTime);
     }
 
+    private forceDateTime(dateTime: string) {
+        this.dateTime = dateTime;
+    }
 
     private setDefaultDateTime() {
-        this.dateTime = new Date().toLocaleString();
+        this.dateTime = (this.$props.dateTimeRequested) ? JSON.parse(this.$props.dateTimeRequested) : new Date().toLocaleString();
     }
 
 }

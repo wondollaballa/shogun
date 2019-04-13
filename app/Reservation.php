@@ -15,6 +15,9 @@ class Reservation extends Model
      * @var array
      */
     protected $fillable = [
+        'name',
+        'phone',
+        'email',
         'large_party',
         'party_size',
         'requested',
@@ -59,51 +62,85 @@ class Reservation extends Model
         return $this;
     }
 
-    public function makeCalendar()
+    public function makeCalendar($editable = false)
     {
-        $now = Carbon::now('America/Chicago')->format('Y-m-d 00:00:00');
+        $now = Carbon::now(env('APP_TIMEZONE'));
+        $start = $now->format('Y-m-d 00:00:00');
+        $end = $now->format('Y-m-d 23:59:59');
+        $nowYear = $now->startOfYear()->format('Y-m-d 00:00:00');
+        $endYear = $now->addYear(1)->endOfYear()->format('Y-m-d 23:59:59');
         $rule = Rule::find(1);
         $interval = $rule->interval;
-        $reservations = $this->where('requested', '>=', $now)->get();
+
+        $requested = $this->whereBetween('requested', [$nowYear, $endYear])->get();
         $calendar = [
             'monthly' => [],
             'weekly' => [],
             'daily' => []
         ];
-        if (isset($reservations) && count($reservations) > 0) {
-            foreach($reservations as $value) {
+        if (isset($requested) && count($requested) > 0) {
+            $makeMonthly = [];
+            foreach($requested as $value) {
                 // setup
-
-                $dayDate = Carbon::createFromFormat('Y-m-d H:i:s', $value->requested)->format('Y-m-d');
-                $weekKey = Carbon::createFromFormat('Y-m-d H:i:s', $value->requested)->format('YW');
-                $monthKey = Carbon::createFromFormat('Y-m-d H:i:s', $value->requested)->format('Ym');
-                $dayTime = Carbon::createFromFormat('Y-m-d H:i:s', $value->requested)->format('g:ia');
-                $end = Carbon::createFromFormat('Y-m-d H:i:s', $value->requested)->addMinutes($interval)->format('Y-m-d H:i:s');
-                $eventBackgroundColor = ($value->expired || $value->status > 1) ? '#e5e5e5' : '#BEFFC5';
-                $eventBorderColor = ($value->expired || $value->status > 1) ? '#5e5e5e' : '#00C615';
-                $eventTextColor = ($value->expired || $value->status > 1) ? '#5e5e5e' : '#005E0A';
+                $requested_date = Carbon::createFromFormat('Y-m-d H:i:s', $value->requested);
+                $dayDate = $requested_date->format('Y-m-d');
+                $weekKey = $requested_date->format('YW');
+                $monthKey = $requested_date->format('Ymd');
+                $dayTime = $requested_date->format('g:ia');
+                $end = $requested_date->addMinutes($interval)->format('Y-m-d H:i:s');
+                $titleBase = "$value->party_size, $value->name";
+                $checkFinished = ($value->status == 3) ? true : false;
+                $checkNoShow = (!$checkFinished && $value->no_show == true && $value->status == 2);
+                $checkEditable = ($checkFinished) ? false : true;
+                $eventTitle = ($value->no_show == true) ? "$titleBase - (Reservation has expired)" : $titleBase;
+           
+                if ($checkFinished) {
+                    $eventBackgroundColor = '#000000';
+                    $eventBorderColor = '#000000';
+                    $eventTextColor = '#ffffff';
+                } else if ($checkNoShow && !$checkFinished) {
+                    $eventBackgroundColor = '#e5e5e5';
+                    $eventBorderColor = '#5e5e5e';
+                    $eventTextColor = '#5e5e5e';
+                } else {
+                    $eventBackgroundColor = '#BEFFC5';
+                    $eventBorderColor = '#00C615';
+                    $eventTextColor = '#005E0A';
+                }
+                $editableStatus = ($value->status == 3) ? false : $editable;
                 array_push($calendar['daily'],[
                     'id' => $value->id,
-                    'title' => "$value->party_size, $value->name",
+                    'title' => $eventTitle,
                     'start' => $value->requested,
                     'end' => $end,
-                    'editable' => true,
+                    'editable' => $editableStatus,
                     'durationEditable' => false,
                     'backgroundColor' => $eventBackgroundColor,
                     'borderColor' => $eventBorderColor,
                     'textColor' => $eventTextColor
                 ]);
 
-                if (array_key_exists($monthKey, $calendar['monthly'])) {
-                    $monthCount++;
-                    $calendar['monthly'][$monthKey]['title'] =  "$monthCount reservation(s)";
-                } else {
-                    $monthCount = 1;
-                    $calendar['monthly'][$monthKey] = [
-                        'title' => "$monthCount reservation(s)",
-                        'start' => $dayDate,
-                        'end' => $dayDate,
-                    ];
+                 // setup
+                 $dayDate = $requested_date->format('Y-m-d 00:00:00');
+                 $endDate = $requested_date->format('Y-m-d 23:59:59');
+                 if (array_key_exists($monthKey, $makeMonthly)) {
+                     $monthCount++;
+                     $makeMonthly[$monthKey]['title'] =  "$monthCount reservation(s)";
+                 } else {
+                     $monthCount = 1;
+                     $makeMonthly[$monthKey] = [
+                         'title' => "$monthCount reservation(s)",
+                         'start' => $dayDate,
+                         'end' => $endDate,
+                         'editable' => false,
+                         'durationEditable' => false,
+                     ];
+                 }
+
+            }
+            if ($makeMonthly) {
+                foreach($makeMonthly as $row) {
+                    array_push($calendar['monthly'], $row);
                 }
             }
         }
@@ -111,7 +148,7 @@ class Reservation extends Model
     }
 
     public function makeNotifications() {
-        $location = env('APP_TIMEZONE_SEOUL');
+        $location = env('APP_TIMEZONE');
         $start = Carbon::now($location)->format('Y-m-d 00:00:00');
         $end = Carbon::now($location)->format('Y-m-d 23:59:59');
         // today - all remaining 
@@ -142,12 +179,12 @@ class Reservation extends Model
             return json_encode([]);
         }
         $searchString = "%$search%";
-        $now = Carbon::now('America/Chicago')->format('Y-m-d 00:00:00');
+        $now = Carbon::now(env('APP_TIMEZONE'))->format('Y-m-d 00:00:00');
 
         $result = $this->where('name', 'like', $searchString)
             ->where('requested','>=', $now)
             ->orWhere('phone','like', $searchString)
-            ->where('requested','>=', $now)
+            ->where('status', '<', 3)
             ->orderBy('requested','desc')
             ->get();
 
@@ -168,12 +205,51 @@ class Reservation extends Model
         $rules = Rule::find(1);
         $interval = $rules->interval;
         $check = Carbon::createFromFormat('Y-m-d H:i:s', $requested)->subMinutes($interval)->format('Y-m-d H:i:s');
-        if($this->where('requested','<',$check)->where('status',1)->where('no_show',false)->update(['no_show'=> true, 'status' => 2 ])) {
+        if($this->where('requested','<=',$check)->where('status',1)->where('no_show',false)->update(['no_show'=> true, 'status' => 2 ])) {
             return true;
         }
 
         return false;
 
+    }
+
+    public function seatCustomer($request) {
+        $dateTimeSeated = Carbon::now(env('APP_TIMEZONE'))->format('Y-m-d H:i:s');
+        if ($this->update([
+            'no_show'=>false,
+            'status'=>$request->status,
+            'seated_at' => $dateTimeSeated
+        ])) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function revertSeatingCustomer($request) {
+        $dateTimeSeated = Carbon::now(env('APP_TIMEZONE'))->format('Y-m-d H:i:s');
+        if ($this->update([
+            'status'=>$request->status,
+            'seated_at' => null
+        ])) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function updateReservationTime($requested) {
+        $now = Carbon::now(env('APP_TIMEZONE'));
+        $start = $now->format('Y-m-d H:i:s');
+        $check = (strtotime($start) > strtotime($requested));
+        if ($this->update([
+            'status' =>  ($check) ? 2 : 1,
+            'no_show' =>$check,
+            'requested' => $requested
+        ])) {
+            return true;
+        }
+        return false;
     }
 
     private function formatPhone($phone_number) {

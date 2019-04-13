@@ -14,14 +14,15 @@ class ReservationEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $editable;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($editable = false)
     {
-        //
+        $this->editable = $editable;
     }
 
     /**
@@ -39,7 +40,7 @@ class ReservationEvent implements ShouldBroadcast
         $reservations = new Reservation();
         
         return [
-            'data' => $reservations->makeCalendar(),
+            'data' => $reservations->makeCalendar($this->editable),
             'notifications' => $reservations->makeNotifications()
         ];
     }

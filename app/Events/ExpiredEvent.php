@@ -19,9 +19,10 @@ class ExpiredEvent implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct()
+    public $editable;
+    public function __construct($editable = false)
     {
-        //
+        $this->editable = $editable;
     }
 
     /**
@@ -39,7 +40,7 @@ class ExpiredEvent implements ShouldBroadcast
         $reservations = new Reservation();
         
         return [
-            'data' => $reservations->makeCalendar(),
+            'data' => $reservations->makeCalendar($this->editable),
             'notifications' => $reservations->makeNotifications()
         ];
     }

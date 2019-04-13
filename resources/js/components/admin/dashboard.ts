@@ -2,7 +2,7 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import Worker from 'worker-loader!../../workers/dashboard/worker';
-import { MessageType, Message, IWorkerStart, IWorkerRestart } from '../../interfaces/interfaces';
+import { MessageType, Message, IWorkerStart, IWorkerRestart, IWorkerPause, IReservation } from '../../interfaces/interfaces';
 import axios from 'axios'
 import window from '../../bootstrap';
 
@@ -13,8 +13,12 @@ import window from '../../bootstrap';
 })
 export default class Dashboard extends Vue {
     worker: Worker = new Worker();
+    editable: boolean = false;
     // Lifecycle hooks
     created() {
+        this.$root.$on('worker-ticker-pause', this.pauseWorker)
+        this.$root.$on('worker-ticker-restart', this.restartWorker)
+        this.$root.$on('make-calendar-editable', this.updateEditable);
         this.worker.addEventListener("message", (event: any) => {
             console.log(event.data);
             const message: Message = event.data;
@@ -28,6 +32,9 @@ export default class Dashboard extends Vue {
     }
     destroyed() {
         this.disposeWorker();
+        this.$root.$off('worker-ticker-pause', this.pauseWorker);
+        this.$root.$off('worker-ticker-restart', this.restartWorker);
+        this.$root.$off('make-calendar-editable', this.updateEditable);
     }
     //#region worker-setup
     private startWorker() {
@@ -35,6 +42,21 @@ export default class Dashboard extends Vue {
             type: MessageType.Start
         }
         this.worker.postMessage(message);
+    }
+    private pauseWorker() {
+        const message: IWorkerPause = {
+            type: MessageType.Pause
+        }
+        this.worker.postMessage(message);
+        console.log('worker paused');
+    }
+
+    private restartWorker() {
+        const message: IWorkerRestart = {
+            type: MessageType.Restart
+        }
+        this.worker.postMessage(message);
+        console.log('worker restarted')
     }
     private disposeWorker() {
         alert('disposing worker');
@@ -57,8 +79,10 @@ export default class Dashboard extends Vue {
 
     //#region worker-job
     private makeExpired(requested: string) {
+        
         axios.post('/reservations/expired',{
-            requested
+            requested,
+            editable: this.editable
         }).then(response => {
             const message: IWorkerRestart = {
                 type: MessageType.Restart
@@ -74,7 +98,12 @@ export default class Dashboard extends Vue {
             this.worker.postMessage(message);
         });
     }
+
     //#endregion worker-job
+
+    private updateEditable(state: boolean) {
+        this.editable = state;
+    }
     
 }
 

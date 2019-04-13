@@ -19,6 +19,20 @@
 }
 .card-header h3 {
     font-weight: lighter;
+    height: 50px;
+    display:flex;
+    justify-items: center;
+    margin:0px;
+    align-items:center;
+    justify-content: center;
+}
+.card-header-grid {
+    display: grid;
+    grid-template-columns: 55px 1fr 55px;
+    height: 50px;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
 }
 .card-chart {
     -ms-grid-row: 2;

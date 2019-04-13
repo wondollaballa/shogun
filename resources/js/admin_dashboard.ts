@@ -32,11 +32,14 @@ Vue.component('dashboard-page', require('./components/admin/Dashboard.vue'));
 Vue.component('title-badge', require('./components/admin/TitleBadge.vue'));
 Vue.component('blackout-dates', require('./components/admin/BlackoutDates.vue'));
 Vue.component('calendar-detail', require('./components/admin/CalendarDetail.vue'));
+Vue.component('delete-confirmation', require('./components/admin/DeleteConfirmation.vue'));
 Vue.component('reservation-form', require('./components/admin/ReservationForm.vue'));
 Vue.component('reservation-options', require('./components/admin/ReservationOptions.vue'));
 Vue.component('search', require('./components/admin/Search.vue'));
 Vue.component('search-results', require('./components/admin/SearchResults.vue'));
 Vue.component('store-hours', require('./components/admin/StoreHours.vue'));
+Vue.component('admin-switch', require('./components/admin/Switch.vue'));
+
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))

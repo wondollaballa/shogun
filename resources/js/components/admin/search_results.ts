@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import * as moment from 'moment';
+import { IReservation } from '../../interfaces/interfaces';
 interface ISearchResult {
     id: number,
     name: string,
@@ -43,6 +45,16 @@ export default class SearchResults extends Vue implements ISearchResults {
         if (!isClickInside && this.show) {
             this.hideSearchResults();
         }
+    }
+
+    private setClickedRow(key: number) {
+        // send event to modal 
+        const reservation: IReservation = this.searchResults[key];
+        const dateRequested = moment(reservation.requested);
+        this.$root.$emit('open-modal', '#reservation-details', reservation);
+        this.$root.$emit('make-daily-calendar', dateRequested);
+        // clear search results
+        this.hideSearchResults();
     }
     private setSearchResults(results: string) {
         // this.searchResults = [];

@@ -1,0 +1,25 @@
+
+// #reservation-edit-form {
+//     display: grid;
+//     grid-template-columns: .2fr .8fr;
+//     grid-template-rows: auto;
+//     gap: 10px;
+// }
+// #reservation-edit-form div {
+//     display: flex;
+//     justify-content: right;
+// }
+// @supports(grid-template-areas: "header header header") {
+//     #reservation-edit-form {
+//         display: grid;
+//         grid-template-areas: 
+//             "header header header"
+//             "name name name"
+//             "phone phone phone";
+//     }
+// }
+
+.reservation-modal-content[disabled] {
+    background-color: #e5e5e5 !important;
+    color: #000000 !important;
+}

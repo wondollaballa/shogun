@@ -1,7 +1,7 @@
 <template>
     <div>
         <div id="search-bar" class="pure-form pure-u-1">
-            <input type="text" class="pure-input-rounded" placeholder="search reservation" v-model="search" />
+            <input type="text" class="pure-input-rounded" placeholder="search reservation" v-model="search" v-on:keyup.enter="makeSearch"/>
         </div>
         <search-results></search-results>
     </div>    

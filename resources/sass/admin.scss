@@ -29,6 +29,10 @@
 @import 'admins/rules';
 @import 'admins/toast';
 @import 'admins/notifications';
+@import 'admins/reservation_edit_form';
+
+// individual components
+@import 'admins/switch';
 
 // mobile devices
 @import 'responsive';
