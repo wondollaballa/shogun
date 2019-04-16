@@ -3,49 +3,46 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Shogun administration page - designed by wondo">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Shogun Hibachi in Tyler, Texas">
         <meta name="author" content="Wondo Choung">
-        <meta name="keyword" content="">
-        <link rel="shortcut icon" href="img/favicon.png">
+        <meta name="keyword" content="Shogun, Hibachi, Japanese, Authentic, Restaurant, Tyler, Texas, Sushi, Show, Entertainment, Reservations">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ env('APP_NAME') }} - Admin Page</title>
-        <!-- Icons -->
-        {{-- <link rel="stylesheet" type="text/css" href="{{ mix('/css/app.css') }}"> --}}
-        <link rel="stylesheet" type="text/css" href="{{ mix('/css/themes/coreui/style.css') }}">
+        <title>{{ env('APP_NAME') }}</title>
+        <!-- Theme -->
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{ mix('/css/frontend.css') }}">
         <!-- Main styles for this application -->
         @yield('styles')
-        <link rel="stylesheet" type="text/css" href="{{ mix('/css/views/admins/general.css') }}">
         
     </head>
 
-    <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
-        <div id="grid">
-            <nav class="nav-bar">
-                @include('layouts.partials.nav')
+    <body>
+        <div id="container">
+            <header>
+                @yield('header')
+            </header>
+            <nav>
+                @yield('nav')
             </nav>
-            <aside class="left-nav on">
-                @include('layouts.partials.sidebar_left')
-            </aside>
             <main class="main-content">
-                    @yield('content')
+                <!-- <frontend-alert alert="{{ json_encode(Session::get('alert')) }}" timer="5000"></frontend-alert> -->
+                @yield('content')
             </main>
-            <aside class="right-nav off">
-                @include('layouts.partials.sidebar_right')
-            </aside>
             <!-- Footer -->
-            <footer class="app-footer">
-                @include('layouts.partials.footer')    
+            <footer>
+                @yield('footer')
             </footer>
-        </div>
-        <div id="modals">
             @yield('modals')
         </div>
+        
         <!-- Setup Scripts -->
-        <script type="text/javascript" src="{{ mix('/js/backend.js') }}"></script>
+        <script src="{{ mix('/js/frontend.js') }}"></script>
         <!-- Custom scripts required by this view -->
-        <script type="text/javascript" src="{{ mix('/js/views/admins/general.js') }}"></script>
         @yield('scripts')
     </body>
 

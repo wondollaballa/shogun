@@ -6819,7 +6819,7 @@ fieldset {
 .container-rules {
   display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, minmax(350px, 1fr));
   grid-auto-rows: auto;
   gap: 3px;
   min-height: 600px;
@@ -7096,6 +7096,12 @@ fieldset {
 ##Device = Tablets, Ipads (portrait)
 ##Screen = B/w 768px to 1024px
 */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container-rules {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+
 /* 
 ##Device = Tablets, Ipads (landscape)
 ##Screen = B/w 768px to 1024px
@@ -7159,6 +7165,9 @@ fieldset {
   #blackout-grid-container {
     min-height: 500px;
   }
+  .container-rules {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
 }
 
 /* 
@@ -7220,5 +7229,8 @@ fieldset {
   }
   #blackout-grid-container {
     min-height: 500px;
+  }
+  .container-rules {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
 }

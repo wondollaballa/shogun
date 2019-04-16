@@ -1,0 +1,32 @@
+.reservation-form {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.reservation-form hr {
+    border:1px solid #e5e5e5 !important;
+}
+
+.reservation-form fieldset {
+    padding:0;
+}
+
+#party-size {
+    margin-bottom: 10px;
+}
+
+.reservation-form h5 {
+    font-weight: 100;
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+}
+
+.reservation-form input, 
+.reservation-form textarea, 
+.reservation-form select, 
+.reservation-form button,
+.reservation-form label {
+    font-weight: 100;
+}

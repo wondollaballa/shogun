@@ -13,9 +13,12 @@ const mix = require('laravel-mix');
 
 mix.ts('resources/js/app.ts', 'public/js')
    .ts('resources/js/admin_dashboard.ts', 'public/js')
+   .ts('resources/js/frontend.ts', 'public/js')
    .ts('resources/js/admin_signin.ts', 'public/js')
    .sass('resources/sass/admin.scss', 'public/css')
    .sass('resources/sass/signin.scss', 'public/css')
+   .sass('resources/sass/frontend.scss', 'public/css')
+   .copyDirectory('resources/images', 'public/images')
    .options({
       processCssUrls: false
    })

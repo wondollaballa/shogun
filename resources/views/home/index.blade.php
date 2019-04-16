@@ -1,7 +1,22 @@
-@extends('welcome')
+@extends('layouts/main')
+
+@section('header')
+
+    <div id="header-nav"></div>
+    <div id="header-logo"></div>
+    <reservation-form id="reservation-container"></reservation-form>
+
+@endsection
+
+@section('nav')
+    <div>
+    </div>
+@endsection
 
 @section('content')
-<div>
-<p>Home Page</p>
-</div>
+
+@endsection
+
+@section('footer')
+
 @endsection

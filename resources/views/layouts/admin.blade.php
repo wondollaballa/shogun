@@ -4,10 +4,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Shogun administration page - designed by wondo">
+        <meta name="description" content="Shogun Hibachi in Tyler, Texas">
         <meta name="author" content="Wondo Choung">
-        <meta name="keyword" content="">
-        <link rel="shortcut icon" href="img/favicon.png">
+        <meta name="keyword" content="Shogun, Hibachi, Japanese, Authentic, Restaurant, Tyler, Texas, Sushi, Show, Entertainment, Reservations">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ env('APP_NAME') }} - Admin Dashboard</title>

@@ -1,0 +1,97 @@
+#container {
+    position: relative;
+    display: grid;
+    grid-template-areas: 
+        'head head head head head head'
+        'navi navi navi navi navi navi'
+        'cola cola cola colb colb colb'
+        'colc colc colc cold cold cold'
+        'foot foot foot foot foot foot';
+
+    grid-template-rows: min-content 70px min-content min-content 120px;
+}
+
+#container header {
+    grid-area: head;
+    height: 100vh;
+    min-height: 750px;
+    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: grid;
+    grid-template-areas:
+        'hea hea hea hea hea hea hea'
+        '. . . . . . .'
+        '. . . brand . . .'
+        '. . . res . . .'
+        '. . . res . . .'
+        '. . . . . . .';
+    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
+    gap: 30px;
+}
+
+#header-nav {
+    grid-area: hea;
+    // border: 1px solid blue;
+    background-color: white;
+    box-shadow: 0 8px 6px -6px black;
+    position: sticky;
+    top:0;
+}
+
+#header-logo {
+    grid-area: brand;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    justify-self: center;
+    align-self:center;
+    background-image: url('../images/shogun_2.png') !important;
+    background-color: white;
+    background-size: 125px !important;
+    background-repeat: no-repeat !important;
+    background-position-x: center !important;
+    background-position-y: center !important;
+    
+}
+.thinking {
+    animation: colorchange 2s infinite;
+    -webkit-animation: colorchange 2s infinite;
+}
+
+#reservation-container {
+    grid-area: res;
+    // border: 1px solid green;
+    background-color: white;
+
+}
+
+#container nav {
+    grid-area: navi;
+    border: 1px solid red;
+}
+
+
+#container footer {
+    grid-area: foot;
+    border: 1px solid blue;
+}
+
+
+@keyframes colorchange
+{
+    0%   {background: red;}
+    25%  {background: yellow;}
+    50%  {background: blue;}
+    75%  {background: green;}
+    100% {background: red;}
+}
+
+@-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+{
+    0%   {background: red;}
+    25%  {background: yellow;}
+    50%  {background: blue;}
+    75%  {background: green;}
+    100% {background: red;}
+}

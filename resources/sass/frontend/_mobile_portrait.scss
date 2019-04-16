@@ -1,0 +1,30 @@
+#container {
+    position: relative;
+    display: grid;
+    grid-template-areas: 
+        'head head head head head head'
+        'navi navi navi navi navi navi'
+        'cola cola cola colb colb colb'
+        'colc colc colc cold cold cold'
+        'foot foot foot foot foot foot';
+
+    grid-template-rows: min-content 70px min-content min-content 120px;
+}
+
+#container header {
+    grid-area: head;
+    height: 100vh;
+    min-height: 750px;
+    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: grid;
+    grid-template-areas:
+        'hea hea hea hea hea hea hea'
+        '. . . . . . .'
+        '. . . brand . . .'
+        '. res res res res res .'
+        '. res res res res res .'
+        '. . . . . . .';
+    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
+    gap: 30px;
+}

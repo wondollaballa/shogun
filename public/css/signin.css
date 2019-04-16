@@ -43,6 +43,12 @@
 ##Device = Tablets, Ipads (portrait)
 ##Screen = B/w 768px to 1024px
 */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container-rules {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+
 /* 
 ##Device = Tablets, Ipads (landscape)
 ##Screen = B/w 768px to 1024px
@@ -106,6 +112,9 @@
   #blackout-grid-container {
     min-height: 500px;
   }
+  .container-rules {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
 }
 
 /* 
@@ -167,6 +176,9 @@
   }
   #blackout-grid-container {
     min-height: 500px;
+  }
+  .container-rules {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
 }
 

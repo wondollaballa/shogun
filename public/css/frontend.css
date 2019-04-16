@@ -1,0 +1,243 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);body {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+}
+
+.none {
+  display: none !important;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+#container {
+  position: relative;
+  display: grid;
+  grid-template-areas: 'head head head head head head' 'navi navi navi navi navi navi' 'cola cola cola colb colb colb' 'colc colc colc cold cold cold' 'foot foot foot foot foot foot';
+  grid-template-rows: -webkit-min-content 70px -webkit-min-content -webkit-min-content 120px;
+  grid-template-rows: min-content 70px min-content min-content 120px;
+}
+
+#container header {
+  grid-area: head;
+  height: 100vh;
+  min-height: 750px;
+  background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
+  background-size: cover;
+  display: grid;
+  grid-template-areas: 'hea hea hea hea hea hea hea' '. . . . . . .' '. . . brand . . .' '. . . res . . .' '. . . res . . .' '. . . . . . .';
+  grid-template-rows: 70px -webkit-min-content -webkit-min-content -webkit-min-content 70px 1fr 1fr;
+  grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
+  gap: 30px;
+}
+
+#header-nav {
+  grid-area: hea;
+  background-color: white;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+          box-shadow: 0 8px 6px -6px black;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+#header-logo {
+  grid-area: brand;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  background-image: url("../images/shogun_2.png") !important;
+  background-color: white;
+  background-size: 125px !important;
+  background-repeat: no-repeat !important;
+  background-position-x: center !important;
+  background-position-y: center !important;
+}
+
+.thinking {
+  animation: colorchange 2s infinite;
+  -webkit-animation: colorchange 2s infinite;
+}
+
+#reservation-container {
+  grid-area: res;
+  background-color: white;
+}
+
+#container nav {
+  grid-area: navi;
+  border: 1px solid red;
+}
+
+#container footer {
+  grid-area: foot;
+  border: 1px solid blue;
+}
+
+@keyframes colorchange {
+  0% {
+    background: red;
+  }
+  25% {
+    background: yellow;
+  }
+  50% {
+    background: blue;
+  }
+  75% {
+    background: green;
+  }
+  100% {
+    background: red;
+  }
+}
+
+@-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */ {
+  0% {
+    background: red;
+  }
+  25% {
+    background: yellow;
+  }
+  50% {
+    background: blue;
+  }
+  75% {
+    background: green;
+  }
+  100% {
+    background: red;
+  }
+}
+
+.reservation-form {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.reservation-form hr {
+  border: 1px solid #e5e5e5 !important;
+}
+
+.reservation-form fieldset {
+  padding: 0;
+}
+
+#party-size {
+  margin-bottom: 10px;
+}
+
+.reservation-form h5 {
+  font-weight: 100;
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+}
+
+.reservation-form input,
+.reservation-form textarea,
+.reservation-form select,
+.reservation-form button,
+.reservation-form label {
+  font-weight: 100;
+}
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+/* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+    */
+/* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+    */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #container header {
+    grid-area: head;
+    height: 100vh;
+    min-height: 750px;
+    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: grid;
+    grid-template-areas: 'hea hea hea hea hea hea hea' '. . . . . . .' '. . . brand . . .' '. . res res res . .' '. . res res res . .' '. . . . . . .';
+    grid-template-rows: 70px -webkit-min-content -webkit-min-content -webkit-min-content 70px 1fr 1fr;
+    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+/* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+    */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  #container header {
+    grid-area: head;
+    height: 100vh;
+    min-height: 750px;
+    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: grid;
+    grid-template-areas: 'hea hea hea hea hea hea hea' '. . . . . . .' '. . . brand . . .' '. . res res res . .' '. . res res res . .' '. . . . . . .';
+    grid-template-rows: 70px -webkit-min-content -webkit-min-content -webkit-min-content 70px 1fr 1fr;
+    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+/* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+    */
+@media (min-width: 481px) and (max-width: 767px) {
+  #container header {
+    grid-area: head;
+    height: 100vh;
+    min-height: 750px;
+    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: grid;
+    grid-template-areas: 'hea hea hea hea hea hea hea' '. . . . . . .' '. . . brand . . .' '. res res res res res .' '. res res res res res .' '. . . . . . .';
+    grid-template-rows: 70px -webkit-min-content -webkit-min-content -webkit-min-content 70px 1fr 1fr;
+    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+/* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+    */
+@media (min-width: 320px) and (max-width: 480px) {
+  #container {
+    position: relative;
+    display: grid;
+    grid-template-areas: 'head head head head head head' 'navi navi navi navi navi navi' 'cola cola cola colb colb colb' 'colc colc colc cold cold cold' 'foot foot foot foot foot foot';
+    grid-template-rows: -webkit-min-content 70px -webkit-min-content -webkit-min-content 120px;
+    grid-template-rows: min-content 70px min-content min-content 120px;
+  }
+  #container header {
+    grid-area: head;
+    height: 100vh;
+    min-height: 750px;
+    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: grid;
+    grid-template-areas: 'hea hea hea hea hea hea hea' '. . . . . . .' '. . . brand . . .' '. res res res res res .' '. res res res res res .' '. . . . . . .';
+    grid-template-rows: 70px -webkit-min-content -webkit-min-content -webkit-min-content 70px 1fr 1fr;
+    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
+    gap: 30px;
+  }
+}
