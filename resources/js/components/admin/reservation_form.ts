@@ -33,6 +33,7 @@ export default class ReservationForm extends Vue implements IReservationForm {
     specialRequest: string = '';
     specialRequestValidated = true;
     specialRequestErrorMessage = '';
+    hibachi = true;
     csrf = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).getAttribute('content');
     // computed
     public get blackouts() {
@@ -101,6 +102,7 @@ export default class ReservationForm extends Vue implements IReservationForm {
         this.requested = '';
         this.specialRequest = '';
         this.showValidation = false;
+        this.hibachi = true;
     }
 
     private makeReservation() {
@@ -111,7 +113,8 @@ export default class ReservationForm extends Vue implements IReservationForm {
             'email': this.email,
             'party_size': this.partySize,
             'requested': this.requested,
-            'special_request':this.specialRequest
+            'special_request':this.specialRequest,
+            'hibachi': this.hibachi
         }).then(response => {
             if (response.status) {
                 this.showValidation = false;

@@ -18,6 +18,12 @@
                         <input type="text" class="pure-input-1 reservation-modal-content" placeholder="Party Size" v-model="reservation.party_size" :disabled="!editable"/>
                         <textarea type="text" class="pure-input-1 reservation-modal-content" placeholder="Special Request" v-model="reservation.special_request" :disabled="!editable"></textarea>
                     </fieldset>
+                    <fieldset class="pure-group">
+                        <select class="pure-u-1" v-model="reservation.hibachi" :disabled="!editable">
+                            <option value="1">Hibachi seating</option>
+                            <option value="0">Regular seating</option>
+                        </select>
+                    </fieldset>
                     <fieldset>
                         <button class="pure-button button-error pure-u-1" v-show="editable" @click="deleteConfirmation">Delete Reservation</button>
                     </fieldset>

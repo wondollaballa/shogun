@@ -55,8 +55,16 @@
     
 }
 .thinking {
-    animation: colorchange 2s infinite;
-    -webkit-animation: colorchange 2s infinite;
+    animation: pulse 0.9s infinite;
+    -webkit-animation: pulse 0.9s infinite;
+}
+
+.failed {
+    background-color: red !important;
+}
+
+.passed {
+    background-color: #11FF00 !important;
 }
 
 #reservation-container {
@@ -77,21 +85,44 @@
     border: 1px solid blue;
 }
 
-
 @keyframes colorchange
 {
-    0%   {background: red;}
-    25%  {background: yellow;}
-    50%  {background: blue;}
-    75%  {background: green;}
-    100% {background: red;}
+    0%   {border-color: red;}
+    25%  {border-color: yellow;}
+    50%  {border-color: green;}
+    75%  {border-color: blue;}
+    100% {border-color: red;}
 }
 
 @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
 {
-    0%   {background: red;}
-    25%  {background: yellow;}
-    50%  {background: blue;}
-    75%  {background: green;}
-    100% {background: red;}
+    0%   {border-color: red;}
+    25%  {border-color: yellow;}
+    50%  {border-color: green;}
+    75%  {border-color: blue;}
+    100% {border-color: red;}
 }
+
+@-webkit-keyframes pulse {
+    0% {
+      -webkit-transform: scale(1.0);
+    }
+    50% {
+      -webkit-transform: scale(0.9);
+    }
+    100% {
+      -webkit-transform: scale(1.0);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }

@@ -41,6 +41,33 @@ class ReservationsController extends Controller
         $reservations->party_size = preg_replace("/[^0-9]/", "", trim($request->party_size));
         $reservations->requested = date('Y-m-d H:i:s', strtotime(trim($request->requested)));
         $reservations->special_request = ($request->special_request) ? $request->special_request : null;
+        $reservations->hibachi = $request->hibachi;
+        $reservations->save();
+        
+        event(new ReservationEvent());
+        event(new NotificationsEvent());
+        return response()->json(['success'=>'Reservation is successfully added to calendar!']);
+
+    }
+    public function frontendMake(Request $request)
+    {
+        $validateData = $request->validate([
+            'name' => 'required|max:255',
+            'phone' => 'required|max:20',
+            'email' => 'required|email',
+            'party_size' => 'required|between:1,100',
+            'date' => 'required',
+            'time' => 'required'
+        ]);
+
+        $reservations = new Reservation();
+        $reservations->name = trim(strip_tags($request->name));
+        $reservations->phone = preg_replace("/[^0-9]/", "", trim(strip_tags($request->phone)));
+        $reservations->email = trim(strip_tags($request->email));
+        $reservations->party_size = preg_replace("/[^0-9]/", "", trim(strip_tags($request->party_size)));
+        $reservations->requested = date('Y-m-d H:i:s', strtotime(trim(strip_tags($request->date).' '.strip_tags($request->time))));
+        $reservations->special_request = ($request->special_request) ? trim(strip_tags($request->special_request)) : null;
+        $reservations->hibachi = $request->hibachi;
         $reservations->save();
         
         event(new ReservationEvent());
@@ -160,6 +187,7 @@ class ReservationsController extends Controller
             'requested' => $request->requested,
             'special_request' => ($request->special_request) ? $request->special_request : null,
             'status' => 1,
+            'hibachi' => $request->hibachi,
             'no_show' => false
         ])) {
             event(new ReservationEvent());

@@ -3,8 +3,8 @@
 @section('header')
 
     <div id="header-nav"></div>
-    <div id="header-logo"></div>
-    <reservation-form id="reservation-container"></reservation-form>
+    <frontend-logo></frontend-logo>
+    <reservation-form id="reservation-container" disabled-dates="{{ $disabledDates }}" times="{{ $todayTime }}"></reservation-form>
 
 @endsection
 

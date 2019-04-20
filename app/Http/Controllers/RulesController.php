@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Rule;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class RulesController extends Controller
 {
@@ -167,5 +168,15 @@ class RulesController extends Controller
         return response()->json([
             'status' => $status
         ]);
+    }
+
+    public function getTimes(Request $request) 
+    {
+        $rules = new Rule;
+        $rule = $rules->find(1);
+        $date = date('Y-m-d', strtotime($request->date));
+        $times = $rule->prepareTimeForFrontEnd($date);
+        return response()->json($times);
+        
     }
 }

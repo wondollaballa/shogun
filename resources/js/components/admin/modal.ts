@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { IReservationModal, IReservation, IRules, IOldReservation } from '../../interfaces/interfaces';
 import { parsePhoneNumberFromString, AsYouType } from 'libphonenumber-js'
 import { Debounce } from 'typescript-debounce';
+import { diffDay } from 'fullcalendar';
 
 @Component({
     props: {
@@ -45,7 +46,8 @@ export default class Modal extends Vue implements IReservationModal{
         status: 0,
         deleted_at: '',
         created_at: '',
-        updated_at: ''
+        updated_at: '',
+        hibachi: true
     };
     
     reservation: IReservation = {
@@ -63,6 +65,7 @@ export default class Modal extends Vue implements IReservationModal{
         seated_at: '',
         seat_id: 0,
         status: 0,
+        hibachi: true,
         deleted_at: '',
         created_at: '',
         updated_at: ''
@@ -92,6 +95,7 @@ export default class Modal extends Vue implements IReservationModal{
     }
 
     private openModal(name: string, reservation: IReservation): void {
+        console.log(reservation);
         this.editable = false;
         this.reservation = reservation;
 
@@ -115,6 +119,7 @@ export default class Modal extends Vue implements IReservationModal{
             seated_at: reservation.seated_at,
             seat_id: reservation.seat_id,
             status: reservation.status,
+            hibachi: reservation.hibachi,
             deleted_at: reservation.deleted_at,
             created_at: reservation.created_at,
             updated_at: reservation.updated_at
@@ -154,10 +159,11 @@ export default class Modal extends Vue implements IReservationModal{
             'requested': this.reservation.requested,
             'party_size': this.reservation.party_size,
             'special_request': this.reservation.special_request,
+            'hibachi': this.reservation.hibachi,
             'editable': this.editableReservation
         }).then(response => {
             if (response.status) {
-                this.close();
+                // this.close();
                 const msg = 'You have successfully updated your reservation.';
                 const type = 'success';
                 this.$root.$emit('toast', msg, type);

@@ -27,6 +27,7 @@ class CreateReservationsTable extends Migration
             $table->datetime('arrived_at')->nullable();
             $table->datetime('seated_at')->nullable();
             $table->integer('seat_id')->nullable();
+            $table->boolean('hibachi')->default(false);
             $table->tinyInteger('status')->default(1);
             $table->softDeletes();
             $table->timestamps();

@@ -30,6 +30,20 @@
             <textarea class="pure-u-1" placeholder="special requests (optional)" v-model="specialRequest"></textarea>
             <span class="pure-form-message" v-show="showValidation && !specialRequestValidated">{{ specialRequestErrorMessage }}</span>
         </div>
+        <div class="form-div">
+            <label for="requested">Hibachi</label>
+
+            <label for="option-two" class="pure-radio">
+                <input id="option-two" type="radio" name="optionsRadios" value="true" checked v-model="hibachi">
+                Hibachi Seating
+            </label>
+
+            <label for="option-three" class="pure-radio">
+                <input id="option-three" type="radio" name="optionsRadios" value="false" v-model="hibachi">
+                Regular Seating
+            </label>
+
+        </div>
     </fieldset>
 </template>
 

@@ -12,7 +12,12 @@
 }
 
 #party-size {
-    margin-bottom: 10px;
+    border-radius: 5px 5px 0 0 !important;
+    border-bottom: none;
+    z-index:0;
+}
+#party-size:focus {
+    z-index:1;
 }
 
 .reservation-form h5 {
@@ -29,4 +34,66 @@
 .reservation-form button,
 .reservation-form label {
     font-weight: 100;
+    font-size: 13px;
+}
+
+
+.reservation-form select {
+    appearance: none;
+    -webkit-animation: none;
+    padding: 5px;
+    height: 35px;
+}
+
+.form-container {
+    position: relative;
+}
+.form-container label {
+    border: none !important;
+    font-size: 10px;
+    margin: 0;
+    position: absolute;
+    top: 3px;
+    right: 4px;
+    color: #a5a5a5 !important;
+    z-index: 1;
+    background: transparent;
+}
+#reservation-date {
+    position: relative;
+    top:0px;
+}
+#reservation-date input {
+    position: relative;
+    top:0px;
+    border-radius: 0;
+    width: 100% !important;
+    background-color: #ffffff;
+    z-index:0;
+    border-top:none;
+    border-bottom:none;
+}
+#reservation-date input:focus {
+    z-index:1;
+    border-top:1px;
+    border-bottom:1px;
+}
+
+#time-select {
+    border-top:none;
+    border-radius: 0 0 5px 5px;
+}
+
+#special-instructions {
+    border-radius:5px;
+}
+
+.reservation-form input.validated, 
+.reservation-form textarea.validated, 
+.reservation-form select.validated, 
+.reservation-form button.validated,
+.reservation-form label.validated {
+    background-color: #D4FFD1 !important;
+    border: 1px solid #0CAE00 !important;
+    color: #076C00 !important;
 }

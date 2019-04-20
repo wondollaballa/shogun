@@ -15,9 +15,9 @@ import Vue from 'vue';
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 /** 3rd party */
-
+Vue.component('date-picker', require('./components/frontend/DatePicker.vue'));
 /** custom */
-
+Vue.component('frontend-logo', require('./components/frontend/Logo.vue'));
 Vue.component('reservation-form', require('./components/frontend/ReservationForm.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)

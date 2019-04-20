@@ -32,7 +32,9 @@ Route::post('/contact/store', 'ContactusController@store')->name('contact.store'
 Auth::routes();
 
 // Reservations
-Route::post('/reservations', 'ReservationController@info')->name('reservation.index');
+Route::post('/reservations/frontend-make', 'ReservationsController@frontendMake')->name('reservation.frontendMake');
+// rules
+Route::post('/rules/get-times', 'RulesController@getTimes')->name('rules.getTimes');
 
 Route::domain(env('APP_SUB_URL'))->group(function () {
     Route::group(['middleware' => ['subdomain']], function() {
@@ -96,6 +98,7 @@ Route::domain(env('APP_SUB_URL'))->group(function () {
             Route::post('/reservations/make-events-with-editable', 'ReservationsController@makeEventsWithEditable')->name('reservations.makeEventsWithEditable');
             Route::get('/reservations/get-event/{reservation}', 'ReservationsController@getEvent')->name('reservations.getEvent');
             Route::get('/reservations/setEvent', 'ReservationsController@setEvent')->name('reservations.setEvent');
+            
             Route::post('/reservations/seat/{reservation}', 'ReservationsController@seat')->name('reservations.seat');  
             Route::post('/reservations/store/{reservation}', 'ReservationsController@store')->name('reservations.store'); 
             Route::post('/reservations/unseat/{reservation}', 'ReservationsController@unseat')->name('reservations.unseat'); 
@@ -103,6 +106,7 @@ Route::domain(env('APP_SUB_URL'))->group(function () {
             // Rules
             Route::patch('/rules/{rules}', 'RulesController@update')->name('rules.update'); 
             Route::post('/rules/blackout', 'RulesController@blackout')->name('rules.blackout');
+            
             Route::post('/rules/store-hours', 'RulesController@storeHours')->name('rules.storehours');
             Route::post('/rules/store-options', 'RulesController@storeOptions')->name('rules.storeoptions');
             Route::get('/rules', 'RulesController@index')->name('rules.index');

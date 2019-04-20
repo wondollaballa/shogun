@@ -6,6 +6,7 @@ use DatePeriod;
 use DateInterval;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Rule extends Model
 {
@@ -32,7 +33,7 @@ class Rule extends Model
         'large_party_cancel_fee_amount',
         'special_instructions'
     ];
-
+    
     public function company()
     {
         return $this->belongsTo(Company::class, 'company_id', 'id');
@@ -156,10 +157,41 @@ class Rule extends Model
         $next_year = date("Y-m-d", strtotime("$month/01/$year +1 year"));
         return $next_year;
     }
-    private function getAllDisabledDates($year, $month) {
+    public function prepareTimeForFrontend($date = null) {
+        $now = $this->setLocale()->format('Y-m-d');
+        $carbon = Carbon::createFromFormat('Y-m-d', $date);
+        $compare = $carbon->format('Y-m-d');
+        $time = [];
+        $store_hours = json_decode($this->store_hours);
+        $dow = $carbon->dayOfWeek;
+        $checkToday = ($now == $compare);
+        $start = ($checkToday) ?  $this->setLocale()->format('h:ia') : $store_hours[$dow]->start->hh.':'.$store_hours[$dow]->start->mm.$store_hours[$dow]->start->a;
+        $end = $store_hours[$dow]->end->hh.':'.$store_hours[$dow]->end->mm.$store_hours[$dow]->end->a;
+        return json_encode($this->setTimes($start, $end, $checkToday));
+
+    }
+    public function prepareDisabledDates() {
+        $store_hours = json_decode($this->store_hours);
+        $disabled_days = [];
+        foreach($store_hours as $key => $value) {
+            if ($value->opened) {
+                continue;
+            }
+            $disabled_days = $this->getDaysNotTime($key, $disabled_days);
+ 
+        }
+        
+        // add in blackout dates
+        $disabled_days = $this->addBlackoutDatesNotTime($disabled_days);
+        return json_encode($disabled_days);
+    }
+    private function getAllDisabledDates($year = null, $month = null) {
         // calculate how many months down the road can a user make a reservation (default end of year)
         $first = date($year.'-'.$month.'-01 00:00:00');
+
         $last = $this->getNotAfter($year, $month);
+
+        
         $store_hours = json_decode($this->store_hours);
         $disabled_days = [];
         foreach($store_hours as $key => $value) {
@@ -173,6 +205,28 @@ class Rule extends Model
         $disabled_days = $this->addBlackoutDates($disabled_days);
         return $disabled_days;
     }
+
+    private function setTimes($startTime, $endTime, $isToday) {
+        $times = ['Select Time'];
+        $interval = $this->interval * 60;
+        $carbon = $this->setLocale();
+        $startString = '1983-09-30 '.$startTime;
+        $endString = ($endTime == '12:00am') ?  '1983-10-01 '.$endTime :  '1983-09-30 '.$endTime;
+        $sTime = ($isToday) ? Carbon::createFromFormat('Y-m-d h:ia', $startString)->timestamp + $interval : Carbon::createFromFormat('Y-m-d h:ia', $startString)->timestamp;
+        $start = $this->roundToNearestInterval($sTime, $this->interval);
+        $end = Carbon::createFromFormat('Y-m-d h:ia', $endString)->timestamp - $interval;
+        for ($i=$start; $i <= $end; $i += $interval) { 
+            $time = Carbon::createFromTimestamp($i)->format('h:ia');
+            array_push($times, $time);
+        }
+        return $times;
+    }
+
+    private function roundToNearestInterval($timestamp, $interval = 15) {
+        $precision = 60 * $interval;
+        return strtotime(date('Y-m-d H:i:s', round($timestamp / $precision) * $precision));
+    }
+
     private function getDays($dow, $disabled_days) {
         $startY = date('Y');
         $startM = date('m');
@@ -221,6 +275,65 @@ class Rule extends Model
         return $disabled_days;
     }
 
+    private function getDaysNotTime($dow, $disabled_days) {
+        $startY = date('Y');
+        $startM = date('m');
+        $endY = date('Y', strtotime('+1 year'));
+        $endM = date('m');
+        
+        switch($dow) {
+            case 0: // sunday
+                $day = 'sunday';
+                break;
+
+            case 1: //monday
+                $day = 'monday';
+                break;
+
+            case 2: //tuesday
+                $day = 'tuesday';
+                break;
+            
+            case 3: //wednesday
+                $day = 'wednesday';
+                break;
+            
+            case 4: //thursday
+                $day = 'thursday';
+                break;
+            
+            case 5: // friday
+                $day = 'friday';
+                break;
+
+            default: // saturday
+                $day = 'saturday';
+                break;
+            
+        }
+        $dates = new DatePeriod(
+            new DateTime("first $day of $startY-$startM"),
+            DateInterval::createFromDateString("next $day"),
+            new DateTime("last day of $endY-$endM 23:59:59")
+        );
+        foreach($dates as $date) {
+            $formatted = $date->format('D m/d/Y');
+            array_push($disabled_days, $formatted);
+        }
+        return $disabled_days;
+    }
+    private function addBlackoutDatesNotTime($disabled_days) {
+        $blackout_dates = json_decode($this->blackout_dates);
+        if (!isset($blackout_dates)) { return $disabled_days; }
+        foreach($blackout_dates as $blackout) {
+            if ($blackout->date) {
+                $formatted = date('Y-m-d', strtotime($blackout->date));
+                array_push($disabled_days, $formatted);
+            }
+        }
+
+        return $disabled_days;
+    }
     private function addBlackoutDates($disabled_days) {
         $blackout_dates = json_decode($this->blackout_dates);
         if (!isset($blackout_dates)) { return []; }
@@ -290,7 +403,11 @@ class Rule extends Model
         
         return $value;
     }
-
+    private function setLocale()
+    {
+        $location = env('APP_TIMEZONE');
+        return Carbon::now($location);
+    }
 
 
 }

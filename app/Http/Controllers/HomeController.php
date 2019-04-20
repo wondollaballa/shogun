@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Reservation;
+use App\Rule;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home/index');
+        $rules = new Rule;
+        $rule = $rules->find(1);
+        $disabledDates = $rule->prepareDisabledDates();
+        $carbon = Carbon::now(env('APP_TIMEZONE'));
+        $today= $carbon->format('Y-m-d');
+        $todayTime = $rule->prepareTimeForFrontEnd($today);
+        return view('home/index', compact(['disabledDates', 'todayTime']));
     }
 }

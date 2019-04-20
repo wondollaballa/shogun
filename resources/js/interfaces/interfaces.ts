@@ -99,6 +99,17 @@ export interface INotificationsCount {
     messages: number
 }
 
+export interface INewReservation {
+    name: string,
+    phone: string,
+    email: string,
+    party_size: number,
+    date: string,
+    time: string,
+    special_request: string,
+    hibachi: boolean
+}
+
 export interface IReservation {
     id: number,
     customer_id: number,
@@ -115,6 +126,7 @@ export interface IReservation {
     seated_at: string,
     seat_id: number,
     status: number,
+    hibachi: boolean,
     deleted_at: string,
     created_at: string,
     updated_at: string
@@ -136,6 +148,7 @@ export interface IOldReservation {
     seated_at: string,
     seat_id: number,
     status: number,
+    hibachi: boolean,
     deleted_at: string,
     created_at: string,
     updated_at: string
@@ -189,3 +202,45 @@ export interface ISet {
     [key: number]: string
 }
 //#endregion components
+
+//#region thirdparty
+export interface IDateConfig {
+    altFormat?: string;
+    altInput?: boolean;
+    altInputClass?: string;
+    appendTo?: HTMLElement,
+    ariaDateFormat?: String;
+    dateFormat?: string;
+    disable?: string[];
+    disableMobile?: boolean;
+    clickOpens?: boolean;
+    defaultDate?: string;
+    defaultHour?: number;
+    defaultMinute?: number;
+    enable?: string[];
+    enableTime?: boolean;
+    enableSeconds?: boolean;
+    formatDate?: any;
+    hourIncrement?: number;
+    inline?: boolean;
+    locale?: string;
+    maxDate?: string | Date;
+    minDate?: string | Date;
+    minuteIncrement?: number;
+    mode?: string;
+    nextArrow?: string;
+    noCalendar?: boolean;
+    onChange?: any;
+    onOpen?: any;
+    onReady?: any;
+    parseDate?: any;
+    position?: string;
+    prevArray?: string;
+    shorthandCurrentMonth?: boolean;
+    static?: boolean;
+    time_24hr?: boolean;
+    weekNumbers?: boolean;
+    wrap?: boolean;
+    
+}
+//#endregion

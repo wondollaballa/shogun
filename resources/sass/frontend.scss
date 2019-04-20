@@ -3,13 +3,15 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Imports
+@import 'variables';
 @import 'global';
 @import 'mixins';
 @import 'ie';
 @import 'frontend/variables';
 @import 'frontend/buttons';
-
+@import './buttons';
 // frontend general
+@import 'frontend/flip';
 @import 'frontend/layout_one';
 @import 'frontend/reservation_form';
 

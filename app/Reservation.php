@@ -26,7 +26,8 @@ class Reservation extends Model
         'arrived_at',
         'seated_at',
         'seat_id',
-        'status'
+        'status',
+        'hibachi'
     ];
 
     public function company()
