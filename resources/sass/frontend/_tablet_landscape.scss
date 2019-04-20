@@ -1,17 +1,29 @@
+
 #container header {
+    min-height: unset;
     grid-area: head;
-    height: 100vh;
-    min-height: 750px;
-    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
-    background-size: cover;
-    display: grid;
     grid-template-areas:
-        'hea hea hea hea hea hea hea'
         '. . . . . . .'
-        '. . . brand . . .'
-        '. . res res res . .'
-        '. . res res res . .'
+        '. brand res res res res .'
+        '. brand res res res res .'
         '. . . . . . .';
-    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
-    gap: 30px;
+    grid-template-rows: min-content 1fr 1fr min-content;
+    grid-template-columns: min-content 1fr 1fr 1fr 1fr 1fr min-content;
+
+}
+
+#header-logo {
+    grid-area: brand;
+    width: 200px;
+    height: 200px;
+    background-size: 150px !important;
+}
+.reservation-form {
+    margin: 1px;
+
+}
+
+.reservation-form h5 {
+    margin: 0px;
+    padding: 0px;
 }

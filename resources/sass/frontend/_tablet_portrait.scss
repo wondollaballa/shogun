@@ -1,17 +1,12 @@
 #container header {
     grid-area: head;
     height: 100vh;
-    min-height: 750px;
-    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
-    background-size: cover;
-    display: grid;
     grid-template-areas:
-        'hea hea hea hea hea hea hea'
         '. . . . . . .'
         '. . . brand . . .'
         '. . res res res . .'
         '. . res res res . .'
-        '. . . . . . .';
-    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
-    gap: 30px;
+        '. . . . . . .' !important;
+    grid-template-columns: repeat(7 1fr) !important;
+    grid-template-rows:10px min-content min-content min-content 1fr !important;
 }

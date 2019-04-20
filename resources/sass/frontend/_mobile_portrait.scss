@@ -19,12 +19,27 @@
     background-size: cover;
     display: grid;
     grid-template-areas:
-        'hea hea hea hea hea hea hea'
         '. . . . . . .'
         '. . . brand . . .'
         '. res res res res res .'
         '. res res res res res .'
         '. . . . . . .';
-    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
-    gap: 30px;
+    grid-template-rows: 10px min-content min-content min-content 1fr;
+}
+
+#header-logo {
+    grid-area: brand;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    display: flex;
+    justify-self: center;
+    align-self:center;
+    background-image: url('../images/shogun_2.png') !important;
+    background-color: white;
+    background-size: 100px !important;
+    background-repeat: no-repeat !important;
+    background-position-x: center !important;
+    background-position-y: center !important;
+    
 }

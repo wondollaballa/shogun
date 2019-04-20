@@ -43,7 +43,7 @@
                 <fieldset class="pure-group">
                     <div class="form-container">
                         <label @click="focusSelect('special-instructions')">Optional</label>
-                        <textarea id="special-instructions" type="text" class="pure-u-1" placeholder="special instructions"></textarea>
+                        <textarea id="special-instructions" type="text" class="pure-u-1" placeholder="special instructions" v-model="reservation.special_request"></textarea>
                     </div>
                 </fieldset>
                 <hr/>

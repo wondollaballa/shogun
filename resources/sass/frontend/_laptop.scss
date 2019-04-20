@@ -1,0 +1,15 @@
+#container header {
+    grid-area: head;
+    height: 100vh;
+    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: grid;
+    grid-template-areas:
+        '. . . . . . .'
+        '. . . brand . . .'
+        '. . . res . . .'
+        '. . . res . . .'
+        '. . . . . . .';
+    grid-template-rows: 20px min-content min-content min-content 1fr;
+    gap: 30px;
+}

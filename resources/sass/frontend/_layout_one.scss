@@ -19,23 +19,13 @@
     background-size: cover;
     display: grid;
     grid-template-areas:
-        'hea hea hea hea hea hea hea'
         '. . . . . . .'
         '. . . brand . . .'
         '. . . res . . .'
         '. . . res . . .'
         '. . . . . . .';
-    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
+    grid-template-rows: 1fr min-content min-content min-content 1fr 1fr;
     gap: 30px;
-}
-
-#header-nav {
-    grid-area: hea;
-    // border: 1px solid blue;
-    background-color: white;
-    box-shadow: 0 8px 6px -6px black;
-    position: sticky;
-    top:0;
 }
 
 #header-logo {
@@ -52,7 +42,6 @@
     background-repeat: no-repeat !important;
     background-position-x: center !important;
     background-position-y: center !important;
-    
 }
 .thinking {
     animation: pulse 0.9s infinite;
@@ -69,9 +58,7 @@
 
 #reservation-container {
     grid-area: res;
-    // border: 1px solid green;
     background-color: white;
-
 }
 
 #container nav {

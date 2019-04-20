@@ -96,20 +96,10 @@
   background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
   background-size: cover;
   display: grid;
-  grid-template-areas: 'hea hea hea hea hea hea hea' '. . . . . . .' '. . . brand . . .' '. . . res . . .' '. . . res . . .' '. . . . . . .';
-  grid-template-rows: 70px -webkit-min-content -webkit-min-content -webkit-min-content 70px 1fr 1fr;
-  grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
+  grid-template-areas: '. . . . . . .' '. . . brand . . .' '. . . res . . .' '. . . res . . .' '. . . . . . .';
+  grid-template-rows: 1fr -webkit-min-content -webkit-min-content -webkit-min-content 1fr 1fr;
+  grid-template-rows: 1fr min-content min-content min-content 1fr 1fr;
   gap: 30px;
-}
-
-#header-nav {
-  grid-area: hea;
-  background-color: white;
-  -webkit-box-shadow: 0 8px 6px -6px black;
-          box-shadow: 0 8px 6px -6px black;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
 }
 
 #header-logo {
@@ -336,22 +326,32 @@
     ##Device = Laptops, Desktops
     ##Screen = B/w 1025px to 1280px
     */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #container header {
+    grid-area: head;
+    height: 100vh;
+    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: grid;
+    grid-template-areas: '. . . . . . .' '. . . brand . . .' '. . . res . . .' '. . . res . . .' '. . . . . . .';
+    grid-template-rows: 20px -webkit-min-content -webkit-min-content -webkit-min-content 1fr;
+    grid-template-rows: 20px min-content min-content min-content 1fr;
+    gap: 30px;
+  }
+}
+
 /* 
     ##Device = Tablets, Ipads (portrait)
     ##Screen = B/w 768px to 1024px
     */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) and (min-height: 500px) {
   #container header {
     grid-area: head;
     height: 100vh;
-    min-height: 750px;
-    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
-    background-size: cover;
-    display: grid;
-    grid-template-areas: 'hea hea hea hea hea hea hea' '. . . . . . .' '. . . brand . . .' '. . res res res . .' '. . res res res . .' '. . . . . . .';
-    grid-template-rows: 70px -webkit-min-content -webkit-min-content -webkit-min-content 70px 1fr 1fr;
-    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
-    gap: 30px;
+    grid-template-areas: '. . . . . . .' '. . . brand . . .' '. . res res res . .' '. . res res res . .' '. . . . . . .' !important;
+    grid-template-columns: repeat(7 1fr) !important;
+    grid-template-rows: 10px -webkit-min-content -webkit-min-content -webkit-min-content 1fr !important;
+    grid-template-rows: 10px min-content min-content min-content 1fr !important;
   }
 }
 
@@ -361,16 +361,26 @@
     */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   #container header {
+    min-height: unset;
     grid-area: head;
-    height: 100vh;
-    min-height: 750px;
-    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
-    background-size: cover;
-    display: grid;
-    grid-template-areas: 'hea hea hea hea hea hea hea' '. . . . . . .' '. . . brand . . .' '. . res res res . .' '. . res res res . .' '. . . . . . .';
-    grid-template-rows: 70px -webkit-min-content -webkit-min-content -webkit-min-content 70px 1fr 1fr;
-    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
-    gap: 30px;
+    grid-template-areas: '. . . . . . .' '. brand res res res res .' '. brand res res res res .' '. . . . . . .';
+    grid-template-rows: -webkit-min-content 1fr 1fr -webkit-min-content;
+    grid-template-rows: min-content 1fr 1fr min-content;
+    grid-template-columns: -webkit-min-content 1fr 1fr 1fr 1fr 1fr -webkit-min-content;
+    grid-template-columns: min-content 1fr 1fr 1fr 1fr 1fr min-content;
+  }
+  #header-logo {
+    grid-area: brand;
+    width: 200px;
+    height: 200px;
+    background-size: 150px !important;
+  }
+  .reservation-form {
+    margin: 1px;
+  }
+  .reservation-form h5 {
+    margin: 0px;
+    padding: 0px;
   }
 }
 
@@ -378,18 +388,27 @@
     ##Device = Low Resolution Tablets, Mobiles (Landscape)
     ##Screen = B/w 481px to 767px
     */
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 767px) and (orientation: landscape) {
   #container header {
+    min-height: unset;
     grid-area: head;
-    height: 100vh;
-    min-height: 750px;
-    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
-    background-size: cover;
-    display: grid;
-    grid-template-areas: 'hea hea hea hea hea hea hea' '. . . . . . .' '. . . brand . . .' '. res res res res res .' '. res res res res res .' '. . . . . . .';
-    grid-template-rows: 70px -webkit-min-content -webkit-min-content -webkit-min-content 70px 1fr 1fr;
-    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
-    gap: 30px;
+    grid-template-areas: '. brand res res res res .' '. brand res res res res .';
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: -webkit-min-content -webkit-min-content 1fr 1fr 1fr 1fr -webkit-min-content;
+    grid-template-columns: min-content min-content 1fr 1fr 1fr 1fr min-content;
+  }
+  #header-logo {
+    grid-area: brand;
+    width: 200px;
+    height: 200px;
+    background-size: 150px !important;
+  }
+  .reservation-form {
+    margin: 1px;
+  }
+  .reservation-form h5 {
+    margin: 0px;
+    padding: 0px;
   }
 }
 
@@ -412,9 +431,26 @@
     background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
     background-size: cover;
     display: grid;
-    grid-template-areas: 'hea hea hea hea hea hea hea' '. . . . . . .' '. . . brand . . .' '. res res res res res .' '. res res res res res .' '. . . . . . .';
-    grid-template-rows: 70px -webkit-min-content -webkit-min-content -webkit-min-content 70px 1fr 1fr;
-    grid-template-rows: 70px min-content min-content min-content 70px 1fr 1fr;
-    gap: 30px;
+    grid-template-areas: '. . . . . . .' '. . . brand . . .' '. res res res res res .' '. res res res res res .' '. . . . . . .';
+    grid-template-rows: 10px -webkit-min-content -webkit-min-content -webkit-min-content 1fr;
+    grid-template-rows: 10px min-content min-content min-content 1fr;
+  }
+  #header-logo {
+    grid-area: brand;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-self: center;
+    -ms-flex-item-align: center;
+        align-self: center;
+    background-image: url("../images/shogun_2.png") !important;
+    background-color: white;
+    background-size: 100px !important;
+    background-repeat: no-repeat !important;
+    background-position-x: center !important;
+    background-position-y: center !important;
   }
 }
