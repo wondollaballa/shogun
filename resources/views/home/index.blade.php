@@ -2,7 +2,7 @@
 
 @section('header')
     <frontend-logo></frontend-logo>
-    <reservation-form id="reservation-container" disabled-dates="{{ $disabledDates }}" times="{{ $todayTime }}"></reservation-form>
+    <reservation-form id="reservation-container" disabled-dates="{{ $disabledDates }}"></reservation-form>
 
 @endsection
 
@@ -34,4 +34,9 @@
 
 @section('footer')
 
+@endsection
+
+@section('modals')
+<finish-modal id="finish-modal" title="Reservation Successfully Made!" hasBackground></finish-modal>
+<message-modal></message-modal>
 @endsection

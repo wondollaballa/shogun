@@ -8,12 +8,15 @@
 @import 'mixins';
 @import 'ie';
 @import 'frontend/variables';
-@import 'frontend/buttons';
-@import './buttons';
+@import 'buttons';
+@import 'frontend/loading';
+@import 'frontend/success_check';
 // frontend general
 @import 'frontend/flip';
 @import 'frontend/layout_one';
 @import 'frontend/reservation_form';
+@import 'frontend/modals';
+
 
 
 // individual components

@@ -29,8 +29,6 @@ class HomeController extends Controller
         $rule = $rules->find(1);
         $disabledDates = $rule->prepareDisabledDates();
         $carbon = Carbon::now(env('APP_TIMEZONE'));
-        $today= $carbon->format('Y-m-d');
-        $todayTime = $rule->prepareTimeForFrontEnd($today);
-        return view('home/index', compact(['disabledDates', 'todayTime']));
+        return view('home/index', compact(['disabledDates']));
     }
 }

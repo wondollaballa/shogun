@@ -102,23 +102,7 @@
     border: 1px solid blue;
 }
 
-@keyframes colorchange
-{
-    0%   {border-color: red;}
-    25%  {border-color: yellow;}
-    50%  {border-color: green;}
-    75%  {border-color: blue;}
-    100% {border-color: red;}
-}
 
-@-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
-{
-    0%   {border-color: red;}
-    25%  {border-color: yellow;}
-    50%  {border-color: green;}
-    75%  {border-color: blue;}
-    100% {border-color: red;}
-}
 
 @-webkit-keyframes pulse {
     0% {

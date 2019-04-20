@@ -19,6 +19,8 @@ Vue.component('date-picker', require('./components/frontend/DatePicker.vue'));
 /** custom */
 Vue.component('frontend-logo', require('./components/frontend/Logo.vue'));
 Vue.component('reservation-form', require('./components/frontend/ReservationForm.vue'));
+Vue.component('finish-modal', require('./components/frontend/FinishModal.vue'));
+Vue.component('message-modal', require('./components/frontend/MessageModal.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))

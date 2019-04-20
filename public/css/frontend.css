@@ -45,6 +45,349 @@
   /* this is a light blue */
 }
 
+.lds-circle {
+  display: inline-block;
+  -webkit-transform: translateZ(1px);
+          transform: translateZ(1px);
+}
+
+.lds-circle > div {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 6px;
+  border-radius: 50%;
+  background-image: url("../images/shogun_2.png");
+  background-color: #dfc;
+  background-size: 65px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  animation: color-change 2s infinite, lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  -webkit-animation: color-change 2s infinite, lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@-webkit-keyframes lds-circle {
+  0%, 100% {
+    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+            animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+  0% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: rotateY(1800deg);
+            transform: rotateY(1800deg);
+    -webkit-animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+            animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+  }
+  100% {
+    -webkit-transform: rotateY(3600deg);
+            transform: rotateY(3600deg);
+  }
+}
+
+@keyframes lds-circle {
+  0%, 100% {
+    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+            animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+  0% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: rotateY(1800deg);
+            transform: rotateY(1800deg);
+    -webkit-animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+            animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+  }
+  100% {
+    -webkit-transform: rotateY(3600deg);
+            transform: rotateY(3600deg);
+  }
+}
+
+@keyframes color-change {
+  0% {
+    background-color: red;
+  }
+  25% {
+    background-color: yellow;
+  }
+  50% {
+    background-color: #bdffbd;
+  }
+  75% {
+    background-color: #00e1ff;
+  }
+  100% {
+    background-color: #dfcdfc;
+  }
+}
+
+@-webkit-keyframes color-change /* Safari and Chrome - necessary duplicate */ {
+  0% {
+    background-color: red;
+  }
+  25% {
+    background-color: yellow;
+  }
+  50% {
+    background-color: #bdffbd;
+  }
+  75% {
+    background-color: #00e1ff;
+  }
+  100% {
+    background-color: #dfcdfc;
+  }
+}
+
+/**
+ * Extracted from: SweetAlert
+ * Modified by: Istiak Tridip
+ */
+.success-checkmark {
+  width: 80px;
+  height: 115px;
+  margin: 0 auto;
+}
+
+.success-checkmark .check-icon {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  border-radius: 50%;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  border: 4px solid #4CAF50;
+}
+
+.success-checkmark .check-icon::before {
+  top: 3px;
+  left: -2px;
+  width: 30px;
+  -webkit-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+  border-radius: 100px 0 0 100px;
+}
+
+.success-checkmark .check-icon::after {
+  top: 0;
+  left: 30px;
+  width: 60px;
+  -webkit-transform-origin: 0 50%;
+          transform-origin: 0 50%;
+  border-radius: 0 100px 100px 0;
+  -webkit-animation: rotate-circle 4.25s ease-in;
+          animation: rotate-circle 4.25s ease-in;
+}
+
+.success-checkmark .check-icon::before, .success-checkmark .check-icon::after {
+  content: '';
+  height: 100px;
+  position: absolute;
+  background: #FFFFFF;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.success-checkmark .check-icon .icon-line {
+  height: 5px;
+  background-color: #4CAF50;
+  display: block;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+}
+
+.success-checkmark .check-icon .icon-line.line-tip {
+  top: 46px;
+  left: 14px;
+  width: 25px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-animation: icon-line-tip 0.75s;
+          animation: icon-line-tip 0.75s;
+}
+
+.success-checkmark .check-icon .icon-line.line-long {
+  top: 38px;
+  right: 8px;
+  width: 47px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-animation: icon-line-long 0.75s;
+          animation: icon-line-long 0.75s;
+}
+
+.success-checkmark .check-icon .icon-circle {
+  top: -4px;
+  left: -4px;
+  z-index: 10;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: absolute;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  border: 4px solid rgba(76, 175, 80, 0.5);
+}
+
+.success-checkmark .check-icon .icon-fix {
+  top: 8px;
+  width: 5px;
+  left: 26px;
+  z-index: 1;
+  height: 85px;
+  position: absolute;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  background-color: #FFFFFF;
+}
+
+@-webkit-keyframes rotate-circle {
+  0% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  5% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  12% {
+    -webkit-transform: rotate(-405deg);
+            transform: rotate(-405deg);
+  }
+  100% {
+    -webkit-transform: rotate(-405deg);
+            transform: rotate(-405deg);
+  }
+}
+
+@keyframes rotate-circle {
+  0% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  5% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  12% {
+    -webkit-transform: rotate(-405deg);
+            transform: rotate(-405deg);
+  }
+  100% {
+    -webkit-transform: rotate(-405deg);
+            transform: rotate(-405deg);
+  }
+}
+
+@-webkit-keyframes icon-line-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+  70% {
+    width: 50px;
+    left: -8px;
+    top: 37px;
+  }
+  84% {
+    width: 17px;
+    left: 21px;
+    top: 48px;
+  }
+  100% {
+    width: 25px;
+    left: 14px;
+    top: 45px;
+  }
+}
+
+@keyframes icon-line-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+  70% {
+    width: 50px;
+    left: -8px;
+    top: 37px;
+  }
+  84% {
+    width: 17px;
+    left: 21px;
+    top: 48px;
+  }
+  100% {
+    width: 25px;
+    left: 14px;
+    top: 45px;
+  }
+}
+
+@-webkit-keyframes icon-line-long {
+  0% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+  65% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+  84% {
+    width: 55px;
+    right: 0px;
+    top: 35px;
+  }
+  100% {
+    width: 47px;
+    right: 8px;
+    top: 38px;
+  }
+}
+
+@keyframes icon-line-long {
+  0% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+  65% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+  84% {
+    width: 55px;
+    right: 0px;
+    top: 35px;
+  }
+  100% {
+    width: 47px;
+    right: 8px;
+    top: 38px;
+  }
+}
+
 .flip-card {
   -webkit-perspective: inherit;
           perspective: inherit;
@@ -189,42 +532,6 @@
   border: 1px solid blue;
 }
 
-@keyframes colorchange {
-  0% {
-    border-color: red;
-  }
-  25% {
-    border-color: yellow;
-  }
-  50% {
-    border-color: green;
-  }
-  75% {
-    border-color: blue;
-  }
-  100% {
-    border-color: red;
-  }
-}
-
-@-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */ {
-  0% {
-    border-color: red;
-  }
-  25% {
-    border-color: yellow;
-  }
-  50% {
-    border-color: green;
-  }
-  75% {
-    border-color: blue;
-  }
-  100% {
-    border-color: red;
-  }
-}
-
 @-webkit-keyframes pulse {
   0% {
     -webkit-transform: scale(1);
@@ -289,7 +596,7 @@
 .reservation-form button,
 .reservation-form label {
   font-weight: 100;
-  font-size: 13px;
+  font-size: 1rem;
 }
 
 .reservation-form select {
@@ -355,6 +662,154 @@
   color: #076C00 !important;
 }
 
+.modal {
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modal.opened {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal-dialog {
+  position: relative;
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 70vw;
+  /* Could be more or less, depending on screen size */
+}
+
+.modal-dialog.confirmation {
+  width: 300px;
+  height: 300px;
+}
+
+.modal-header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 67px;
+  grid-template-columns: 1fr 67px;
+}
+
+.modal-header p {
+  margin: 0;
+  padding-left: 15px;
+  font-weight: 100;
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-self: left;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.modal-header span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 25px;
+  justify-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 5px 15px;
+}
+
+.modal-footer {
+  padding: 5px 15px;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+.modal-header span:hover {
+  color: red;
+}
+
+/* The Close Button */
+.button-error {
+  background-color: #d75453;
+  color: #ffffff;
+}
+
+.button-error:hover {
+  background-color: #F8D7DA;
+}
+
+#finish-step-1 {
+  display: grid;
+  grid-template-areas: '. . . . .' '. . loader . .' '. content content content .' '. . . . .';
+  grid-template-rows: .5fr 1fr 1fr 1.5fr;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+#finish-step-2 {
+  display: grid;
+  grid-template-areas: '. . . . .' '. . loader . .' '. content content content .' '. . . . .' 'btn btn btn btn btn';
+  grid-template-rows: .5fr 1fr 1fr 1.5fr -webkit-min-content;
+  grid-template-rows: .5fr 1fr 1fr 1.5fr min-content;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+#loader {
+  grid-area: loader;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#content {
+  grid-area: content;
+  font-weight: 100;
+}
+
+#finish-button {
+  grid-area: btn;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -408,6 +863,7 @@
     grid-template-rows: min-content 1fr 1fr min-content;
     grid-template-columns: -webkit-min-content 1fr 1fr 1fr 1fr 1fr -webkit-min-content;
     grid-template-columns: min-content 1fr 1fr 1fr 1fr 1fr min-content;
+    gap: 20px;
   }
   #header-logo {
     grid-area: brand;
@@ -415,12 +871,57 @@
     height: 200px;
     background-size: 150px !important;
   }
-  .reservation-form {
-    margin: 1px;
+  .reservation-form input,
+  .reservation-form textarea,
+  .reservation-form select,
+  .reservation-form button,
+  .reservation-form label {
+    font-size: .9rem;
   }
   .reservation-form h5 {
     margin: 0px;
     padding: 0px;
+  }
+  .reservation-form {
+    margin: 1px;
+    display: grid;
+    grid-template-rows: -webkit-min-content 1fr;
+    grid-template-rows: min-content 1fr;
+  }
+  #reservation-form-1 {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr -webkit-min-content;
+    grid-template-rows: 1fr min-content;
+  }
+  #reservation-form-2 {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr -webkit-min-content;
+    grid-template-rows: 1fr min-content;
+  }
+  #reservation-form-scrollable {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  /** modals **/
+  .modal-dialog {
+    margin: 10% auto;
+  }
+  #finish-step-1 {
+    grid-template-areas: 'loader content content content' 'loader content content content' '. content content content';
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 125px 1fr 1fr 1fr;
+  }
+  #finish-step-1 #content, #finish-step-2 #content {
+    text-align: justify;
+  }
+  #finish-step-2 {
+    display: grid;
+    grid-template-areas: 'loader content content content' 'loader content content content' 'btn btn btn btn';
+    grid-template-rows: 1fr 1fr -webkit-min-content;
+    grid-template-rows: 1fr 1fr min-content;
+    grid-template-columns: 125px 1fr 1fr 1fr;
   }
 }
 
@@ -443,12 +944,54 @@
     height: 200px;
     background-size: 150px !important;
   }
+  .reservation-form input,
+  .reservation-form textarea,
+  .reservation-form select,
+  .reservation-form button,
+  .reservation-form label {
+    font-size: .7rem;
+  }
   .reservation-form {
     margin: 1px;
+    display: grid;
+    grid-template-rows: -webkit-min-content 1fr;
+    grid-template-rows: min-content 1fr;
   }
   .reservation-form h5 {
     margin: 0px;
     padding: 0px;
+  }
+  #reservation-form-1 {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr -webkit-min-content;
+    grid-template-rows: 1fr min-content;
+  }
+  #reservation-form-2 {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr -webkit-min-content;
+    grid-template-rows: 1fr min-content;
+  }
+  #reservation-form-scrollable {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  /** modals **/
+  .modal-dialog {
+    margin: 10% auto;
+  }
+  #finish-step-1 {
+    grid-template-areas: 'loader content content content' 'loader content content content' '. content content content';
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 125px 1fr 1fr 1fr;
+  }
+  #finish-step-2 {
+    display: grid;
+    grid-template-areas: 'loader content content content' 'loader content content content' 'btn btn btn btn';
+    grid-template-rows: 1fr 1fr -webkit-min-content;
+    grid-template-rows: 1fr 1fr min-content;
+    grid-template-columns: 125px 1fr 1fr 1fr;
   }
 }
 
@@ -493,6 +1036,13 @@
     background-position-x: center !important;
     background-position-y: center !important;
   }
+  .reservation-form input,
+  .reservation-form textarea,
+  .reservation-form select,
+  .reservation-form button,
+  .reservation-form label {
+    font-size: .7rem;
+  }
   #nav-grid {
     display: none;
   }
@@ -524,5 +1074,21 @@
   #nav-grid-mobile a img {
     height: 50px;
     width: 50px;
+  }
+  /** modals **/
+  .modal-dialog {
+    margin: 5% auto;
+    max-height: 60vh;
+    width: 90vh;
+    -ms-flex-item-align: center;
+        align-self: center;
+  }
+  #finish-step-1, #finish-step-2 {
+    grid-template-areas: '. . .' '. loader .' 'content content content' '. . . ';
+    grid-template-rows: 5px 125px 1fr 10px;
+    grid-template-columns: 5px 1fr 5px;
+  }
+  #finish-step-1 #content, #finish-step-2 #content {
+    text-align: justify;
   }
 }

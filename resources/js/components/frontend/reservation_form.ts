@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import axios from 'axios'
-import * as moment from 'moment';
-import { IReservationForm, IErrors, IReservation, INewReservation } from '../../interfaces/interfaces';
+import { INewReservation } from '../../interfaces/interfaces';
 import { Debounce } from 'typescript-debounce';
 import { Watch } from 'vue-property-decorator';
 import { AsYouType } from 'libphonenumber-js'
@@ -50,6 +49,7 @@ export default class ReservationForm extends Vue {
         this.$root.$on('update-times', this.updateTimes);
         this.$root.$on('validate-date', this.updateValidateDate);
         this.$root.$on('set-reservation-date', this.setReservationDate);
+        this.$root.$on('reset-all-reservation', this.reset);
     }
     mounted() {
         this.selectableTimes = JSON.parse(this.$props.times);
@@ -60,7 +60,7 @@ export default class ReservationForm extends Vue {
         this.$root.$off('update-times', this.updateTimes);
         this.$root.$off('validate-date', this.updateValidateDate);
         this.$root.$off('set-reservation-date', this.setReservationDate);
-
+        this.$root.$off('reset-all-reservation', this.reset);
 
     }
     // observers
@@ -165,6 +165,7 @@ export default class ReservationForm extends Vue {
 
     private finishReservation()
     {
+        this.$root.$emit('open-finish-modal');
         if (this.validation.name && this.validation.phone && this.validation.email && this.validation.party_size && this.validation.date && this.validation.time) {
             axios.post('/reservations/frontend-make',{
                 'name': this.reservation.name,
@@ -179,19 +180,46 @@ export default class ReservationForm extends Vue {
                 
                 if (response.status) {
                     // show modal
-                    alert('finished');
+                    setTimeout(() => {
+                        this.$root.$emit('finish-modal-step', 2);
+                    }, 2000);
                 }
                 
             }).catch(e => {
-                alert('failed');
+                this.$root.$emit('finish-modal-step', 0);
             });
         }
     }
 
     private focusSelect(name: string)
     {
-        console.log('clicked');
         const select = (document.getElementById(name) as HTMLSelectElement);
         select.focus();
+    }
+
+    private reset()
+    {
+        this.step = 1;
+        this.selectableTimes = [];
+        this.timeSelected = '';
+        this.reservation = {
+            name: '',
+            phone: '',
+            email: '',
+            party_size: 0,
+            date: '',
+            time: '',
+            special_request: '',
+            hibachi: true
+        }
+
+        this.validation = {
+            name: false,
+            phone: false,
+            email: false,
+            party_size: false,
+            date: false,
+            time: false
+        }
     }
 }

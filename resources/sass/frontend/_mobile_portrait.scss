@@ -43,6 +43,15 @@
     background-position-y: center !important;
     
 }
+.reservation-form input, 
+.reservation-form textarea, 
+.reservation-form select, 
+.reservation-form button,
+.reservation-form label {
+    font-size: .7rem;
+}
+
+
 #nav-grid {
     display: none;
 }
@@ -69,4 +78,25 @@
 #nav-grid-mobile a img {
 	height: 50px;
 	width: 50px;
+}
+
+/** modals **/
+.modal-dialog {
+    margin: 5% auto;
+    max-height: 60vh;
+    width: 90vh;
+    align-self: center;
+}
+#finish-step-1, #finish-step-2 {
+    grid-template-areas:
+        '. . .'
+        '. loader .'
+        'content content content'
+        '. . . ';
+    grid-template-rows: 5px 125px 1fr 10px;
+    grid-template-columns: 5px 1fr 5px;
+}
+
+#finish-step-1 #content, #finish-step-2 #content {
+    text-align: justify;
 }

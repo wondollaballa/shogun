@@ -16,12 +16,59 @@
     height: 200px;
     background-size: 150px !important;
 }
+.reservation-form input, 
+.reservation-form textarea, 
+.reservation-form select, 
+.reservation-form button,
+.reservation-form label {
+    font-size: .7rem;
+}
 .reservation-form {
     margin: 1px;
-
+    display: grid;
+    grid-template-rows: min-content 1fr;
 }
 
 .reservation-form h5 {
     margin: 0px;
     padding: 0px;
+}
+
+#reservation-form-1 {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr min-content;
+}
+
+#reservation-form-2 {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr min-content;
+}
+
+#reservation-form-scrollable {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+/** modals **/
+.modal-dialog {
+    margin: 10% auto;
+}
+#finish-step-1 {
+    grid-template-areas:
+        'loader content content content'
+        'loader content content content'
+        '. content content content';
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 125px 1fr 1fr 1fr;
+}
+
+#finish-step-2 {
+    display: grid;
+    grid-template-areas:
+        'loader content content content'
+        'loader content content content'
+        'btn btn btn btn';
+    grid-template-rows: 1fr 1fr min-content;
+    grid-template-columns: 125px 1fr 1fr 1fr;
 }
