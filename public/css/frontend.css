@@ -141,7 +141,47 @@
 
 #container nav {
   grid-area: navi;
-  border: 1px solid red;
+}
+
+#nav-grid-mobile {
+  display: none;
+  height: 100%;
+  grid-template-columns: minmax(75px, 1fr) repeat(4, minmax(90px, -webkit-max-content));
+  grid-template-columns: minmax(75px, 1fr) repeat(4, minmax(90px, max-content));
+}
+
+#nav-grid {
+  display: grid;
+  height: 100%;
+  grid-template-columns: minmax(75px, 1fr) repeat(4, minmax(90px, -webkit-max-content));
+  grid-template-columns: minmax(75px, 1fr) repeat(4, minmax(90px, max-content));
+}
+
+#nav-grid a {
+  font-weight: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#nav-grid a.middle {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+#nav-grid a.center {
+  justify-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#nav-grid a img {
+  height: 50px;
+  width: 50px;
 }
 
 #container footer {
@@ -289,8 +329,6 @@
   width: 100% !important;
   background-color: #ffffff;
   z-index: 0;
-  border-top: none;
-  border-bottom: none;
 }
 
 #reservation-date input:focus {
@@ -300,7 +338,6 @@
 }
 
 #time-select {
-  border-top: none;
   border-radius: 0 0 5px 5px;
 }
 
@@ -352,6 +389,9 @@
     grid-template-columns: repeat(7 1fr) !important;
     grid-template-rows: 10px -webkit-min-content -webkit-min-content -webkit-min-content 1fr !important;
     grid-template-rows: 10px min-content min-content min-content 1fr !important;
+  }
+  #nav-grid {
+    display: none;
   }
 }
 
@@ -452,5 +492,37 @@
     background-repeat: no-repeat !important;
     background-position-x: center !important;
     background-position-y: center !important;
+  }
+  #nav-grid {
+    display: none;
+  }
+  #nav-grid-mobile {
+    display: grid;
+    height: 100%;
+    grid-template-columns: -webkit-max-content 1fr;
+    grid-template-columns: max-content 1fr;
+  }
+  #nav-grid-mobile a, #nav-grid-mobile #nav-menu {
+    font-weight: 100;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  #nav-grid-mobile a.middle, #nav-grid-mobile #nav-menu {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+  }
+  #nav-grid-mobile a.center, #nav-grid-mobile #nav-menu {
+    justify-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  #nav-grid-mobile a img {
+    height: 50px;
+    width: 50px;
   }
 }

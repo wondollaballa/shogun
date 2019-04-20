@@ -53,7 +53,6 @@ export default class ReservationForm extends Vue {
     }
     mounted() {
         this.selectableTimes = JSON.parse(this.$props.times);
-        console.log(this.selectableTimes);
     }
     updated() {
     }

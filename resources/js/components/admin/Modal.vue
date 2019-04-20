@@ -19,7 +19,7 @@
                         <textarea type="text" class="pure-input-1 reservation-modal-content" placeholder="Special Request" v-model="reservation.special_request" :disabled="!editable"></textarea>
                     </fieldset>
                     <fieldset class="pure-group">
-                        <select class="pure-u-1" v-model="reservation.hibachi" :disabled="!editable">
+                        <select class="pure-u-1 modal-hibachi" v-model="reservation.hibachi" :disabled="!editable">
                             <option value="1">Hibachi seating</option>
                             <option value="0">Regular seating</option>
                         </select>

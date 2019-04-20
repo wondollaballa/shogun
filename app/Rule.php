@@ -165,7 +165,7 @@ class Rule extends Model
         $store_hours = json_decode($this->store_hours);
         $dow = $carbon->dayOfWeek;
         $checkToday = ($now == $compare);
-        $start = ($checkToday) ?  $this->setLocale()->format('h:ia') : $store_hours[$dow]->start->hh.':'.$store_hours[$dow]->start->mm.$store_hours[$dow]->start->a;
+        $start = $store_hours[$dow]->start->hh.':'.$store_hours[$dow]->start->mm.$store_hours[$dow]->start->a;
         $end = $store_hours[$dow]->end->hh.':'.$store_hours[$dow]->end->mm.$store_hours[$dow]->end->a;
         return json_encode($this->setTimes($start, $end, $checkToday));
 
@@ -210,10 +210,13 @@ class Rule extends Model
         $times = ['Select Time'];
         $interval = $this->interval * 60;
         $carbon = $this->setLocale();
-        $startString = '1983-09-30 '.$startTime;
+        $t = $this->setLocale()->format('h:ma');
+        // dd(Carbon::createFromFormat('Y-m-d H:ia', '1983-09-30 '.$t), Carbon::createFromFormat('Y-m-d H:ia', '1983-09-30 '.$startTime));
+        $tc = Carbon::createFromFormat('Y-m-d H:ia', '1983-09-30 '.$startTime)->timestamp;
+        $tc2 = Carbon::createFromFormat('Y-m-d H:ia', '1983-09-30 '.$t)->timestamp;
+        $checkStart = ($tc > $tc2) ? $tc : $tc2 + $interval;
         $endString = ($endTime == '12:00am') ?  '1983-10-01 '.$endTime :  '1983-09-30 '.$endTime;
-        $sTime = ($isToday) ? Carbon::createFromFormat('Y-m-d h:ia', $startString)->timestamp + $interval : Carbon::createFromFormat('Y-m-d h:ia', $startString)->timestamp;
-        $start = $this->roundToNearestInterval($sTime, $this->interval);
+        $start = $this->roundToNearestInterval($checkStart, $this->interval);
         $end = Carbon::createFromFormat('Y-m-d h:ia', $endString)->timestamp - $interval;
         for ($i=$start; $i <= $end; $i += $interval) { 
             $time = Carbon::createFromTimestamp($i)->format('h:ia');

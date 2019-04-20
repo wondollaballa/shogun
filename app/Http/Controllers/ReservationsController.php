@@ -67,7 +67,7 @@ class ReservationsController extends Controller
         $reservations->party_size = preg_replace("/[^0-9]/", "", trim(strip_tags($request->party_size)));
         $reservations->requested = date('Y-m-d H:i:s', strtotime(trim(strip_tags($request->date).' '.strip_tags($request->time))));
         $reservations->special_request = trim(strip_tags($request->special_request));
-        $reservations->hibachi = $request->hibachi;
+        $reservations->hibachi = ($request->hibachi == "false" || !$request->hibachi ) ? false : true;
         $reservations->save();
         
         event(new ReservationEvent());

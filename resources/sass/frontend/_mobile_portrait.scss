@@ -43,3 +43,30 @@
     background-position-y: center !important;
     
 }
+#nav-grid {
+    display: none;
+}
+#nav-grid-mobile {
+	display: grid;
+	height: 100%;
+	grid-template-columns: max-content 1fr;
+}
+
+#nav-grid-mobile a, #nav-grid-mobile #nav-menu {
+	font-weight: 100;
+	display: flex;
+
+}
+#nav-grid-mobile a.middle, #nav-grid-mobile #nav-menu {
+	align-items: center;
+	align-content: center;
+}
+#nav-grid-mobile a.center, #nav-grid-mobile #nav-menu {
+	justify-items: center;
+	justify-content: center;
+	
+}
+#nav-grid-mobile a img {
+	height: 50px;
+	width: 50px;
+}

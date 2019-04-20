@@ -6812,6 +6812,10 @@ fieldset {
   color: red;
 }
 
+.modal-hibachi {
+  color: #000000 !important;
+}
+
 .main-content {
   overflow-x: hidden;
 }

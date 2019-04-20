@@ -70,8 +70,6 @@
     width: 100% !important;
     background-color: #ffffff;
     z-index:0;
-    border-top:none;
-    border-bottom:none;
 }
 #reservation-date input:focus {
     z-index:1;
@@ -80,7 +78,6 @@
 }
 
 #time-select {
-    border-top:none;
     border-radius: 0 0 5px 5px;
 }
 
