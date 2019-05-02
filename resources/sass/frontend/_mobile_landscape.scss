@@ -119,3 +119,30 @@
     gap: 2px;
     margin-bottom: 15px;
 }
+
+// message modal
+.c-container {
+    margin: auto !important;
+}
+.message-p {
+    margin: 0;
+    text-align: center;
+    font-size: 1.5rem !important;
+}
+.o-circle {
+    display: flex;
+    width: 6rem;
+    height: 6rem;
+}
+.o-circle__sign--success .o-circle__sign {
+    width: 0.6rem;
+    height: 4rem;
+}
+.message-modal .modal-dialog {
+
+    max-height: unset;
+}
+.c-container__circle {
+    margin: 0 auto;
+}
+

@@ -18,9 +18,9 @@
     height: 200px;
     background-size: 150px !important;
 }
-.reservation-form input, 
-.reservation-form textarea, 
-.reservation-form select, 
+.reservation-form input,
+.reservation-form textarea,
+.reservation-form select,
 .reservation-form button,
 .reservation-form label {
     font-size: .9rem;
@@ -79,4 +79,30 @@
         'btn btn btn btn';
     grid-template-rows: 1fr 1fr min-content;
     grid-template-columns: 125px 1fr 1fr 1fr;
+}
+
+// message modal
+.c-container {
+    margin: auto !important;
+}
+.message-p {
+    margin: 0;
+    text-align: center;
+    font-size: 1.5rem !important;
+}
+.o-circle {
+    display: flex;
+    width: 6rem;
+    height: 6rem;
+}
+.o-circle__sign--success .o-circle__sign {
+    width: 0.6rem;
+    height: 4rem;
+}
+.message-modal .modal-dialog {
+    margin: 5% auto;
+    max-height: unset;
+}
+.c-container__circle {
+    margin: 0 auto;
 }

@@ -27,7 +27,7 @@
                 <input id="contact-us-name" class="pure-u-1" :placeholder="validation.name ? 'full name' : 'full name (required field)'" type="text" v-model="fullName" :class="!validation.name ? 'errors' : ''"/>
                 <input id="contact-us-email" class="pure-u-1" :placeholder="validation.email? 'email address': 'email (required field)'" type="email" v-model="email" :class="!validation.email ? 'errors' : ''"/>
                 <textarea id="contact-us-message" class="pure-u-1" type="text" :placeholder="validation.message ? 'message' : 'message (required field)'" v-model="message" :class="!validation.message ? 'errors' : ''"></textarea>
-                <button id="contact-us-send" class="pure-button pure-u-1 pure-button-primary" type="button" @click="submitMessage">Contact Us</button>
+                <button id="contact-us-send" class="pure-button pure-u-1 pure-button-primary" type="button" @click="submitMessage" :disabled="disableMessageButton">Contact Us</button>
             </div>
         </div>
         <br/><br/><br/><br/><br/>

@@ -201,6 +201,21 @@ export interface IReservationForm {
 export interface ISet {
     [key: number]: string
 }
+export interface IMessagesRaw {
+    id: number;
+    name: string;
+    email: string;
+    message: string;
+    viewed: string | null;
+    status: number;
+    deleted_at: string | null;
+    created_at: string;
+    updated_at: string;
+    formatViewed: string | null;
+    formatCreatedAt: string | null;
+    formatDeletedAt: string | null;
+
+}
 //#endregion components
 
 //#region thirdparty

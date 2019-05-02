@@ -16,3 +16,22 @@
     grid-template-columns: max-content repeat(4, minmax(90px, max-content));
     gap: 20px;
 }
+
+// message modal
+.modal {
+    z-index: 9999;
+}
+.message-modal .modal-dialog {
+    margin: 30% auto;
+}
+.o-circle__sign--success .o-circle__sign {
+    width: 1rem;
+    height: 6rem;
+}
+.message-p {
+    margin: 0;
+    text-align: center;
+    font-weight: 100;
+    font-size: 2rem;
+    padding-top:5px;
+}

@@ -8,7 +8,7 @@ import { ILeftbar, INotificationsCount } from '../../interfaces/interfaces'
     props: {
 
     }
-    
+
 })
 export default class Leftbar extends Vue implements ILeftbar {
     title = '';
@@ -19,6 +19,7 @@ export default class Leftbar extends Vue implements ILeftbar {
     totalReservationCount = 0;
     messagesCount = 0;
     animateNotificationCounts = false;
+    animateMessageCounts = false;
     csrf = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).getAttribute('content');
     element = document.querySelector('nav#navbar') as HTMLElement;
     // computed
@@ -32,7 +33,7 @@ export default class Leftbar extends Vue implements ILeftbar {
         this.closeSubMenuOnOutsideClick();
         this.messageReceived();
         setTimeout(() => {
-            this.setNotifications();    
+            this.setNotifications();
         }, 1000);
     }
     updated() {
@@ -48,7 +49,7 @@ export default class Leftbar extends Vue implements ILeftbar {
         host.setAttribute('left',this.state);
     }
     private toggleDropdown(e: Event): void {
-   
+
         const dropdown = e.currentTarget as HTMLElement;
         const status = dropdown.getAttribute('status');
         const new_state = (status == 'opened') ? 'closed' :  'opened';
@@ -62,7 +63,7 @@ export default class Leftbar extends Vue implements ILeftbar {
         const host = document.querySelector('#navbar-left') as HTMLElement;
         const menu_item = e.currentTarget as HTMLElement;
         const menu_items = host.querySelectorAll('.menu-item-header');
-        // undo active 
+        // undo active
         menu_items.forEach(item => {
             console.log(item);
             item.classList.remove('active');
@@ -83,7 +84,7 @@ export default class Leftbar extends Vue implements ILeftbar {
         excepts.forEach(except => {
             except.addEventListener("click", (e) => {
                 e.stopPropagation();
-            });   
+            });
         });
     }
 
@@ -93,19 +94,32 @@ export default class Leftbar extends Vue implements ILeftbar {
             this.animateNotificationCounts = false;
         }, 30000)
     }
+    private animateMessageNotifications() {
+        this.animateMessageCounts = true;
+        setTimeout(() => {
+            this.animateMessageCounts = false;
+        }, 30000)
+    }
 
     private messageReceived() {
         if ('Echo' in window) {
             const notificationsEvent = "NotificationsEvent";
-            (window as any).Echo.channel('notifications-event').listen(notificationsEvent, (e: any) => {                
+            (window as any).Echo.channel('notifications-event').listen(notificationsEvent, (e: any) => {
                 const notificationsCount = e.data;
                 if (Object.keys(notificationsCount).length > 0) {
                     // update notification counts
                     this.reservationCount = notificationsCount.today;
                     this.totalReservationCount = notificationsCount.all;
+                    // messages animate and update count
+
+                    if (notificationsCount.messages > this.messagesCount) {
+                        this.animateMessageNotifications();
+                    }
                     this.messagesCount = notificationsCount.messages;
+
                 }
             });
+
         }
     }
 

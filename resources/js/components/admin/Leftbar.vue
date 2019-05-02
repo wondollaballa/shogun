@@ -60,8 +60,8 @@
                     </a>
                 </div>
             </div>
-            <a href="/dashboard" class="menu-item-header left-row" :class="state === 'closed' ? 'menu-closed': 'menu-opened'">
-                <span class="notifications" :class="messagesCount > 0 ? 'notifications-alive' : 'notifications-dead'">{{ messagesCount }}</span>
+            <a href="/messages" class="menu-item-header left-row" :class="state === 'closed' ? 'menu-closed': 'menu-opened'">
+                <span class="notifications" :class="[messagesCount > 0 ? 'notifications-alive' : 'notifications-dead', animateMessageCounts ? 'animated bounce' : '']">{{ messagesCount }}</span>
                 <div class="left-content-min-row tooltips">
                     <i class="fas fa-envelope-square"></i>
                     <span class="tooltip-wrapper" v-if="state === 'closed'">

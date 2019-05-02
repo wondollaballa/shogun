@@ -3,9 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Message;
+use App\Events\NotificationsEvent;
+use App\Events\MessageEvent;
+use Carbon\Carbon;
 
 class MessagesController extends Controller
 {
+
+    public function index()
+    {
+        $messages = new Message;
+        $new = json_encode($messages->getNewMessages());
+        $viewed = json_encode($messages->getViewedMessages());
+        $replied = json_encode($messages->getRepliedMessages());
+        return view('messages.index', compact(['new', 'viewed', 'replied']));
+    }
+
      /**
      * Show the form for creating a new resource.
      *
@@ -18,14 +32,42 @@ class MessagesController extends Controller
             'email' => 'required|email',
             'message' => 'required'
         ]);
+
         $messages = new Message();
         $messages->name = trim($request->name);
         $messages->email = trim($request->email);
         $messages->message = trim($request->message);
         $messages->save();
 
+        event(new NotificationsEvent());
         event(new MessageEvent());
         return response()->json(['success'=>'Message has successfully sent!']);
+    }
+
+    public function update(Request $request, Message $message) {
+        $status = $request->status;
+        $message->status = $status;
+        if ($status == 2) {
+            $now = Carbon::now(env('APP_TIMEZONE'));
+            $viewed = $now->format('Y-m-d H:i:s');
+            $message->viewed = $viewed;
+        }
+
+        if($message->save()) {
+
+            $new = json_encode($message->getNewMessages());
+            $viewed = json_encode($message->getViewedMessages());
+            $replied = json_encode($message->getRepliedMessages());
+            event(new NotificationsEvent());
+            return response()->json([
+                'message'=>'Message has been updated!',
+                'new'=>$new,
+                'viewed'=>$viewed,
+                'replied'=>$replied
+            ]);
+        }
+
+        return response()->json(['message'=>'Message could not be updated..']);
 
 
     }

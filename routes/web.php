@@ -82,6 +82,10 @@ Route::domain(env('APP_SUB_URL'))->group(function () {
             Route::post('/contact/{contactus}/set-as-archive', 'ContactusController@setAsArchive')->name('contact.set_as_archive');
             Route::post('/contact/{contactus}/set-as-deleted', 'ContactusController@setAsDeleted')->name('contact.set_as_deleted');
 
+            // Messages
+            Route::patch('/messages/update/{message}', 'MessagesController@update')->name('message.update');
+            Route::get('/messages', 'MessagesController@index')->name('message.index');
+
             // users
             Route::get('/users', 'UsersController@index')->name('user.index');
             Route::get('/users/create', 'UsersController@create')->name('user.create');

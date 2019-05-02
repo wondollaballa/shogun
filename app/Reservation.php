@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Rule;
+use App\Message;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
@@ -94,7 +95,7 @@ class Reservation extends Model
                 $checkNoShow = (!$checkFinished && $value->no_show == true && $value->status == 2);
                 $checkEditable = ($checkFinished) ? false : true;
                 $eventTitle = ($value->no_show == true) ? "$titleBase - (Reservation has expired)" : $titleBase;
-           
+
                 if ($checkFinished) {
                     $eventBackgroundColor = '#000000';
                     $eventBorderColor = '#000000';
@@ -152,13 +153,13 @@ class Reservation extends Model
         $location = env('APP_TIMEZONE');
         $start = Carbon::now($location)->format('Y-m-d 00:00:00');
         $end = Carbon::now($location)->format('Y-m-d 23:59:59');
-        // today - all remaining 
+        // today - all remaining
         $todayCount = $this->whereBetween('requested',[$start, $end])
             ->whereNull('seated_at')
             ->where('status',1)
             ->where('no_show',false)
             ->count();
-        
+
         // all
         $allCount = $this->where('requested', '>=', $start)
             ->whereNull('seated_at')
@@ -166,12 +167,12 @@ class Reservation extends Model
             ->where('no_show',false)
             ->count();
         // messages
-        $messageCount = 0; // TODO 
-
+        $messages = new Message;
+        $messagesCount = $messages->makeNotifications();
         return [
             'today' => $todayCount,
             'all' => $allCount,
-            'messages' => $messageCount
+            'messages' => $messagesCount
         ];
     }
 
@@ -199,7 +200,7 @@ class Reservation extends Model
 
 
         return json_encode($result);
-        
+
     }
 
     public function setExpired($requested) {
@@ -255,18 +256,18 @@ class Reservation extends Model
 
     private function formatPhone($phone_number) {
         if (!isset($phone_number)) return;
-        
+
         switch (strlen($phone_number)) {
             case 10:
-            $split1 = substr($phone_number,0,3); 
-            $split2 = substr($phone_number,3,3); 
+            $split1 = substr($phone_number,0,3);
+            $split2 = substr($phone_number,3,3);
             $split3 = substr($phone_number,6,4);
             return "($split1) $split2-$split3";
             break;
 
             case 7:
-            $split1 = substr($phone_number,0,3); 
-            $split2 = substr($phone_number,3,4); 
+            $split1 = substr($phone_number,0,3);
+            $split2 = substr($phone_number,3,4);
             return "$split1-$split2";
             break;
 
@@ -276,7 +277,7 @@ class Reservation extends Model
 
         }
 
-        
+
 	}
 
 

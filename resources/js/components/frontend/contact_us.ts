@@ -24,11 +24,13 @@ export default class ContactUs extends Vue {
     fullName: string = '';
     email: string = '';
     message: string = '';
+    override = false;
     validation = {
         name: true,
         email: true,
         message: true
     }
+    disableMessageButton = true;
 	get store(): IStoreInfo {
 		const content = (this.$props.text) ? JSON.parse(this.$props.text) : {
 			phone: '',
@@ -103,6 +105,7 @@ export default class ContactUs extends Vue {
 
 	// Lifecycle hooks
 	created() {
+        this.$root.$on('reset-message-form', this.resetMessageForm);
 	}
 	mounted() {
         const phone = parsePhoneNumber(this.store.phone, 'US');
@@ -111,23 +114,30 @@ export default class ContactUs extends Vue {
 	updated() {
 	}
 	destroyed() {
+        this.$root.$off('reset-message-form', this.resetMessageForm);
 
     }
 
     @Watch('fullName')
     private onChangedName() {
-        this.validation.name = true;
-        this.validateForm();
+        if(!this.override) {
+            this.validation.name = true;
+            this.validateForm();
+        }
     }
     @Watch('message')
     private onChangedMessage() {
-        this.validation.message = true;
-        this.validateForm();
+        if(!this.override) {
+            this.validation.message = true;
+            this.validateForm();
+        }
     }
     @Watch('email')
     private onChangedEmail() {
-        this.validation.email = true;
-        this.validateForm();
+        if(!this.override) {
+            this.validation.email = true;
+            this.validateForm();
+        }
     }
     @Debounce({millisecondsDelay: 1000})
     private validateForm() {
@@ -141,6 +151,9 @@ export default class ContactUs extends Vue {
         const m = this.message.replace(' ', '');
         this.validation.message = (!validator.isEmpty(m));
         this.message = validator.trim(this.message);
+        if (this.validation.name && this.validation.email && this.validation.message) {
+            this.disableMessageButton = false;
+        }
     }
 
     private submitMessage() {
@@ -154,14 +167,30 @@ export default class ContactUs extends Vue {
                 'email': this.email,
             }).then(response => {
                 if (response.status) {
-                    console.log('success', response);
+                    this.$root.$emit('open-message-modal', true, response.data);
                 }
 
             }).catch(e => {
                 const response = e.response.data;
-
+                this.$root.$emit('open-message-modal', false, response);
             });
         }
+    }
+
+    private resetMessageForm() {
+        this.override = true;
+        this.fullName = '';
+        this.message ='';
+        this.email = '';
+        this.validation = {
+            name: true,
+            email: true,
+            message: true
+        }
+        this.disableMessageButton = true;
+        setTimeout(() => {
+            this.override = false;
+        }, 2000);
     }
 
 

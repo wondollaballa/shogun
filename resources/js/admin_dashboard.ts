@@ -39,6 +39,7 @@ Vue.component('search', require('./components/admin/Search.vue'));
 Vue.component('search-results', require('./components/admin/SearchResults.vue'));
 Vue.component('store-hours', require('./components/admin/StoreHours.vue'));
 Vue.component('admin-switch', require('./components/admin/Switch.vue'));
+Vue.component('messages-page', require('./components/admin/MessagesPage.vue'));
 
 
 // const files = require.context('./', true, /\.vue$/i)
