@@ -1,0 +1,64 @@
+#the-experience {
+	position: relative;
+	background-color: black;
+	border: 3px solid white;
+}
+.content-body {
+    padding: 25px;
+}
+
+#the-experience blockquote {
+	font-weight: 100;
+    line-height: 2rem;
+	font-kerning: normal;
+	color: white;
+	outline-color: #fff;
+	font-size: 1.1rem;
+	text-align: justify;
+}
+
+#the-experience .triangle-top-left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-top: 120px solid white;
+	border-right: 120px solid transparent;
+}
+
+#the-experience .triangle-top-left span {
+    position: absolute;
+    top: -102px;
+    left: -17px;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(-45deg);
+    width: 108px;
+    font-weight: 100;
+    font-size: 21px;
+    text-align: center;
+
+}
+
+#the-experience .triangle-bottom-right {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-bottom: 125px solid #fff;
+	border-left: 125px solid transparent;
+}
+
+.the-experience-title {
+    position: relative;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 100;
+    text-align: center;
+    font-variant-caps: small-caps;
+}
+
+#the-experience-image {
+    background-image: url(../images/hibachi-7.jpg) !important;
+}

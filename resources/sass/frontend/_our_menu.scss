@@ -1,0 +1,102 @@
+#our-menu {
+	position: relative;
+	background-color: black;
+	border: 3px solid white;
+}
+// .content-body {
+//     padding: 25px;
+// }
+
+#our-menu blockquote {
+	font-weight: 100;
+    line-height: 2rem;
+	font-kerning: normal;
+	color: white;
+	outline-color: #fff;
+	font-size: 1.1rem;
+	text-align: justify;
+}
+
+#our-menu .triangle-top-left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-top: 120px solid white;
+	border-right: 120px solid transparent;
+}
+
+#our-menu .triangle-top-left span {
+    position: absolute;
+    top: -79px;
+    left: -5px;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(-45deg);
+    width: 108px;
+    font-weight: 100;
+    font-size: 21px;
+    text-align: center;
+
+}
+
+#our-menu .triangle-bottom-right {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-bottom: 125px solid #fff;
+	border-left: 125px solid transparent;
+}
+
+.our-menu-title {
+    position: relative;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 100;
+    text-align: center;
+    font-variant-caps: small-caps;
+}
+
+
+
+.scrolling-wrapper-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+    cursor : -webkit-grab;
+    cursor : -moz-grab;
+    cursor : -o-grab;
+    cursor : grab;
+    .menu-card {
+        flex: 0 0 auto;
+        border-radius: 5px;
+        background-color: #fff;
+        margin: 0 5px;
+        text-align: center;
+
+    }
+
+    .menu-card-top {
+        height: 100px;
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: center;
+    }
+
+    .menu-card-bottom {
+        font-weight: 100;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+}
+
+// #the-experience-image {
+//     background-image: url(../images/hibachi-7.jpg) !important;
+// }

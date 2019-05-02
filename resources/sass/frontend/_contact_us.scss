@@ -1,0 +1,167 @@
+#contact-us {
+	position: relative;
+	background-color: black;
+	border: 3px solid white;
+}
+.content-body {
+    padding: 25px;
+}
+
+#contact-us blockquote {
+	font-weight: 100;
+    line-height: 2rem;
+	font-kerning: normal;
+	color: white;
+	outline-color: #fff;
+	font-size: 1.1rem;
+	text-align: justify;
+}
+
+#contact-us .triangle-top-left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-top: 120px solid white;
+	border-right: 120px solid transparent;
+}
+
+#contact-us .triangle-top-left span {
+    position: absolute;
+    top: -77px;
+    left: -6px;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(-45deg);
+    width: 108px;
+    font-weight: 100;
+    font-size: 21px;
+    text-align: center;
+
+}
+
+#contact-us .triangle-bottom-right {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-bottom: 125px solid #fff;
+	border-left: 125px solid transparent;
+}
+
+.contact-us-title {
+    position: relative;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 100;
+    text-align: center;
+    font-variant-caps: small-caps;
+}
+
+#store-hours-container {
+    display: grid;
+    grid-template-areas:
+        '. . sunday sunday . .'
+        '. . monday monday . .'
+        '. . tuesday tuesday . .'
+        '. . wednesday wednesday . .'
+        '. . thursday thursday . .'
+        '. . friday friday . .'
+        '. . saturday saturday . .';
+    position: relative;
+    font-weight: 100;
+    color: #fff;
+    list-style: none;
+    grid-template-columns: 1fr 1fr min-content max-content 1fr 1fr;
+    grid-template-rows: auto;
+}
+.sh-row {
+    grid-area: trow;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'day hours';
+
+}
+.th {
+    grid-area: day;
+    font-weight: bolder;
+    border: 1px solid #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: right;
+    align-content: center;
+    color: #fff;
+}
+
+.td {
+    grid-area: hours;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    padding: 15px;
+}
+
+#sh-row-0 {
+    grid-area: sunday;
+}
+#sh-row-1 {
+    grid-area: monday;
+}
+#sh-row-2 {
+    grid-area: tuesday;
+}
+#sh-row-3 {
+    grid-area: wednesday;
+}
+#sh-row-4 {
+    grid-area: thursday;
+}
+#sh-row-5 {
+    grid-area: friday;
+}
+#sh-row-6 {
+    grid-area: saturday;
+}
+
+.contact-us-address {
+    text-align: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color: #fff;
+}
+
+#contact-us-form-container {
+    display: grid;
+    grid-template-areas:
+        '. cf cf cf .'
+        '. cf cf cf .'
+        '. cf cf cf .'
+        '. . . . .'
+        '. . . . .'
+        '. . . . .';
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+}
+
+#contact-us-form {
+    position: relative;
+    grid-area: cf;
+    width: 100%;
+}
+.contact-us-label {
+    color: #fff;
+    text-align: center;
+    font-weight: 100;
+}
+#contact-us-form input, #contact-us-form textarea {
+    background-color: #000;
+    border: 1px solid #fff;
+    color: #fff;
+}
+#contact-us-form input::placeholder, #contact-us-form textarea::placeholder {
+    color: #fff;
+}
+
+

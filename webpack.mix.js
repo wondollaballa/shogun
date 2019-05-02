@@ -12,37 +12,39 @@ const mix = require('laravel-mix');
  */
 
 mix.ts('resources/js/app.ts', 'public/js')
-   .ts('resources/js/admin_dashboard.ts', 'public/js')
-   .ts('resources/js/frontend.ts', 'public/js')
-   .ts('resources/js/admin_signin.ts', 'public/js')
-   .sass('resources/sass/admin.scss', 'public/css')
-   .sass('resources/sass/signin.scss', 'public/css')
-   .sass('resources/sass/frontend.scss', 'public/css')
-   .copyDirectory('resources/images', 'public/images')
-   .options({
-      processCssUrls: false
-   })
-   .webpackConfig({
-      module: {
-         rules: [
-            {
-               test: /\.tsx?$/,
-               loader: 'ts-loader',
-               options: {
-                  appendTsSuffixTo: [/\.vue$/]
-               },
-               exclude: /node_modules/,
-            },
-            
-         ],
-         loaders: [
-            {
-               test: /\.worker\.ts$/,
-               use: { loader: 'worker-loader' }
-            },
-         ]
-      },
-      resolve: {
-         extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"]
-      }
-   }).copyDirectory('resources/images', 'public/images').sourceMaps();
+	.ts('resources/js/admin_dashboard.ts', 'public/js')
+	.ts('resources/js/frontend.ts', 'public/js')
+	.ts('resources/js/admin_signin.ts', 'public/js')
+	.sass('resources/sass/admin.scss', 'public/css')
+	.sass('resources/sass/signin.scss', 'public/css')
+	.sass('resources/sass/frontend.scss', 'public/css')
+	.copyDirectory('resources/images', 'public/images')
+	.options({
+		processCssUrls: false
+	})
+	.webpackConfig({
+		module: {
+			rules: [
+				{
+					test: /\.tsx?$/,
+					loader: 'ts-loader',
+					options: {
+						appendTsSuffixTo: [/\.vue$/]
+					},
+					exclude: /node_modules/,
+				},
+
+			],
+			loaders: [
+				{
+					test: /\.worker\.ts$/,
+					use: { loader: 'worker-loader' }
+				},
+			]
+		},
+		resolve: {
+			extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"]
+		}
+	}).copyDirectory('resources/images', 'public/images')
+	// .js('resources/js/globals/shogun.js','public/js')
+	.sourceMaps();

@@ -36,11 +36,11 @@ export interface ITest {
     payload: string[]
 }
 
-export type Message = IWorkerStart | 
-    IWorkerPause | 
-    IWorkerRestart | 
-    IUpdateCalendar | 
-    ITest | 
+export type Message = IWorkerStart |
+    IWorkerPause |
+    IWorkerRestart |
+    IUpdateCalendar |
+    ITest |
     IExpiredReservations;
 //#endregion worker
 
@@ -241,6 +241,104 @@ export interface IDateConfig {
     time_24hr?: boolean;
     weekNumbers?: boolean;
     wrap?: boolean;
-    
+
 }
 //#endregion
+
+//#region frontend
+export interface IVueWaypointOption {
+    root: string | null;
+    rootMargin: string;
+    threshold: number[]
+}
+
+export interface IMenuItems {
+    name: string,
+    description: string,
+    price: string
+}
+export interface IMenuRow {
+    description?: string,
+    image?: string,
+    items: IMenuItems[]
+}
+export interface ILunchMenu {
+    description: string,
+    items: {
+        Entrees: IMenuRow,
+        "Add More": IMenuRow,
+        "Kid's Meal": IMenuRow,
+        "Sushi Lunch Special": IMenuRow,
+        "Sushi Combo": IMenuRow,
+        "Fresh Bowls": IMenuRow,
+        "Grilled Bowls": IMenuRow
+    }
+
+}
+export interface IHappyHourMenu {
+    description: string,
+    items: {
+        Food: IMenuRow,
+        Drafts: IMenuRow,
+        Wines: IMenuRow,
+        "House Cocktails": IMenuRow,
+        "Nigiri & Sashimi": IMenuRow,
+        "Most Wanted Half Rolls": IMenuRow
+    }
+
+}
+export interface IHibachiMenu {
+    description: string
+    items: {
+        Hibachi: IMenuRow,
+        Sushi: IMenuRow,
+        "Side Orders": IMenuRow,
+        "Alchoholic Beverages": IMenuRow,
+        "House Cocktails": IMenuRow,
+        Appetizers: IMenuRow,
+        "Kara-age Plate": IMenuRow,
+        Sauces: IMenuRow,
+        "Beverages (Non-Achohol": IMenuRow,
+        Wine: IMenuRow,
+        Sake: IMenuRow,
+        "Specialty Cocktails": IMenuRow
+    }
+}
+
+export interface ISushiMenu {
+    description: string,
+    items: {
+        "Maki Rolls": IMenuRow,
+        "Shogun Classic Rolls": IMenuRow,
+        "Nigiri 2PC / Sashimi 5pc": IMenuRow,
+        "Shogun Specialty Rolls": IMenuRow
+    }
+}
+
+export interface IStoreHours {
+    opened: boolean,
+    day?: string,
+    start?: {
+        a: string,
+        hh: string,
+        mm: string
+    },
+    end?: {
+        a: string,
+        hh: string,
+        mm: string
+    }
+}
+
+export interface IStoreInfo {
+    phone: string,
+    street: string,
+    zipcode: string,
+    city: string,
+    state: string,
+    country: string,
+    email: string,
+    store_hours: IStoreHours[]
+}
+
+ //#endregion

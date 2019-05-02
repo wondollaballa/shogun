@@ -1,0 +1,65 @@
+.menu-modal {
+    z-index: 9999;
+    pointer-events: fill;
+
+}
+.menu-modal h5 {
+    font-size: .8rem;
+}
+.modal-menu-dialog {
+    position: relative;
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    background-color: #fefefe;
+    margin: 9% auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 70vw; /* Could be more or less, depending on screen size */
+}
+.menu-modal #menu-item-container {
+    position: relative;
+    font-weight: 100;
+    overflow-y: auto;
+}
+
+#menu-item-title {
+    text-align: center;
+}
+
+.menu-modal .menu-row {
+    position: relative;
+    display: grid;
+    grid-template-areas:
+        '. tc tc tc .'
+        '. desc desc desc .';
+    grid-template-rows: auto;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.menu-modal .menu-row .menu-title-container {
+    grid-area: tc;
+    display: grid;
+    grid-template-areas:'title dots price';
+    grid-template-columns: max-content 1fr min-content;
+}
+.menu-modal .menu-row .menu-title {
+    grid-area: title;
+    margin:0;
+    text-align: left;
+
+}
+
+.menu-modal .menu-row .menu-dots {
+    grid-area: dots;
+    border-bottom: 1px dotted #5e5e5e;
+}
+
+.menu-modal .menu-row .menu-description {
+    grid-area: desc;
+    font-size: .8rem;
+}
+
+.menu-modal .menu-row .menu-price {
+    grid-area: price;
+
+}

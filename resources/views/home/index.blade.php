@@ -1,5 +1,8 @@
 @extends('layouts/main')
-
+@section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
+<script src="./js/shogun.js"></script>
+@endsection
 @section('header')
     <frontend-logo></frontend-logo>
     <reservation-form id="reservation-container" disabled-dates="{{ $disabledDates }}"></reservation-form>
@@ -7,36 +10,23 @@
 @endsection
 
 @section('nav')
-    <div id="nav-grid">
-        <a class="middle"><img src="{{ asset('./images/shogun_icon.png') }}"/> Shogun</a>
-        <a class="nav-items center middle">about us</a>
-        <a class="nav-items center middle">the experience</a>
-        <a class="nav-items center middle">our menu</a>
-        <a class="nav-items center middle">contact us</a>
-    </div>
-    <div id="nav-grid-mobile">
-        <a class="middle"><img src="{{ asset('./images/shogun_icon.png') }}"/> Shogun</a>
-        <div id="nav-menu" class="middle center">
-            <select class="mobile-nav-items">
-                <option>select menu</option>
-                <option>about us</option>
-                <option>the experience</option>
-                <option>our menu</option>
-                <option>contact us</option>
-            </select>
-        </div>
-    </div>
+    <shogun-nav image-src="{{ asset('./images/shogun_icon.png') }}"></shogun-nav>
+
 @endsection
 
 @section('content')
-
+    <about-us text="{{ $aboutUs }}"></about-us>
+    <the-experience text="{{ $theExperience }}"></the-experience>
+    <our-menu text="{{ $ourMenu }}"></our-menu>
+    <contact-us text="{{ $contactUs }}"></contact-us>
 @endsection
 
 @section('footer')
-
+    <shogun-footer></shogun-footer>
 @endsection
 
 @section('modals')
 <finish-modal id="finish-modal" title="Reservation Successfully Made!" hasBackground></finish-modal>
+<menu-modal id="menu-modal" title="" hasBackground></menu-modal>
 <message-modal></message-modal>
 @endsection

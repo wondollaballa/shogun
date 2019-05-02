@@ -1,7 +1,7 @@
 #container {
     position: relative;
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
         'head head head head head head'
         'navi navi navi navi navi navi'
         'cola cola cola colb colb colb'
@@ -15,7 +15,7 @@
     grid-area: head;
     height: 100vh;
     min-height: 750px;
-    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
+    background: url(../images/hibachi-2.jpg) no-repeat center;
     background-size: cover;
     display: grid;
     grid-template-areas:
@@ -41,44 +41,59 @@
     background-repeat: no-repeat !important;
     background-position-x: center !important;
     background-position-y: center !important;
-    
+
 }
-.reservation-form input, 
-.reservation-form textarea, 
-.reservation-form select, 
+.reservation-form input,
+.reservation-form textarea,
+.reservation-form select,
 .reservation-form button,
 .reservation-form label {
-    font-size: .7rem;
+    font-size: .8rem;
 }
+
 
 
 #nav-grid {
-    display: none;
+    display: grid;
+    grid-template-columns: max-content repeat(4, minmax(50px, 1fr));
+    gap: 15px;
+    font-size: 14px;
+    width: 100vw;
 }
-#nav-grid-mobile {
-	display: grid;
-	height: 100%;
-	grid-template-columns: max-content 1fr;
+.nav-items {
+    transform: rotate(-35deg);
 }
+.nav-items.active {
+	font-weight: bolder !important;
+    text-decoration: underline;
+    text-decoration-color: red;
+    border-bottom:unset;
 
-#nav-grid-mobile a, #nav-grid-mobile #nav-menu {
-	font-weight: 100;
-	display: flex;
+}
+// #nav-grid-mobile {
+// 	display: grid;
+// 	height: 100%;
+// 	grid-template-columns: max-content 1fr;
+// }
 
-}
-#nav-grid-mobile a.middle, #nav-grid-mobile #nav-menu {
-	align-items: center;
-	align-content: center;
-}
-#nav-grid-mobile a.center, #nav-grid-mobile #nav-menu {
-	justify-items: center;
-	justify-content: center;
-	
-}
-#nav-grid-mobile a img {
-	height: 50px;
-	width: 50px;
-}
+// #nav-grid-mobile a, #nav-grid-mobile #nav-menu {
+// 	font-weight: 100;
+// 	display: flex;
+
+// }
+// #nav-grid-mobile a.middle, #nav-grid-mobile #nav-menu {
+// 	align-items: center;
+// 	align-content: center;
+// }
+// #nav-grid-mobile a.center, #nav-grid-mobile #nav-menu {
+// 	justify-items: center;
+// 	justify-content: center;
+
+// }
+// #nav-grid-mobile a img {
+// 	height: 50px;
+// 	width: 50px;
+// }
 
 /** modals **/
 .modal-dialog {
@@ -99,4 +114,71 @@
 
 #finish-step-1 #content, #finish-step-2 #content {
     text-align: justify;
+}
+
+.content-body {
+    padding: 35px 5px;
+}
+
+.scrolling-wrapper-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 20px 0;
+    -webkit-overflow-scrolling: touch;
+    cursor : -webkit-grab;
+    cursor : -moz-grab;
+    cursor : -o-grab;
+    cursor : grab;
+    .menu-card {
+        flex: 0 0 auto;
+        border-radius: 5px;
+        background-color: #fff;
+        margin: 0 5px;
+    }
+
+    .menu-card-top {
+        height: 100px;
+        width: 125px;
+    }
+
+    .menu-card-bottom {
+        font-weight: 100;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        font-size: 0.7rem;
+    }
+}
+
+.modal-menu-dialog {
+    position: relative;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    background-color: #fefefe;
+    border: 1px solid #888;
+    width: 100vw; /* Could be more or less, depending on screen size */
+}
+
+.menu-modal .menu-row {
+    grid-template-areas:
+        'tc tc tc'
+        'desc desc desc';
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 15px;
+}
+
+#contact-us-form-container {
+    display: grid;
+    grid-template-areas:
+        'cf cf cf cf cf'
+        'cf cf cf cf cf'
+        'cf cf cf cf cf'
+        '. . . . .'
+        '. . . . .'
+        '. . . . .';
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
 }

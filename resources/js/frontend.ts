@@ -6,6 +6,7 @@
  */
 
 import Vue from 'vue';
+const dragscroll = require('vue-dragscroll');
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,7 +21,18 @@ Vue.component('date-picker', require('./components/frontend/DatePicker.vue'));
 Vue.component('frontend-logo', require('./components/frontend/Logo.vue'));
 Vue.component('reservation-form', require('./components/frontend/ReservationForm.vue'));
 Vue.component('finish-modal', require('./components/frontend/FinishModal.vue'));
+Vue.component('menu-modal', require('./components/frontend/MenuModal.vue'));
 Vue.component('message-modal', require('./components/frontend/MessageModal.vue'));
+Vue.component('shogun-footer', require('./components/frontend/ShogunFooter.vue'));
+Vue.component('shogun-nav', require('./components/frontend/ShogunNav.vue'));
+/** PAGES */
+Vue.component('about-us', require('./components/frontend/AboutUs.vue'));
+Vue.component('contact-us', require('./components/frontend/ContactUs.vue'));
+Vue.component('our-menu', require('./components/frontend/OurMenu.vue'));
+Vue.component('the-experience', require('./components/frontend/TheExperience.vue'));
+
+
+
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
@@ -32,5 +44,8 @@ Vue.component('message-modal', require('./components/frontend/MessageModal.vue')
  */
 
 const app = new Vue({
+    directives: {
+        dragscroll
+    },
     el: '#container'
 });

@@ -37,6 +37,7 @@
         "@types/lodash": "^4.14.123",
         "@types/socket.io-client": "^1.4.32",
         "@types/validator": "^10.11.0",
+        "@types/waypoints": "^4.0.1",
         "ag-grid-community": "^20.0.0",
         "ag-grid-vue": "^20.0.0",
         "fullcalendar": "^3.10.0",
@@ -45,15 +46,20 @@
         "laravel-echo": "^1.5.3",
         "libphonenumber-js": "^1.7.15",
         "moment": "^2.23.0",
+        "scroll-to-element": "^2.0.3",
+        "smooth-scroll": "^16.0.3",
         "socket.io-client": "^2.2.0",
         "tasktimer": "^2.0.1",
         "typed-socket.io": "^0.5.11",
         "typescript-debounce": "^0.2.3",
         "validator": "^10.11.0",
+        "vanilla-lazyload": "^12.0.0",
         "vue-date-picker": "^2.1.0",
+        "vue-dragscroll": "^1.8.3",
         "vue-flatpickr-component": "^8.1.2",
         "vue-property-decorator": "^7.3.0",
         "vue2-datepicker": "^2.8.1",
-        "vue2-timepicker": "^0.1.4"
+        "vue2-timepicker": "^0.1.4",
+        "waypoints": "^4.0.1"
     }
 }

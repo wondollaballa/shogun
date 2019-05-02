@@ -6,10 +6,10 @@
                 <span class="modal-close" @click="closeModal">&times;</span>
             </div>
             <div class="modal-body">
-
+                {{ message }}
             </div>
             <div class="modal-footer">
-            
+
                 <button type="button" class="pure-button button-error" @click="closeModal">close</button>
 
             </div>

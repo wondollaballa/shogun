@@ -1,68 +1,106 @@
+body {
+	overflow-x: hidden;
+}
 #container {
-    position: relative;
-    display: grid;
-    grid-template-areas: 
-        'head head head head head head'
-        'navi navi navi navi navi navi'
-        'cola cola cola colb colb colb'
-        'colc colc colc cold cold cold'
-        'foot foot foot foot foot foot';
+	position: relative;
+	display: grid;
+	width: 100vw;
+	grid-template-areas: 
+		'head head head head head head'
+		'navi navi navi navi navi navi'
+		'cola cola cola colb colb colb'
+		'colc colc colc cold cold cold'
+		'foot foot foot foot foot foot';
 
-    grid-template-rows: min-content 70px min-content min-content 120px;
+	grid-template-rows: min-content 70px min-content min-content 120px;
 }
 
 #container header {
-    grid-area: head;
-    height: 100vh;
-    min-height: 750px;
-    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
-    background-size: cover;
-    display: grid;
-    grid-template-areas:
-        '. . . . . . .'
-        '. . . brand . . .'
-        '. . . res . . .'
-        '. . . res . . .'
-        '. . . . . . .';
-    grid-template-rows: 1fr min-content min-content min-content 1fr 1fr;
-    gap: 30px;
+	grid-area: head;
+	height: 100vh;
+	width: 100vw;
+	background: url(../images/hibachi-2.jpg) no-repeat center;
+	background-size: cover;
+	display: grid;
+	grid-template-areas:
+		'. . . . . . .'
+		'. . . brand . . .'
+		'. . . res . . .'
+		'. . . res . . .'
+		'. . . . . . .';
+	grid-template-rows: 1fr min-content min-content min-content 1fr 1fr;
+	gap: 30px;
 }
 
 #header-logo {
-    grid-area: brand;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    display: flex;
-    justify-self: center;
-    align-self:center;
-    background-image: url('../images/shogun_2.png') !important;
-    background-color: white;
-    background-size: 125px !important;
-    background-repeat: no-repeat !important;
-    background-position-x: center !important;
-    background-position-y: center !important;
+	grid-area: brand;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	display: flex;
+	justify-self: center;
+	align-self:center;
+	background-image: url('../images/shogun_2.png') !important;
+	background-color: white;
+	background-size: 125px !important;
+	background-repeat: no-repeat !important;
+	background-position-x: center !important;
+	background-position-y: center !important;
 }
 .thinking {
-    animation: pulse 0.9s infinite;
-    -webkit-animation: pulse 0.9s infinite;
+	animation: pulse 0.9s infinite;
+	-webkit-animation: pulse 0.9s infinite;
 }
 
 .failed {
-    background-color: red !important;
+	background-color: red !important;
 }
 
 .passed {
-    background-color: #11FF00 !important;
+	background-color: #11FF00 !important;
 }
 
 #reservation-container {
-    grid-area: res;
-    background-color: white;
+	grid-area: res;
+	background-color: white;
+}
+
+.reservation-form h6 {
+	font-weight: 100;
+	text-align: center;
+	font-size: 0.9rem;
+	padding: 0;
+	margin: 0;
+	
+}
+
+.reservation-form h5 {
+	font-weight: bolder;
+	text-align: center;
+	font-size: 1.1rem;
+	padding: 0;
+	margin: 0;
 }
 
 #container nav {
-    grid-area: navi;
+	grid-area: navi;
+	box-shadow: 0 4px 2px -2px gray;
+	position: sticky;
+	top:0;
+	background-color: #ffffff;
+	width: 100vw;
+	z-index: 999;
+	overflow-x: hidden;
+}
+
+.nav-items {
+	cursor: pointer;
+}
+
+.nav-items.active {
+	font-weight: bolder !important;
+	border-bottom: 3px solid rgb(255, 0, 0);
+	
 }
 
 #nav-grid-mobile {
@@ -98,32 +136,66 @@
 }
 
 #container footer {
-    grid-area: foot;
-    border: 1px solid blue;
+	grid-area: foot;
+	border: 1px solid blue;
+}
+
+.main-content {
+	width: 100vw;
 }
 
 
-
 @-webkit-keyframes pulse {
-    0% {
-      -webkit-transform: scale(1.0);
-    }
-    50% {
-      -webkit-transform: scale(0.9);
-    }
-    100% {
-      -webkit-transform: scale(1.0);
-    }
+	0% {
+	  -webkit-transform: scale(1.0);
+	}
+	50% {
+	  -webkit-transform: scale(0.9);
+	}
+	100% {
+	  -webkit-transform: scale(1.0);
+	}
   }
   
   @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(0.9);
-    }
-    100% {
-      transform: scale(1);
-    }
+	0% {
+	  transform: scale(1);
+	}
+	50% {
+	  transform: scale(0.9);
+	}
+	100% {
+	  transform: scale(1);
+	}
   }
+.content-image-container {
+    display: grid;
+    grid-template-areas: 
+        '. aui .';
+}
+
+.content-image {
+    grid-area: aui;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    
+    background-color: white;
+    background-size:cover;
+    background-repeat: no-repeat !important;
+    background-position-x: center !important;
+    background-position-y: center !important;
+}
+
+h6 {
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: 100;
+	text-align: center;
+}

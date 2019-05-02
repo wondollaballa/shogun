@@ -1,14 +1,19 @@
 <template>
     <div class="reservation-form">
-        <h5>Make Reservation Today</h5>
+        <h5>Make Reservation Online</h5>
+        <div>
+            <h6 v-show="step===1">Or Call to Reserve</h6>
+            <h5 v-show="step===1">(903) 561-9890</h5>
+        </div>
         <div class="pure-form">
             <div id="reservation-form-1" v-show="step===1">
                 <fieldset class="pure-group" >
                     <input type="text" class="pure-u-1" :class="validation.name ? 'validated' : ''" name="name" placeholder="Name" v-model="reservation.name"/>
                     <input type="text" class="pure-u-1" :class="validation.phone ? 'validated' : ''" name="phone" placeholder="Phone" v-model="reservation.phone"/>
                     <input type="email" class="pure-u-1" :class="validation.email ? 'validated' : ''" name="email" placeholder="Email" v-model="reservation.email"/>
-                    
+                        
                 </fieldset>
+
                 <button class="pure-button pure-u-1" 
                         :class="validation.name && validation.phone && validation.email ? 'button-success' : ''" 
                         @click="proceedStep" 
@@ -72,6 +77,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </template>
 

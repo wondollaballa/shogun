@@ -16,9 +16,14 @@
     height: 200px;
     background-size: 150px !important;
 }
-.reservation-form input, 
-.reservation-form textarea, 
-.reservation-form select, 
+#nav-grid {
+    display: grid;
+    grid-template-columns: max-content repeat(4, minmax(90px, max-content));
+    gap: 10px;
+}
+.reservation-form input,
+.reservation-form textarea,
+.reservation-form select,
 .reservation-form button,
 .reservation-form label {
     font-size: .7rem;
@@ -26,7 +31,8 @@
 .reservation-form {
     margin: 1px;
     display: grid;
-    grid-template-rows: min-content 1fr;
+    grid-template-rows: min-content max-content 1fr;
+    gap: 10px;
 }
 
 .reservation-form h5 {
@@ -52,7 +58,7 @@
 }
 /** modals **/
 .modal-dialog {
-    margin: 10% auto;
+    margin: 5% auto;
 }
 #finish-step-1 {
     grid-template-areas:
@@ -71,4 +77,45 @@
         'btn btn btn btn';
     grid-template-rows: 1fr 1fr min-content;
     grid-template-columns: 125px 1fr 1fr 1fr;
+}
+
+.scrolling-wrapper-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 20px 0;
+    -webkit-overflow-scrolling: touch;
+    cursor : -webkit-grab;
+    cursor : -moz-grab;
+    cursor : -o-grab;
+    cursor : grab;
+    .menu-card {
+        flex: 0 0 auto;
+        border-radius: 5px;
+        background-color: #fff;
+        margin: 0 5px;
+    }
+
+    .menu-card-top {
+        height: 100px;
+        width: 125px;
+    }
+
+    .menu-card-bottom {
+        font-weight: 100;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        font-size: 0.7rem;
+    }
+}
+
+.menu-modal .menu-row {
+    grid-template-areas:
+        'tc tc tc tc tc'
+        'desc desc desc desc desc';
+    grid-template-rows: auto;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin-bottom: 15px;
 }

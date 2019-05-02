@@ -18,17 +18,24 @@ export default class MessageModal extends Vue {
     opened: boolean = false;
     // Lifecycle hooks
     created() {
+        this.$root.$on('open-message-modal', this.openMessageModal);
     }
     mounted() {
-  
+
     }
     updated() {
     }
     destroyed() {
+        this.$root.$off('open-message-modal', this.openMessageModal);
+
+    }
+
+    private openMessageModal() {
+        this.opened = true;
     }
 
     private closeModal() {
-        this.opened = true;
+        this.opened = false;
     }
 
 

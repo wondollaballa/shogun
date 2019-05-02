@@ -1,0 +1,73 @@
+#about-us {
+	position: relative;
+	background-color: black;
+	border: 3px solid #fff;
+}
+.content-body {
+    padding: 25px;
+}
+
+#about-us blockquote {
+	font-weight: 100;
+    line-height: 2rem;
+	font-kerning: normal;
+	color: #fff;
+	outline-color: #fff;
+	font-size: 1.1rem;
+	text-align: justify;
+}
+
+#about-us .triangle-top-left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-top: 125px solid #fff;
+	border-right: 125px solid transparent;
+}
+
+#about-us .triangle-top-left span {
+	position: absolute;
+    top: -91px;
+    left: -2px;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(-45deg);
+    width: 119px;
+    font-weight: 100;
+    font-size: 21px;
+
+}
+#about-us .triangle-top-right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-top: 125px solid #fff;
+	border-right: 125px solid transparent;
+}
+
+#about-us .triangle-bottom-left {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-bottom: 125px solid #fff;
+	border-left: 125px solid transparent;
+}
+
+#about-us .triangle-bottom-right {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-bottom: 125px solid #fff;
+	border-left: 125px solid transparent;
+}
+
+#about-us-image {
+    background-image: url(../images/hibachi-6.jpg) !important;
+}

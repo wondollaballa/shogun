@@ -214,7 +214,7 @@ class Rule extends Model
         // dd(Carbon::createFromFormat('Y-m-d H:ia', '1983-09-30 '.$t), Carbon::createFromFormat('Y-m-d H:ia', '1983-09-30 '.$startTime));
         $tc = Carbon::createFromFormat('Y-m-d H:ia', '1983-09-30 '.$startTime)->timestamp;
         $tc2 = Carbon::createFromFormat('Y-m-d H:ia', '1983-09-30 '.$t)->timestamp;
-        $checkStart = ($tc > $tc2) ? $tc : $tc2 + $interval;
+        $checkStart = ($isToday) ? ($tc > $tc2) ? $tc : $tc2 + $interval : $tc;
         $endString = ($endTime == '12:00am') ?  '1983-10-01 '.$endTime :  '1983-09-30 '.$endTime;
         $start = $this->roundToNearestInterval($checkStart, $this->interval);
         $end = Carbon::createFromFormat('Y-m-d h:ia', $endString)->timestamp - $interval;

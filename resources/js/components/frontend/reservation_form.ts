@@ -20,7 +20,7 @@ interface IValidateForm {
         disabledDates: String,
         times: String
     }
-    
+
 })
 export default class ReservationForm extends Vue {
     step: number = 1;
@@ -52,7 +52,6 @@ export default class ReservationForm extends Vue {
         this.$root.$on('reset-all-reservation', this.reset);
     }
     mounted() {
-        this.selectableTimes = JSON.parse(this.$props.times);
     }
     updated() {
     }
@@ -91,13 +90,12 @@ export default class ReservationForm extends Vue {
         this.validateTime();
     }
 
-    
+
     // methods
     @Debounce({millisecondsDelay: 1000})
     private validateName() {
         const n = this.reservation.name.replace(' ', '');;
         this.validation.name = (validator.isAlphanumeric(n) && !validator.isEmpty(n));
-        console.log('name', this.validation.name);
         this.reservation.name = validator.trim(this.reservation.name);
         this.thinking(this.validation.name);
     }
@@ -154,7 +152,7 @@ export default class ReservationForm extends Vue {
         if (this.validation.name && this.validation.phone && this.validation.email) {
             this.step = 2;
         }
-        
+
 
     }
 
@@ -177,14 +175,14 @@ export default class ReservationForm extends Vue {
                 'special_request': this.reservation.special_request,
                 'hibachi': this.reservation.hibachi
             }).then(response => {
-                
+
                 if (response.status) {
                     // show modal
                     setTimeout(() => {
                         this.$root.$emit('finish-modal-step', 2);
                     }, 2000);
                 }
-                
+
             }).catch(e => {
                 this.$root.$emit('finish-modal-step', 0);
             });

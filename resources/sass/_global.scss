@@ -11,3 +11,7 @@ body {
 .hide {
     visibility: hidden;
 }
+
+.noscroll {
+    overflow: hidden !important;
+}

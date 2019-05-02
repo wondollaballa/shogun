@@ -12,6 +12,7 @@
 }
 
 #nav-grid {
-    display: none;
-    
+	display: grid;
+    grid-template-columns: max-content repeat(4, minmax(90px, max-content));
+    gap: 20px;
 }

@@ -20,7 +20,7 @@
         <link rel="stylesheet" type="text/css" href="{{ mix('/css/frontend.css') }}">
         <!-- Main styles for this application -->
         @yield('styles')
-        
+
     </head>
 
     <body>
@@ -28,9 +28,9 @@
             <header>
                 @yield('header')
             </header>
-            <nav>
-                @yield('nav')
-            </nav>
+
+            @yield('nav')
+
             <main class="main-content">
                 <!-- <frontend-alert alert="{{ json_encode(Session::get('alert')) }}" timer="5000"></frontend-alert> -->
                 @yield('content')
@@ -41,7 +41,7 @@
             </footer>
             @yield('modals')
         </div>
-        
+
         <!-- Setup Scripts -->
         <script src="{{ mix('/js/frontend.js') }}"></script>
         <!-- Custom scripts required by this view -->
