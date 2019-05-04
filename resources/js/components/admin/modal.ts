@@ -49,7 +49,7 @@ export default class Modal extends Vue implements IReservationModal{
         updated_at: '',
         hibachi: true
     };
-    
+
     reservation: IReservation = {
         id : 0,
         customer_id: 0,
@@ -78,7 +78,7 @@ export default class Modal extends Vue implements IReservationModal{
         this.$root.$on('update-reservation-date-time', this.updateRequested);
     }
     mounted() {
-  
+
     }
     updated() {
     }
@@ -95,7 +95,6 @@ export default class Modal extends Vue implements IReservationModal{
     }
 
     private openModal(name: string, reservation: IReservation): void {
-        console.log(reservation);
         this.editable = false;
         this.reservation = reservation;
 
@@ -169,7 +168,7 @@ export default class Modal extends Vue implements IReservationModal{
                 this.$root.$emit('toast', msg, type);
                 this.editable = false;
             }
-            
+
         }).catch(e => {
             const response = e.response.data;
             const msg = e.response.status === 422 ? response.message : 'There was an error with your reservation update. Please try again.';
@@ -177,7 +176,7 @@ export default class Modal extends Vue implements IReservationModal{
             this.$root.$emit('toast', msg, type);
 
         });
-        
+
     }
 
 
@@ -186,7 +185,7 @@ export default class Modal extends Vue implements IReservationModal{
     }
 
     private seat() {
-        axios.post('/reservations/seat/'+this.reservation.id,{ 
+        axios.post('/reservations/seat/'+this.reservation.id,{
             status: 3,
             editable: this.editableReservation
         }).then(response => {
@@ -197,7 +196,7 @@ export default class Modal extends Vue implements IReservationModal{
                 this.editable = false;
                 this.close();
             }
-            
+
         }).catch(e => {
             const msg = 'There was an error finishing this reservation. Please try again.';
             const type = 'danger';
@@ -207,7 +206,7 @@ export default class Modal extends Vue implements IReservationModal{
     }
 
     private unseat() {
-        axios.post('/reservations/unseat/'+this.reservation.id,{ 
+        axios.post('/reservations/unseat/'+this.reservation.id,{
             status: 1,
             editable: this.editableReservation
         }).then(response => {
@@ -218,7 +217,7 @@ export default class Modal extends Vue implements IReservationModal{
                 this.editable = false;
                 this.finished = false;
             }
-            
+
         }).catch(e => {
             const msg = 'There was an error reverting this reservation. Please try again.';
             const type = 'danger';

@@ -11,7 +11,7 @@ import { AsYouType } from 'libphonenumber-js'
     props: {
         reservationRules: String
     }
-    
+
 })
 export default class ReservationForm extends Vue implements IReservationForm {
     showValidation = false;
@@ -52,7 +52,6 @@ export default class ReservationForm extends Vue implements IReservationForm {
 
     // Lifecycle hooks
     created() {
-        console.log('created');
         this.$root.$on('update-selected-date-time', this.setRequested);
     }
     mounted() {
@@ -66,20 +65,18 @@ export default class ReservationForm extends Vue implements IReservationForm {
         (update as HTMLButtonElement).addEventListener("click", this.makeReservation);
     }
     updated() {
-        console.log('updated')
     }
     destroyed() {
         const reset = document.querySelector<HTMLButtonElement>('#reservations-reset');
         const update = document.querySelector<HTMLButtonElement>('#reservations-make');
         (reset as HTMLButtonElement).removeEventListener("click", this.resetReservation);
         (update as HTMLButtonElement).removeEventListener("click", this.makeReservation);
-        console.log('destroyed')
         this.$root.$off('update-selected-date-time', this.setRequested);
     }
 
     // methods
     @Watch('phone')
-    onChangePhone() 
+    onChangePhone()
     {
         this.formatPhone();
     }
@@ -124,7 +121,7 @@ export default class ReservationForm extends Vue implements IReservationForm {
                 this.$root.$emit('toast', msg, type);
                 this.resetReservation();
             }
-            
+
         }).catch(e => {
             const response = e.response.data;
             // validation errors go here

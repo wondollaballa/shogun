@@ -39,7 +39,6 @@ export default class StoreHours extends Vue implements IStoreHours {
 
     }
     updated() {
-        console.log('updated')
     }
     destroyed() {
         this.$root.$off('resetStoreHours', this.resetStoreHours);
@@ -71,7 +70,7 @@ export default class StoreHours extends Vue implements IStoreHours {
                 const type = 'danger';
                 this.$root.$emit('toast', msg, type);
             }
-            
+
         }).catch(e => {
             const msg = 'There was an error with your request to the server. Check with your administrator for further assistance.';
             const type = 'danger';

@@ -33,7 +33,7 @@ interface IDateTimePicker {
     components: {
         DatePicker
     }
-    
+
 })
 export default class DateTimePicker extends Vue implements IDateTimePicker {
     dateTime = '';
@@ -63,7 +63,6 @@ export default class DateTimePicker extends Vue implements IDateTimePicker {
     }
 
     created() {
-        console.log('created')
         this.$root.$on('update-default-date-time', this.setDefaultDateTime);
         this.$root.$on('force-date-time', this.forceDateTime);
 
@@ -73,13 +72,10 @@ export default class DateTimePicker extends Vue implements IDateTimePicker {
     }
     updated() {
         // send data to blackout dates
-        console.log('something updated');
-        
         this.$root.$emit('update-selected-date-time', this.dateTime);
         this.$root.$emit('update-reservation-date-time', this.dateTime);
     }
     destroyed() {
-        console.log('destroyed')
         this.$root.$off('update-default-date-time', this.setDefaultDateTime);
         this.$root.$off('force-date-time', this.forceDateTime);
     }

@@ -16,18 +16,17 @@ export default class BlackoutDates extends Vue implements IBlackoutDates{
     // computed
     public get dates() {
         const blackout_dates = (JSON.parse(this.bdates)) ? JSON.parse(this.bdates) : [{}];
-        
+
         return blackout_dates;
     }
     public get set() {
         const blackout_set = (JSON.parse(this.bset)) ? JSON.parse(this.bset) : [{}];
-        
+
         return blackout_set;
     }
     // Lifecycle hooks
     created() {
-        console.log('created')
-        
+
     }
     mounted() {
         const reset = document.querySelector<HTMLButtonElement>('#blackout-reset');
@@ -40,7 +39,6 @@ export default class BlackoutDates extends Vue implements IBlackoutDates{
         this.$root.$emit('blackout-set', this.set);
     }
     updated() {
-        console.log('updated')
     }
     destroyed() {
         const reset = document.querySelector<HTMLButtonElement>('#blackout-reset');
@@ -49,17 +47,15 @@ export default class BlackoutDates extends Vue implements IBlackoutDates{
         (reset as HTMLButtonElement).removeEventListener("click", this.resetBlackoutDates);
         (update as HTMLButtonElement).removeEventListener("click", this.updateBlackoutDates);
         (cancel as HTMLButtonElement).removeEventListener("click", this.cancelBlackoutDates);
-        console.log('destroyed')
     }
 
     private dateSelected() {
-        console.log('test')
 
     }
 
     public updateBlackoutDates() {
         this.$root.$emit('post-blackout-date');
-        
+
     }
 
     public resetBlackoutDates() {
@@ -77,7 +73,7 @@ export default class BlackoutDates extends Vue implements IBlackoutDates{
             this.$root.$emit('deleted-blackout-rows', deletedRows );
         }
         cancel.setAttribute('disabled','true');
-        
+
     }
 
 

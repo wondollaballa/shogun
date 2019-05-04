@@ -10,7 +10,7 @@ interface IDatePicker {
     components: {
         DatePicker
     }
-    
+
 })
 export default class Datepicker extends Vue implements IDatePicker {
     date1: string = new Date().toDateString();
@@ -27,23 +27,19 @@ export default class Datepicker extends Vue implements IDatePicker {
     }
 
     created() {
-        console.log('created')
     }
     mounted() {
-        
+
     }
     updated() {
         const blackout_dates = document.querySelector('#blackout-grid') as HTMLElement;
-        console.log(blackout_dates)
-        
+
         this.$root.$emit('date-selected', this.date1);
         // send data to blackout dates
-        console.log('sent')
-        
+
     }
     destroyed() {
-        console.log('destroyed')
     }
-    
+
 
 }

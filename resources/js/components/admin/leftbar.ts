@@ -65,7 +65,6 @@ export default class Leftbar extends Vue implements ILeftbar {
         const menu_items = host.querySelectorAll('.menu-item-header');
         // undo active
         menu_items.forEach(item => {
-            console.log(item);
             item.classList.remove('active');
         });
         // make current active

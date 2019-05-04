@@ -22,7 +22,7 @@ export default class Calendar extends Vue  {
     eventDay: any[] = [];
     eventMonth: any[] = [];
     editable: boolean = false;
-    
+
     public get businessHours(){
         return JSON.parse(this.$props.storeHours);
     }
@@ -50,7 +50,7 @@ export default class Calendar extends Vue  {
         this.messageReceived();
     }
     updated() {
-        
+
     }
     destroyed() {
         this.$root.$off("set-month", this.setMonth);
@@ -59,7 +59,7 @@ export default class Calendar extends Vue  {
         this.$root.$off('make-calendar-editable', this.makeEditableCalendar);
         window.removeEventListener('resize', this.resizeCalendar);
     }
-    
+
     private setEvents(events: any) {
         this.eventDay = ('daily' in events) ? events['daily'] : [];
         this.eventMonth = ('monthly' in events) ? events['monthly'] : [];
@@ -84,9 +84,8 @@ export default class Calendar extends Vue  {
             this.setEvents(allDay);
             this.makeDailyCalendar();
         }).catch(e => {
-            console.log(e);
         });
-        
+
     }
 
     private messageReceived() {
@@ -151,17 +150,16 @@ export default class Calendar extends Vue  {
                     this.$root.$emit('toast', msg, type);
                     this.$root.$emit('worker-ticker-restart');
                 }).catch(e => {
-                    console.log(e);
                 });
             }
         });
-        
+
     }
 
     private setMonth(btn: HTMLButtonElement): void {
         this.removePrimary();
         const contentHeight = (document.getElementById('calendar') as HTMLElement).clientHeight;
-        
+
         // set calendar view
         this.calendar.fullCalendar('changeView', 'month');
         this.calendar.fullCalendar('option', {
@@ -212,7 +210,7 @@ export default class Calendar extends Vue  {
                 this.getEventById(eventId);
             }
         });
-        
+
     }
 
     private updateMonthlyEvents(): void {
@@ -228,13 +226,13 @@ export default class Calendar extends Vue  {
 
     private makeDailyCalendar(day?: any) {
         this.$root.$emit('worker-ticker-pause');
-        
+
         const time = day ? day.format('HH:00:00') : moment().format('HH:00:00');
         const contentHeight = (document.getElementById('calendar') as HTMLElement).clientHeight;
 
         // set calendar view
         const selectedDate = day ? day.format('YYYY-MM-DD 00:00:00') : new Date(Date.now()).toLocaleString();
-        
+
         this.calendar.fullCalendar('changeView', 'agendaDay', selectedDate);
         this.updateEvents();
         this.calendar.fullCalendar('option', {
@@ -250,7 +248,7 @@ export default class Calendar extends Vue  {
                 this.getEventById(eventId);
             }
         });
-        
+
         // start worker ticker
         this.$root.$emit('worker-ticker-restart');
         // make sure that the primary button is selected

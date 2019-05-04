@@ -20,7 +20,6 @@ export default class Dashboard extends Vue {
         this.$root.$on('worker-ticker-restart', this.restartWorker)
         this.$root.$on('make-calendar-editable', this.updateEditable);
         this.worker.addEventListener("message", (event: any) => {
-            console.log(event.data);
             const message: Message = event.data;
             this.handleOnMessage(message);
         });
@@ -48,7 +47,6 @@ export default class Dashboard extends Vue {
             type: MessageType.Pause
         }
         this.worker.postMessage(message);
-        console.log('worker paused');
     }
 
     private restartWorker() {
@@ -56,10 +54,8 @@ export default class Dashboard extends Vue {
             type: MessageType.Restart
         }
         this.worker.postMessage(message);
-        console.log('worker restarted')
     }
     private disposeWorker() {
-        alert('disposing worker');
         this.worker.terminate();
         delete this.worker;
     };
@@ -79,7 +75,7 @@ export default class Dashboard extends Vue {
 
     //#region worker-job
     private makeExpired(requested: string) {
-        
+
         axios.post('/reservations/expired',{
             requested,
             editable: this.editable
@@ -88,10 +84,9 @@ export default class Dashboard extends Vue {
                 type: MessageType.Restart
             }
             this.worker.postMessage(message);
-            
+
         }).catch(e => {
             const response = e.response.data;
-            console.log(response);
             const message: IWorkerStart = {
                 type: MessageType.Start
             }
@@ -104,7 +99,7 @@ export default class Dashboard extends Vue {
     private updateEditable(state: boolean) {
         this.editable = state;
     }
-    
+
 }
 
 

@@ -35,7 +35,6 @@ export default class Card extends Vue{
     private openMonth(month: HTMLButtonElement | null): void {
         if (month) {
             month.onclick = () => {
-                console.log('clicked month');
                 this.$root.$emit("set-month", month);
             }
         }
@@ -43,7 +42,6 @@ export default class Card extends Vue{
     private openWeek(week: HTMLButtonElement | null): void {
         if (week) {
             week.onclick = () => {
-                console.log('clicked week');
                 this.$root.$emit("set-week", week);
             }
         }
@@ -51,7 +49,6 @@ export default class Card extends Vue{
     private openDay(day: HTMLButtonElement | null): void {
         if (day) {
             day.onclick = () => {
-                console.log('clicked day');
                 this.$root.$emit("set-day", day);
             }
         }

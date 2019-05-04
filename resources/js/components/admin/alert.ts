@@ -30,11 +30,9 @@ export default class Alert extends Vue{
         this.countDownRemove();
     }
     updated() {
-        console.log('updated')
     }
     destroyed() {
         this.$root.$off('toast', this.openAlert);
-        console.log('destroyed')
     }
     private countDownRemove() {
         if (this.timer && this.timerNumber > 0) {
@@ -44,8 +42,7 @@ export default class Alert extends Vue{
         }
     }
     private openAlert(msg: string, type: string) {
-        console.log('made it here', msg, type);
-        
+
         if (!msg || !type) return;
         const alert = (document.querySelector('.alert') as HTMLElement);
         alert.classList.remove('alert-none');
@@ -77,9 +74,9 @@ export default class Alert extends Vue{
     private removeAlert() {
         const alert = (document.querySelector('.alert') as HTMLElement);
         alert.classList.remove(
-            'alert-success', 
-            'alert-info', 
-            'alert-secondary', 
+            'alert-success',
+            'alert-info',
+            'alert-secondary',
             'alert-warning',
             'alert-danger',
             'alert-primary');

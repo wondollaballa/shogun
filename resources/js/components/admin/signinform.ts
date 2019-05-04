@@ -11,14 +11,14 @@ interface ILoginForm {
         action: String,
         method: String
     }
-    
+
 })
 export default class LoginForm extends Vue implements ILoginForm {
     validate = false;
     username = '';
     password = '';
     csrf = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).getAttribute('content');
-    
+
     // computed
     public get usernameIsNotValid(): boolean {
         return (this.username.length < 5 && this.validate) ?  true : false;
@@ -47,20 +47,17 @@ export default class LoginForm extends Vue implements ILoginForm {
 
     // Lifecycle hooks
     created() {
-        console.log('created')
     }
     mounted() {
         document.addEventListener('keyup', event => {
-            if (event.keyCode === 13) { 
+            if (event.keyCode === 13) {
               this.formValidate();
             }
         });
     }
     updated() {
-        console.log('updated')
     }
     destroyed() {
-        console.log('destroyed')
     }
 
     // methods

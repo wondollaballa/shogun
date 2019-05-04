@@ -25,7 +25,6 @@ export default class DatePicker extends Vue {
     validated: boolean = false;
     selectedDate: string = '';
     get config(): IDateConfig {
-        console.log()
         return {
             dateFormat: 'D m/d/Y',
             minDate: 'today',
@@ -40,7 +39,7 @@ export default class DatePicker extends Vue {
     created() {
     }
     mounted() {
-        
+
     }
     updated() {
     }
@@ -75,11 +74,11 @@ export default class DatePicker extends Vue {
         axios.post('/rules/get-times',{
             date
         }).then(response => {
-            
+
             if (response.data) {
                 this.$root.$emit('update-times', response.data);
             }
-            
+
         }).catch(e => {
 
         });

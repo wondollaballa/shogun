@@ -21,7 +21,7 @@ interface IAgGridVue {
     props: {
         dates: String
     }
-    
+
 })
 export default class GridVue extends Vue implements IAgGridVue {
     row: IBlackoutDate[] = [];
@@ -30,8 +30,8 @@ export default class GridVue extends Vue implements IAgGridVue {
     public get columnDefs(): any {
         return [
             {
-                headerName: 'Date', 
-                field: 'date', 
+                headerName: 'Date',
+                field: 'date',
                 sortable: true,
                 filter: true
             }
@@ -50,10 +50,10 @@ export default class GridVue extends Vue implements IAgGridVue {
         this.$root.$on('deleted-blackout-rows', this.deleteRows);
         this.$root.$on('blackout-set', this.getBlackoutSet);
         this.$root.$on('blackout-dates', this.getBlackoutDate);
-        
+
     }
     beforeMounted() {
-        
+
     }
     mounted() {
     }
@@ -62,13 +62,12 @@ export default class GridVue extends Vue implements IAgGridVue {
 
     }
     destroyed() {
-        console.log('destroyed')
         this.$root.$off('blackout_dates', this.getBlackoutDate);
         this.$root.$off('post-blackout-date', this.postBlackoutDate);
         this.$root.$off('reset-blackout-dates', this.resetDates);
         this.$root.$off('date-selected', this.updateDate);
         this.$root.$off('deleted-blackout-rows', this.deleteRows);
-    
+
     }
 
     private getBlackoutDate(bdates: any): void {
@@ -109,7 +108,7 @@ export default class GridVue extends Vue implements IAgGridVue {
                 return;
             }
             this.makeRows();
-            
+
         } else {
             alert('Not a valid date. Please select again.');
         }
@@ -145,11 +144,10 @@ export default class GridVue extends Vue implements IAgGridVue {
 
     private onSelectionChanged() {
         const selectedRows = document.querySelectorAll<HTMLElement>('.ag-center-cols-viewport .ag-row-selected');
-        console.log(selectedRows.length);
         const cancelButton = document.querySelector<HTMLButtonElement>('#blackout-cancel');
         if (selectedRows.length > 0) {
             (cancelButton as HTMLButtonElement).removeAttribute('disabled');
-            
+
         } else {
             (cancelButton as HTMLButtonElement).setAttribute('disabled','true');
         }
@@ -173,7 +171,7 @@ export default class GridVue extends Vue implements IAgGridVue {
                     const item = itemString as string;
                     if(row === item) {
                         check = false;
-                        
+
                     }
                 });
                 if (check) {

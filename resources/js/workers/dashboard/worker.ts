@@ -7,14 +7,14 @@ ctx.addEventListener("message", (event: any) => {
     processMessage(event.data);
 });
 class DashboardPageWorker {
-    timer: any; 
+    timer: any;
     constructor() {
         this.timer = new TaskTimer(1000);
     }
 
     //#region ticker
     public startTicker() {
-        
+
         // You can also execute some code on each tick... (every 1000 ms)
         this.timer.on('tick', () => {
             const timeToCheck = this.checkSeconds();
@@ -22,7 +22,7 @@ class DashboardPageWorker {
                 this.updateReservation();
             }
         } );
-         
+
         // Start the timer
         this.timer.start();
 
@@ -54,7 +54,7 @@ class DashboardPageWorker {
         return (time === "00");
     }
 
-   
+
     //#endregion ticker
 }
 const dashboard = new DashboardPageWorker();
@@ -82,7 +82,6 @@ function processMessage(event: Message): void {
             return;
         break;
         default:
-            console.log('failed');
             return;
         break;
     }

@@ -18,7 +18,7 @@ interface IReservationOptions {
         pInterval: String,
         pCutoff: String
     }
-    
+
 })
 export default class ReservationOptions extends Vue implements IReservationOptions {
     interval_selected = 1;
@@ -27,7 +27,7 @@ export default class ReservationOptions extends Vue implements IReservationOptio
     // computed
     public get intervals() {
         return [
-            { value: 1, text: '1 minute interval' }, 
+            { value: 1, text: '1 minute interval' },
             { value: 5, text: '5 minute interval' },
             { value: 10, text: '10 minute interval' },
             { value: 15, text: '15 minute interval' },
@@ -39,7 +39,7 @@ export default class ReservationOptions extends Vue implements IReservationOptio
     }
     public get reservation_deadline() {
         return [
-            { value: 0, text: 'No cutoff' }, 
+            { value: 0, text: 'No cutoff' },
             { value: 1, text: '1 minutes cutoff' },
             { value: 10, text: '10 minute cutoff' },
             { value: 15, text: '15 minute cutoff' },
@@ -49,11 +49,10 @@ export default class ReservationOptions extends Vue implements IReservationOptio
             { value: 60, text: '1 hour cutoff' },
         ];
     }
-    
+
 
     // Lifecycle hooks
     created() {
-        console.log('created')
     }
     mounted() {
        this.resetOptions();
@@ -63,11 +62,8 @@ export default class ReservationOptions extends Vue implements IReservationOptio
         (update as HTMLButtonElement).addEventListener("click", this.updateOptions);
     }
     updated() {
-        console.log('updated')
     }
     destroyed() {
-
-        console.log('destroyed')
     }
 
     // methods
@@ -91,7 +87,7 @@ export default class ReservationOptions extends Vue implements IReservationOptio
                 const type = 'danger';
                 this.$root.$emit('toast', msg, type);
             }
-            
+
         }).catch(e => {
             const msg = 'There was an error with your request to the server. Check with your administrator for further assistance.';
             const type = 'danger';
