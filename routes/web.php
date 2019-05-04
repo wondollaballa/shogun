@@ -33,6 +33,15 @@ Route::get('/contact', 'ContactusController@index')->name('home.index');
 Route::get('/contact/create', 'ContactusController@create')->name('contact.create');
 Route::post('/contact/store', 'ContactusController@store')->name('contact.store');
 
+// email preview
+Route::get('/mailable/complete', function() {
+    return new App\Mail\ReservationComplete(1);
+});
+Route::get('/mailable/reminder', function() {
+    return new App\Mail\ReservationReminder(1);
+});
+
+
 Auth::routes();
 
 // Reservations

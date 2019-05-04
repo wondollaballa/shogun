@@ -254,6 +254,20 @@ class Reservation extends Model
         return false;
     }
 
+    public function getReservationWithFormat($id)
+    {
+        return $this->formatReservation($this->find($id));
+
+    }
+
+    private function formatReservation($data) {
+        if(isset($data->phone)) {
+            $data->phone = $this->formatPhone($data->phone);
+        }
+
+        return $data;
+    }
+
     private function formatPhone($phone_number) {
         if (!isset($phone_number)) return;
 
@@ -276,8 +290,6 @@ class Reservation extends Model
             break;
 
         }
-
-
 	}
 
 

@@ -6,7 +6,7 @@
  */
 
 import Vue from 'vue';
-const dragscroll = require('vue-dragscroll');
+// const dragscroll = require('vue-dragscroll');
 
 /**
  * The following block of code may be used to automatically register your
@@ -44,8 +44,8 @@ Vue.component('the-experience', require('./components/frontend/TheExperience.vue
  */
 
 const app = new Vue({
-    directives: {
-        dragscroll
-    },
+    // directives: {
+    //     dragscroll
+    // },
     el: '#container'
 });

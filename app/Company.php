@@ -58,6 +58,12 @@ class Company extends Model
         The restaurant’s main objective is to create a Japanese atmosphere to give our customers a feeling of having traveled to Japan for a delicious and authentic Japanese meal. Shogun of Japan not only gives you good food, but a happy dining experience and a great place to celebrate.';
         return $text;
     }
+
+    public function getCompanyWithFormat()
+    {
+        return $this->formatCompany($this->find(1));
+
+    }
     public function contactUs()
     {
         $rule = Rule::find(1);
@@ -85,4 +91,35 @@ class Company extends Model
         ];
         return json_encode($content);
     }
+
+    private function formatCompany($data) {
+        if(isset($data->phone)) {
+            $data->formatPhone = $this->formatPhone($data->phone);
+        }
+
+        return $data;
+    }
+    private function formatPhone($phone_number) {
+        if (!isset($phone_number)) return;
+
+        switch (strlen($phone_number)) {
+            case 10:
+            $split1 = substr($phone_number,0,3);
+            $split2 = substr($phone_number,3,3);
+            $split3 = substr($phone_number,6,4);
+            return "($split1) $split2-$split3";
+            break;
+
+            case 7:
+            $split1 = substr($phone_number,0,3);
+            $split2 = substr($phone_number,3,4);
+            return "$split1-$split2";
+            break;
+
+            default:
+            return $phone_number;
+            break;
+
+        }
+	}
 }

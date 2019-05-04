@@ -7,6 +7,9 @@ use App\Events\ExpiredEvent;
 use App\Events\NotificationsEvent;
 use App\Events\ReservationEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReservationComplete;
+use App\Mail\ReservationReminder;
 
 class ReservationsController extends Controller
 {
@@ -25,7 +28,7 @@ class ReservationsController extends Controller
 
     public function make(Request $request)
     {
-        
+
         $validateData = $request->validate([
             'name' => 'required|max:255',
             'phone' => 'required|max:20',
@@ -42,8 +45,12 @@ class ReservationsController extends Controller
         $reservations->requested = date('Y-m-d H:i:s', strtotime(trim($request->requested)));
         $reservations->special_request = ($request->special_request) ? $request->special_request : null;
         $reservations->hibachi = $request->hibachi;
-        $reservations->save();
-        
+        if($reservations->save()) {
+            // send email
+            Mail::to($reservations->email)
+                ->send(new ReservationComplete($reservations->id));
+        }
+
         event(new ReservationEvent());
         event(new NotificationsEvent());
         return response()->json(['success'=>'Reservation is successfully added to calendar!']);
@@ -68,8 +75,12 @@ class ReservationsController extends Controller
         $reservations->requested = date('Y-m-d H:i:s', strtotime(trim(strip_tags($request->date).' '.strip_tags($request->time))));
         $reservations->special_request = trim(strip_tags($request->special_request));
         $reservations->hibachi = ($request->hibachi == "false" || !$request->hibachi ) ? false : true;
-        $reservations->save();
-        
+        if ($reservations->save()) {
+            // mail
+            Mail::to($reservations->email)
+                ->send(new ReservationComplete($reservations->id));
+        }
+
         event(new ReservationEvent());
         event(new NotificationsEvent());
         return response()->json(['success'=>'Reservation is successfully added to calendar!']);
@@ -77,7 +88,7 @@ class ReservationsController extends Controller
     }
 
     public function getEvent(Reservation $reservation) {
-    
+
         return response()->json($reservation);
     }
 
@@ -94,7 +105,7 @@ class ReservationsController extends Controller
     }
 
     public function seat(Reservation $reservation, Request $request) {
-        
+
         $seatCustomer = $reservation->seatCustomer($request);
         $editable = $request->editable;
         if($seatCustomer) {
@@ -107,7 +118,7 @@ class ReservationsController extends Controller
     }
 
     public function unseat(Reservation $reservation, Request $request) {
-        
+
         $revertCustomer = $reservation->revertSeatingCustomer($request);
         $editable = $request->editable;
         if($revertCustomer) {
@@ -120,7 +131,7 @@ class ReservationsController extends Controller
     }
 
     public function expired(Request $request) {
-    
+
         $requested = $request->requested;
         $editable = $request->editable;
         $reservations = new Reservation();
@@ -135,7 +146,7 @@ class ReservationsController extends Controller
         $editable = $request->editable;
         $reservation = new Reservation;
         $calendar = $reservation->makeCalendar($editable);
-        
+
         return response()->json([$calendar]);
     }
 
@@ -144,13 +155,13 @@ class ReservationsController extends Controller
         $requested = $request->requested;
 
         $resEvents = $reservation->updateReservationTime($requested);
-        
+
         if($resEvents) {
             $calendar = $reservation->makeCalendar(true);
             event(new NotificationsEvent());
             return response()->json(['status'=>true, 'message'=>'Successfully updated reservation', 'calendar'=>$calendar]);
         }
-        
+
         return response()->json(['status'=>false, 'message'=>'Successfully updated reservation','calendar'=>$calendar]);
     }
 
@@ -196,7 +207,7 @@ class ReservationsController extends Controller
         };
 
         return response()->json(['error'=>'There were problems with your form. Please check your updates and try again.']);
-        
+
     }
 
     /**
