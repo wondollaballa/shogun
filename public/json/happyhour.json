@@ -1,0 +1,220 @@
+{
+    "description": "Happy Hour (Mon-Fri 4pm-6pm)",
+    "items": {
+        "Food": {
+            "image": "../images/menus/happyhour/food.jpg",
+            "items": [
+                {
+                    "name": "Edamame",
+                    "description": null,
+                    "price": "2"
+                },
+                {
+                    "name": "Fried Rice",
+                    "description": null,
+                    "price": "2"
+                },
+                {
+                    "name": "Seaweed Salad",
+                    "description": null,
+                    "price": "2"
+                },
+                {
+                    "name": "Smoked Calamari Salad",
+                    "description": null,
+                    "price": "4"
+                },
+                {
+                    "name": "Shrimp Tempura",
+                    "description": null,
+                    "price": "4"
+                },
+                {
+                    "name": "Ahi Jalapeno Tempura",
+                    "description": null,
+                    "price": "6"
+                },
+                {
+                    "name": "Ahi Dumplings",
+                    "description": null,
+                    "price": "6"
+                }
+            ]
+        },
+        "Drafts": {
+            "image": "../images/menus/happyhour/draft.jpg",
+            "items": [
+                {
+                    "name": "Bud Light",
+                    "description": null,
+                    "price": "2"
+                },
+                {
+                    "name": "Kirin Ichiban",
+                    "description": null,
+                    "price": "2"
+                },
+                {
+                    "name": "Ziegenbock",
+                    "description": null,
+                    "price": "3"
+                },
+                {
+                    "name": "Goose Island 312",
+                    "description": null,
+                    "price": "3"
+                },
+                {
+                    "name": "Big Wave",
+                    "description": null,
+                    "price": "3"
+                }
+            ]
+        },
+        "Wines": {
+            "image": "../images/menus/happyhour/wines.jpg",
+            "items": [
+                {
+                    "name": "House Merlot",
+                    "description": null,
+                    "price": "2"
+                },
+                {
+                    "name": "House Chardnnay",
+                    "description": null,
+                    "price": "2"
+                },
+                {
+                    "name": "House Cabernet Sauvignon",
+                    "description": null,
+                    "price": "2"
+                },
+                {
+                    "name": "House White Zinfandel",
+                    "description": null,
+                    "price": "2"
+                },
+                {
+                    "name": "Gekkikan Sake",
+                    "description": null,
+                    "price": "2/4"
+                },
+                {
+                    "name": "Black & Gold Sake",
+                    "description": null,
+                    "price": "4/8"
+                }
+            ]
+        },
+        "House Cocktails": {
+            "image": "../images/menus/happyhour/housecocktails.jpg",
+            "items": [
+                {
+                    "name": "Margarita",
+                    "description": null,
+                    "price": "4"
+                },
+                {
+                    "name": "Cosmopolitan",
+                    "description": null,
+                    "price": "4"
+                },
+                {
+                    "name": "Appletini",
+                    "description": null,
+                    "price": "4"
+                }
+            ]
+        },
+        "Nigiri & Sashimi": {
+            "image": "../images/menus/happyhour/nigirisashimi.jpg",
+            "items": [
+                {
+                    "name": "Fresh Salmon",
+                    "description": null,
+                    "price": "2/6"
+                },
+                {
+                    "name": "Japanese Yellowtail",
+                    "description": null,
+                    "price": "3/7"
+                },
+                {
+                    "name": "Big Eye Tuna",
+                    "description": null,
+                    "price": "3/7"
+                },
+                {
+                    "name": "Seared Peppercorn Tuna",
+                    "description": null,
+                    "price": "4/10"
+                }
+            ]
+        },
+        "Most Wanted Half Rolls": {
+            "image": "../images/menus/happyhour/halfrolls.jpg",
+            "items": [
+                {
+                    "name": "California",
+                    "description": null,
+                    "price": "2"
+                },
+                {
+                    "name": "Philly",
+                    "description": null,
+                    "price": "3"
+                },
+                {
+                    "name": "Spicy Tuna",
+                    "description": null,
+                    "price": "3"
+                },
+                {
+                    "name": "Shrimp Crunch",
+                    "description": null,
+                    "price": "4"
+                },
+                {
+                    "name": "Rainbow",
+                    "description": null,
+                    "price": "5"
+                },
+                {
+                    "name": "California Happy",
+                    "description": null,
+                    "price": "6"
+                },
+                {
+                    "name": "Mini Shogun #2",
+                    "description": null,
+                    "price": "4/10"
+                }
+            ]
+        },
+        "Specialty Cocktails": {
+            "image": "../images/menus/happyhour/specialtycocktails.jpg",
+            "items": [
+                {
+                    "name": "Mai Tai",
+                    "description": null,
+                    "price": "4"
+                },
+                {
+                    "name": "Japanese Zombie",
+                    "description": null,
+                    "price": "4"
+                },
+                {
+                    "name": "Shogun Long Island Iced Tea",
+                    "description": null,
+                    "price": "4"
+                },
+                {
+                    "name": "Hurricane Tae",
+                    "description": null,
+                    "price": "4"
+                }
+            ]
+        }
+    }
+}

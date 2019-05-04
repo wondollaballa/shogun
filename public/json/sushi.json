@@ -1,0 +1,444 @@
+{
+    "description": null,
+    "items": {
+        "Maki Rolls": {
+            "description": "Consists of fish or vegetable with rice and seaweed only, cut into six individual pieces",
+            "image": "../images/menus/sushi/maki.jpg",
+            "items": [
+                {
+                    "name": "Avocado Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Cucumber Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Oshinko Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Salmon Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Shrimp Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Smoked Salmon Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Tuna Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Yellowtail Maki",
+                    "description": null,
+                    "price": null
+                }
+            ]
+        },
+        "Shogun Classic Rolls": {
+            "description": "(SM) = Spicy Mayonnaise (ES) = Eel Sauce (GC) Garlic Chili Sauce (HS) = House Spicy Sauce (PZ) = Ponzu Sauce (CO) = Chia Oil (SV) = Sushi Vinegar n\n                    *All rolls can be made with soy paper for an additional- charge* *Substitutions and additions may incur an additional charge*",
+            "image": "../images/menus/sushi/caterpillarroll.jpg",
+            "items": [
+                {
+                    "name": "Alaskan",
+                    "description": "Fresh salmon on top of California roll (SM)",
+                    "price": null
+                },
+                {
+                    "name": "Burning Mouth",
+                    "description": "Fresh salmon, red snapper, & pickled jalapeno (SW, GC)",
+                    "price": null
+                },
+                {
+                    "name": "California (R)",
+                    "description": "Crab, cucumber, avocado",
+                    "price": null
+                },
+                {
+                    "name": "California (S)",
+                    "description": "Crab, cucumber, & avocado with smelt roe on top of roll",
+                    "price": null
+                },
+                {
+                    "name": "Caterpillar",
+                    "description": "Layers of avocado on top of eel (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Cherry",
+                    "description": "Tuna & avocado on top of spicy tuna & crab (PZ, GC)",
+                    "price": null
+                },
+                {
+                    "name": "Crunch",
+                    "description": "Avocado on top of 2 pc. fried shrimp, crab (SM)",
+                    "price": null
+                },
+                {
+                    "name": "Creole",
+                    "description": "Baked roll with crawfish mix on top of fried shrimp, crab & cucumber (PZ)",
+                    "price": null
+                },
+                {
+                    "name": "Dragon",
+                    "description": "Eel on top of eel and avocado (ES)",
+                    "price": null
+                },
+                {
+                    "name": "E.D.",
+                    "description": "Fresh salmon & avocado on top of spicy tuna & cucumber (HS)",
+                    "price": null
+                },
+                {
+                    "name": "Fire & Ice",
+                    "description": "Red Snapper & avocado on top of red snapper & cucumber (PZ, GC)",
+                    "price": null
+                },
+                {
+                    "name": "Futomaki",
+                    "description": "Tamago, crab, cucumber, pickled diakon radish, & avocado",
+                    "price": null
+                },
+                {
+                    "name": "Geisha",
+                    "description": "Boiled shrimp & avocado on top of California roll (SV, SM)",
+                    "price": null
+                },
+                {
+                    "name": "Hawaiian",
+                    "description": "Fried shrimp, cream cheese, crab, & smelt roe (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Mamasan",
+                    "description": "Fried shrimp, cucumber, avocado & crab (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Mexican",
+                    "description": "Boiled shrimp, avocado, crab & pickled jalapeno (GC)",
+                    "price": null
+                },
+                {
+                    "name": "Orange",
+                    "description": "Smelt roe on top of eel, avocado, cucumber & crab (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Rainbow",
+                    "description": "Tuna, salmon, & red snapper on top of California roll (PZ)",
+                    "price": null
+                },
+                {
+                    "name": "Philadelphia",
+                    "description": "Smoked salmon, avocado & cream cheese",
+                    "price": null
+                },
+                {
+                    "name": "Rock N Roll",
+                    "description": "Tuna, salmon, red snapper, & yellowtail (ES, SM, GC on the side)",
+                    "price": null
+                },
+                {
+                    "name": "Salmon Skin",
+                    "description": "Deep fried salmon skin, gobo root, & cucumber",
+                    "price": null
+                },
+                {
+                    "name": "Samurai",
+                    "description": "Smoked salmon & avocado on top of California roll (ES, KW, GC, SY)",
+                    "price": null
+                },
+                {
+                    "name": "Shy",
+                    "description": "Baked Rainbow roll glazed with (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Blue Crab",
+                    "description": " Blue crab, avocado (SM, ES)",
+                    "price": null
+                },
+                {
+                    "name": "Spicy Scallop",
+                    "description": "Chopped scallops mixed with smelt roe & (SW) on top of California roll",
+                    "price": null
+                },
+                {
+                    "name": "Spicy Tuna",
+                    "description": "Spicy marinated tuna with cucumber",
+                    "price": null
+                },
+                {
+                    "name": "Spider",
+                    "description": "Soft shell crab, crab, avocado, & cucumber (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Sunset",
+                    "description": "Avocado on top of crab, boiled shrimp, & cucumber(ES)",
+                    "price": null
+                },
+                {
+                    "name": "Turtle",
+                    "description": "Boiled shrimp on top of California roll (ES, SM)",
+                    "price": null
+                },
+                {
+                    "name": "Vegetable",
+                    "description": "Carrots, purple cabbage, cucumber, avocado & pickled diakon radish",
+                    "price": null
+                },
+                {
+                    "name": "Yammy",
+                    "description": "Crab mix on top of California roll (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Dragon's Breath",
+                    "description": "Crab mix, avocado, cream cheese, fresh jalapenos, fresh salmon, crawfish mix. (PZ, SM, GC)",
+                    "price": null
+                }
+            ]
+        },
+        "Nigiri 2PC / Sashimi 5PC": {
+            "description": null,
+            "image": "../images/menus/sushi/nigiri2.jpg",
+            "items": [
+                {
+                    "name": "Albacore",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Crab",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Eel",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Escolar",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Soft S. Crawfish",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Mackerel",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Octopus",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Peppered Corn Tuna",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Red Snapper",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Salmon",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Salmon Roe",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Scallop",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Shrimp",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Smelt Roe",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Squid",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Smoked Salmon",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Surf Clam",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Sweet Shrimp",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Tamago",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Black Tobiko",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Wasabi Tobiko",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Tuna",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Yellowtail",
+                    "description": null,
+                    "price": null
+                }
+            ]
+        },
+        "Shogun Specialty Rolls": {
+            "description": "(SM) = Spicy Mayonnaise (ES) = Eel Sauce (GC) Garlic Chili Sauce (HS) = House Spicy Sauce (PZ) = Ponzu Sauce (CO) = Chia Oil (SV) = Sushi Vinegar n\n                    *All rolls can be made with Soy Paper for an additional- charge* n*Substitutions and additions may incur an additional charge*",
+            "image": "../images/menus/sushi/specialtyrolls.jpg",
+            "items": [
+                {
+                    "name": "007",
+                    "description": "2 pc fried shrimp with eel & avocado on top (TS)",
+                    "price": null
+                },
+                {
+                    "name": "Asahi",
+                    "description": "Fresh salmon & sliced lemon on top of roll with salmon & cucumber(SV, SM)",
+                    "price": null
+                },
+                {
+                    "name": "Ahi Tempura",
+                    "description": "Crab, avocado, calantro,jalapeno, black tobiko, shiso, and carrots rolled with ahi tuna, then flash fried. (TZ)",
+                    "price": null
+                },
+                {
+                    "name": "Chef's Special",
+                    "description": "Deep fried scallop & blue crab mixed with SM & green onions placed on top of roll with crab, boiled shrimp, & cucumber",
+                    "price": null
+                },
+                {
+                    "name": "Crazy Cajun",
+                    "description": "Tuna, salmon, yellowtail, & avocado on top of spicy tuna, cucumber, & 2 pc soft shell crab (SM, HS, ES)",
+                    "price": null
+                },
+                {
+                    "name": "Fire in the Hole",
+                    "description": "Smoked salmon, fresh jalapeno, & cream cheese on top of deep fried tuna (HS)",
+                    "price": null
+                },
+                {
+                    "name": "Heaven Roll",
+                    "description": "Baked roll with fresh salmon, SM, PZ & GC on top of California Roll",
+                    "price": null
+                },
+                {
+                    "name": "Joy Roll",
+                    "description": "Baked roll with crab, SW, PZ & GC on top of 2 pc fried shrimp",
+                    "price": null
+                },
+                {
+                    "name": "Lobster Crunch",
+                    "description": "Fried shrimp on top of fried lobster (SM, ES)",
+                    "price": null
+                },
+                {
+                    "name": "Millenium",
+                    "description": "2 pc fried shrimp, soft shell crab, avocado, crab, & cucumber (SM, ES)",
+                    "price": null
+                },
+                {
+                    "name": "Pablo Escolar",
+                    "description": "Crab, cucumber, escolar & sprouts with yellowtail, boiled shrimp & jalapeno avocado puree (PZ)",
+                    "price": null
+                },
+                {
+                    "name": "Passion",
+                    "description": " Spicy tuna on top of 2 pc fried shrimp (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Peppercorn Tuna",
+                    "description": "Peppercorn tuna & avocado on top of spicy tuna & cucumber (CO, PZ)",
+                    "price": null
+                },
+                {
+                    "name": "Mount Fuji",
+                    "description": "Baked, with smoked salmon, cream cheese, & pickled jalapenos with crab mix onions, & shitake mushrooms (SM, PZ)",
+                    "price": null
+                },
+                {
+                    "name": "Shogun #2",
+                    "description": "Deep fried roll with salmon, tuna, yellowtail, smelt roe, cream cheese, & pickled jalapeno (HS, SM)",
+                    "price": null
+                },
+                {
+                    "name": "Shrimp Crunch",
+                    "description": "Fried shrimp on top of crab, avocado, cucumber (ES, SM)",
+                    "price": null
+                },
+                {
+                    "name": "Spring Roll",
+                    "description": "Crab, tuna, fresh salmon, red snapper, & yellowtail wrapped in cucumber (PZ)",
+                    "price": null
+                },
+                {
+                    "name": "T.T Roll",
+                    "description": "Sauteed scallops & crab mixed with SM, on top of California roll",
+                    "price": null
+                },
+                {
+                    "name": "Texas Roll",
+                    "description": "Avocado on top of crab, boiled shrimp, & cucumber (SM, GC)",
+                    "price": null
+                },
+                {
+                    "name": "California Happy",
+                    "description": "Deep fried shrimp, Cream cheese, Cucumber,Avocado, Jalapeno with crab on top (SM, ES)",
+                    "price": null
+                }
+            ]
+        }
+    }
+}

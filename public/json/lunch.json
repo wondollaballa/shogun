@@ -1,0 +1,187 @@
+{
+    "description": "MONDAY - FRIDAY 11:00 A.M. - 3:00 P.M.(EXCEPT HOLIDAY)",
+    "items": {
+        "Entrees": {
+            "image": "../images/menus/lunch/entrees.jpg",
+            "description": "All entrees are served with tepanyaki vegetable soup and salad. Fried rice additional 1.00",
+            "items": [
+                {
+                    "name": "Vegetable",
+                    "description": null,
+                    "price": "$9.95"
+                },
+                {
+                    "name": "Chicken",
+                    "description": null,
+                    "price": "$10.95"
+                },
+                {
+                    "name": "New York Steak",
+                    "description": null,
+                    "price": "$11.95"
+                },
+                {
+                    "name": "Ribeye Steak",
+                    "description": null,
+                    "price": "$12.95"
+                },
+                {
+                    "name": "Filet Mignon",
+                    "description": null,
+                    "price": "13.95"
+                },
+                {
+                    "name": "Shrimp",
+                    "description": null,
+                    "price": "$11.95"
+                },
+                {
+                    "name": "Salmon",
+                    "description": null,
+                    "price": "$11.95"
+                },
+                {
+                    "name": "Scallop",
+                    "description": null,
+                    "price": "$12.95"
+                }
+            ]
+        },
+        "Add More": {
+            "image": "../images/menus/lunch/addmore.jpg",
+            "description": null,
+            "items": [
+                {
+                    "name": "Chicken",
+                    "description": null,
+                    "price": "$3.00"
+                },
+                {
+                    "name": "New York Steak",
+                    "description": null,
+                    "price": "$4.00"
+                },
+                {
+                    "name": "Shrimp",
+                    "description": null,
+                    "price": "$4.00"
+                }
+            ]
+        },
+        "Kid's Meal": {
+            "image": "../images/menus/lunch/kidsmeal.jpg",
+            "description": null,
+            "items": [
+                {
+                    "name": "Chicken",
+                    "description": null,
+                    "price": "$5.95"
+                },
+                {
+                    "name": "Steak",
+                    "description": null,
+                    "price": "$6.95"
+                },
+                {
+                    "name": "Shrimp",
+                    "description": null,
+                    "price": "$6.95"
+                },
+                {
+                    "name": "Macaroni and cheese",
+                    "description": null,
+                    "price": "$3.95"
+                },
+                {
+                    "name": "Chicken strips & french fries",
+                    "description": null,
+                    "price": "$5.95"
+                }
+            ]
+        },
+        "Sushi Lunch Special": {
+            "image": "../images/menus/lunch/sushi.jpg",
+            "description": null,
+            "items": [
+                {
+                    "name": "Pick 2",
+                    "description": "California roll, Spicy tuna roll, *Crunch roll, Cucumber roll, Philly roll, Alaskan roll, Vegetable roll, *Shogun roll",
+                    "price": "$10.99"
+                },
+                {
+                    "name": "Pick 3",
+                    "description": "California roll, Spicy tuna roll, *Crunch roll, Cucumber roll, Philly roll, Alaskan roll, Vegetable roll, *Shogun roll",
+                    "price": "$12.99"
+                }
+            ]
+        },
+        "Sushi Combo": {
+            "image": "../images/menus/lunch/sushi-combo.jpg",
+            "description": null,
+            "items": [
+                {
+                    "name": "Combo One",
+                    "description": "CALIFORNIA ROLL, TUNA, SALMON, RED SNAPPER, SHRIMP",
+                    "price": "$9.99"
+                },
+                {
+                    "name": "Combo Two",
+                    "description": "CALIFORNIA ROLL, TUNA, YELLOWTAIL, EEL, SALMON, RED SNAPPER, SHRIMP",
+                    "price": "$12.99"
+                }
+            ]
+        },
+        "Fresh Bowls": {
+            "image": "../images/menus/lunch/fresh-bowl.jpg",
+            "description": "Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.",
+            "items": [
+                {
+                    "name": "Salmon - Cado Poke",
+                    "description": "Lettuce, scallion, masago, Carrot, Snow crab, Red Onion, Sea weed Salad, fresh jalapeno, avocado and cucumber. - Wasabi mayo.",
+                    "price": "$11.95"
+                },
+                {
+                    "name": "Tuna - Cado Poke",
+                    "description": "Lettuce, scallion, fresh jalapeno, Carrot, Seaweed Salad, Red Onion, avocado, and cucumber. - Classic sauce (Shoyu and Sesame oil)",
+                    "price": "$11.95"
+                },
+                {
+                    "name": "Mango - Yellowtail Poke",
+                    "description": "Mango, lettuce, cilantro, Carrot, and avocado, and cucumber . - Citrus ponzu (Sweet Citrus Sauce)",
+                    "price": "$11.95"
+                }
+            ]
+        },
+        "Grilled Bowls": {
+            "image": "../images/menus/lunch/grilled-bowl.jpg",
+            "description": "Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.",
+            "items": [
+                {
+                    "name": "Teriyaki chicken bowl",
+                    "description": "Grilled chicken, onion, bell pepper, and mushroom, broccoli. - Teriyaki sauce",
+                    "price": "$8.95"
+                },
+                {
+                    "name": "Spicy chicken bowl",
+                    "description": "Grilled chicken, onion, bell pepper, and mushroom, broccoli. - homemade spicy sauce",
+                    "price": "$8.95"
+                },
+                {
+                    "name": "Shogun beef bowl",
+                    "description": "Korean style bulgogi, onion, bell pepper, and mushroom, broccoli with Kimchi - Korean Spicy Sauce (Red Pepper Paste Mixed with Vinegar)",
+                    "price": "$9.95"
+                },
+                {
+                    "name": "Teriyaki shrimp bowl",
+                    "description": "Grilled shrimp, onion, bell pepper, and mushroom, broccoli - Teriyaki sauce",
+                    "price": "$9.95"
+                },
+                {
+                    "name": "Shogun chicken katsu",
+                    "description": "Chicken katsu with home-made katsu sauce, steamed rice, and cabbage salad.",
+                    "price": "$9.95"
+                }
+            ]
+        }
+    }
+}

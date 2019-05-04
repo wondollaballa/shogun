@@ -1,0 +1,1130 @@
+{
+    "description": null,
+    "items": {
+        "Hibachi": {
+            "image": "../images/menus/hibachi/hibachi.jpg",
+            "items": [
+                {
+                    "name": "Hibachi Dinner Entree",
+                    "description": "All entrees are served-with Soup, House Salad; Teppanyaki Vegetables & Steamed Rice. **Fried Rice may be added for an additional $1.99 with a Dinner Entree",
+                    "price": null
+                },
+                {
+                    "name": "Teppanyaki Chicken",
+                    "description": "Fresh chicken cooked-with teriyaki sauce",
+                    "price": null
+                },
+                {
+                    "name": "Teppanyaki Steak",
+                    "description": "U.S.D.A New York Strip",
+                    "price": null
+                },
+                {
+                    "name": "Rib Eye Steak",
+                    "description": "Certified-Angus beef (8 oz.)",
+                    "price": null
+                },
+                {
+                    "name": "Teppanyaki Shrimp",
+                    "description": "Gulf Shrimp",
+                    "price": null
+                },
+                {
+                    "name": "Teppanyaki Scallops",
+                    "description": "Sea Scallops",
+                    "price": null
+                },
+                {
+                    "name": "Teppanyaki Filet Mignon",
+                    "description": "Chateaubriand (Center Cut) filet mignon",
+                    "price": null
+                },
+                {
+                    "name": "Samurai Steak",
+                    "description": "12 oz. New York Strip",
+                    "price": null
+                },
+                {
+                    "name": "Teppanyaki Lobster & Chicken",
+                    "description": "Rock lobster tail with fresh chicken",
+                    "price": null
+                },
+                {
+                    "name": "Chef's Special",
+                    "description": "Teppanyaki chicken & shrimp",
+                    "price": null
+                },
+                {
+                    "name": "Shogun Combination",
+                    "description": "Teppanyaki chicken & steak, (Substitute filet mignon or rib eye steak)",
+                    "price": null
+                },
+                {
+                    "name": "Seafood Combination",
+                    "description": "Teppanyaki shrimp & scallops",
+                    "price": null
+                },
+                {
+                    "name": "Surf & Turf",
+                    "description": "Teppanyaki steak & shrimp (Substitute filet mignon or rib eye steak)",
+                    "price": null
+                },
+                {
+                    "name": "Seafood Lover",
+                    "description": "Teppanyaki lobster & shrimp",
+                    "price": null
+                },
+                {
+                    "name": "Shogun Imperial Dinner",
+                    "description": "Teppanyaki filet mignon & lobster",
+                    "price": null
+                },
+                {
+                    "name": "Shogun Special",
+                    "description": "Tepparyaki filet mignon, lobster & chicken",
+                    "price": null
+                },
+                {
+                    "name": "Geisha Special",
+                    "description": "Teppanyaki chicken & scallops",
+                    "price": null
+                },
+                {
+                    "name": "Banzai Diner",
+                    "description": "Teppanyaki steak, chicken & shrimp (Substitute Filet Mignon or Rib Eye steak)",
+                    "price": null
+                },
+                {
+                    "name": "Ichiban Dinner",
+                    "description": "Teppanyaki steak & scallops (substitute filet mignon or rib eye steak)",
+                    "price": null
+                },
+                {
+                    "name": "Most Expensive Meal",
+                    "description": "Teppanyaki lobster, scallops & shrimp",
+                    "price": null
+                },
+                {
+                    "name": "Teppanyaki Salmon",
+                    "description": "Scottish Salmon",
+                    "price": null
+                },
+                {
+                    "name": "Twin Lobsters",
+                    "description": "Two rock lobster tails",
+                    "price": null
+                }
+            ]
+        },
+        "Sushi": {
+            "image": "../images/menus/hibachi/sushi.jpg",
+            "description": "(SM) = Spicy Mayonnaise (ES) = Eel Sauce (GC) Garlic Chili Sauce (HS) = House Spicy Sauce (PZ) = Ponzu Sauce (CO) = Chia Oil (SV) = Sushi Vinegar n\n                    *All rolls can be made with soy paper for an additional- charge* *Substitutions and additions may incur an additional charge*",
+            "items": [
+                {
+                    "name": "Avocado Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Cucumber Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Oshinko Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Salmon Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Shrimp Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Smoked Salmon Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Tuna Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Yellowtail Maki",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Alaskan",
+                    "description": "Fresh salmon on top of California roll (SM)",
+                    "price": null
+                },
+                {
+                    "name": "Burning Mouth",
+                    "description": "Fresh salmon, red snapper, & pickled jalapeno (SW, GC)",
+                    "price": null
+                },
+                {
+                    "name": "California (R)",
+                    "description": "Crab, cucumber, avocado",
+                    "price": null
+                },
+                {
+                    "name": "California (S)",
+                    "description": "Crab, cucumber, & avocado with smelt roe on top of roll",
+                    "price": null
+                },
+                {
+                    "name": "Caterpillar",
+                    "description": "Layers of avocado on top of eel (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Cherry",
+                    "description": "Tuna & avocado on top of spicy tuna & crab (PZ, GC)",
+                    "price": null
+                },
+                {
+                    "name": "Crunch",
+                    "description": "Avocado on top of 2 pc. fried shrimp, crab (SM)",
+                    "price": null
+                },
+                {
+                    "name": "Creole",
+                    "description": "Baked roll with crawfish mix on top of fried shrimp, crab & cucumber (PZ)",
+                    "price": null
+                },
+                {
+                    "name": "Dragon",
+                    "description": "Eel on top of eel and avocado (ES)",
+                    "price": null
+                },
+                {
+                    "name": "E.D.",
+                    "description": "Fresh salmon & avocado on top of spicy tuna & cucumber (HS)",
+                    "price": null
+                },
+                {
+                    "name": "Fire Ice",
+                    "description": "Red Snapper & avocado on top of red snapper & cucumber (PZ, GC)",
+                    "price": null
+                },
+                {
+                    "name": "Futomaki",
+                    "description": "Tamago, crab, cucumber, pickled diakon radish, & avocado",
+                    "price": null
+                },
+                {
+                    "name": "Geisha",
+                    "description": "Boiled shrimp & avocado on top of California roll (SV, SM)",
+                    "price": null
+                },
+                {
+                    "name": "Hawaiian",
+                    "description": "Fried shrimp, cream cheese, crab, & smelt roe (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Mamasan",
+                    "description": "Fried shrimp, cucumber, avocado & crab (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Mexican",
+                    "description": "Boiled shrimp, avocado, crab & pickled jalapeno (GC)",
+                    "price": null
+                },
+                {
+                    "name": "Orange",
+                    "description": "Smelt roe on top of eel, avocado, cucumber & crab (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Rainbow",
+                    "description": "Tuna, salmon, & red snapper on top of California roll (PZ)",
+                    "price": null
+                },
+                {
+                    "name": "Philadelphia",
+                    "description": "Smoked salmon, avocado & cream cheese",
+                    "price": null
+                },
+                {
+                    "name": "Rock N Roll",
+                    "description": "Tuna, salmon, red snapper, & yellowtail (ES, SM, GC on the side)",
+                    "price": null
+                },
+                {
+                    "name": "Salmon Skin",
+                    "description": "Deep fried salmon skin, gobo root, & cucumber",
+                    "price": null
+                },
+                {
+                    "name": "Samurai",
+                    "description": "Smoked salmon & avocado on top of California roll (ES, KW, GC, SY)",
+                    "price": null
+                },
+                {
+                    "name": "Shy",
+                    "description": "Baked Rainbow roll glazed with (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Blue Crab",
+                    "description": " Blue crab, avocado (SM, ES)",
+                    "price": null
+                },
+                {
+                    "name": "Spicy Scallop",
+                    "description": "Chopped scallops mixed with smelt roe & (SW) on top of California roll",
+                    "price": null
+                },
+                {
+                    "name": "Spicy Tuna",
+                    "description": "Spicy marinated tuna with cucumber",
+                    "price": null
+                },
+                {
+                    "name": "Spider",
+                    "description": "Soft shell crab, crab, avocado, & cucumber (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Sunset",
+                    "description": "Avocado on top of crab, boiled shrimp, & cucumber(ES)",
+                    "price": null
+                },
+                {
+                    "name": "Turtle",
+                    "description": "Boiled shrimp on top of California roll (ES, SM)",
+                    "price": null
+                },
+                {
+                    "name": "Vegetable",
+                    "description": "Carrots, purple cabbage, cucumber, avocado & pickled diakon radish",
+                    "price": null
+                },
+                {
+                    "name": "Yammy",
+                    "description": "Crab mix on top of California roll (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Dragon's Breath",
+                    "description": "Crab mix, avocado, cream cheese, fresh jalapenos, fresh salmon, crawfish mix. (PZ, SM, GC)",
+                    "price": null
+                }
+            ]
+        },
+        "Nigiri 2PC / Sashimi 5PC": {
+            "description": null,
+            "image": "../images/menus/hibachi/nigirisashimi.jpg",
+            "items": [
+                {
+                    "name": "Albacore",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Crab",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Eel",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Escolar",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Soft S. Crawfish",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Mackerel",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Octopus",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Peppercorn Tuna",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Red Snapper",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Salmon",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Salmon Roe",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Scallop",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Shrimp",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Smelt Roe",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Squid",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Smoked Salmon",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Surf Clam",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Sweet Shrimp",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Tamago",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Black Tobiko",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Wasabi Tobiko",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Tuna",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Yellowtail",
+                    "description": null,
+                    "price": null
+                }
+            ]
+        },
+        "Shogun Specialty Rolls": {
+            "description": "(SM) = Spicy Mayonnaise (ES) = Eel Sauce (GC) Garlic Chili Sauce (HS) = House Spicy Sauce (PZ) = Ponzu Sauce (CO) = Chia Oil (SV) = Sushi Vinegar n\n                    *All rolls can be made with Soy Paper for an additional- charge* n*Substitutions and additions may incur an additional charge*",
+            "image": "../images/menus/hibachi/specialty.jpg",
+            "items": [
+                {
+                    "name": "007",
+                    "description": "2 pc fried shrimp with eel & avocado on top (TS)",
+                    "price": null
+                },
+                {
+                    "name": "Asahi",
+                    "description": "Fresh salmon & sliced lemon on top of roll with salmon & cucumber(SV, SM)",
+                    "price": null
+                },
+                {
+                    "name": "Ahi Tempura",
+                    "description": "Crab, avocado, calantro,jalapeno, black tobiko, shiso, and carrots rolled with ahi tuna, then flash fried. (TZ)",
+                    "price": null
+                },
+                {
+                    "name": "Chef's Special",
+                    "description": "Deep fried scallop & blue crab mixed with SM & green onions placed on top of roll with crab, boiled shrimp, & cucumber",
+                    "price": null
+                },
+                {
+                    "name": "Crazy Cajun",
+                    "description": "Tuna, salmon, yellowtail, & avocado on top of spicy tuna, cucumber, & 2 pc soft shell crab (SM, HS, ES)",
+                    "price": null
+                },
+                {
+                    "name": "Fire in the Hole",
+                    "description": "Smoked salmon, fresh jalapeno, & cream cheese on top of deep fried tuna (HS)",
+                    "price": null
+                },
+                {
+                    "name": "Heaven Roll",
+                    "description": "Baked roll with fresh salmon, SM, PZ & GC on top of California Roll",
+                    "price": null
+                },
+                {
+                    "name": "Joy Roll",
+                    "description": "Baked roll with crab, SW, PZ & GC on top of 2 pc fried shrimp",
+                    "price": null
+                },
+                {
+                    "name": "Lobster Crunch",
+                    "description": "Fried shrimp on top of fried lobster (SM, ES)",
+                    "price": null
+                },
+                {
+                    "name": "Millenium",
+                    "description": "2 pc fried shrimp, soft shell crab, avocado, crab, & cucumber (SM, ES)",
+                    "price": null
+                },
+                {
+                    "name": "Pablo Escolar",
+                    "description": "Crab, cucumber, escolar & sprouts with yellowtail, boiled shrimp & jalapeno avocado puree (PZ)",
+                    "price": null
+                },
+                {
+                    "name": "Passion",
+                    "description": " Spicy tuna on top of 2 pc fried shrimp (ES)",
+                    "price": null
+                },
+                {
+                    "name": "Peppercorn Tuna",
+                    "description": "Peppercorn tuna & avocado on top of spicy tuna & cucumber (CO, PZ)",
+                    "price": null
+                },
+                {
+                    "name": "Mount Fuji",
+                    "description": "Baked, with smoked salmon, cream cheese, & pickled jalapenos with crab mix onions, & shitake mushrooms (SM, PZ)",
+                    "price": null
+                },
+                {
+                    "name": "Shogun #2",
+                    "description": "Deep fried roll with salmon, tuna, yellowtail, smelt roe, cream cheese, & pickled jalapeno (HS, SM)",
+                    "price": null
+                },
+                {
+                    "name": "Shrimp Crunch",
+                    "description": "Fried shrimp on top of crab, avocado, cucumber (ES, SM)",
+                    "price": null
+                },
+                {
+                    "name": "Spring Roll",
+                    "description": "Crab, tuna, fresh salmon, red snapper, & yellowtail wrapped in cucumber (PZ)",
+                    "price": null
+                },
+                {
+                    "name": "T.T Roll",
+                    "description": "Sauteed scallops & crab mixed with SM, on top of California roll",
+                    "price": null
+                },
+                {
+                    "name": "Texas Roll",
+                    "description": "Avocado on top of crab, boiled shrimp, & cucumber (SM, GC)",
+                    "price": null
+                },
+                {
+                    "name": "California Happy",
+                    "description": "Deep fried shrimp, Cream cheese, Cucumber,Avocado, Jalapeno with crab on top (SM, ES)",
+                    "price": null
+                }
+            ]
+        },
+        "Side Orders": {
+            "image": "../images/menus/hibachi/miso.jpg",
+            "description": null,
+            "items": [
+                {
+                    "name": "House Soup",
+                    "description": "",
+                    "price": null
+                },
+                {
+                    "name": "Chicken",
+                    "description": "",
+                    "price": null
+                },
+                {
+                    "name": "House Salad",
+                    "description": "",
+                    "price": null
+                },
+                {
+                    "name": "Miso Soup",
+                    "description": "",
+                    "price": null
+                },
+                {
+                    "name": "Fried Rice",
+                    "description": "",
+                    "price": null
+                },
+                {
+                    "name": "Steamed Rice",
+                    "description": "",
+                    "price": null
+                },
+                {
+                    "name": "Sushi Rice",
+                    "description": "",
+                    "price": null
+                },
+                {
+                    "name": "Vegetables",
+                    "description": "",
+                    "price": null
+                },
+                {
+                    "name": "Shrimp",
+                    "description": "",
+                    "price": null
+                },
+                {
+                    "name": "New York Strip",
+                    "description": "",
+                    "price": null
+                },
+                {
+                    "name": "Filet Mignon",
+                    "description": "",
+                    "price": null
+                },
+                {
+                    "name": "Scallops",
+                    "description": "",
+                    "price": null
+                },
+                {
+                    "name": "Lobster",
+                    "description": "",
+                    "price": null
+                },
+                {
+                    "name": "Rib Eye Steak",
+                    "description": "",
+                    "price": null
+                }
+            ]
+        },
+        "Desserts": {
+            "image": "../images/menus/hibachi/vanilla.jpg",
+            "description": null,
+            "items": [
+                {
+                    "name": "Ice Cream",
+                    "description": "Your choice of vanilla, green Tea, Wasabi, Red Bean or Plum Wine ice cream",
+                    "price": null
+                },
+                {
+                    "name": "Pineapple Boat",
+                    "description": "Fresh pineapple with cut orange",
+                    "price": null
+                },
+                {
+                    "name": "Wanton Tower",
+                    "description": "Fried wonton and whipped cream served with your choice if ice cream",
+                    "price": null
+                },
+                {
+                    "name": "Cheesecake Tempura",
+                    "description": "Tempura Battered & fried vanilla New York cheesecake topped with strawberries & served with Wasabi ice cream",
+                    "price": null
+                }
+            ]
+        },
+        "Alchoholic Beverages": {
+            "image": "../images/menus/hibachi/beer.jpg",
+            "description": null,
+            "items": [
+                {
+                    "name": "Bottled Beers",
+                    "description": "Bud Light, Miller Light, Coors Light, Budweiser, Michelob Ultra, Shiner Bock, Heineken, Kirin Ichiban, Sapporo, Asahi, Tsing Tao, Corona Extra, Dos XX",
+                    "price": null
+                },
+                {
+                    "name": "Beer on Tap (11oz / 22oz)",
+                    "description": "Bud Light, Kirin Ichiban, Ziegen Bock",
+                    "price": null
+                }
+            ]
+        },
+        "House Cocktails": {
+            "image": "../images/menus/hibachi/housecocktails.png",
+            "description": null,
+            "items": [
+                {
+                    "name": "Banzai",
+                    "description": "Rum, Amaretto, Orange Juice, Pineapple Juice",
+                    "price": null
+                },
+                {
+                    "name": "Geisha",
+                    "description": "Rum, Triple Sec, Sweet & Sour, Pineapple Juice",
+                    "price": null
+                },
+                {
+                    "name": "Buddha",
+                    "description": "Rum, Amaretto, Coco Lopez, Orange Juice",
+                    "price": null
+                },
+                {
+                    "name": "Samurai",
+                    "description": "rum, sake, grenadine, orange juice, pineapple juice",
+                    "price": null
+                },
+                {
+                    "name": "Strawberry Daiquiri",
+                    "description": "rum & strawberries",
+                    "price": null
+                },
+                {
+                    "name": "Pina Colada",
+                    "description": "Rum, Coco Lopez Juice, Pineapple Juice",
+                    "price": null
+                },
+                {
+                    "name": "Margarita",
+                    "description": "Tequila, Lime Juice, & Sweet & Sour",
+                    "price": null
+                }
+            ]
+        },
+        "Appetizers": {
+            "image": "../images/menus/hibachi/edamame.jpg",
+            "description": null,
+            "items": [
+                {
+                    "name": "Edamame",
+                    "description": "Salted boiled soy beans",
+                    "price": null
+                },
+                {
+                    "name": "Gyoza",
+                    "description": "Battered and fried dumplings (Your choice of beef, chicken, or shrimp)",
+                    "price": null
+                },
+                {
+                    "name": "Tempura",
+                    "description": "Battered and panko breaded",
+                    "price": null
+                },
+                {
+                    "name": "Shrimp Tempura",
+                    "description": "5 pieces of black tiger prawns",
+                    "price": null
+                },
+                {
+                    "name": "Vegetable Tempura",
+                    "description": "2 pieces of onions, zucchini, potato, sweet potato, mushroom & broccoli",
+                    "price": null
+                },
+                {
+                    "name": "Mixed Tempura",
+                    "description": "2 pieces of rock tiger prawns, onion, zucchini, sweet potato, potato, & broccoli",
+                    "price": null
+                },
+                {
+                    "name": "Calamari Tempura",
+                    "description": "Sliced calamari",
+                    "price": null
+                },
+                {
+                    "name": "Chicken Tempura",
+                    "description": "Chicken & broccoli on skewers with sweet sauce drizzled on top",
+                    "price": null
+                },
+                {
+                    "name": "Beef Tempura",
+                    "description": "Beef & broccoli on skewers with sweet sauce drizzled on top",
+                    "price": null
+                },
+                {
+                    "name": "Baked Mussels",
+                    "description": "3 pieces of New Zealand green mussels baked with caviar cream sauce and ponzu",
+                    "price": null
+                },
+                {
+                    "name": "Fire Tiger",
+                    "description": "2 pieces of rock tiger prawn, cucumber & kani-kama crab, wrapped in iceberg lettuce served with a garlic chili sauce",
+                    "price": null
+                },
+                {
+                    "name": "Tuna Tanta",
+                    "description": "Minced fresh tuna & onions served with ponzu sauce",
+                    "price": null
+                },
+                {
+                    "name": "Tuna Tataki",
+                    "description": "5 pieces of seared yellowfin tuna",
+                    "price": null
+                },
+                {
+                    "name": "Peppercorn Tuna Tataki",
+                    "description": "5 pieces of peppercorn yellowfin tuna",
+                    "price": null
+                },
+                {
+                    "name": "Crab Salad",
+                    "description": "Tomato, cucumber & kani-kama crab served with ponzu & garlic chili sauces",
+                    "price": null
+                },
+                {
+                    "name": "Sunomono",
+                    "description": "Sliced - cucumber and sorted fresh fish served in our house sunontono sauce",
+                    "price": null
+                },
+                {
+                    "name": "Seaweed Salad",
+                    "description": "Marinated seaweed salad on top of daikon radish served with ponzu & spicy mayonnaise",
+                    "price": null
+                },
+                {
+                    "name": "Smoked Squid Salad",
+                    "description": "Smoked- squid on top of a seaweed salad",
+                    "price": null
+                },
+                {
+                    "name": "Seafood Salad",
+                    "description": "Diced tuna, salmon, red snapper,& katti-kama crab on top of seaweed salad served with spicy mayonnaise",
+                    "price": null
+                },
+                {
+                    "name": "Volcano Salad",
+                    "description": "Diced Avocado, tuna, salmon & red snapper on top of daikon radish served with a garlic chili sauce",
+                    "price": null
+                },
+                {
+                    "name": "Dynamite",
+                    "description": "Sauteed- mushrooms & scallops on top of a bed of rice with spicy mayonnaise baked on top",
+                    "price": null
+                },
+                {
+                    "name": "Shumai",
+                    "description": "Steamed shrimp dumplings",
+                    "price": null
+                },
+                {
+                    "name": "Tuna Tower",
+                    "description": "Spicy tuna, avocado, crab mix, cucumber & rice molded on top of each other served with various fish eggs, wasabi mayonnaise, and miso dressing",
+                    "price": null
+                }
+            ]
+        },
+        "Kara-Age Plate": {
+            "image": "../images/menus/hibachi/karaage.jpg",
+            "description": null,
+            "items": [
+                {
+                    "name": "Children's Plate",
+                    "description": "12 Years old & under",
+                    "price": null
+                },
+                {
+                    "name": "Teppanyaki Chicken",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Teppanyaki Shrimp",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Teppanyaki Steak",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Teppanyaki Filet",
+                    "description": null,
+                    "price": null
+                }
+            ]
+        },
+        "Sauces": {
+            "image": "../images/menus/hibachi/sauces.jpg",
+            "description": null,
+            "items": [
+                {
+                    "name": "Ginger Salad Dressing",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Mustard Sauce",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Ginger Sauce",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Teriyaki Sauce",
+                    "description": null,
+                    "price": null
+                }
+            ]
+        },
+        "Beverages (Non-Alchohol)": {
+            "image": "../images/menus/hibachi/beverage.jpg",
+            "description": null,
+            "items": [
+                {
+                    "name": "Soft Drinks",
+                    "description": "Coke, Diet Coke, Sprite, Dr. Pepper, Root Beer, or Hi-C Fruit Punch",
+                    "price": null
+                },
+                {
+                    "name": "Iced Tea",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Green Tea",
+                    "description": "Hot green tea",
+                    "price": null
+                },
+                {
+                    "name": "Coffee",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Juice",
+                    "description": "Orange, Pineapple, Cranberry",
+                    "price": null
+                },
+                {
+                    "name": "Virgin Daiquiri",
+                    "description": "Strawberry, Pina Colada",
+                    "price": null
+                },
+                {
+                    "name": "O'douls",
+                    "description": null,
+                    "price": null
+                }
+            ]
+        },
+        "Wine": {
+            "image": "../images/menus/hibachi/cabernet.png",
+            "description": null,
+            "items": [
+                {
+                    "name": "Beringer Cabernet",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Kendall Jackson Cabernet",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Kendall Jackson Merlot",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Mondavi Cabernet",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Mondavi Merlot",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Clos du Bois Merlot",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Ecco Domani Merlot",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Harrow Ridge Pinot Noir",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Bolla Valpolicella",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Siker Oak Cabernet (Napa)",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Caymus Cabernet (Napa)",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Beringer White Zinfandel",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Kendall Jackson Chardonnay",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Kendall Jackson Riesling",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Clos du Bois Chardonnay",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Ecco Domani Pinot Griggio",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Chateau St. Michelle Riesling",
+                    "description": "Glass / Bottle",
+                    "price": null
+                },
+                {
+                    "name": "Merlot",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Cabernet Sauvignon",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Chardonnay",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "White Zinfandel",
+                    "description": null,
+                    "price": null
+                },
+                {
+                    "name": "Sake (Small)",
+                    "description": "Hot or cold",
+                    "price": "$6.00"
+                },
+                {
+                    "name": "Sake (Large)",
+                    "description": "Hot or cold",
+                    "price": "$12.00"
+                },
+                {
+                    "name": "Plum Wine (Glass)",
+                    "description": null,
+                    "price": "$8.25"
+                },
+                {
+                    "name": "Plum Wine (Bottle)",
+                    "description": null,
+                    "price": "$28.00"
+                },
+                {
+                    "name": "Cherry Wine (Glass)",
+                    "description": null,
+                    "price": "$8.25"
+                },
+                {
+                    "name": "Cherry Wine (Bottle)",
+                    "description": null,
+                    "price": "$28.00"
+                }
+            ]
+        },
+        "Sake": {
+            "image": "../images/menus/hibachi/sake.jpg",
+            "description": null,
+            "items": [
+                {
+                    "name": "Black & Gold",
+                    "description": "Small, Large, Bottle (Sizes",
+                    "price": null
+                },
+                {
+                    "name": "Nigori",
+                    "description": "By bottle only",
+                    "price": null
+                },
+                {
+                    "name": "Zipang Sparkling",
+                    "description": "By bottle only",
+                    "price": null
+                }
+            ]
+        },
+        "Specialty Cocktails": {
+            "image": "../images/menus/hibachi/maitais.png",
+            "description": null,
+            "items": [
+                {
+                    "name": "Mai Tai",
+                    "description": "Bacardi Superior, Bacardi gold, Bacardi 151, Triple Sec, Orange/Pineapple juices, grenadine",
+                    "price": null
+                },
+                {
+                    "name": "Hurricane Tae",
+                    "description": "Myers Rum, Bacardi Superior, Bacardi 151, Triple Sec, Orange/Pineapple juices, Grenadine",
+                    "price": null
+                },
+                {
+                    "name": "Top Shelf Margarita",
+                    "description": "Sauza Tres Generaciones Anejo, grand Marnier, Lime Juice, Sweet & Sour",
+                    "price": null
+                },
+                {
+                    "name": "Shogun Long Island Tea",
+                    "description": "Vodka, gin, Tequila, Ru, Triple Sec, Lime juice, Sweet & Sour & a splash of Coke",
+                    "price": null
+                },
+                {
+                    "name": "Japanese Zombie",
+                    "description": "Myers Rum, Bacardi Superior, Bacardi 151, Amaretto, Blue Curacao, Sweet & Sour, & Orange Juice",
+                    "price": null
+                },
+                {
+                    "name": "Top Up",
+                    "description": "Absolut Citron, Malibu, Midori, Sour Apple Pucker, Butter Shots, Strawberry Schnapps, Pineapple Juice, & Blue Curacao",
+                    "price": null
+                }
+            ]
+        }
+    }
+
+}
