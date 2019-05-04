@@ -49,11 +49,13 @@ Route::post('/reservations/frontend-make', 'ReservationsController@frontendMake'
 // rules
 Route::post('/rules/get-times', 'RulesController@getTimes')->name('rules.getTimes');
 
-Route::domain(env('APP_SUB_URL'))->group(function () {
-    Route::group(['middleware' => ['subdomain']], function() {
+// Route::domain(env('APP_SUB_URL'))->group(function () {
+//     Route::group(['middleware' => ['subdomain']], function() {
         // Admin Access
-        Route::get('/signin', 'AdminController@signin')->name('admin.signin');
-        Route::get('/logout', 'AdminController@logout')->name('admin.logout');
+        // Route::get('/signin', 'AdminController@signin')->name('admin.signin');
+        // Route::get('/logout', 'AdminController@logout')->name('admin.logout');
+        Route::get('/admin/signin', 'AdminController@signin')->name('admin.signin');
+        Route::get('/admin/logout', 'AdminController@logout')->name('admin.logout');
 
         Route::post('/authenticate', 'AdminController@authenticate')->name('admin.auth');
         // Redirects if role_id > 3 (employee) or guests, check middleware/Authentice class if need to change
@@ -128,7 +130,7 @@ Route::domain(env('APP_SUB_URL'))->group(function () {
             Route::post('/rules/store-options', 'RulesController@storeOptions')->name('rules.storeoptions');
             Route::get('/rules', 'RulesController@index')->name('rules.index');
         });
-    });
+//     });
 
-});
+// });
 Auth::routes();
