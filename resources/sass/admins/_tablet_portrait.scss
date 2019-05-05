@@ -1,7 +1,7 @@
 #admin .container {
     min-height: 400px;
     padding: 15px;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 150px);
 }
 .container-rules {
     grid-template-columns: repeat(auto-fill, minmax(350px,1fr));

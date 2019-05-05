@@ -51,7 +51,7 @@
   #admin .container {
     min-height: 400px;
     padding: 15px;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 150px);
   }
   .container-rules {
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -66,7 +66,7 @@
   #admin .container {
     min-height: 300px;
     padding: 15px;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 150px);
   }
   #reservation-form-card {
     height: 675px;
@@ -119,9 +119,9 @@
 */
 @media (min-width: 481px) and (max-width: 767px) {
   #admin .container {
-    min-height: 250px;
+    min-height: 400px;
     padding: 15px;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 120px);
   }
   #reservation-form-card {
     height: 675px;
@@ -166,7 +166,7 @@
   #admin .container {
     min-height: 300px;
     padding: 15px;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 110px);
   }
   #admin main {
     -ms-grid-row: 2;
