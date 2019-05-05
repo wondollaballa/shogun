@@ -91,8 +91,9 @@ class Reservation extends Model
                 $dayTime = $requested_date->format('g:ia');
                 $end = $requested_date->addMinutes($interval)->format('Y-m-d H:i:s');
                 $hibachiSeating = ($value->hibachi == 1) ? $value->party_size.'H' : $value->party_size.'R';
+                $special_request = (isset($value->special_request)) ? '- '.$value->special_request : '-';
 
-                $titleBase = (is_null($value->special_request)) ? $hibachiSeating - $value->name : "$hibachiSeating - $value->name - $value->special_request";
+                $titleBase = ($special_request == '-') ? "$hibachiSeating - $value->name" : "$hibachiSeating - $value->name - $value->special_request";
                 $checkFinished = ($value->status == 3) ? true : false;
                 $checkNoShow = (!$checkFinished && $value->no_show == true && $value->status == 2);
                 $checkEditable = ($checkFinished) ? false : true;
