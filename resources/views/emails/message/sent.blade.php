@@ -1,6 +1,6 @@
 @component('mail::message')
 <br>
-{{ $message->message }}
-<br>
-** This is an automated message send from our homepage. **
+<p>{{ $message->message }}</p>
+<br><br><br/>
+<p>** This is an automated message send from our homepage. **</p>
 @endcomponent
