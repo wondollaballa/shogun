@@ -22,6 +22,7 @@ export default class Calendar extends Vue  {
     eventDay: any[] = [];
     eventMonth: any[] = [];
     editable: boolean = false;
+    calendarDate: any = null;
 
     public get businessHours(){
         return JSON.parse(this.$props.storeHours);
@@ -82,7 +83,7 @@ export default class Calendar extends Vue  {
         }).then((response) => {
             const allDay = JSON.parse(response.data);
             this.setEvents(allDay);
-            this.makeDailyCalendar();
+            this.makeDailyCalendar(this.calendarDate);
         }).catch(e => {
         });
 
@@ -131,6 +132,13 @@ export default class Calendar extends Vue  {
             scrollTime: time,
             contentHeight,
             events: this.eventDay,
+            dayClick: (e) => {
+                this.calendarDate = e;
+            },
+            viewRender: (e) => {
+                const dateSelected = this.calendar.fullCalendar('getDate');
+                this.calendarDate = dateSelected;
+            },
             eventClick: (e) => {
                 const eventId: number = e.id as number;
                 this.getEventById(eventId);
@@ -139,6 +147,7 @@ export default class Calendar extends Vue  {
                 this.$root.$emit('worker-ticker-pause');
                 const id = d.id;
                 const requested: any = d.start;
+                this.calendarDate = requested;
                 axios.post('/reservations/update-time/'+id, {
                     requested: requested.format('YYYY-MM-DD HH:mm:ss')
                 }).then((response: any) => {
@@ -168,6 +177,7 @@ export default class Calendar extends Vue  {
             displayEventTime: false,
             editable: false,
             eventClick: (e: any) => {
+                this.calendarDate = e.start;
                 this.makeDailyCalendar(e.start);
             }
         });
@@ -199,7 +209,7 @@ export default class Calendar extends Vue  {
         this.calendar.fullCalendar('rerenderEvents');
     }
     private setDay(btn: HTMLButtonElement): void {
-        this.makeDailyCalendar();
+        this.makeDailyCalendar(this.calendarDate);
         // add primary to month
         btn.classList.add('pure-button-primary');
     }

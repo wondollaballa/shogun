@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+        <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
         <meta name="description" content="Shogun Hibachi in Tyler, Texas">
         <meta name="author" content="Wondo Choung">
         <meta name="keyword" content="Shogun, Hibachi, Japanese, Authentic, Restaurant, Tyler, Texas, Sushi, Show, Entertainment, Reservations">
@@ -19,7 +20,7 @@
         <link rel="stylesheet" type="text/css" href="{{ mix('/css/admin.css') }}">
         <!-- Main styles for this application -->
         @yield('styles')
-        
+
     </head>
 
     <body>
@@ -28,21 +29,21 @@
             </admin-navbar>
             <admin-leftbar id="navbar-left">
             </admin-leftbar>
-            <admin-rightbar id="navbar-right" 
-                            logout="{!! route('admin.logout') !!}" 
+            <admin-rightbar id="navbar-right"
+                            logout="{!! route('admin.logout') !!}"
                             setup="{!! route('admin.logout') !!}">
             </admin-rightbar>
-            
+
             <main class="main-content">
                 <admin-alert alert="{{ json_encode(Session::get('alert')) }}" timer="5000"></admin-alert>
                 @yield('content')
             </main>
-           
+
             <!-- Footer -->
 
             @yield('modals')
         </div>
-        
+
         <!-- Setup Scripts -->
         <script src="{{ mix('/js/admin_dashboard.js') }}"></script>
         <!-- Custom scripts required by this view -->
