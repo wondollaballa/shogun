@@ -40,3 +40,14 @@
 .modal-dialog {
     height: 95vh;
 }
+
+//messages
+#message-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'a a a'
+        'b b b'
+        'c c c';
+    grid-template-rows: max-content max-content max-content;
+}

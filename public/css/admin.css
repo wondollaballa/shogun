@@ -7482,6 +7482,13 @@ fieldset {
   .modal-dialog {
     height: 95vh;
   }
+  #message-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'a a a' 'b b b' 'c c c';
+    grid-template-rows: -webkit-max-content -webkit-max-content -webkit-max-content;
+    grid-template-rows: max-content max-content max-content;
+  }
 }
 
 /* 
@@ -7559,5 +7566,12 @@ fieldset {
   }
   .modal-dialog {
     width: 100vw;
+  }
+  #message-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'a a a' 'b b b' 'c c c';
+    grid-template-rows: -webkit-max-content -webkit-max-content -webkit-max-content;
+    grid-template-rows: max-content max-content max-content;
   }
 }
