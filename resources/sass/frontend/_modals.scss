@@ -12,6 +12,7 @@
     padding: 0;
     display: flex;
     border: none;
+    z-index: 999;
 }
 .modal.opened {
     display:flex;

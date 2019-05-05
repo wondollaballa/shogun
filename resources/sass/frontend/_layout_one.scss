@@ -5,7 +5,7 @@ body {
 	position: relative;
 	display: grid;
 	width: 100vw;
-	grid-template-areas: 
+	grid-template-areas:
 		'head head head head head head'
 		'navi navi navi navi navi navi'
 		'cola cola cola colb colb colb'
@@ -40,7 +40,6 @@ body {
 	display: flex;
 	justify-self: center;
 	align-self:center;
-	background-image: url('../images/shogun_2.png') !important;
 	background-color: white;
 	background-size: 125px !important;
 	background-repeat: no-repeat !important;
@@ -71,7 +70,7 @@ body {
 	font-size: 0.9rem;
 	padding: 0;
 	margin: 0;
-	
+
 }
 
 .reservation-form h5 {
@@ -100,7 +99,7 @@ body {
 .nav-items.active {
 	font-weight: bolder !important;
 	border-bottom: 3px solid rgb(255, 0, 0);
-	
+
 }
 
 #nav-grid-mobile {
@@ -125,10 +124,10 @@ body {
 	align-content: center;
 }
 #nav-grid a.center {
-	
+
 	justify-items: center;
 	justify-content: center;
-	
+
 }
 #nav-grid a img {
 	height: 50px;
@@ -156,7 +155,7 @@ body {
 	  -webkit-transform: scale(1.0);
 	}
   }
-  
+
   @keyframes pulse {
 	0% {
 	  transform: scale(1);
@@ -170,7 +169,7 @@ body {
   }
 .content-image-container {
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
         '. aui .';
 }
 
@@ -185,7 +184,7 @@ body {
     justify-self: center;
     -ms-flex-item-align: center;
     align-self: center;
-    
+
     background-color: white;
     background-size:cover;
     background-repeat: no-repeat !important;

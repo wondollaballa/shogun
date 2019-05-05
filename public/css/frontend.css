@@ -722,7 +722,6 @@ body {
   justify-self: center;
   -ms-flex-item-align: center;
       align-self: center;
-  background-image: url("../images/shogun_2.png") !important;
   background-color: white;
   background-size: 125px !important;
   background-repeat: no-repeat !important;
@@ -1019,6 +1018,7 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   border: none;
+  z-index: 999;
 }
 
 .modal.opened {
@@ -2019,7 +2019,6 @@ h6 {
     justify-self: center;
     -ms-flex-item-align: center;
         align-self: center;
-    background-image: url("../images/shogun_2.png") !important;
     background-color: white;
     background-size: 100px !important;
     background-repeat: no-repeat !important;

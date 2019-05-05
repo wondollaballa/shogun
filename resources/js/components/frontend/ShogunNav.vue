@@ -1,7 +1,7 @@
 <template>
     <nav>
         <div id="nav-grid">
-        <a class="middle"><img :src="imageSrc"/></a>
+        <a class="middle" href="/"><img :src="imageSrc"/></a>
         <a class="nav-items center middle" :class="(pointReached === 'about-us') ? 'active' : '' " @click="scrollToElement('about-us')">about us</a>
         <a class="nav-items center middle" :class="(pointReached === 'the-experience') ? 'active' : '' " @click="scrollToElement('the-experience')">the experience</a>
         <a class="nav-items center middle" :class="(pointReached === 'our-menu') ? 'active' : '' " @click="scrollToElement('our-menu')">our menu</a>
