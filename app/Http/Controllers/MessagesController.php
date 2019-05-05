@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Message;
+use App\Rule;
 use App\Events\NotificationsEvent;
 use App\Events\MessageEvent;
 use Carbon\Carbon;
@@ -15,11 +16,13 @@ class MessagesController extends Controller
 
     public function index()
     {
+        $rule = Rule::find(1);
+        $reservation_rules = $rule->prepareForReservation(date('Y'), date('m'));
         $messages = new Message;
         $new = json_encode($messages->getNewMessages());
         $viewed = json_encode($messages->getViewedMessages());
         $replied = json_encode($messages->getRepliedMessages());
-        return view('messages.index', compact(['new', 'viewed', 'replied']));
+        return view('messages.index', compact(['new', 'viewed', 'replied','reservation_rules']));
     }
 
      /**

@@ -18,12 +18,12 @@
         </div>
     </admin-card>
 
-   
+
 </div>
 @endsection
 
 @section('modals')
 <admin-modal header title="Reservation Confirmation" >
-    
+
 </admin-modal>
 @endsection

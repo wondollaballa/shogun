@@ -1,3 +1,7 @@
+#admin .container {
+    min-height: 300px;
+    padding: 15px;
+}
 #admin main{
     -ms-grid-row: 2;
     -ms-grid-column: 2;
@@ -65,4 +69,12 @@
 
 .container-rules {
     grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
+}
+
+// modals
+.modal.opened {
+    justify-content: center;
+}
+.modal-dialog {
+    width: 100vw;
 }

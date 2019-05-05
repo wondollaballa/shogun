@@ -2,7 +2,7 @@
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 999; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -16,6 +16,7 @@
 .modal.opened {
     display:flex;
     align-items: center;
+    justify-content: center;
 }
 
 /* Modal Content/Box */
@@ -23,7 +24,7 @@
     display:grid;
     grid-template-rows: 50px 1fr 50px;
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+
     border: 1px solid #888;
     width: 70vw; /* Could be more or less, depending on screen size */
 }

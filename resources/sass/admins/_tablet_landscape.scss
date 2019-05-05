@@ -1,4 +1,7 @@
-
+#admin .container {
+    min-height: 300px;
+    padding: 15px;
+}
 #reservation-form-card {
     height: 675px;
 }
@@ -39,4 +42,15 @@
 
 .container-rules #card-storehours {
     grid-area: b;
+}
+
+//modals
+.modal.opened {
+    justify-content: center;
+}
+.modal-body {
+    overflow-y: auto;
+}
+.modal-dialog {
+    height: 100vh;
 }

@@ -11,4 +11,6 @@
 @endsection
 
 @section('modals')
+<admin-modal header id="reservation-details" title="Reservation Details" rule="{{ $reservation_rules }}"></admin-modal>
+<delete-confirmation header title="Are you sure?" id="reservation-delete-confirm"></delete-confirmation>
 @endsection

@@ -48,6 +48,10 @@
 ##Screen = B/w 768px to 1024px
 */
 @media (min-width: 768px) and (max-width: 1024px) {
+  #admin .container {
+    min-height: 400px;
+    padding: 15px;
+  }
   .container-rules {
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
@@ -58,6 +62,10 @@
 ##Screen = B/w 768px to 1024px
 */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  #admin .container {
+    min-height: 300px;
+    padding: 15px;
+  }
   #reservation-form-card {
     height: 675px;
   }
@@ -90,6 +98,17 @@
   .container-rules #card-storehours {
     grid-area: b;
   }
+  .modal.opened {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .modal-body {
+    overflow-y: auto;
+  }
+  .modal-dialog {
+    height: 100vh;
+  }
 }
 
 /* 
@@ -97,6 +116,10 @@
 ##Screen = B/w 481px to 767px
 */
 @media (min-width: 481px) and (max-width: 767px) {
+  #admin .container {
+    min-height: 250px;
+    padding: 15px;
+  }
   #reservation-form-card {
     height: 675px;
   }
@@ -119,6 +142,17 @@
   .container-rules {
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
+  .modal.opened {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .modal-body {
+    overflow-y: auto;
+  }
+  .modal-dialog {
+    height: 100vh;
+  }
 }
 
 /* 
@@ -126,6 +160,10 @@
 ##Screen = B/w 320px to 479px
 */
 @media (min-width: 320px) and (max-width: 480px) {
+  #admin .container {
+    min-height: 300px;
+    padding: 15px;
+  }
   #admin main {
     -ms-grid-row: 2;
     -ms-grid-column: 2;
@@ -183,6 +221,14 @@
   }
   .container-rules {
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+  .modal.opened {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .modal-dialog {
+    width: 100vw;
   }
 }
 

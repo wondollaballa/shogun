@@ -48,7 +48,7 @@ export default class SearchResults extends Vue implements ISearchResults {
     }
 
     private setClickedRow(key: number) {
-        // send event to modal 
+        // send event to modal
         const reservation: IReservation = this.searchResults[key];
         const dateRequested = moment(reservation.requested);
         this.$root.$emit('open-modal', '#reservation-details', reservation);

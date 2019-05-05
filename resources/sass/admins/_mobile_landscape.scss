@@ -1,4 +1,7 @@
-
+#admin .container {
+    min-height: 250px;
+    padding: 15px;
+}
 #reservation-form-card {
     height: 675px;
 }
@@ -23,4 +26,16 @@
 
 .container-rules {
     grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
+}
+
+//modals
+
+.modal.opened {
+    justify-content: center;
+}
+.modal-body {
+    overflow-y: auto;
+}
+.modal-dialog {
+    height: 100vh;
 }
