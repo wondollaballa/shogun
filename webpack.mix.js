@@ -44,6 +44,4 @@ mix.ts('resources/js/app.ts', 'public/js')
 		resolve: {
 			extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"]
 		}
-	}).copyDirectory('resources/images', 'public/images')
-	// .js('resources/js/globals/shogun.js','public/js')
-	.sourceMaps();
+	}).sourceMaps();
