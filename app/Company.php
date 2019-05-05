@@ -69,7 +69,7 @@ class Company extends Model
         $rule = Rule::find(1);
 
         $content = [
-            'phone' => $this->phone,
+            'phone' => $this->formatPhone($this->phone),
             'street' => $this->street,
             'city' => $this->city,
             'state' => $this->state,
