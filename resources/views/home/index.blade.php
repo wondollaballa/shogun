@@ -10,7 +10,7 @@
 @endsection
 
 @section('nav')
-    <shogun-nav image-src="{{ asset('./images/shogun_icon.png') }}"></shogun-nav>
+    <shogun-nav image-src="{{ asset('./images/Shogun_icon.png') }}"></shogun-nav>
 
 @endsection
 
