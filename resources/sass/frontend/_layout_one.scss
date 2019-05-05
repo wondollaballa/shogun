@@ -137,7 +137,19 @@ body {
 
 #container footer {
 	grid-area: foot;
-	border: 1px solid blue;
+    background-color: $black;
+
+}
+
+footer {
+    p, blockquote {
+        font-size: 1.1rem !important;
+        color: $white;
+        text-align: center;
+        font-weight: 100;
+        font-size: .8rem;
+        margin: 0;
+    }
 }
 
 .main-content {
