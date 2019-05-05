@@ -4,6 +4,6 @@
 <br>
 <p>from,</p>
 <p>{{ $message->name }}</p>
-<br><br>
+<br>
 <p style="text-align:center;"><b><i>** This is an automated message sent from our homepage. **</i></b></p>
 @endcomponent

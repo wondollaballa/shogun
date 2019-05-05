@@ -39,9 +39,9 @@ class Message extends Model
 
     private function formatForAdmin($data) {
         $data->map(function($v, $k) {
-            $v->formatViewed = ($v->viewed) ? Carbon::createFromFormat('Y-m-d H:i:s', $v->viewed)->format('D n/d/Y g:ia') : null;
-            $v->formatCreatedAt = Carbon::createFromFormat('Y-m-d H:i:s', $v->created_at)->format('D n/d/Y g:ia');
-            $v->formatUpdatedAt = Carbon::createFromFormat('Y-m-d H:i:s', $v->updated_at)->format('D n/d/Y g:ia');
+            $v->formatViewed = ($v->viewed) ? Carbon::createFromFormat('Y-m-d H:i:s', $v->viewed)->setTimezone(env('APP_TIMEZONE'))->format('D n/d/Y g:ia') : null;
+            $v->formatCreatedAt = Carbon::createFromFormat('Y-m-d H:i:s', $v->created_at)->setTimezone(env('APP_TIMEZONE'))->format('D n/d/Y g:ia');
+            $v->formatUpdatedAt = Carbon::createFromFormat('Y-m-d H:i:s', $v->updated_at)->setTimezone(env('APP_TIMEZONE'))->format('D n/d/Y g:ia');
             return $v;
         });
         return $data;
