@@ -2,7 +2,7 @@
     <div id="shogun-footer">
         <br/>
         <p>&copy; {{ year }} Shogun of Japan, all rights reserved.</p>
-        <blockquote>5515 St. Broadway Ave., <br/>Tyler, TX 75701<br/>(903) 561-9890</blockquote>
+        <blockquote>{{ store.street }}, <br/>{{ store.city }}, {{ store.city }} {{ store.zipcode }}<br/>{{ store.phone }}</blockquote>
     </div>
 </template>
 

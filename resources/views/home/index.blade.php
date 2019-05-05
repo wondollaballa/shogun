@@ -22,7 +22,7 @@
 @endsection
 
 @section('footer')
-    <shogun-footer></shogun-footer>
+    <shogun-footer company-info="{{ $contactUs }}"></shogun-footer>
 @endsection
 
 @section('modals')
