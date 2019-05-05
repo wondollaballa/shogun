@@ -44,9 +44,8 @@ class ReservationReminders extends Command
         $res = new Reservation;
         $carbon = new Carbon;
         $minutes = 1;
-        $now = $carbon->now(env('APP_TIMEZONE'))->addMinutes($minutes)->format('Y-m-d 00:00:00');
-        $end = $carbon->now(env('APP_TIMEZONE'))->addMinutes($minutes)->format('Y-m-d 23:59:59');
-        $reservations = $res->whereBetween('requested',[$now, $end])->get();
+        $now = $carbon->now(env('APP_TIMEZONE'))->addMinutes($minutes)->format('Y-m-d H:i:00');
+        $reservations = $res->where('requested',$now)->get();
         if (count($reservations) > 0) {
             foreach ($reservations as $value) {
                 $email = $value->email;
