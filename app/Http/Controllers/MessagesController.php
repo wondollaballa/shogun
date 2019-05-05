@@ -7,6 +7,8 @@ use App\Message;
 use App\Events\NotificationsEvent;
 use App\Events\MessageEvent;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MessageSent;
 
 class MessagesController extends Controller
 {
@@ -37,8 +39,11 @@ class MessagesController extends Controller
         $messages->name = trim($request->name);
         $messages->email = trim($request->email);
         $messages->message = trim($request->message);
-        $messages->save();
-
+        if ($messages->save()) {
+            // send email
+            Mail::to(env('MANAGER_EMAIL'))
+                ->send(new MessageSent($messages->id));
+        }
         event(new NotificationsEvent());
         event(new MessageEvent());
         return response()->json(['success'=>'Message has successfully sent!']);
