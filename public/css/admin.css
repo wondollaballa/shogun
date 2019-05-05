@@ -7377,6 +7377,7 @@ fieldset {
   #admin .container {
     min-height: 400px;
     padding: 15px;
+    height: calc(100vh - 100px);
   }
   .container-rules {
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -7391,6 +7392,7 @@ fieldset {
   #admin .container {
     min-height: 300px;
     padding: 15px;
+    height: calc(100vh - 100px);
   }
   #reservation-form-card {
     height: 675px;
@@ -7445,6 +7447,7 @@ fieldset {
   #admin .container {
     min-height: 250px;
     padding: 15px;
+    height: calc(100vh - 100px);
   }
   #reservation-form-card {
     height: 675px;
@@ -7489,6 +7492,7 @@ fieldset {
   #admin .container {
     min-height: 300px;
     padding: 15px;
+    height: calc(100vh - 100px);
   }
   #admin main {
     -ms-grid-row: 2;
