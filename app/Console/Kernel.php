@@ -13,8 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        // 'App\Console\Commands\ReservationReminders',
-        Commands\ReservationReminders::class
+        'App\Console\Commands\ReservationReminders',
+        // Commands\ReservationReminders::class
     ];
 
     /**
@@ -25,8 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('reservation:reminders')
-                 ->everyMinute();
+        $schedule->command('reservation:reminders')->everyMinute();
     }
 
     /**
