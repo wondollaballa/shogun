@@ -16,9 +16,9 @@ class MessageSent extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($id)
     {
-        //
+        $this->id = $id;
     }
 
     /**
