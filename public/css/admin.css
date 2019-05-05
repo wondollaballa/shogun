@@ -7435,7 +7435,7 @@ fieldset {
     overflow-y: auto;
   }
   .modal-dialog {
-    height: 100vh;
+    height: 90vh;
   }
 }
 
@@ -7480,7 +7480,7 @@ fieldset {
     overflow-y: auto;
   }
   .modal-dialog {
-    height: 100vh;
+    height: 95vh;
   }
 }
 
