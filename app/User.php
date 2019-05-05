@@ -40,4 +40,59 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Company::class, 'company_id', 'id');
     }
+
+    public function getAndFormatAll()
+    {
+        $users = $this->format($this->where('role_id','!=',1)->orderBy('last_name', 'asc')->get());
+        return json_encode($users);
+    }
+
+    public function format($data)
+    {
+
+        $data->map(function($v, $k) {
+            if($v->phone) {
+                $v->phoneFormatted = $this->formatPhone($v->phone);
+                $v->role = $this->getRoleById($v->role_id);
+            }
+            return $v;
+        });
+
+        return $data;
+    }
+
+    private function getRoleById($id)
+    {
+        $roles = [
+            1 => 'Superadmin',
+            2 => 'Manager',
+            3 => 'Employee'
+        ];
+
+        return $roles[$id];
+    }
+
+    private function formatPhone($phone_number) {
+        if (!isset($phone_number)) return;
+
+        switch (strlen($phone_number)) {
+            case 10:
+            $split1 = substr($phone_number,0,3);
+            $split2 = substr($phone_number,3,3);
+            $split3 = substr($phone_number,6,4);
+            return "($split1) $split2-$split3";
+            break;
+
+            case 7:
+            $split1 = substr($phone_number,0,3);
+            $split2 = substr($phone_number,3,4);
+            return "$split1-$split2";
+            break;
+
+            default:
+            return $phone_number;
+            break;
+
+        }
+	}
 }

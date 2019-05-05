@@ -9,13 +9,13 @@
         </div>
         <div id="nav-right-content" v-if="state === 'opened'">
             <!-- config -->
-            <!-- <a v-bind:href="setup" class="right-row">
-                <span>settings</span>
+            <a v-bind:href="users" class="right-row">
+                <span>Users</span>
 
                 <div class="">
                     <i class="fas fa-sliders-h"></i>
                 </div>
-            </a> -->
+            </a>
             <!-- logout -->
             <a v-bind:href="logout" class="right-row">
                 <span>logout</span>

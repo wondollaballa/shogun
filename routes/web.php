@@ -97,14 +97,6 @@ Route::post('/rules/get-times', 'RulesController@getTimes')->name('rules.getTime
             Route::patch('/messages/update/{message}', 'MessagesController@update')->name('message.update');
             Route::get('/messages', 'MessagesController@index')->name('message.index');
 
-            // users
-            Route::get('/users', 'UsersController@index')->name('user.index');
-            Route::get('/users/create', 'UsersController@create')->name('user.create');
-            Route::delete('/users/{user}', 'UsersController@destroy')->name('user.destroy');
-            Route::post('/users/store', 'UsersController@store')->name('user.store');
-            Route::get('/users/{user}/show', 'UsersController@show')->name('user.show');
-            Route::get('/users/{user}/edit', 'UsersController@edit')->name('user.edit');
-            Route::patch('/users/{user}', 'UsersController@update')->name('user.update');
 
             // Reservations
             Route::get('/reservations', 'ReservationsController@index')->name('reservations.index');

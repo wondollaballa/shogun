@@ -8,16 +8,15 @@ interface IRightbar {
 @Component({
     props: {
         logout: String,
-        setup: String,
+        users: String,
     }
-    
+
 })
 export default class Rightbar extends Vue implements IRightbar {
     title = '';
     titleSrc = '';
     state = 'closed';
     logout: string = this.logout;
-    setup: string = this.setup;
     csrf = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).getAttribute('content');
     element = document.querySelector('nav#navbar') as HTMLElement;
     // computed

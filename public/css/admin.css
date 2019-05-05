@@ -7184,6 +7184,39 @@ fieldset {
   font-weight: 100;
 }
 
+#users-table {
+  height: 100%;
+  min-height: 200px;
+}
+
+#user-modal input.errors {
+  border: 1px solid red;
+  color: red;
+  background-color: pink;
+}
+
+#user-modal input.errors::-webkit-input-placeholder {
+  color: red;
+}
+
+#user-modal input.errors::-moz-placeholder {
+  color: red;
+}
+
+#user-modal input.errors::-ms-input-placeholder {
+  color: red;
+}
+
+#user-modal input.errors::placeholder {
+  color: red;
+}
+
+.error-label {
+  color: red;
+  font-weight: 100;
+  font-size: .9rem;
+}
+
 .tgl-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;

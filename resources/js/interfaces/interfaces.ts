@@ -43,7 +43,24 @@ export type Message = IWorkerStart |
     ITest |
     IExpiredReservations;
 //#endregion worker
-
+//#region admin
+export interface IUsers {
+    id: number,
+    role_id: number,
+    username: string,
+    first_name: string,
+    last_name: string,
+    phone: string,
+    email: string,
+    password?: string,
+    remember_token?: string,
+    deleted_at?: string | null,
+    created_at?: string,
+    updated_at?: string,
+    phoneFormatted?: string,
+    role?: string
+}
+//#endregion
 //#region components
 export interface IBlackoutDate {
     [date: string]: string

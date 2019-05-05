@@ -31,7 +31,7 @@
             </admin-leftbar>
             <admin-rightbar id="navbar-right"
                             logout="{!! route('admin.logout') !!}"
-                            setup="{!! route('admin.logout') !!}">
+                            users="{!! route('user.index') !!}">
             </admin-rightbar>
 
             <main class="main-content">

@@ -25,12 +25,10 @@ class CheckRole
             } else {
                 // Set intended page
                 session()->put('intended_url',$request->url());
-                // flash('You are not authorized to view this page.')->warning()->important();
                 return redirect()->route('admin.signin');
             }
         }
         if (Auth::user()->role_id > $role) {
-            // flash()->message('You are not authorized to view this page')->warning()->important();
             return redirect()->back();
         }
         return $next($request);
