@@ -51,6 +51,7 @@ class ReservationReminders extends Command
                 $id = $value->id;
                 Mail::to($email)
                     ->send(new ReservationReminder($id));
+
             }
         }
 

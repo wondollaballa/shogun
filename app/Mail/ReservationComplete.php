@@ -34,7 +34,7 @@ class ReservationComplete extends Mailable
         $reservations = new Reservation;
         $reservation = $reservations->getReservationWithFormat($this->id);
 
-        return $this->subject('Reservation details and confirmation')
+        return $this->subject('Shogun - Reservation details and confirmation')
             ->markdown('emails.reservations.complete', compact(['company', 'reservation']));
     }
 }

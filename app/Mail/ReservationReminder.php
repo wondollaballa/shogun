@@ -34,7 +34,7 @@ class ReservationReminder extends Mailable
         $reservations = new Reservation;
         $reservation = $reservations->getReservationWithFormat($this->id);
 
-        return $this->subject('Reservation reminder')
+        return $this->subject('Shogun reservation reminder')
             ->markdown('emails.reservations.reminder', compact(['company', 'reservation']));
     }
 }
