@@ -31,7 +31,7 @@ class MessageSent extends Mailable
         $messages = new Message;
         $message = $messages->find($this->id);
 
-        return $this->subject('Shogun - Message from: '+$message->name)
+        return $this->subject('Shogun - Message from: '.$message->name)
             ->markdown('emails.message.sent', compact(['message']));
     }
 }
