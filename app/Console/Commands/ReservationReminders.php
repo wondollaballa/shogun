@@ -43,7 +43,7 @@ class ReservationReminders extends Command
         // get all reservations 15 minutes from now
         $res = new Reservation;
         $carbon = new Carbon;
-        $minutes = 1;
+        $minutes = 15;
         $now = $carbon->now(env('APP_TIMEZONE'))->addMinutes($minutes)->format('Y-m-d H:i:00');
         $reservations = $res->where('requested',$now)->get();
         if (count($reservations) > 0) {
