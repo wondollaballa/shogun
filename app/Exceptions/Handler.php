@@ -34,7 +34,14 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
-        parent::report($exception);
+        if(!config('app.debug')) {
+            if ($this->shouldReport($exception)) {
+                $this->logError($exception);
+            }
+        }
+        if(env('APP_ENV') == 'local'){
+            parent::report($exception);
+        }
     }
 
     /**
@@ -46,6 +53,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if(!config('app.debug')) {
+            if($this->shouldReport($exception)){
+                return response()->view('errors.500', compact('exception'));
+            }
+        }
         return parent::render($request, $exception);
     }
 }
