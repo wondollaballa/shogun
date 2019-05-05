@@ -152,8 +152,6 @@ export default class ReservationForm extends Vue {
         if (this.validation.name && this.validation.phone && this.validation.email) {
             this.step = 2;
         }
-
-
     }
 
     private preceedStep()
@@ -164,29 +162,27 @@ export default class ReservationForm extends Vue {
     private finishReservation()
     {
         this.$root.$emit('open-finish-modal');
-        if (this.validation.name && this.validation.phone && this.validation.email && this.validation.party_size && this.validation.date && this.validation.time) {
-            axios.post('/reservations/frontend-make',{
-                'name': this.reservation.name,
-                'phone': this.reservation.phone,
-                'email': this.reservation.email,
-                'party_size': this.reservation.party_size,
-                'date': this.reservation.date,
-                'time': this.reservation.time,
-                'special_request': this.reservation.special_request,
-                'hibachi': this.reservation.hibachi
-            }).then(response => {
-
-                if (response.status) {
-                    // show modal
-                    setTimeout(() => {
+        setTimeout(() => {
+            if (this.validation.name && this.validation.phone && this.validation.email && this.validation.party_size && this.validation.date && this.validation.time) {
+                axios.post('/reservations/frontend-make',{
+                    'name': this.reservation.name,
+                    'phone': this.reservation.phone,
+                    'email': this.reservation.email,
+                    'party_size': this.reservation.party_size,
+                    'date': this.reservation.date,
+                    'time': this.reservation.time,
+                    'special_request': this.reservation.special_request,
+                    'hibachi': this.reservation.hibachi
+                }).then(response => {
+                    if (response.status) {
                         this.$root.$emit('finish-modal-step', 2);
-                    }, 2000);
-                }
+                    }
+                }).catch(e => {
+                    this.$root.$emit('finish-modal-step', 0);
+                });
+            }
+        }, 2000);
 
-            }).catch(e => {
-                this.$root.$emit('finish-modal-step', 0);
-            });
-        }
     }
 
     private focusSelect(name: string)

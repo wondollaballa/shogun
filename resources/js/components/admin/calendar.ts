@@ -144,7 +144,7 @@ export default class Calendar extends Vue  {
                 }).then((response: any) => {
                     const events = JSON.parse(response.data.calendar);
                     this.setEvents(events);
-                    this.makeDailyCalendar();
+                    this.makeDailyCalendar(requested);
                     const msg = response.data.message;
                     const type = (response.data.status) ? 'success' : 'error';
                     this.$root.$emit('toast', msg, type);
@@ -177,26 +177,6 @@ export default class Calendar extends Vue  {
         // add primary to month
         btn.classList.add('pure-button-primary');
     }
-
-    // private setWeek(btn: HTMLButtonElement): void {
-    //     this.removePrimary();
-    //     const time = moment().format('HH:00:00');
-    //     const contentHeight = (document.getElementById('calendar') as HTMLElement).clientHeight;
-
-    //     // set calendar view
-    //     this.calendar.fullCalendar('changeView', 'agendaWeek');
-    //     this.calendar.fullCalendar('option', {
-    //         nowIndicator: true,
-    //         slotDuration: this.slotDuration,
-    //         slotLabelInterval: this.slotDuration,
-    //         businessHours: this.businessHours,
-    //         scrollTime: time,
-    //         timezone: false,
-    //         contentHeight
-    //     });
-    //     // add primary to month
-    //     btn.classList.add('pure-button-primary');
-    // }
 
     private updateEvents(): void {
         // this.calendar.fullCalendar('updateEvents', this.eventDay);
