@@ -14,7 +14,7 @@
                  @click="openMenu('lunch', lunchKey)">
                 <div class="menu-card-top lazy" :style="{ backgroundImage: 'url('+lunchValue.image+')'  }"></div>
                 <div class="menu-card-bottom" :style="{ 'border-top': '2px solid blue'}">
-                    {{ lunchKey }}
+                    {{ lunchValue.name }}
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                  @click="openMenu('happy hour', hhKey)">
                 <div class="menu-card-top lazy" :style="{ backgroundImage: 'url('+hhValue.image+')'  }"></div>
                 <div class="menu-card-bottom" :style="{ 'border-top': '2px solid red'}">
-                    {{ hhKey }}
+                    {{ hhValue.name }}
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                  @click="openMenu('hibachi', hbKey)">
                 <div class="menu-card-top lazy" :style="{ backgroundImage: 'url('+hbValue.image+')'  }"></div>
                 <div class="menu-card-bottom" :style="{ 'border-top': '2px solid green'}">
-                    {{ hbKey }}
+                    {{ hbValue.name }}
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                  @click="openMenu('sushi', sKey)">
                 <div class="menu-card-top lazy" :style="{ backgroundImage: 'url('+sValue.image+')'  }"></div>
                 <div class="menu-card-bottom" :style="{ 'border-top': '2px solid yellow'}">
-                    {{ sKey }}
+                    {{ sValue.name }}
                 </div>
             </div>
         </div>
