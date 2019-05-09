@@ -38,20 +38,20 @@ class HomeController extends Controller
         $contactUs = $company->contactUs();
         $theExperience = $company->theExperience();
         // menu
-        $happyhour = json_decode(Storage::disk('local')->get('public/json/happyhour.json'));
-        $hibachi = json_decode(Storage::disk('local')->get('public/json/hibachi.json'));
-        $lunch = json_decode(Storage::disk('local')->get('public/json/lunch.json'));
-        $sushi = json_decode(Storage::disk('local')->get('public/json/sushi.json'));
+        // $happyhour = json_decode(Storage::disk('local')->get('public/json/happyhour.json'));
+        // $hibachi = json_decode(Storage::disk('local')->get('public/json/hibachi.json'));
+        // $lunch = json_decode(Storage::disk('local')->get('public/json/lunch.json'));
+        // $sushi = json_decode(Storage::disk('local')->get('public/json/sushi.json'));
 
-        $lunchMenu = new Menu;
-        $happyhourMenu = new Menu;
-        $hibachiMenu = new Menu;
-        $sushiMenu = new Menu;
+        // $lunchMenu = new Menu;
+        // $happyhourMenu = new Menu;
+        // $hibachiMenu = new Menu;
+        // $sushiMenu = new Menu;
 
-        $lunchMenu->createMenuFromJson('Lunch', $lunch);
-        $happyhourMenu->createMenuFromJson('Happy Hour', $happyhour);
-        $hibachiMenu->createMenuFromJson('Hibachi', $hibachi);
-        $sushiMenu->createMenuFromJson('Sushi',$sushi);
+        // $lunchMenu->createMenuFromJson('Lunch', $lunch);
+        // $happyhourMenu->createMenuFromJson('Happy Hour', $happyhour);
+        // $hibachiMenu->createMenuFromJson('Hibachi', $hibachi);
+        // $sushiMenu->createMenuFromJson('Sushi',$sushi);
 
         $lunch = Menu::find(1)->makeMenuSet();
         $happyhour = Menu::find(2)->makeMenuSet();
