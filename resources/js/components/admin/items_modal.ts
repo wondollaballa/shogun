@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { IMenuItem, IMenuSection } from '../../interfaces/interfaces';
+import { Watch } from 'vue-property-decorator';
+import { Debounce } from 'typescript-debounce';
 const Sortable = require('sortablejs');
 @Component({
     props: {
@@ -56,7 +58,7 @@ export default class ItemsModal extends Vue {
         let items: IMenuItem[] = [];
         el.forEach((v, k) => {
             const itemName = (v.querySelector('.itemName') as HTMLInputElement).value;
-            this.section.items!.map(item => {
+            this.saved!.map(item => {
                 if(item.name === itemName) {
                     item.order = k;
                     items.push(item);
@@ -65,9 +67,21 @@ export default class ItemsModal extends Vue {
             });
         });
         this.saved = items;
+
+    }
+    @Watch('saved')
+    onMenuChange()
+    {
+        this.updateSaved();
+    }
+    // methods
+    @Debounce({millisecondsDelay: 100})
+    private updateSaved() {
+
     }
 
     private addItem() {
+        const itemsCount = this.saved.length > 0 ? this.saved.length + 1 : 0;
         const item: IMenuItem = {
             id: null,
             menu_id: this.section.menu_id,
@@ -82,22 +96,28 @@ export default class ItemsModal extends Vue {
             updated_at: null,
             show: true,
             delete: false,
-            order: this.section.items!.length + 1
+            order: itemsCount
         }
-        this.section.items!.push(item);
+        this.saved.push(item);
     }
 
-    private removeItem(id: number) {
-        this.section.items!.map(item => {
-            if (id === item.id) {
-                item.delete = true;
+    private removeItem(id: number, key: number) {
+        this.saved!.map((item, k) => {
+            if (id) {
+                if (id === item.id) {
+                    item.delete = true;
+                }
+            } else {
+                if (k === key) {
+                    item.delete = true;
+                }
             }
             return item;
         });
     }
 
     private openDialog(section: IMenuSection) {
-        this.section = section;
+        this.saved = section.items!;
         this.resetRows();
         this.opened = true;
     }
@@ -108,6 +128,7 @@ export default class ItemsModal extends Vue {
     }
 
     private resetForm() {
+
         this.section = {
             id : 0,
             menu_id: 0,
@@ -127,7 +148,11 @@ export default class ItemsModal extends Vue {
     }
 
     private resetRows() {
-        const items = (this.section.items as IMenuItem[]);
+        if (this.saved === undefined) {
+            this.saved = [];
+            return;
+        }
+        const items = this.saved;
         items.map((v, k) => {
             v.show = false;
             return v;
@@ -136,12 +161,16 @@ export default class ItemsModal extends Vue {
 
     private activeRow(row: number) {
         this.resetRows();
-        (this.section.items as IMenuItem[])[row].show = true;
+        this.saved[row].show = true;
     }
 
     private saveItems() {
-        this.section.items = this.saved;
-        this.$root.$emit('update-menu-items', this.section.items);
+
+        this.$root.$emit('update-menu-items', this.saved);
         this.closeDialog();
+    }
+
+    private makeCopy(obj: any) {
+        return JSON.parse(JSON.stringify(obj));
     }
 }

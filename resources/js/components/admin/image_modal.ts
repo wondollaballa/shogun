@@ -35,7 +35,7 @@ export default class ImageModal extends Vue {
     private createFilepond() {
         const inputElement = document.querySelector('.fileUpload');
         this.pond = Filepond.create( inputElement );
-        Filepond.setOptions({
+        this.pond.setOptions({
             server: {
                 process: {
                     url: './menus/upload',
@@ -84,11 +84,7 @@ export default class ImageModal extends Vue {
         this.imagePath = null;
         this.section = null;
         this.keys = [];
-        const inputElement = document.querySelector<HTMLInputElement>('.fileUpload');
-        await this.pond.destroy(inputElement);
-        setTimeout(() => {
-            this.createFilepond();
-        });
+
 
     }
 

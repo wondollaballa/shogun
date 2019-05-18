@@ -10,7 +10,7 @@
                     <button v-show="!mValue.show" @click="openTierOneRow(mKey)">Open</button>
                     <button v-show="mValue.show" @click="closeTierOneRow(mKey)">Close</button>
                     <input class="pure-input-4 menu-name" v-model="mValue.name" @blur="makeEdits"/>
-                    <button @click="deleteMenu(mValue.id)">Delete</button>
+                    <button @click="deleteMenu(mValue.id, mKey)">Delete</button>
                 </div>
                 <div class='menu-content' v-show="mValue.show">
                     <textarea class="pure-input-1 menu-description" type="text" v-model="mValue.description"/>
@@ -19,16 +19,22 @@
                             <div class="menu-section-image" :style="{ backgroundImage: 'url('+msValue.image+')'}" @click="imageModalOpen(msValue)"></div>
                             <input class="menu-section-name" v-model="msValue.name" @blur="makeEdits"/>
                             <div class="menu-button-group">
-                                <button type="button" class="pure-button button-error pure-input-1-2" @click="deleteSection(mValue.id, msValue.id)">delete</button>
-                                <button type="button" class="pure-button button-secondary pure-input-1-2" @click="openItemsModal(msValue)">View</button>
+                                <button type="button" class="pure-button button-error pure-input-1-2" @click="deleteSection(mValue.id, msValue.id, [mKey, msKey])">delete</button>
+                                <button type="button" class="pure-button button-secondary pure-input-1-2" @click="openItemsModal(msValue, [mKey, msKey])">View</button>
                             </div>
                         </li>
                     </ul>
                     <br/><br/>
-                    <button class="pure-button button-success pure-u-1" @click="newSection">New {{ mValue.name }} Section</button>
+                    <button class="pure-button button-success pure-u-1" @click="addSection">New {{ mValue.name }} Section</button>
                 </div>
             </li>
         </ul>
+        <div>
+
+            <button class="pure-button pure-button-primary pure-u-1" @click="newMenuRow">+New Menu Row</button>
+            <br/><br/><br/>
+            <button class="pure-button pure-u-1-5" @click="importBase">Import Base Menu</button>
+        </div>
     </div>
 </template>
 

@@ -2,6 +2,8 @@
     overflow: hidden;
 }
 #items-modal .modal-dialog{
+    height: 100vh;
+    width: 100vw;
     max-height: 100vh;
     display: grid;
     grid-template-rows: min-content 1fr min-content;

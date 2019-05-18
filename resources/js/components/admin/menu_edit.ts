@@ -157,38 +157,43 @@ export default class MenuEdit extends Vue {
     }
 
 
-    private deleteMenu(id: number) {
+    private deleteMenu(id: number, key: number) {
         if(!id) {
-            return;
+            this.menus.splice(key, 1);
+
+        } else {
+            this.menus.map((menu, key) => {
+                if (menu.id === id) {
+                    menu.show = false;
+                    menu.delete = true;
+                }
+                return menu;
+            });
         }
-        this.menus.map((menu, key) => {
-            if (menu.id === id) {
-                menu.show = false;
-                menu.delete = true;
-            }
-            return menu;
-        });
+
         this.save = this.menus;
         this.edits++;
     }
 
-    private deleteSection(menu_id: number, section_id: number) {
+    private deleteSection(menu_id: number, section_id: number, keys: number[]) {
         if(!menu_id && !section_id) {
-            return;
+            this.menus[keys[0]].items!.splice(keys[1], 1);
+        } else {
+            this.menus.map((menu, key) => {
+                if (menu.id === menu_id) {
+                    menu.items!.map((svalue, skey) => {
+                        if(svalue.id === section_id) {
+                            svalue.delete = true;
+                            svalue.show = false;
+                            return svalue;
+                        }
+                    });
+                }
+                return menu;
+            });
         }
 
-        this.menus.map((menu, key) => {
-            if (menu.id === menu_id) {
-                menu.items!.map((svalue, skey) => {
-                    if(svalue.id === section_id) {
-                        svalue.delete = true;
-                        svalue.show = false;
-                        return svalue;
-                    }
-                });
-            }
-            return menu;
-        });
+
         this.save = this.menus;
         this.edits++;
 
@@ -208,7 +213,7 @@ export default class MenuEdit extends Vue {
         this.$root.$emit('open-items-modal', section);
     }
 
-    private newSection() {
+    private addSection() {
         if (!this.keys) {
             return;
         }
@@ -254,6 +259,56 @@ export default class MenuEdit extends Vue {
                 const msg = 'You have successfully updated your menu!';
                 const type = 'success';
                 this.$root.$emit('toast', msg, type);
+                this.edits = 0;
+
+            }
+
+        }).catch(e => {
+            const response = e.response.data;
+            const msg = e.response.headers.status === '422' ? response.message : 'There was an error with your request to the server. Check with your administrator for further assistance.';
+            const type = 'danger';
+            this.$root.$emit('toast', msg, type);
+        });
+    }
+
+    private newMenuRow() {
+        this.menus.map((v, k) => {
+            v.show = false;
+            this.edits = 0;
+            return v;
+        });
+        const order = (this.menus.length === 0) ? 0 : this.menus.length + 1;
+
+        this.menus.push({
+            id: null,
+            name: null,
+            description: null,
+            image: null,
+            status: 1,
+            deleted_at: null,
+            items: [],
+            created_at: null,
+            updated_at: null,
+            show: true,
+            delete: false,
+            order
+
+        } as IMenu);
+        this.keys = [this.menus.length - 1, 0];
+
+    }
+
+    private importBase() {
+         // get the price subtotal with all options selected
+         axios.post('/menus/import',{
+            'menus': true,
+        }).then(response => {
+            if (response.status) {
+                const msg = 'You have successfully imported your base menu!';
+                const type = 'success';
+                this.$root.$emit('toast', msg, type);
+                this.$props.m = JSON.stringify(this.menus);
+                this.edits = 0;
             }
 
         }).catch(e => {

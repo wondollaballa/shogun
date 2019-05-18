@@ -17,28 +17,30 @@ class MenuSection extends Model
     ];
     public function menuItems()
     {
-        return $this->hasMany(MenuItem::class, 'menu_section_id', 'id');
+        return $this->hasMany(MenuItem::class, 'menu_section_id', 'id')->orderBy('order', 'asc');
     }
 
-    public function createSection($item)
+    public function createSection($item, $menu_id)
     {
         $this->name = $item['name'];
-        $this->menu_id = $item['menu_id'];
+        $this->menu_id = $menu_id;
         $this->description = $item['description'];
         $this->image = $item['image'];
         $this->status = $item['status'];
         $this->order = $item['order'];
-        $this->save();
+        if($this->save()) {
+            return $this->id;
+        }
     }
 
-    public function updateOrDelete($item)
+    public function updateOrDelete($item, $menu_id)
     {
 
         $section = $this->find($item['id']);
         if ($item['delete']) {
             $section->delete();
         } else {
-            $section->menu_id = $item['menu_id'];
+            $section->menu_id = $menu_id;
             $section->description = $item['description'];
             $section->image = $item['image'];
             $section->name = $item['name'];

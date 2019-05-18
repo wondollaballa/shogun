@@ -25,27 +25,30 @@ class MenuItem extends Model
     {
         return $this->belongsTo(Menu::class, 'menu_id', 'id');
     }
-    public function createItem($item)
+    public function createItem($item, $menu_id, $menu_section_id)
     {
         $this->name = $item['name'];
-        $this->menu_id = $item['menu_id'];
-        $this->menu_section_id = $item['menu_section_id'];
+        $this->menu_id = $menu_id;
+        $this->menu_section_id = $menu_section_id;
         $this->description = $item['description'];
         $this->image = $item['image'];
         $this->price = $item['price'];
         $this->status = $item['status'];
         $this->order = $item['order'];
-        $this->save();
+        if($this->save()) {
+            return $this->id;
+        }
     }
 
-    public function updateOrDelete($item)
+    public function updateOrDelete($item, $menu_id, $menu_section_id)
     {
+
         $menuItem = $this->find($item['id']);
         if ($item['delete']) {
             $menuItem->delete();
         } else {
-            $menuItem->menu_id = $item['menu_id'];
-            $menuItem->menu_section_id = $item['menu_section_id'];
+            $menuItem->menu_id = $menu_id;
+            $menuItem->menu_section_id = $menu_section_id;
             $menuItem->description = $item['description'];
             $menuItem->image = $item['image'];
             $menuItem->name = $item['name'];

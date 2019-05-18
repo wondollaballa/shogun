@@ -31,6 +31,26 @@ class MenusController extends Controller
         ]));
     }
 
+    public function import()
+    {
+        // menu
+        $happyhour = json_decode(Storage::disk('local')->get('public/json/happyhour.json'));
+        $hibachi = json_decode(Storage::disk('local')->get('public/json/hibachi.json'));
+        $lunch = json_decode(Storage::disk('local')->get('public/json/lunch.json'));
+        $sushi = json_decode(Storage::disk('local')->get('public/json/sushi.json'));
+
+        $lunchMenu = new Menu;
+        $happyhourMenu = new Menu;
+        $hibachiMenu = new Menu;
+        $sushiMenu = new Menu;
+
+        $lunchMenu->createMenuFromJson('Lunch', 0, $lunch);
+        $happyhourMenu->createMenuFromJson('Happy Hour', 1, $happyhour);
+        $hibachiMenu->createMenuFromJson('Hibachi', 2, $hibachi);
+        $sushiMenu->createMenuFromJson('Sushi', 3, $sushi);
+        return response()->json(['message'=>'successfully imported all json files']);
+    }
+
     public function update(Request $request)
     {
         $menu= new Menu;

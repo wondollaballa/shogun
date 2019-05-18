@@ -96,6 +96,7 @@ Route::post('/rules/get-times', 'RulesController@getTimes')->name('rules.getTime
             // Menus
             Route::get('/menus', 'MenusController@index')->name('menu.index');
             Route::post('/menus/upload', 'MenusController@upload')->name('menu.upload');
+            Route::post('/menus/import', 'MenusController@import')->name('menu.import');
             Route::post('/menus/update', 'MenusController@update')->name('menu.update');
 
             // Messages

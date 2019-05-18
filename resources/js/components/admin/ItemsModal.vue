@@ -7,12 +7,12 @@
             </div>
             <div class="modal-body">
                 <ol id="itemsOl" class="pure-form items-list">
-                    <li class="items-list-li" v-for="(iValue, iKey) in section.items" v-bind:key="'item-'+iKey" @click="activeRow(iKey)" :class="iValue.show ? 'active' : ''" v-show="iValue.delete == false">
+                    <li class="items-list-li" v-for="(iValue, iKey) in saved" v-bind:key="'item-'+iKey" @click="activeRow(iKey)" :class="iValue.show ? 'active' : ''" v-show="iValue.delete == false">
                         <img :src="iValue.image"/>
-                        <input class="itemName" v-model="iValue.name"/>
-                        <input v-model="iValue.description"/>
-                        <input v-model="iValue.price"/>
-                        <button class="pure-button button-error" @click="removeItem(iValue.id)">X</button>
+                        <input class="itemName" placeholder="item name" v-model="iValue.name"/>
+                        <input placeholder="description" v-model="iValue.description"/>
+                        <input placeholder="price" v-model="iValue.price"/>
+                        <button class="pure-button button-error" @click="removeItem(iValue.id, iKey)">X</button>
                     </li>
                 </ol>
             </div>

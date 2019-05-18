@@ -61,15 +61,15 @@ export interface IUsers {
     role?: string;
 }
 export interface IMenu {
-    id: number;
-    name: string;
+    id: number | null;
+    name: string | null;
     description: string | null;
     image: string | null;
     status: number;
     deleted_at: string | null;
     items?: IMenuSection[];
-    created_at: string;
-    updated_at: string;
+    created_at: string | null;
+    updated_at: string | null;
     show: boolean;
     delete: boolean;
     order: number;

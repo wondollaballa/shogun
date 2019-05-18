@@ -106,28 +106,33 @@ class Menu extends Model
 
     public function updateAll($menus)
     {
+
         collect($menus)->each(function($item) {
             $menu = new Menu;
+
             if ($item['id'] > 0) {
                 $menu->menuUpdateOrDelete($item);
+                $menu_id = $item['id'];
             } else {
-                $menu->createMenu($item);
+                $menu_id = $menu->createMenu($item);
             }
+
             $sections = $item['items'];
-            collect($sections)->each(function($section) {
+            collect($sections)->each(function($section) use ($menu_id) {
                 $sections = new MenuSection;
                 if($section['id'] > 0) {
-                    $sections->updateOrDelete($section);
+                    $menu_section_id = $section['id'];
+                    $sections->updateOrDelete($section, $menu_id);
                 } else {
-                    $sections->createSection($section);
+                    $menu_section_id = $sections->createSection($section, $menu_id);
                 }
-                $menuItems = $section['items'];
-                collect($menuItems)->map(function($mItem) {
+                $menuItems =(isset($section['items']) && count($section['items']) > 0) ? $section['items'] : [];
+                collect($menuItems)->map(function($mItem) use ($menu_id, $menu_section_id) {
                     $menuItem = new MenuItem;
                     if($mItem['id'] > 0) {
-                        $menuItem->updateOrDelete($mItem);
+                        $menuItem->updateOrDelete($mItem, $menu_id, $menu_section_id);
                     } else {
-                        $menuItem->createItem($mItem);
+                        $menuItem->createItem($mItem, $menu_id, $menu_section_id);
                     }
                 });
             });
@@ -140,7 +145,9 @@ class Menu extends Model
         $this->image = $item['image'];
         $this->status = $item['status'];
         $this->order = $item['order'];
-        $this->save();
+        if($this->save()) {
+            return $this->id;
+        }
     }
 
     private function menuUpdateOrDelete($item) {
