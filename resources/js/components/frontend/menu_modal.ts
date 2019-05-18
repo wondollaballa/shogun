@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { ILunchMenu, IHappyHourMenu, ISushiMenu, IHibachiMenu, IMenuItems, IMenuRow } from '../../interfaces/interfaces';
+import { ILunchMenu, IHappyHourMenu, ISushiMenu, IHibachiMenu, IMenuItems, IMenuRow, IMenuSection } from '../../interfaces/interfaces';
 import { min } from 'moment';
 
 @Component({
@@ -11,8 +11,8 @@ import { min } from 'moment';
 export default class MenuModal extends Vue {
     opened: boolean = false;
     title: string = 'Please wait...';
-    menuType: string ='';
-    menu: IMenuRow = { description: '', items: []};
+    menuType: number = 1;
+    menu: IMenuSection | null = null;
     container: HTMLElement | null = null;
     body: HTMLElement | null = null;
     ourMenu: HTMLElement | null = null;
@@ -33,30 +33,14 @@ export default class MenuModal extends Vue {
 
     }
 
-    private openMenu(type: string, menu: ISushiMenu | IHibachiMenu | IHappyHourMenu | ILunchMenu, menuKey: string) {
+    private openMenu(section: IMenuSection) {
         (this.container as HTMLElement).classList.add('noscroll');
         (this.body as HTMLElement).classList.add('noscroll');
 
         this.opened = true;
-        this.menuType = menuKey;
-        switch(type) {
-            case "lunch":
-            this.title = `Lunch Menu - ${menuKey}`;
-            this.menu = menu as any;
-            break;
-            case 'happy hour':
-            this.title = `Happy Hour Menu - ${menuKey}`;
-            this.menu = menu as any;
-            break;
-            case 'sushi':
-            this.title = `Sushi Menu - ${menuKey}`;
-            this.menu = menu as any;
-            break;
-            case 'hibachi':
-            this.title = `Hibachi Menu - ${menuKey}`;
-            this.menu = menu as any;
-            break;
-        }
+        this.menuType = section.id!;
+        this.title = `${section.name} Menu`;
+        this.menu = section;
         (this.ourMenu as HTMLElement).classList.add('noscroll');
 
     }
@@ -64,7 +48,7 @@ export default class MenuModal extends Vue {
     private menuClose() {
         this.opened = false;
         this.title = '';
-        this.menuType = '';
+        this.menuType = 1;
         (this.container as HTMLElement).classList.remove('noscroll');
         (this.body as HTMLElement).classList.remove('noscroll');
         (this.ourMenu as HTMLElement).classList.remove('noscroll');

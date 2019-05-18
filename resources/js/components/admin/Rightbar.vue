@@ -16,6 +16,14 @@
                     <i class="fas fa-sliders-h"></i>
                 </div>
             </a>
+            <!-- menu -->
+            <a v-bind:href="menus" class="right-row">
+                <span>Menu</span>
+
+                <div class="">
+                    <i class="fas fa-utensils"></i>
+                </div>
+            </a>
             <!-- logout -->
             <a v-bind:href="logout" class="right-row">
                 <span>logout</span>

@@ -1,0 +1,9 @@
+#image-modal {
+    .modal-dialog {
+        height: 100vh;
+        width: 100vw;
+    }
+    .modal-body {
+        overflow-y: auto;
+    }
+}

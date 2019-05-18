@@ -9,31 +9,31 @@ export enum MessageType {
 }
 
 export interface IExpiredReservations {
-    type: MessageType.Expired,
-    datetime: string
+    type: MessageType.Expired;
+    datetime: string;
 }
 
 export interface IWorkerPause {
-    type: MessageType.Pause
+    type: MessageType.Pause;
 }
 
 export interface IWorkerRestart {
-    type: MessageType.Restart
+    type: MessageType.Restart;
 }
 
 export interface IUpdateCalendar {
-    type: MessageType.UpdateCalendar,
-    worker: string,
+    type: MessageType.UpdateCalendar;
+    worker: string;
 
 }
 
 export interface IWorkerStart {
-    type: MessageType.Start
+    type: MessageType.Start;
 }
 
 export interface ITest {
-    type: MessageType.Test,
-    payload: string[]
+    type: MessageType.Test;
+    payload: string[];
 }
 
 export type Message = IWorkerStart |
@@ -45,21 +45,67 @@ export type Message = IWorkerStart |
 //#endregion worker
 //#region admin
 export interface IUsers {
-    id: number,
-    role_id: number,
-    username: string,
-    first_name: string,
-    last_name: string,
-    phone: string,
-    email: string,
-    password?: string,
-    remember_token?: string,
-    deleted_at?: string | null,
-    created_at?: string,
-    updated_at?: string,
-    phoneFormatted?: string,
-    role?: string
+    id: number;
+    role_id: number;
+    username: string;
+    first_name: string;
+    last_name: string;
+    phone: string;
+    email: string;
+    password?: string;
+    remember_token?: string;
+    deleted_at?: string | null;
+    created_at?: string;
+    updated_at?: string;
+    phoneFormatted?: string;
+    role?: string;
 }
+export interface IMenu {
+    id: number;
+    name: string;
+    description: string | null;
+    image: string | null;
+    status: number;
+    deleted_at: string | null;
+    items?: IMenuSection[];
+    created_at: string;
+    updated_at: string;
+    show: boolean;
+    delete: boolean;
+    order: number;
+}
+export interface IMenuSection {
+    id: number | null;
+    menu_id: number | null;
+    name: string | null;
+    description: string | null;
+    image: string | null;
+    status: number;
+    items?: IMenuItem[];
+    deleted_at: string | null;
+    created_at: string | null;
+    updated_at: string | null;
+    show: boolean;
+    delete: boolean;
+    order: number;
+}
+export interface IMenuItem {
+    id: number | null;
+    menu_id: number | null;
+    menu_section_id: number | null;
+    name: string | null;
+    description: string | null;
+    image: string | null;
+    price: string | null;
+    status: number;
+    deleted_at: string | null;
+    created_at: string | null;
+    updated_at: string | null;
+    show: boolean;
+    delete: boolean;
+    order: number;
+}
+
 //#endregion
 //#region components
 export interface IBlackoutDate {
@@ -67,31 +113,31 @@ export interface IBlackoutDate {
 }
 
 export interface IBlackoutDates {
-    selectedDate: string,
-    date1: string,
-    dates: IBlackoutDate[],
+    selectedDate: string;
+    date1: string;
+    dates: IBlackoutDate[];
     set: ISet[]
 }
 
 export interface IEvent {
-    id?: string,
-    title: string,
-    start: string,
-    end?: string | null,
-    allDay?: boolean,
-    url?: string,
-    classNames?: string[],
-    editable?: boolean | null,
-    startEditable?: boolean | null,
-    durationEditable?: boolean | null,
-    resourceEditable?: boolean | null,
-    rendering?: string, // normal, background, inverse-background
-    overlap?: string | boolean,
-    constraint?: string,
-    backgroundColor?: string,
-    borderColor?: string,
-    textColor?: string,
-    extendedProps?: string,
+    id?: string;
+    title: string;
+    start: string;
+    end?: string | null;
+    allDay?: boolean;
+    url?: string;
+    classNames?: string[];
+    editable?: boolean | null;
+    startEditable?: boolean | null;
+    durationEditable?: boolean | null;
+    resourceEditable?: boolean | null;
+    rendering?: string; // normal; background; inverse-background
+    overlap?: string | boolean;
+    constraint?: string;
+    backgroundColor?: string;
+    borderColor?: string;
+    textColor?: string;
+    extendedProps?: string;
     source?: string
 }
 
@@ -111,107 +157,107 @@ export interface ILeftbar {
 }
 
 export interface INotificationsCount {
-    today: number,
-    all: number,
+    today: number;
+    all: number;
     messages: number
 }
 
 export interface INewReservation {
-    name: string,
-    phone: string,
-    email: string,
-    party_size: number,
-    date: string,
-    time: string,
-    special_request: string,
+    name: string;
+    phone: string;
+    email: string;
+    party_size: number;
+    date: string;
+    time: string;
+    special_request: string;
     hibachi: boolean
 }
 
 export interface IReservation {
-    id: number,
-    customer_id: number,
-    name: string,
-    phone: string,
-    email: string,
-    large_party: number,
-    party_size: number,
-    requested: string,
-    requested_formatted?: string,
-    special_request: string,
-    no_show: boolean,
-    arrived_at: string,
-    seated_at: string,
-    seat_id: number,
-    status: number,
-    hibachi: boolean,
-    deleted_at: string,
-    created_at: string,
+    id: number;
+    customer_id: number;
+    name: string;
+    phone: string;
+    email: string;
+    large_party: number;
+    party_size: number;
+    requested: string;
+    requested_formatted?: string;
+    special_request: string;
+    no_show: boolean;
+    arrived_at: string;
+    seated_at: string;
+    seat_id: number;
+    status: number;
+    hibachi: boolean;
+    deleted_at: string;
+    created_at: string;
     updated_at: string
 }
 
 export interface IOldReservation {
-    id: number,
-    customer_id: number,
-    name: string,
-    phone: string,
-    email: string,
-    large_party: number,
-    party_size: number,
-    requested: string,
-    requested_formatted?: string,
-    special_request: string,
-    no_show: boolean,
-    arrived_at: string,
-    seated_at: string,
-    seat_id: number,
-    status: number,
-    hibachi: boolean,
-    deleted_at: string,
-    created_at: string,
+    id: number;
+    customer_id: number;
+    name: string;
+    phone: string;
+    email: string;
+    large_party: number;
+    party_size: number;
+    requested: string;
+    requested_formatted?: string;
+    special_request: string;
+    no_show: boolean;
+    arrived_at: string;
+    seated_at: string;
+    seat_id: number;
+    status: number;
+    hibachi: boolean;
+    deleted_at: string;
+    created_at: string;
     updated_at: string
 }
 
 export interface IReservationModal {
-    reservation: IReservation,
+    reservation: IReservation;
     rules: IRules
 }
 
 export interface IRules {
-    notAfter: string,
-    disabledDays: string[],
+    notAfter: string;
+    disabledDays: string[];
     interval: number
 }
 
 export interface IErrors {
-    name: string[],
-    phone: string[],
-    email: string[],
-    party_size: string[],
-    requested: string[],
+    name: string[];
+    phone: string[];
+    email: string[];
+    party_size: string[];
+    requested: string[];
     special_request: string[]
 }
 export interface IReservationForm {
-    notAfter: string,
-    blackouts: string,
-    interval: number,
-    name: string,
-    nameValidated: boolean,
-    nameErrorMessage: string,
-    phone: string,
-    phoneValidated: boolean,
-    phoneErrorMessage: string,
-    email: string,
-    emailValidated: boolean,
-    emailErrorMessage: string,
-    partySize: number,
-    partySizeValidated: boolean,
-    partySizeErrorMessage: string,
-    requested: string,
-    requestedValidated: boolean,
-    requestedErrorMessage: string,
-    specialRequest: string,
-    specialRequestValidated: boolean,
-    specialRequestErrorMessage: string,
+    notAfter: string;
+    blackouts: string;
+    interval: number;
+    name: string;
+    nameValidated: boolean;
+    nameErrorMessage: string;
+    phone: string;
+    phoneValidated: boolean;
+    phoneErrorMessage: string;
+    email: string;
+    emailValidated: boolean;
+    emailErrorMessage: string;
+    partySize: number;
+    partySizeValidated: boolean;
+    partySizeErrorMessage: string;
+    requested: string;
+    requestedValidated: boolean;
+    requestedErrorMessage: string;
+    specialRequest: string;
+    specialRequestValidated: boolean;
+    specialRequestErrorMessage: string;
     showValidation: boolean
 }
 
@@ -240,7 +286,7 @@ export interface IDateConfig {
     altFormat?: string;
     altInput?: boolean;
     altInputClass?: string;
-    appendTo?: HTMLElement,
+    appendTo?: HTMLElement;
     ariaDateFormat?: String;
     dateFormat?: string;
     disable?: string[];
@@ -285,36 +331,36 @@ export interface IVueWaypointOption {
 }
 
 export interface IMenuItems {
-    name: string,
-    description: string,
+    name: string;
+    description: string;
     price: string
 }
 export interface IMenuRow {
-    description?: string,
-    image?: string,
+    description?: string;
+    image?: string;
     items: IMenuItems[]
 }
 export interface ILunchMenu {
-    description: string,
+    description: string;
     items: {
-        Entrees: IMenuRow,
-        "Add More": IMenuRow,
-        "Kid's Meal": IMenuRow,
-        "Sushi Lunch Special": IMenuRow,
-        "Sushi Combo": IMenuRow,
-        "Fresh Bowls": IMenuRow,
+        Entrees: IMenuRow;
+        "Add More": IMenuRow;
+        "Kid's Meal": IMenuRow;
+        "Sushi Lunch Special": IMenuRow;
+        "Sushi Combo": IMenuRow;
+        "Fresh Bowls": IMenuRow;
         "Grilled Bowls": IMenuRow
     }
 
 }
 export interface IHappyHourMenu {
-    description: string,
+    description: string;
     items: {
-        Food: IMenuRow,
-        Drafts: IMenuRow,
-        Wines: IMenuRow,
-        "House Cocktails": IMenuRow,
-        "Nigiri & Sashimi": IMenuRow,
+        Food: IMenuRow;
+        Drafts: IMenuRow;
+        Wines: IMenuRow;
+        "House Cocktails": IMenuRow;
+        "Nigiri & Sashimi": IMenuRow;
         "Most Wanted Half Rolls": IMenuRow
     }
 
@@ -322,54 +368,54 @@ export interface IHappyHourMenu {
 export interface IHibachiMenu {
     description: string
     items: {
-        Hibachi: IMenuRow,
-        Sushi: IMenuRow,
-        "Side Orders": IMenuRow,
-        "Alchoholic Beverages": IMenuRow,
-        "House Cocktails": IMenuRow,
-        Appetizers: IMenuRow,
-        "Kara-age Plate": IMenuRow,
-        Sauces: IMenuRow,
-        "Beverages (Non-Achohol": IMenuRow,
-        Wine: IMenuRow,
-        Sake: IMenuRow,
+        Hibachi: IMenuRow;
+        Sushi: IMenuRow;
+        "Side Orders": IMenuRow;
+        "Alchoholic Beverages": IMenuRow;
+        "House Cocktails": IMenuRow;
+        Appetizers: IMenuRow;
+        "Kara-age Plate": IMenuRow;
+        Sauces: IMenuRow;
+        "Beverages (Non-Achohol": IMenuRow;
+        Wine: IMenuRow;
+        Sake: IMenuRow;
         "Specialty Cocktails": IMenuRow
     }
 }
 
 export interface ISushiMenu {
-    description: string,
+    description: string;
     items: {
-        "Maki Rolls": IMenuRow,
-        "Shogun Classic Rolls": IMenuRow,
-        "Nigiri 2PC / Sashimi 5pc": IMenuRow,
+        "Maki Rolls": IMenuRow;
+        "Shogun Classic Rolls": IMenuRow;
+        "Nigiri 2PC / Sashimi 5pc": IMenuRow;
         "Shogun Specialty Rolls": IMenuRow
     }
 }
 
 export interface IStoreHours {
-    opened: boolean,
-    day?: string,
+    opened: boolean;
+    day?: string;
     start?: {
-        a: string,
-        hh: string,
+        a: string;
+        hh: string;
         mm: string
-    },
+    };
     end?: {
-        a: string,
-        hh: string,
+        a: string;
+        hh: string;
         mm: string
     }
 }
 
 export interface IStoreInfo {
-    phone: string,
-    street: string,
-    zipcode: string,
-    city: string,
-    state: string,
-    country: string,
-    email: string,
+    phone: string;
+    street: string;
+    zipcode: string;
+    city: string;
+    state: string;
+    country: string;
+    email: string;
     store_hours: IStoreHours[]
 }
 

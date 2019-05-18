@@ -25,4 +25,34 @@ class MenuItem extends Model
     {
         return $this->belongsTo(Menu::class, 'menu_id', 'id');
     }
+    public function createItem($item)
+    {
+        $this->name = $item['name'];
+        $this->menu_id = $item['menu_id'];
+        $this->menu_section_id = $item['menu_section_id'];
+        $this->description = $item['description'];
+        $this->image = $item['image'];
+        $this->price = $item['price'];
+        $this->status = $item['status'];
+        $this->order = $item['order'];
+        $this->save();
+    }
+
+    public function updateOrDelete($item)
+    {
+        $menuItem = $this->find($item['id']);
+        if ($item['delete']) {
+            $menuItem->delete();
+        } else {
+            $menuItem->menu_id = $item['menu_id'];
+            $menuItem->menu_section_id = $item['menu_section_id'];
+            $menuItem->description = $item['description'];
+            $menuItem->image = $item['image'];
+            $menuItem->name = $item['name'];
+            $menuItem->price = $item['price'];
+            $menuItem->order = $item['order'];
+            $menuItem->status = $item['status'];
+            $menuItem->save();
+        }
+    }
 }

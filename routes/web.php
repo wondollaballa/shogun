@@ -93,6 +93,11 @@ Route::post('/rules/get-times', 'RulesController@getTimes')->name('rules.getTime
             Route::post('/contact/{contactus}/set-as-archive', 'ContactusController@setAsArchive')->name('contact.set_as_archive');
             Route::post('/contact/{contactus}/set-as-deleted', 'ContactusController@setAsDeleted')->name('contact.set_as_deleted');
 
+            // Menus
+            Route::get('/menus', 'MenusController@index')->name('menu.index');
+            Route::post('/menus/upload', 'MenusController@upload')->name('menu.upload');
+            Route::post('/menus/update', 'MenusController@update')->name('menu.update');
+
             // Messages
             Route::patch('/messages/update/{message}', 'MessagesController@update')->name('message.update');
             Route::get('/messages', 'MessagesController@index')->name('message.index');

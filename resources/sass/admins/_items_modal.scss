@@ -1,0 +1,33 @@
+#items-modal {
+    overflow: hidden;
+}
+#items-modal .modal-dialog{
+    max-height: 100vh;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+}
+#items-modal .modal-header {
+    background-color: navy;
+    color: #fff;
+    padding: 10px 20px;
+}
+#items-modal .modal-footer {
+    background-color: navy;
+}
+
+#items-modal .modal-body {
+    max-height: 600px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.items-list-li {
+    cursor: pointer;
+    padding: 10px;
+}
+.items-list-li.active {
+    background-color: #e5e5e5;
+}
+.items-list-li:hover {
+    background-color: lightblue;
+}

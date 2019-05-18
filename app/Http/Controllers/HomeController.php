@@ -48,27 +48,29 @@ class HomeController extends Controller
         // $hibachiMenu = new Menu;
         // $sushiMenu = new Menu;
 
-        // $lunchMenu->createMenuFromJson('Lunch', $lunch);
-        // $happyhourMenu->createMenuFromJson('Happy Hour', $happyhour);
-        // $hibachiMenu->createMenuFromJson('Hibachi', $hibachi);
-        // $sushiMenu->createMenuFromJson('Sushi',$sushi);
+        // $lunchMenu->createMenuFromJson('Lunch', 0, $lunch);
+        // $happyhourMenu->createMenuFromJson('Happy Hour', 1, $happyhour);
+        // $hibachiMenu->createMenuFromJson('Hibachi', 2, $hibachi);
+        // $sushiMenu->createMenuFromJson('Sushi', 3, $sushi);
 
-        $lunch = Menu::find(1)->makeMenuSet();
-        $happyhour = Menu::find(2)->makeMenuSet();
-        $hibachi = Menu::find(3)->makeMenuSet();
-        $sushi = Menu::find(4)->makeMenuSet();
+        $menu = new Menu;
+        $menus = $menu->getAllMenus();
+        // $lunch = Menu::find(1)->makeMenuSet();
+        // $happyhour = Menu::find(2)->makeMenuSet();
+        // $hibachi = Menu::find(3)->makeMenuSet();
+        // $sushi = Menu::find(4)->makeMenuSet();
 
-        $ourMenu = json_encode([
-            "happyHour"=> $happyhour,
-            "hibachi"=>$hibachi,
-            "lunch"=>$lunch,
-            "sushi"=>$sushi
-        ]);
+        // $ourMenu = json_encode([
+        //     "happyHour"=> $happyhour,
+        //     "hibachi"=>$hibachi,
+        //     "lunch"=>$lunch,
+        //     "sushi"=>$sushi
+        // ]);
         return view('home/index', compact([
             'disabledDates',
             'aboutUs',
             'contactUs',
-            'ourMenu',
+            'menus',
             'theExperience'
         ]));
     }

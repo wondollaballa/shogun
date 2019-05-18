@@ -19,6 +19,7 @@ class CreateMenusTable extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('order')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

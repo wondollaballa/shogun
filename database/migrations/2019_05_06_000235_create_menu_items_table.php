@@ -22,6 +22,7 @@ class CreateMenuItemsTable extends Migration
             $table->string('image')->nullable();
             $table->string('price')->nullable();
             $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('order')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -17,7 +17,7 @@
 @section('content')
     <about-us text="{{ $aboutUs }}"></about-us>
     <the-experience text="{{ $theExperience }}"></the-experience>
-    <our-menu text="{{ $ourMenu }}"></our-menu>
+    <our-menu text="{{ $menus }}"></our-menu>
     <contact-us text="{{ $contactUs }}"></contact-us>
 @endsection
 

@@ -12,6 +12,7 @@
 @import 'modals';
 @import 'ag_grid';
 @import 'buttons';
+@import './filepod';
 
 // admins dashboard
 @import 'admins/alert';
@@ -26,6 +27,7 @@
 @import 'admins/storeHours';
 @import 'admins/blackout_dates';
 @import 'admins/form_general';
+@import 'admins/image_modal';
 @import 'admins/rules';
 @import 'admins/toast';
 @import 'admins/notifications';
@@ -33,6 +35,8 @@
 @import 'admins/messages_page';
 @import 'admins/users_table';
 @import 'admins/user_modal';
+@import 'admins/menu_edit';
+@import 'admins/items_modal';
 
 // individual components
 @import 'admins/switch';
