@@ -259,6 +259,7 @@ export default class MenuEdit extends Vue {
                 const msg = 'You have successfully updated your menu!';
                 const type = 'success';
                 this.$root.$emit('toast', msg, type);
+                this.$props.m = JSON.stringify(this.menus);
                 this.edits = 0;
 
             }
@@ -309,6 +310,7 @@ export default class MenuEdit extends Vue {
                 this.$root.$emit('toast', msg, type);
                 this.$props.m = JSON.stringify(this.menus);
                 this.edits = 0;
+                location.reload();
             }
 
         }).catch(e => {
