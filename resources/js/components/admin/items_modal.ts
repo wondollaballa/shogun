@@ -13,6 +13,7 @@ export default class ItemsModal extends Vue {
     opened: boolean = false;
     title: string = '';
     saved: IMenuItem[] = [];
+    saving: IMenuItem[] = [];
     section: IMenuSection = {
         id : 0,
         menu_id: 0,
@@ -56,28 +57,31 @@ export default class ItemsModal extends Vue {
     private reorderAll() {
         const el = document.querySelectorAll<HTMLLIElement>('.items-list-li');
         let items: IMenuItem[] = [];
-        el.forEach((v, k) => {
-            const itemName = (v.querySelector('.itemName') as HTMLInputElement).value;
-            this.saved!.map(item => {
-                if(item.name === itemName) {
-                    item.order = k;
-                    items.push(item);
-                }
-                return item;
+        setTimeout(() => {
+            el.forEach((v, k) => {
+                const itemName = (v.querySelector('.itemName') as HTMLInputElement).value;
+                this.saved!.map(item => {
+                    if(item.name === itemName) {
+                        item.order = k;
+                        items.push(item);
+                    }
+                    return item;
+                });
             });
-        });
-        this.saved = items;
+            this.saving = items;
+        }, 100);
+
 
     }
-    @Watch('saved')
+    @Watch('saving')
     onMenuChange()
     {
         this.updateSaved();
     }
     // methods
-    @Debounce({millisecondsDelay: 100})
+    @Debounce({millisecondsDelay: 1000})
     private updateSaved() {
-
+        // this.saved = this.saving;
     }
 
     private addItem() {
@@ -98,11 +102,11 @@ export default class ItemsModal extends Vue {
             delete: false,
             order: itemsCount
         }
-        this.saved.push(item);
+        this.saving.push(item);
     }
 
     private removeItem(id: number, key: number) {
-        this.saved!.map((item, k) => {
+        this.saving.map((item, k) => {
             if (id) {
                 if (id === item.id) {
                     item.delete = true;
@@ -118,6 +122,7 @@ export default class ItemsModal extends Vue {
 
     private openDialog(section: IMenuSection) {
         this.saved = section.items!;
+        this.saving = section.items!;
         this.resetRows();
         this.opened = true;
     }
@@ -145,11 +150,13 @@ export default class ItemsModal extends Vue {
             order: 0
         };
         this.saved = [];
+        this.saving = [];
     }
 
     private resetRows() {
         if (this.saved === undefined) {
             this.saved = [];
+            this.saving = [];
             return;
         }
         const items = this.saved;
@@ -161,11 +168,11 @@ export default class ItemsModal extends Vue {
 
     private activeRow(row: number) {
         this.resetRows();
-        this.saved[row].show = true;
+        this.saving[row].show = true;
     }
 
     private saveItems() {
-
+        this.saved = this.saving;
         this.$root.$emit('update-menu-items', this.saved);
         this.closeDialog();
     }
