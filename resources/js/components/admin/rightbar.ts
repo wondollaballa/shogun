@@ -9,7 +9,8 @@ interface IRightbar {
     props: {
         logout: String,
         users: String,
-        menus: String
+        menus: String,
+        editing: String
     }
 
 })

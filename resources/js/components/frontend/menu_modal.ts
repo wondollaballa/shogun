@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { ILunchMenu, IHappyHourMenu, ISushiMenu, IHibachiMenu, IMenuItems, IMenuRow, IMenuSection } from '../../interfaces/interfaces';
-import { min } from 'moment';
+import { IMenuSection } from '../../interfaces/interfaces';
 
 @Component({
     props: {

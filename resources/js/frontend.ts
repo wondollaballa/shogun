@@ -23,6 +23,12 @@ Vue.component('menu-modal', require('./components/frontend/MenuModal.vue'));
 Vue.component('message-modal', require('./components/frontend/MessageModal.vue'));
 Vue.component('shogun-footer', require('./components/frontend/ShogunFooter.vue'));
 Vue.component('shogun-nav', require('./components/frontend/ShogunNav.vue'));
+Vue.component('editable-header-modal', require('./components/edit/EditableHeaderModal.vue'));
+Vue.component('editable-header', require('./components/edit/EditableHeader.vue'));
+Vue.component('editable-aboutus-modal', require('./components/edit/EditableAboutUsModal.vue'));
+Vue.component('editable-theexperience-modal', require('./components/edit/EditableTheExperienceModal.vue'));
+Vue.component('editable-footer-modal', require('./components/edit/EditableFooterModal.vue'));
+
 /** PAGES */
 Vue.component('about-us', require('./components/frontend/AboutUs.vue'));
 Vue.component('contact-us', require('./components/frontend/ContactUs.vue'));

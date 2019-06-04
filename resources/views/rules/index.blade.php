@@ -10,7 +10,7 @@
     <admin-card id="card-basic" header footer>
         <h3 slot="header">Basic Reservation Settings</h3>
         <section class="pure-form pure-form-stacked">
-            <reservation-options p-interval="{{ $interval }}" p-cutoff="{{ $cutoff }}"></reservation-options>
+            <reservation-options p-interval="{{ $interval }}" p-cutoff="{{ $cutoff }}" p-cap="{{ $cap }}"></reservation-options>
         </section>
         <div slot="footer" class="pure-button-group" role="group">
             <button id="settings-reset" type="button" class="pure-button">Reset</button>
@@ -38,12 +38,12 @@
             <button id="storehours-update" type="button" class="pure-button pure-button-primary">Update Store Hours</button>
         </div>
     </admin-card>
-   
+
 </div>
 @endsection
 
 @section('modals')
 <admin-modal header id="reservation-calendar" title="Reservation Calendar" >
-    
+
 </admin-modal>
 @endsection

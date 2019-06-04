@@ -24,6 +24,14 @@
                     <i class="fas fa-utensils"></i>
                 </div>
             </a>
+            <!-- page -->
+            <a v-bind:href="editing" class="right-row">
+                <span>Page</span>
+
+                <div class="">
+                    <i class="fas fa-edit"></i>
+                </div>
+            </a>
             <!-- logout -->
             <a v-bind:href="logout" class="right-row">
                 <span>logout</span>

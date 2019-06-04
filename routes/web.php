@@ -93,6 +93,15 @@ Route::post('/rules/get-times', 'RulesController@getTimes')->name('rules.getTime
             Route::post('/contact/{contactus}/set-as-archive', 'ContactusController@setAsArchive')->name('contact.set_as_archive');
             Route::post('/contact/{contactus}/set-as-deleted', 'ContactusController@setAsDeleted')->name('contact.set_as_deleted');
 
+            // Home
+            Route::get('/home/edit', 'HomeController@edit')->name('home.edit');
+            Route::post('/home/upload/header', 'HomeController@uploadHeader')->name('home.upload-header');
+            Route::post('/home/revert/header', 'HomeController@revertHeader')->name('home.revert-header');
+            Route::post('/home/header/reset', 'HomeController@resetHeader')->name('home.reset-header');
+            Route::post('/home/upload/aboutus', 'HomeController@uploadAboutUs')->name('home.upload-aboutus');
+            Route::post('/home/upload/theexperience', 'HomeController@uploadTheExperience')->name('home.upload-theexperience');
+            Route::post('/home/upload/footer', 'HomeController@uploadFooter')->name('home.upload-footer');
+
             // Menus
             Route::get('/menus', 'MenusController@index')->name('menu.index');
             Route::post('/menus/upload', 'MenusController@upload')->name('menu.upload');

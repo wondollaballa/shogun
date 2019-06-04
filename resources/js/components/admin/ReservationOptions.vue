@@ -11,6 +11,11 @@
             <span class="pure-form-message hide">This is a required field.</span>
         </div>
         <div>
+            <label for="reservation_cap">Reservation Cap (per interval)</label>
+            <input id="reservation-settings-reservation-cap" class="pure-u-1" v-model="reservation_cap"/>
+            <span class="pure-form-message hide">This is a required field.</span>
+        </div>
+        <div>
             <label for="reservation_deadline">Reservation Cutoff (Minutes until allowed to reserve)</label>
             <select id="reservation-settings-reservation-deadline" class="pure-u-1" v-model="reservation_deadline_selected">
                 <option v-for="option in reservation_deadline" :key="option.value" :value="option.value">
@@ -19,6 +24,7 @@
             </select>
             <span class="pure-form-message hide">This is a required field.</span>
         </div>
+
     </fieldset>
 </template>
 

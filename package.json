@@ -32,6 +32,7 @@
         "worker-loader": "^2.0.0"
     },
     "dependencies": {
+        "@tinymce/tinymce-vue": "^2.0.0",
         "@types/es6-promise": "^3.3.0",
         "@types/fullcalendar": "^3.8.0",
         "@types/lodash": "^4.14.123",

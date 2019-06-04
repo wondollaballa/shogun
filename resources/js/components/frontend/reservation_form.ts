@@ -90,7 +90,6 @@ export default class ReservationForm extends Vue {
         this.validateTime();
     }
 
-
     // methods
     @Debounce({millisecondsDelay: 1000})
     private validateName() {
@@ -116,14 +115,16 @@ export default class ReservationForm extends Vue {
     }
     @Debounce({millisecondsDelay: 1000})
     private validatePartySize() {
-        const party_size = validator.trim(this.reservation.party_size);
+        const party_size = validator.trim(this.reservation.party_size.toString());
         this.validation.party_size = (!validator.isEmpty(party_size) && validator.isNumeric(party_size) && party_size > 0);
+        this.$root.$emit('check-times', party_size);
         this.thinking(this.validation.party_size);
+        this.reservation.time = '';
     }
     @Debounce({millisecondsDelay: 1000})
     private validateTime() {
-        const time = validator.trim(this.reservation.time);
-        this.validation.time = (!validator.isEmpty(time));
+        const time = validator.trim(this.reservation.time.toString());
+        this.validation.time = (!validator.isEmpty(time) && time !== 'Select Time');
         this.thinking(this.validation.time);
     }
 
@@ -133,6 +134,8 @@ export default class ReservationForm extends Vue {
 
     private setReservationDate(date: string) {
         this.reservation.date = date;
+        this.reservation.time = '';
+        this.validation.time = false;
     }
 
     private updateTimes(times: string) {
@@ -161,26 +164,29 @@ export default class ReservationForm extends Vue {
 
     private finishReservation()
     {
+        if (!this.validation.name || !this.validation.phone || !this.validation.email || !this.validation.party_size || !this.validation.date || !this.validation.time) {
+            return;
+        }
         this.$root.$emit('open-finish-modal');
         setTimeout(() => {
-            if (this.validation.name && this.validation.phone && this.validation.email && this.validation.party_size && this.validation.date && this.validation.time) {
-                axios.post('/reservations/frontend-make',{
-                    'name': this.reservation.name,
-                    'phone': this.reservation.phone,
-                    'email': this.reservation.email,
-                    'party_size': this.reservation.party_size,
-                    'date': this.reservation.date,
-                    'time': this.reservation.time,
-                    'special_request': this.reservation.special_request,
-                    'hibachi': this.reservation.hibachi
-                }).then(response => {
-                    if (response.status) {
-                        this.$root.$emit('finish-modal-step', 2);
-                    }
-                }).catch(e => {
-                    this.$root.$emit('finish-modal-step', 0);
-                });
-            }
+
+            axios.post('/reservations/frontend-make',{
+                'name': this.reservation.name,
+                'phone': this.reservation.phone,
+                'email': this.reservation.email,
+                'party_size': this.reservation.party_size,
+                'date': this.reservation.date,
+                'time': this.reservation.time,
+                'special_request': this.reservation.special_request,
+                'hibachi': this.reservation.hibachi
+            }).then(response => {
+                if (response.status) {
+                    this.$root.$emit('finish-modal-step', 2);
+                }
+            }).catch(e => {
+                this.$root.$emit('finish-modal-step', 0);
+            });
+
         }, 2000);
 
     }

@@ -21,7 +21,8 @@ class RulesController extends Controller
         $store_hours = $rule->prepareStoreHours();
         $interval = $rule->interval;
         $cutoff = $rule->reservation_deadline;
-        return view('rules.index', compact(['blackout_dates', 'blackout_set', 'store_hours', 'interval', 'cutoff']));
+        $cap = $rule->max_size_per_interval;
+        return view('rules.index', compact(['blackout_dates', 'blackout_set', 'store_hours', 'interval', 'cutoff', 'cap']));
     }
 
     /**
@@ -90,12 +91,12 @@ class RulesController extends Controller
         //
     }
 
-    public function blackout(Request $request) 
+    public function blackout(Request $request)
     {
         $status = false;
         $blackout_dates = json_encode($request->blackout_dates);
         $rule_id = 1; // for now need to update when 2nd store available
-        
+
         $rule = new Rule();
         $patch = $rule->find($rule_id);
         if ($patch) {
@@ -110,18 +111,18 @@ class RulesController extends Controller
                 $status = true;
             }
         }
-    
+
         return response()->json([
             'status' => $status
         ]);
     }
 
-    public function storeHours(Request $request) 
+    public function storeHours(Request $request)
     {
         $status = false;
         $store_hours = $request->store_hours;
         $rule_id = 1; // for now need to update when 2nd store available
-        
+
         $rule = new Rule();
         $patch = $rule->find($rule_id);
         if ($patch) {
@@ -136,23 +137,25 @@ class RulesController extends Controller
                 $status = true;
             }
         }
-    
+
         return response()->json([
             'status' => $status
         ]);
     }
-    public function storeOptions(Request $request) 
+    public function storeOptions(Request $request)
     {
         $status = false;
         $interval = $request->interval;
         $reservation_deadline = $request->reservation_deadline;
+        $cap = $request->max_size_per_interval;
         $rule_id = 1; // for now need to update when 2nd store available
-        
+
         $rule = new Rule();
         $patch = $rule->find($rule_id);
         if ($patch) {
             $patch->interval = $interval;
             $patch->reservation_deadline = $reservation_deadline;
+            $patch->max_size_per_interval = $cap;
             if($patch->save()) {
                 $status = true;
             }
@@ -160,23 +163,27 @@ class RulesController extends Controller
             $rule->company_id = 1;
             $rule->interval = $interval;
             $rule->reservation_deadline = $reservation_deadline;
+            $rule->max_size_per_interval = $cap;
             if($rule->save()) {
                 $status = true;
             }
         }
-    
+
         return response()->json([
             'status' => $status
         ]);
     }
 
-    public function getTimes(Request $request) 
+    public function getTimes(Request $request)
     {
+        $party_size = $request->party_size;
+        $requested_date =$request->date;
+
         $rules = new Rule;
         $rule = $rules->find(1);
         $date = date('Y-m-d', strtotime($request->date));
-        $times = $rule->prepareTimeForFrontEnd($date);
+        $times = $rule->prepareTimeForFrontEnd($date, $party_size);
         return response()->json($times);
-        
+
     }
 }

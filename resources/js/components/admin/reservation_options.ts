@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import axios from 'axios'
+import { Watch } from 'vue-property-decorator';
+import { Debounce } from 'typescript-debounce';
 
 interface IOptions {
     text: string,
@@ -10,19 +12,24 @@ interface IReservationOptions {
     interval_selected: number,
     intervals: IOptions[];
     reservation_deadline_selected: number,
-    reservation_deadline: IOptions[]
+    reservation_deadline: IOptions[],
+    reservation_cap: number,
+    allLoaded: boolean
 
 }
 @Component({
     props: {
         pInterval: String,
-        pCutoff: String
+        pCutoff: String,
+        pCap: String
     }
 
 })
 export default class ReservationOptions extends Vue implements IReservationOptions {
     interval_selected = 1;
     reservation_deadline_selected = 15;
+    reservation_cap = 0;
+    allLoaded = false;
     csrf = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).getAttribute('content');
     // computed
     public get intervals() {
@@ -66,17 +73,35 @@ export default class ReservationOptions extends Vue implements IReservationOptio
     destroyed() {
     }
 
+    @Watch('reservation_cap')
+    onChangePhone()
+    {
+        if(!this.allLoaded) {
+            return;
+        }
+        this.formatCap();
+    }
+    // methods
+    @Debounce({millisecondsDelay: 1000})
+    private formatCap() {
+        const cap = this.reservation_cap.toString().replace(/\D/g,'');
+        this.reservation_cap = (cap === '') ? 0 : (parseInt(cap) * 1);
+    }
+
     // methods
     private resetOptions() {
         this.interval_selected = this.$props.pInterval;
         this.reservation_deadline_selected = this.$props.pCutoff;
+        this.reservation_cap = this.$props.pCap ? parseInt(this.$props.pCap) : 0;
+        this.allLoaded = true;
     }
 
     private updateOptions() {
         // get the price subtotal with all options selected
         axios.post('/rules/store-options',{
             'reservation_deadline': this.reservation_deadline_selected,
-            'interval': this.interval_selected
+            'interval': this.interval_selected,
+            'max_size_per_interval': this.reservation_cap
         }).then(response => {
             if (response.status) {
                 const msg = 'You have successfully updated your reservation options.';

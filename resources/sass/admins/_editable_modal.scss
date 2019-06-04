@@ -1,0 +1,32 @@
+.modal-menu-dialog {
+    height: 100vh;
+    width: 100vw;
+    margin: unset;
+}
+
+.modal-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#menu-item-container {
+    display: grid;
+    grid-template-rows: min-content 1fr;
+}
+.tox.tox-silver-sink.tox-tinymce-aux {
+    z-index: 9999 !important;
+}
+.tox.tox-tinymce {
+    height: 98% !important;
+}
+.tox-notification.tox-notification--in {
+    display: none;
+    visibility: hidden;
+}
+
+// images
+.preview-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

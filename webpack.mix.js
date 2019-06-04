@@ -14,10 +14,12 @@ const mix = require('laravel-mix');
 mix.ts('resources/js/app.ts', 'public/js')
 	.ts('resources/js/admin_dashboard.ts', 'public/js')
 	.ts('resources/js/frontend.ts', 'public/js')
-	.ts('resources/js/admin_signin.ts', 'public/js')
+    .ts('resources/js/admin_signin.ts', 'public/js')
+    .ts('resources/js/globals/edit.ts', 'public/js')
 	.sass('resources/sass/admin.scss', 'public/css')
 	.sass('resources/sass/signin.scss', 'public/css')
 	.sass('resources/sass/frontend.scss', 'public/css')
+	.sass('resources/sass/home_edit.scss', 'public/css')
 	.options({
 		processCssUrls: false
 	})

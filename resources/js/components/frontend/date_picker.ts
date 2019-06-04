@@ -37,6 +37,7 @@ export default class DatePicker extends Vue {
     }
     // Lifecycle hooks
     created() {
+        this.$root.$on('check-times', this.forceCheckTime);
     }
     mounted() {
 
@@ -44,6 +45,8 @@ export default class DatePicker extends Vue {
     updated() {
     }
     destroyed() {
+        this.$root.$off('check-times', this.forceCheckTime);
+
     }
     @Watch('selectedDate')
     private onChangedName() {
@@ -68,11 +71,19 @@ export default class DatePicker extends Vue {
         }
     }
 
+    private forceCheckTime() {
+        if (this.selectedDate === undefined || !this.selectedDate) {
+            return;
+        }
+        this.setSelectedDate(this.selectedDate);
+    }
+
     private setSelectedDate(date: string) {
         this.$root.$emit('set-reservation-date', date);
         // get the price subtotal with all options selected
         axios.post('/rules/get-times',{
-            date
+            date,
+            party_size: this.getPartySize()
         }).then(response => {
 
             if (response.data) {
@@ -82,6 +93,13 @@ export default class DatePicker extends Vue {
         }).catch(e => {
 
         });
+    }
+
+    private getPartySize(): string {
+        const party_size_element = document.querySelector<HTMLSelectElement>('#party-size');
+        const selected_index = (party_size_element as HTMLSelectElement).selectedIndex;
+        const party_size_selected_option = (party_size_element as HTMLSelectElement).options[selected_index];
+        return party_size_selected_option.value;
     }
 
 }

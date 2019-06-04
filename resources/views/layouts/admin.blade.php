@@ -32,7 +32,8 @@
             <admin-rightbar id="navbar-right"
                             logout="{!! route('admin.logout') !!}"
                             users="{!! route('user.index') !!}"
-                            menus="{!! route('menu.index') !!}">
+                            menus="{!! route('menu.index') !!}"
+                            editing="{!! route('home.edit') !!}">
             </admin-rightbar>
 
             <main class="main-content">

@@ -291,7 +291,16 @@ class Reservation extends Model
             break;
 
         }
-	}
+    }
+
+    public function checkUnderCapacity($party_size = 0, $dateTime = null, $cap = 0)
+    {
+        if ($party_size == 0 && !isset($dateTime) && $cap = 0) {
+            return true;
+        }
+        $sumPartySizeAtTimeSlot = $this->where('requested', $dateTime)->sum('party_size');
+        return (($sumPartySizeAtTimeSlot + $party_size) <= $cap);
+    }
 
 
 }

@@ -4,6 +4,7 @@ namespace App;
 use DateTime;
 use DatePeriod;
 use DateInterval;
+use App\Reservation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
@@ -11,7 +12,7 @@ use Carbon\Carbon;
 class Rule extends Model
 {
     use SoftDeletes;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -33,7 +34,7 @@ class Rule extends Model
         'large_party_cancel_fee_amount',
         'special_instructions'
     ];
-    
+
     public function company()
     {
         return $this->belongsTo(Company::class, 'company_id', 'id');
@@ -54,7 +55,7 @@ class Rule extends Model
         return json_encode($set);
     }
 
-    public function prepareStoreHours() 
+    public function prepareStoreHours()
     {
         return ($this->store_hours) ? $this->store_hours : json_encode([
             [
@@ -157,17 +158,20 @@ class Rule extends Model
         $next_year = date("Y-m-d", strtotime("$month/01/$year +1 year"));
         return $next_year;
     }
-    public function prepareTimeForFrontend($date = null) {
+    public function prepareTimeForFrontend($date = null, $party_size = 0) {
         $now = $this->setLocale()->format('Y-m-d');
         $carbon = Carbon::createFromFormat('Y-m-d', $date);
         $compare = $carbon->format('Y-m-d');
         $time = [];
         $store_hours = json_decode($this->store_hours);
+
         $dow = $carbon->dayOfWeek;
         $checkToday = ($now == $compare);
         $start = $store_hours[$dow]->start->hh.':'.$store_hours[$dow]->start->mm.$store_hours[$dow]->start->a;
         $end = $store_hours[$dow]->end->hh.':'.$store_hours[$dow]->end->mm.$store_hours[$dow]->end->a;
-        return json_encode($this->setTimes($start, $end, $checkToday));
+        $day_times = $this->setTimes($start, $end, $checkToday);
+        $check_capacity = $this->checkCapacity($day_times, $date, $party_size);
+        return json_encode($check_capacity);
 
     }
     public function prepareDisabledDates() {
@@ -178,9 +182,9 @@ class Rule extends Model
                 continue;
             }
             $disabled_days = $this->getDaysNotTime($key, $disabled_days);
- 
+
         }
-        
+
         // add in blackout dates
         $disabled_days = $this->addBlackoutDatesNotTime($disabled_days);
         return json_encode($disabled_days);
@@ -191,7 +195,7 @@ class Rule extends Model
 
         $last = $this->getNotAfter($year, $month);
 
-        
+
         $store_hours = json_decode($this->store_hours);
         $disabled_days = [];
         foreach($store_hours as $key => $value) {
@@ -199,7 +203,7 @@ class Rule extends Model
                 continue;
             }
             $disabled_days = $this->getDays($key, $disabled_days);
-      
+
         }
         // add in blackout dates
         $disabled_days = $this->addBlackoutDates($disabled_days);
@@ -218,7 +222,7 @@ class Rule extends Model
         $endString = ($endTime == '12:00am') ?  '1983-10-01 '.$endTime :  '1983-09-30 '.$endTime;
         $start = $this->roundToNearestInterval($checkStart, $this->interval);
         $end = Carbon::createFromFormat('Y-m-d h:ia', $endString)->timestamp - $interval;
-        for ($i=$start; $i <= $end; $i += $interval) { 
+        for ($i=$start; $i <= $end; $i += $interval) {
             $time = Carbon::createFromTimestamp($i)->format('h:ia');
             array_push($times, $time);
         }
@@ -235,7 +239,7 @@ class Rule extends Model
         $startM = date('m');
         $endY = date('Y', strtotime('+1 year'));
         $endM = date('m');
-        
+
         switch($dow) {
             case 0: // sunday
                 $day = 'sunday';
@@ -248,15 +252,15 @@ class Rule extends Model
             case 2: //tuesday
                 $day = 'tuesday';
                 break;
-            
+
             case 3: //wednesday
                 $day = 'wednesday';
                 break;
-            
+
             case 4: //thursday
                 $day = 'thursday';
                 break;
-            
+
             case 5: // friday
                 $day = 'friday';
                 break;
@@ -264,7 +268,7 @@ class Rule extends Model
             default: // saturday
                 $day = 'saturday';
                 break;
-            
+
         }
         $dates = new DatePeriod(
             new DateTime("first $day of $startY-$startM"),
@@ -283,7 +287,7 @@ class Rule extends Model
         $startM = date('m');
         $endY = date('Y', strtotime('+1 year'));
         $endM = date('m');
-        
+
         switch($dow) {
             case 0: // sunday
                 $day = 'sunday';
@@ -296,15 +300,15 @@ class Rule extends Model
             case 2: //tuesday
                 $day = 'tuesday';
                 break;
-            
+
             case 3: //wednesday
                 $day = 'wednesday';
                 break;
-            
+
             case 4: //thursday
                 $day = 'thursday';
                 break;
-            
+
             case 5: // friday
                 $day = 'friday';
                 break;
@@ -312,7 +316,7 @@ class Rule extends Model
             default: // saturday
                 $day = 'saturday';
                 break;
-            
+
         }
         $dates = new DatePeriod(
             new DateTime("first $day of $startY-$startM"),
@@ -365,7 +369,7 @@ class Rule extends Model
         $sh_defined = [];
         foreach($store_hours as $day => $store_hour) {
             $opened = $store_hour->opened;
-            if ($opened) { // store is opened 
+            if ($opened) { // store is opened
                 $startHour = $this->getFullCalendarTime($store_hour->start);
                 $endHour = $this->getFullCalendarTime($store_hour->end);
                 $index = $startHour+$endHour;
@@ -403,13 +407,39 @@ class Rule extends Model
             return null;
         }
         $value = date('H:i', strtotime("$time->hh:$time->mm $time->a"));
-        
+
         return $value;
     }
     private function setLocale()
     {
         $location = env('APP_TIMEZONE');
         return Carbon::now($location);
+    }
+
+    private function checkCapacity($times, $date, $party_size)
+    {
+        $rule = $this->find(1);
+        $cap = $this->max_size_per_interval;
+        if ($cap == 0) {
+            return $times;
+        }
+        $reservations = new Reservation;
+        $newTimes = collect($times)->filter(function($time) use ($date, $reservations, $party_size, $cap) {
+            if ($time == 'Select Time') {
+                return $time;
+            }
+            $checkTimeSlot = "$date $time";
+            $checkDateTime = Carbon::parse($checkTimeSlot);
+            $checkDateTimeFormatted = $checkDateTime->format('Y-m-d H:i:s');
+
+            $checkUnderCapacityAtTimeSlot = $reservations->checkUnderCapacity($party_size, $checkDateTimeFormatted, $cap);
+
+            if ($checkUnderCapacityAtTimeSlot) {
+                return $time;
+            }
+        });
+
+        return $newTimes;
     }
 
 
