@@ -30,7 +30,6 @@
             </li>
         </ul>
         <div>
-
             <button class="pure-button pure-button-primary pure-u-1" @click="newMenuRow">+New Menu Row</button>
             <br/><br/><br/>
             <button class="pure-button pure-u-1-5" @click="importBase">Import Base Menu</button>
