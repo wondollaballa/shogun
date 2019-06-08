@@ -1,11 +1,20 @@
 {
     "/js/admin_dashboard.js": "/js/admin_dashboard.js",
+    "/js/admin_dashboard.js.map": "/js/admin_dashboard.js.map",
     "/js/frontend.js": "/js/frontend.js",
+    "/js/frontend.js.map": "/js/frontend.js.map",
     "/js/admin_signin.js": "/js/admin_signin.js",
+    "/js/admin_signin.js.map": "/js/admin_signin.js.map",
     "/js/app.js": "/js/app.js",
     "/css/admin.css": "/css/admin.css",
     "/css/signin.css": "/css/signin.css",
     "/css/frontend.css": "/css/frontend.css",
     "/css/home_edit.css": "/css/home_edit.css",
-    "/js/edit.js": "/js/edit.js"
+    "/js/app.js.map": "/js/app.js.map",
+    "/css/admin.css.map": "/css/admin.css.map",
+    "/css/signin.css.map": "/css/signin.css.map",
+    "/css/frontend.css.map": "/css/frontend.css.map",
+    "/css/home_edit.css.map": "/css/home_edit.css.map",
+    "/js/edit.js": "/js/edit.js",
+    "/js/edit.js.map": "/js/edit.js.map"
 }
