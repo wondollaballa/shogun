@@ -4,5 +4,5 @@ header:hover {
 .editable:hover {
     border: 4px dashed red !important;
     cursor: pointer;
-
+    z-index: 10;
 }

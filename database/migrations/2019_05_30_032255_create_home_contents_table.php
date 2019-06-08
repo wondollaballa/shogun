@@ -19,6 +19,7 @@ class CreateHomeContentsTable extends Migration
             $table->boolean('hasHtml')->default(false);
             $table->string('name')->nullable();
             $table->string('image_src')->nullable();
+            $table->string('image_rotate')->nullable();
             $table->text('html_content')->nullable();
             $table->softDeletes();
             $table->timestamps();

@@ -30,3 +30,73 @@
     background-size: cover;
     background-position: center;
 }
+
+// aboutus
+#aboutus-container, #theexperience-container {
+    display: grid;
+    grid-template-rows: 250px 1fr;
+    #aboutus-image-container, #theexperience-image-container {
+        display: grid;
+        grid-template-areas:
+            'set set prev'
+            'btn btn prev';
+        grid-template-columns: 1fr 1fr 250px;
+        .filepond--root {
+            max-height: 80px;
+        }
+        #button-container {
+            grid-area: btn;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+        }
+        #fileUpload-aboutus, #fileUpload-theexperience {
+            grid-area : set;
+        }
+        #aboutus-image, #theexperience-image {
+            grid-area: prev;
+            border: 2px dashed gray;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+    }
+}
+
+#footer-container {
+    display: grid;
+    #footer-modal {
+        height: 100%;
+    }
+}
+
+/* Nav */
+#editable-back {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+.floating-nav {
+    position: fixed !important;
+    bottom: 0;
+    background-color: white;
+    height: 40px;
+    width: 100vw;
+    z-index: 9998;
+    display: grid;
+    grid-template-columns: min-content min-content 1fr;
+    gap: 3px;
+    background-color: black;
+    #publish-button {
+        margin-right: 10px;
+    }
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+
+
+

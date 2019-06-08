@@ -21,3 +21,5 @@ footer!.addEventListener('click', (event) => {
     document.dispatchEvent(new CustomEvent('open-footer-modal', { bubbles: true }));
 
 });
+
+

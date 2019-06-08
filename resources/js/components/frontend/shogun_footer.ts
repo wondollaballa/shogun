@@ -5,14 +5,17 @@ import { IStoreInfo } from '../../interfaces/interfaces';
 
 @Component({
     props: {
-        companyInfo: String
+        companyInfo: String,
+        htmlContent: String
     }
 
 })
 export default class ShogunFooter extends Vue {
+    content: string | null = null;
     get year(): string {
         return moment().year().toString();
     }
+
 
     get store(): IStoreInfo {
 		const content = (this.$props.conpanyInfo) ? JSON.parse(this.$props.companyInfo) : {
@@ -61,14 +64,23 @@ export default class ShogunFooter extends Vue {
 	}
     // Lifecycle hooks
     created() {
-
+        this.$root.$on('apply-footer-data', this.applyData);
     }
     mounted() {
+        this.setData();
     }
     updated() {
     }
     destroyed() {
+        this.$root.$off('apply-footer-data', this.applyData);
+    }
 
+    private setData() {
+        this.content = this.$props.htmlContent;
+    }
+
+    private applyData(content: string) {
+        this.content = content;
     }
 
 }

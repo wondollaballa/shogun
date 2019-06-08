@@ -3,6 +3,7 @@
         <br/>
         <p>&copy; {{ year }} Shogun of Japan, all rights reserved.</p>
         <blockquote>{{ store.street }}, <br/>{{ store.city }}, {{ store.city }} {{ store.zipcode }}<br/>{{ store.phone }}</blockquote>
+        <div class="special-html" v-html="content"></div>
     </div>
 </template>
 

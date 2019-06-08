@@ -5,7 +5,9 @@ const Filepond = require('filepond');
 
 @Component({
     props: {
-        hasBackground: Boolean
+        oldImage: String,
+        rotateClass: String,
+        htmlContent: String
     },
     components: {
         Editor
@@ -16,18 +18,21 @@ export default class EditableAboutUsModal extends Vue {
     title: string = 'Please wait...';
     pond: any = null;
     token: string | null = null;
-    htmlContent: string | null = null;
+    content: string | null = null;
     imageUrl: string | null = null;
-
+    imageRotate: number = 0;
+    imageRotateClass: string | null = null;
     // Lifecycle hooks
     created() {
         document.addEventListener('open-aboutus-modal', (e) => {
             this.openModal();
         });
+        this.$root.$on('editable-reset', this.reset);
     }
     mounted() {
         this.token = (document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]') as HTMLMetaElement).getAttribute('content');
         this.createFilepond();
+        this.setData();
     }
     updated() {
     }
@@ -37,6 +42,12 @@ export default class EditableAboutUsModal extends Vue {
         });
 
     }
+    private setData() {
+        this.content = this.$props.htmlContent;
+        this.imageUrl = this.$props.oldImage;
+        this.imageRotateClass = this.$props.rotateClass;
+    }
+
     private createFilepond() {
         const inputElement = document.querySelector('#fileUpload-aboutus');
         this.pond = Filepond.create( inputElement );
@@ -57,18 +68,66 @@ export default class EditableAboutUsModal extends Vue {
                     },
                     onerror: null,
                     ondata: null
+                },
+                revert: {
+                    url: './revert/aboutus',
+                    method: 'POST',
+                    withCredentials: false,
+                    headers: {
+                        'X-CSRF-TOKEN': this.token
+                    },
+                    timeout: 7000,
+                    onload: (e: string) => {
+                        this.imageUrl = null;
+                    },
+                    onerror: null
                 }
             }
 
         });
     };
+    private finishImage(imageSrc: string) {
+        this.imageUrl = `../${imageSrc}`;
+    }
 
-    private finishImage(path: string) {
-        // if ('image' in this.section!) {
-        //     this.section!.image = path;
-        //     this.$root.$emit('update-save-image');
-        // }
-        return;
+    private rotate(direction: number) {
+        switch (direction) {
+            case 1:
+            if(this.imageRotate < 2) {
+                this.imageRotate += 1;
+            }
+            break;
+
+            case -1:
+            if (this.imageRotate > 0) {
+                this.imageRotate -= 1;
+            }
+            break;
+        }
+
+        switch(this.imageRotate) {
+            case 0:
+            this.imageRotateClass = 'rotate-0';
+            break;
+
+            default:
+            this.imageRotateClass = `rotate-${this.imageRotate}`;
+            break;
+        }
+
+    }
+
+    private getRotateClass(): string | null {
+        return this.imageRotateClass;
+    }
+    private apply() {
+        this.$root.$emit('apply-aboutus-data', this.imageUrl, this.imageRotateClass, this.content);
+        this.$root.$emit('editable-nav-aboutus', {
+            image: this.imageUrl,
+            imageRotate: this.imageRotateClass,
+            html: this.content
+        });
+        this.modalClose();
     }
     private openModal() {
         this.opened = true;
@@ -77,9 +136,12 @@ export default class EditableAboutUsModal extends Vue {
 
     private modalClose() {
         this.opened = false;
-        this.title = '';
-        this.htmlContent = null;
-        this.imageUrl = null;
+    }
+
+    private reset() {
+        this.content = this.$props.htmlContent;
+        this.imageUrl = this.$props.oldImage;
+        this.imageRotateClass = this.$props.rotateClass;
     }
 
 }

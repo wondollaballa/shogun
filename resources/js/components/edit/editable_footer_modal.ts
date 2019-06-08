@@ -5,7 +5,7 @@ const Filepond = require('filepond');
 
 @Component({
     props: {
-        hasBackground: Boolean
+        htmlContent: String
     },
     components: {
         Editor
@@ -16,18 +16,18 @@ export default class EditableFooterModal extends Vue {
     title: string = 'Please wait...';
     pond: any = null;
     token: string | null = null;
-    htmlContent: string | null = null;
-    imageUrl: string | null = null;
+    content: string | null = null;
 
     // Lifecycle hooks
     created() {
         document.addEventListener('open-footer-modal', (e) => {
             this.openModal();
         });
+        this.$root.$on('editable-reset', this.reset);
     }
     mounted() {
         this.token = (document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]') as HTMLMetaElement).getAttribute('content');
-        this.createFilepond();
+        this.setData();
     }
     updated() {
     }
@@ -36,38 +36,16 @@ export default class EditableFooterModal extends Vue {
             this.openModal();
         });
     }
-    private createFilepond() {
-        const inputElement = document.querySelector('#fileUpload-footer');
-        this.pond = Filepond.create( inputElement );
-        this.pond.setOptions({
-            server: {
-                process: {
-                    url: './upload/footer',
-                    method: 'POST',
-                    withCredentials: false,
-                    headers: {
-                        'X-CSRF-TOKEN': this.token
-                    },
-                    timeout: 7000,
-                    onload: (e: string) => {
-                        const event = JSON.parse(e);
-                        const path = event.path;
-                        this.finishImage(path);
-                    },
-                    onerror: null,
-                    ondata: null
-                }
-            }
+    private setData() {
+        this.content = this.$props.htmlContent;
+    }
 
+    private apply() {
+        this.$root.$emit('apply-footer-data', this.content);
+        this.$root.$emit('editable-nav-footer', {
+            html: this.content
         });
-    };
-
-    private finishImage(path: string) {
-        // if ('image' in this.section!) {
-        //     this.section!.image = path;
-        //     this.$root.$emit('update-save-image');
-        // }
-        return;
+        this.modalClose();
     }
     private openModal() {
         this.opened = true;
@@ -76,9 +54,11 @@ export default class EditableFooterModal extends Vue {
 
     private modalClose() {
         this.opened = false;
-        this.title = '';
-        this.htmlContent = null;
-        this.imageUrl = null;
     }
+
+    private reset() {
+        this.content = this.$props.htmlContent;
+    }
+
 
 }

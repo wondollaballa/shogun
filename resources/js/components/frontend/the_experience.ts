@@ -3,35 +3,40 @@ import Component from 'vue-class-component'
 
 @Component({
     props: {
-        text: String
+        htmlContent: String,
+        oldImage: String,
+        rotateClass: String
     }
-    
+
 })
 export default class TheExperience extends Vue {
+    imageUrl: string | null = null;
+    imageRotateClass: string | null = null;
+    content: string | null = null;
 
-    get overview() {
-        const overview = (this.$props.text) ? JSON.parse(this.$props.text).Overview : '';
-        return overview;
-    }
-    get teppanyaki() {
-        const teppanyaki = (this.$props.text) ? JSON.parse(this.$props.text).Teppanyaki : '';
-        return teppanyaki;
-    }
-
-    get sushi() {
-        const sushi = (this.$props.text) ? JSON.parse(this.$props.text).Sushi : "";
-        return sushi;
-    }
     // Lifecycle hooks
     created() {
-
+        this.$root.$on('apply-theexperience-data', this.applyData);
     }
     mounted() {
+        this.setData();
     }
     updated() {
     }
     destroyed() {
+        this.$root.$off('apply-theexperience-data', this.applyData);
+    }
 
+    private setData() {
+        this.imageUrl = this.$props.oldImage;
+        this.imageRotateClass = this.$props.rotateClass;
+        this.content = this.$props.htmlContent;
+    }
+
+    private applyData(imageSrc: string, rotateClass: string, content: string) {
+        this.imageUrl = imageSrc;
+        this.imageRotateClass = rotateClass;
+        this.content = content;
     }
 
 }

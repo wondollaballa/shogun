@@ -6,7 +6,8 @@ const Filepond = require('filepond');
 
 @Component({
     props: {
-        hasBackground: Boolean
+        oldImage: String,
+        rotateClass: String
     },
     components: {
         Editor
@@ -19,16 +20,20 @@ export default class EditableHeaderModal extends Vue {
     token: string | null = null;
     htmlContent: string | null = null;
     imageUrl: string | null = null;
+    imageRotate: number = 0;
+    imageRotateClass: string | null = null;
 
     // Lifecycle hooks
     created() {
         document.addEventListener('open-header-modal', (e) => {
             this.openModal();
         });
+        this.$root.$on('editable-reset', this.reset);
     }
     mounted() {
         this.token = (document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]') as HTMLMetaElement).getAttribute('content');
         this.createFilepond();
+        this.setData();
     }
     updated() {
     }
@@ -36,7 +41,14 @@ export default class EditableHeaderModal extends Vue {
         document.removeEventListener('open-header-modal', (e) => {
             this.openModal();
         });
-
+        this.$root.$on('editable-reset', this.reset);
+    }
+    private setData() {
+        this.imageUrl = this.$props.oldImage;
+        this.imageRotateClass = this.$props.rotateClass;
+    }
+    private getRotateClass() {
+        return this.imageRotateClass;
     }
     private createFilepond() {
         const inputElement = document.querySelector('#fileUpload-header');
@@ -77,18 +89,43 @@ export default class EditableHeaderModal extends Vue {
 
         });
     };
+
+    private rotate(direction: number) {
+        switch (direction) {
+            case 1:
+            if(this.imageRotate < 2) {
+                this.imageRotate += 1;
+            }
+            break;
+
+            case -1:
+            if (this.imageRotate > 0) {
+                this.imageRotate -= 1;
+            }
+            break;
+        }
+
+        switch(this.imageRotate) {
+            case 0:
+            this.imageRotateClass = 'rotate-0';
+            break;
+
+            default:
+            this.imageRotateClass = `rotate-${this.imageRotate}`;
+            break;
+        }
+
+    }
     private setImageUrl(image: string) {
         this.imageUrl = `../${image}`;
     }
     private reset() {
-        console.log('reset header info');
         // set values back to prop values
         this.title = '';
-        this.htmlContent = null;
-
+        // this.htmlContent = null;
         // delete image from path
-        this.deleteImageFromPath();
-        this.imageUrl = null;
+        // this.deleteImageFromPath();
+        // this.imageUrl = null;
     }
     private deleteImageFromPath() {
         // check revert button exists
@@ -105,7 +142,11 @@ export default class EditableHeaderModal extends Vue {
     }
     private apply() {
         // save image path into db remove everything else in folder
-        this.$root.$emit('apply-header-image', this.imageUrl);
+        this.$root.$emit('apply-header-image', this.imageUrl, this.imageRotateClass);
+        this.$root.$emit('editable-nav-header', {
+            image: this.imageUrl,
+            imageRotate: this.imageRotateClass
+        });
         this.opened = false;
     }
     private openModal() {

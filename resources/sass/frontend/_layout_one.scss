@@ -12,41 +12,57 @@ body {
 		'colc colc colc cold cold cold'
 		'foot foot foot foot foot foot';
 
-	grid-template-rows: min-content 70px min-content min-content 120px;
+    grid-template-rows: min-content 70px min-content min-content 120px;
+    .header-section {
+        grid-area: head;
+        height: 100vh;
+        width: 100vw;
+        background: unset;
+    }
+    #header-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-size: cover;
+        z-index: 8998;
+    }
+    header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        z-index:8999;
+        grid-template-areas:
+            '. . . . . . .'
+            '. . . brand . . .'
+            '. . . res . . .'
+            '. . . res . . .'
+            '. . . . . . .';
+        grid-template-rows: 1fr min-content min-content min-content 1fr 1fr;
+        gap: 30px;
+    }
+    #header-logo {
+        grid-area: brand;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        display: flex;
+        justify-self: center;
+        align-self:center;
+        background-image: url('../images/Shogun_2.png') !important;
+        background-color: white;
+        background-size: 125px !important;
+        background-repeat: no-repeat !important;
+        background-position-x: center !important;
+        background-position-y: center !important;
+    }
 }
 
-#container header {
-	grid-area: head;
-	height: 100vh;
-	width: 100vw;
-	background: url(../images/hibachi-2.jpg) no-repeat center;
-	background-size: cover;
-	display: grid;
-	grid-template-areas:
-		'. . . . . . .'
-		'. . . brand . . .'
-		'. . . res . . .'
-		'. . . res . . .'
-		'. . . . . . .';
-	grid-template-rows: 1fr min-content min-content min-content 1fr 1fr;
-	gap: 30px;
-}
 
-#header-logo {
-	grid-area: brand;
-	width: 200px;
-	height: 200px;
-	border-radius: 50%;
-	display: flex;
-	justify-self: center;
-	align-self:center;
-	background-image: url('../images/Shogun_2.png') !important;
-	background-color: white;
-	background-size: 125px !important;
-	background-repeat: no-repeat !important;
-	background-position-x: center !important;
-	background-position-y: center !important;
-}
 .thinking {
 	animation: pulse 0.9s infinite;
 	-webkit-animation: pulse 0.9s infinite;

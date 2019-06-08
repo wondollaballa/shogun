@@ -649,6 +649,40 @@
 /*+++++++++++++++++++
       @Media Queries
   +++++++++++++++++++++*/
+.flip-v {
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+}
+
+.flip-h {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+.rotate-1 {
+  behavior: url(-ms-transform.htc);
+  /* Firefox */
+  -moz-transform: rotate(90deg);
+  /* Safari and Chrome */
+  -webkit-transform: rotate(90deg);
+  /* Opera */
+  -o-transform: rotate(90deg);
+  /* IE9 */
+  -ms-transform: rotate(90deg);
+}
+
+.rotate-2 {
+  behavior: url(-ms-transform.htc);
+  /* Firefox */
+  -moz-transform: rotate(180deg);
+  /* Safari and Chrome */
+  -webkit-transform: rotate(180deg);
+  /* Opera */
+  -o-transform: rotate(180deg);
+  /* IE9 */
+  -ms-transform: rotate(180deg);
+}
+
 .flip-card {
   -webkit-perspective: inherit;
           perspective: inherit;
@@ -698,20 +732,38 @@ body {
   grid-template-rows: min-content 70px min-content min-content 120px;
 }
 
-#container header {
+#container .header-section {
   grid-area: head;
   height: 100vh;
   width: 100vw;
-  background: url(../images/hibachi-2.jpg) no-repeat center;
+  background: unset;
+}
+
+#container #header-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
   background-size: cover;
+  z-index: 8998;
+}
+
+#container header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
   display: grid;
+  z-index: 8999;
   grid-template-areas: '. . . . . . .' '. . . brand . . .' '. . . res . . .' '. . . res . . .' '. . . . . . .';
   grid-template-rows: 1fr -webkit-min-content -webkit-min-content -webkit-min-content 1fr 1fr;
   grid-template-rows: 1fr min-content min-content min-content 1fr 1fr;
   gap: 30px;
 }
 
-#header-logo {
+#container #header-logo {
   grid-area: brand;
   width: 200px;
   height: 200px;
@@ -1228,10 +1280,6 @@ h6 {
   border-left: 125px solid transparent;
 }
 
-#about-us-image {
-  background-image: url(../images/hibachi-6.jpg) !important;
-}
-
 #the-experience {
   position: relative;
   background-color: black;
@@ -1242,7 +1290,7 @@ h6 {
   padding: 25px;
 }
 
-#the-experience blockquote {
+#the-experience .content {
   font-weight: 100;
   line-height: 2rem;
   -webkit-font-kerning: normal;
@@ -1292,10 +1340,6 @@ h6 {
   font-weight: 100;
   text-align: center;
   font-variant-caps: small-caps;
-}
-
-#the-experience-image {
-  background-image: url(../images/hibachi-7.jpg) !important;
 }
 
 #our-menu {
@@ -1693,6 +1737,7 @@ header:hover {
 .editable:hover {
   border: 4px dashed red !important;
   cursor: pointer;
+  z-index: 10;
 }
 
 .modal-menu-dialog {
@@ -1731,6 +1776,79 @@ header:hover {
   background-position: center;
 }
 
+#aboutus-container, #theexperience-container {
+  display: grid;
+  grid-template-rows: 250px 1fr;
+}
+
+#aboutus-container #aboutus-image-container, #aboutus-container #theexperience-image-container, #theexperience-container #aboutus-image-container, #theexperience-container #theexperience-image-container {
+  display: grid;
+  grid-template-areas: 'set set prev' 'btn btn prev';
+  grid-template-columns: 1fr 1fr 250px;
+}
+
+#aboutus-container #aboutus-image-container .filepond--root, #aboutus-container #theexperience-image-container .filepond--root, #theexperience-container #aboutus-image-container .filepond--root, #theexperience-container #theexperience-image-container .filepond--root {
+  max-height: 80px;
+}
+
+#aboutus-container #aboutus-image-container #button-container, #aboutus-container #theexperience-image-container #button-container, #theexperience-container #aboutus-image-container #button-container, #theexperience-container #theexperience-image-container #button-container {
+  grid-area: btn;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#aboutus-container #aboutus-image-container #fileUpload-aboutus, #aboutus-container #aboutus-image-container #fileUpload-theexperience, #aboutus-container #theexperience-image-container #fileUpload-aboutus, #aboutus-container #theexperience-image-container #fileUpload-theexperience, #theexperience-container #aboutus-image-container #fileUpload-aboutus, #theexperience-container #aboutus-image-container #fileUpload-theexperience, #theexperience-container #theexperience-image-container #fileUpload-aboutus, #theexperience-container #theexperience-image-container #fileUpload-theexperience {
+  grid-area: set;
+}
+
+#aboutus-container #aboutus-image-container #aboutus-image, #aboutus-container #aboutus-image-container #theexperience-image, #aboutus-container #theexperience-image-container #aboutus-image, #aboutus-container #theexperience-image-container #theexperience-image, #theexperience-container #aboutus-image-container #aboutus-image, #theexperience-container #aboutus-image-container #theexperience-image, #theexperience-container #theexperience-image-container #aboutus-image, #theexperience-container #theexperience-image-container #theexperience-image {
+  grid-area: prev;
+  border: 2px dashed gray;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#footer-container {
+  display: grid;
+}
+
+#footer-container #footer-modal {
+  height: 100%;
+}
+
+/* Nav */
+#editable-back {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.floating-nav {
+  position: fixed !important;
+  bottom: 0;
+  background-color: white;
+  height: 40px;
+  width: 100vw;
+  z-index: 9998;
+  display: grid;
+  grid-template-columns: -webkit-min-content -webkit-min-content 1fr;
+  grid-template-columns: min-content min-content 1fr;
+  gap: 3px;
+  background-color: black;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.floating-nav #publish-button {
+  margin-right: 10px;
+}
+
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -1743,7 +1861,6 @@ header:hover {
   #container header {
     grid-area: head;
     height: 100vh;
-    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
     background-size: cover;
     display: grid;
     grid-template-areas: '. . . . . . .' '. . . brand . . .' '. . . res . . .' '. . . res . . .' '. . . . . . .';
@@ -2055,7 +2172,6 @@ header:hover {
     grid-area: head;
     height: 100vh;
     min-height: 750px;
-    background: url(../images/hibachi-2.jpg) no-repeat center;
     background-size: cover;
     display: grid;
     grid-template-areas: '. . . . . . .' '. . . brand . . .' '. res res res res res .' '. res res res res res .' '. . . . . . .';

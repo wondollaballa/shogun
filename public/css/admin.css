@@ -5979,6 +5979,40 @@ body {
   /* this is a light blue */
 }
 
+.flip-v {
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+}
+
+.flip-h {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+.rotate-1 {
+  behavior: url(-ms-transform.htc);
+  /* Firefox */
+  -moz-transform: rotate(90deg);
+  /* Safari and Chrome */
+  -webkit-transform: rotate(90deg);
+  /* Opera */
+  -o-transform: rotate(90deg);
+  /* IE9 */
+  -ms-transform: rotate(90deg);
+}
+
+.rotate-2 {
+  behavior: url(-ms-transform.htc);
+  /* Firefox */
+  -moz-transform: rotate(180deg);
+  /* Safari and Chrome */
+  -webkit-transform: rotate(180deg);
+  /* Opera */
+  -o-transform: rotate(180deg);
+  /* IE9 */
+  -ms-transform: rotate(180deg);
+}
+
 .alert {
   display: -webkit-box;
   display: -ms-flexbox;

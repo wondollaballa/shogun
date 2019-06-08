@@ -8,8 +8,10 @@
 			<div id="menu-item-container" class="modal-body" >
                 <div>
                     <input id="fileUpload-header" class="fileUpload" type="file"/>
+                    <button class="pure-button button-error" @click="rotate(-1)">rotate -</button>
+                    <button class="pure-button button-success" @click="rotate(1)">rotate +</button>
                 </div>
-                <div id="preview-image-header" class="preview-image" :style="{ backgroundImage: 'url('+imageUrl+')'  }">
+                <div id="preview-image-header" class="preview-image" :class="getRotateClass()" :style="{ backgroundImage: 'url('+imageUrl+')'  }">
                 </div>
 			</div>
             <div class="modal-footer">

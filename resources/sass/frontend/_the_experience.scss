@@ -7,7 +7,7 @@
     padding: 25px;
 }
 
-#the-experience blockquote {
+#the-experience .content {
 	font-weight: 100;
     line-height: 2rem;
 	font-kerning: normal;
@@ -57,8 +57,4 @@
     font-weight: 100;
     text-align: center;
     font-variant-caps: small-caps;
-}
-
-#the-experience-image {
-    background-image: url(../images/hibachi-7.jpg) !important;
 }

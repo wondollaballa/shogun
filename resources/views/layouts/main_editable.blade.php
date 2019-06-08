@@ -25,10 +25,8 @@
 
     <body>
         <div id="container">
-            @yield('header')
-
             @yield('nav')
-
+            @yield('header')
             <main class="main-content">
                 <!-- <frontend-alert alert="{{ json_encode(Session::get('alert')) }}" timer="5000"></frontend-alert> -->
                 @yield('content')

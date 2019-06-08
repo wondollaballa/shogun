@@ -64,10 +64,11 @@ class HomeController extends Controller
         $menu = new Menu;
         $menus = $menu->getAllMenus();
         // change later
-        $headerContent = HomeContent::find(1);
-        $aboutusContent = HomeContent::find(2);
-        $theexperienceContent = HomeContent::find(3);
-        $footerContent = HomeContent::find(4);
+        $homeContent = new HomeContent;
+        $headerContent = $homeContent->prepareContent(1);
+        $aboutusContent = $homeContent->prepareContent(2);
+        $theexperienceContent = $homeContent->prepareContent(3);
+        $footerContent = $homeContent->prepareContent(4);
 
         return view('home/edit', compact([
             'disabledDates',
@@ -101,6 +102,9 @@ class HomeController extends Controller
     }
     public function resetHeader(Request $request)
     {
+        if(!$request->session()->has('header-image')) {
+            return response()->json(['status'=>false]);
+        }
         $path = storage_path(str_replace('storage/','app/public/',$request->session()->pull('header-image')));
         unlink($path);
         return response()->json(['message'=> 'successfully deleted image']);
@@ -108,18 +112,35 @@ class HomeController extends Controller
     public function uploadAboutUs(Request $request)
     {
         $path = $request->file('filepond')->store('public/images/home/aboutus');
-
         $relative = str_replace('public/', 'storage/', $path);
-
+        $request->session()->put('aboutus-image',$relative);
         return response()->json(['success'=>'Image successfully uploaded!','path'=> $relative]);
+    }
+    public function revertAboutus(Request $request)
+    {
+        if (!$request->session()->has('aboutus-image')) {
+            return response()->json(['message'=> 'no image to delete']);
+        }
+        $path = storage_path(str_replace('storage/','app/public/',$request->session()->pull('aboutus-image')));
+        unlink($path);
+        return response()->json(['message'=> 'successfully deleted image']);
     }
     public function uploadTheExperience(Request $request)
     {
         $path = $request->file('filepond')->store('public/images/home/theexperience');
 
         $relative = str_replace('public/', 'storage/', $path);
-
+        $request->session()->put('theexperience-image',$relative);
         return response()->json(['success'=>'Image successfully uploaded!','path'=> $relative]);
+    }
+    public function revertTheExperience(Request $request)
+    {
+        if (!$request->session()->has('theexperience-image')) {
+            return response()->json(['message'=> 'no image to delete']);
+        }
+        $path = storage_path(str_replace('storage/','app/public/',$request->session()->pull('theexperience-image')));
+        unlink($path);
+        return response()->json(['message'=> 'successfully deleted image']);
     }
     public function uploadFooter(Request $request)
     {
@@ -128,5 +149,17 @@ class HomeController extends Controller
         $relative = str_replace('public/', 'storage/', $path);
 
         return response()->json(['success'=>'Image successfully uploaded!','path'=> $relative]);
+    }
+    public function publish(Request $request)
+    {
+        $homeContent = new HomeContent;
+        $header = $request->header;
+        $aboutus = $request->aboutus;
+        $theexperience = $request->theexperience;
+        $footer = $request->footerData;
+        if ($homeContent->publishContent($header, $aboutus, $theexperience, $footer)) {
+            return response()->json(['success'=>'successfully published front page.']);
+        }
+        return response()->json(['status'=>false]);
     }
 }

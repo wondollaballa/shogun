@@ -649,6 +649,40 @@
 /*+++++++++++++++++++
       @Media Queries
   +++++++++++++++++++++*/
+.flip-v {
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+}
+
+.flip-h {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+.rotate-1 {
+  behavior: url(-ms-transform.htc);
+  /* Firefox */
+  -moz-transform: rotate(90deg);
+  /* Safari and Chrome */
+  -webkit-transform: rotate(90deg);
+  /* Opera */
+  -o-transform: rotate(90deg);
+  /* IE9 */
+  -ms-transform: rotate(90deg);
+}
+
+.rotate-2 {
+  behavior: url(-ms-transform.htc);
+  /* Firefox */
+  -moz-transform: rotate(180deg);
+  /* Safari and Chrome */
+  -webkit-transform: rotate(180deg);
+  /* Opera */
+  -o-transform: rotate(180deg);
+  /* IE9 */
+  -ms-transform: rotate(180deg);
+}
+
 .flip-card {
   -webkit-perspective: inherit;
           perspective: inherit;
@@ -698,20 +732,38 @@ body {
   grid-template-rows: min-content 70px min-content min-content 120px;
 }
 
-#container header {
+#container .header-section {
   grid-area: head;
   height: 100vh;
   width: 100vw;
-  background: url(../images/hibachi-2.jpg) no-repeat center;
+  background: unset;
+}
+
+#container #header-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
   background-size: cover;
+  z-index: 8998;
+}
+
+#container header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
   display: grid;
+  z-index: 8999;
   grid-template-areas: '. . . . . . .' '. . . brand . . .' '. . . res . . .' '. . . res . . .' '. . . . . . .';
   grid-template-rows: 1fr -webkit-min-content -webkit-min-content -webkit-min-content 1fr 1fr;
   grid-template-rows: 1fr min-content min-content min-content 1fr 1fr;
   gap: 30px;
 }
 
-#header-logo {
+#container #header-logo {
   grid-area: brand;
   width: 200px;
   height: 200px;
@@ -1228,10 +1280,6 @@ h6 {
   border-left: 125px solid transparent;
 }
 
-#about-us-image {
-  background-image: url(../images/hibachi-6.jpg) !important;
-}
-
 #the-experience {
   position: relative;
   background-color: black;
@@ -1242,7 +1290,7 @@ h6 {
   padding: 25px;
 }
 
-#the-experience blockquote {
+#the-experience .content {
   font-weight: 100;
   line-height: 2rem;
   -webkit-font-kerning: normal;
@@ -1292,10 +1340,6 @@ h6 {
   font-weight: 100;
   text-align: center;
   font-variant-caps: small-caps;
-}
-
-#the-experience-image {
-  background-image: url(../images/hibachi-7.jpg) !important;
 }
 
 #our-menu {
@@ -1698,7 +1742,6 @@ h6 {
   #container header {
     grid-area: head;
     height: 100vh;
-    background: url(../images/hibachi-2.jpg) no-repeat center center fixed;
     background-size: cover;
     display: grid;
     grid-template-areas: '. . . . . . .' '. . . brand . . .' '. . . res . . .' '. . . res . . .' '. . . . . . .';
@@ -2010,7 +2053,6 @@ h6 {
     grid-area: head;
     height: 100vh;
     min-height: 750px;
-    background: url(../images/hibachi-2.jpg) no-repeat center;
     background-size: cover;
     display: grid;
     grid-template-areas: '. . . . . . .' '. . . brand . . .' '. res res res res res .' '. res res res res res .' '. . . . . . .';
