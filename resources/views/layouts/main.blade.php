@@ -25,10 +25,7 @@
 
     <body>
         <div id="container">
-            <header>
-                @yield('header')
-            </header>
-
+            @yield('header')
             @yield('nav')
 
             <main class="main-content">

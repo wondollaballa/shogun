@@ -41,12 +41,22 @@ class HomeController extends Controller
         $menu = new Menu;
         $menus = $menu->getAllMenus();
 
+        $homeContent = new HomeContent;
+        $headerContent = $homeContent->prepareContent(1);
+        $aboutusContent = $homeContent->prepareContent(2);
+        $theexperienceContent = $homeContent->prepareContent(3);
+        $footerContent = $homeContent->prepareContent(4);
+
         return view('home/index', compact([
             'disabledDates',
             'aboutUs',
             'contactUs',
             'menus',
-            'theExperience'
+            'theExperience',
+            'headerContent',
+            'aboutusContent',
+            'theexperienceContent',
+            'footerContent'
         ]));
     }
 
