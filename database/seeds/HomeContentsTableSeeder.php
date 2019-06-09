@@ -16,6 +16,7 @@ class HomeContentsTableSeeder extends Seeder
             'hasHtml' => false,
             'name' => 'header',
             'image_src' => '../images/hibachi-2.jpg',
+            'image_rotate'=>null,
             'html_content' => null,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
