@@ -13,6 +13,7 @@ class MenuSection extends Model
         'name',
         'description',
         'image',
+        'image_rotate',
         'status'
     ];
     public function menuItems()
@@ -26,6 +27,7 @@ class MenuSection extends Model
         $this->menu_id = $menu_id;
         $this->description = $item['description'];
         $this->image = $item['image'];
+        $this->image_rotate = $item['image_rotate'];
         $this->status = $item['status'];
         $this->order = $item['order'];
         if($this->save()) {
@@ -43,6 +45,7 @@ class MenuSection extends Model
             $section->menu_id = $menu_id;
             $section->description = $item['description'];
             $section->image = $item['image'];
+            $section->image_rotate = $item['image_rotate'];
             $section->name = $item['name'];
             $section->order = $item['order'];
             $section->status = $item['status'];

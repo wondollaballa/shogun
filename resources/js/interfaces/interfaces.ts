@@ -65,6 +65,7 @@ export interface IMenu {
     name: string | null;
     description: string | null;
     image: string | null;
+    image_rotate: string | null;
     status: number;
     deleted_at: string | null;
     items?: IMenuSection[];
@@ -80,6 +81,7 @@ export interface IMenuSection {
     name: string | null;
     description: string | null;
     image: string | null;
+    image_rotate: string | null;
     status: number;
     items?: IMenuItem[];
     deleted_at: string | null;
@@ -96,6 +98,7 @@ export interface IMenuItem {
     name: string | null;
     description: string | null;
     image: string | null;
+    image_rotate: string | null;
     price: string | null;
     status: number;
     deleted_at: string | null;

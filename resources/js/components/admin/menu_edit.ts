@@ -5,6 +5,7 @@ import window from '../../bootstrap';
 import { IMenu, IMenuItem, IMenuSection } from '../../interfaces/interfaces'
 import { Debounce } from 'typescript-debounce';
 import { Watch } from 'vue-property-decorator';
+import { compareByFieldSpec } from 'fullcalendar';
 const Sortable = require('sortablejs');
 @Component({
     props: {
@@ -224,6 +225,7 @@ export default class MenuEdit extends Vue {
             name: null,
             description: null,
             image: null,
+            image_rotate: null,
             status: 1,
             deleted_at: null,
             created_at: null,
@@ -237,11 +239,18 @@ export default class MenuEdit extends Vue {
 
     }
 
-    private imageModalOpen(section: IMenuSection) {
+    private imageModalOpen(section: IMenuSection, rows: number[]) {
+        this.keys = rows;
+        console.log('keys', this.keys)
         this.$root.$emit('open-image-modal', section, this.keys);
     }
 
-    private updateSaveImage() {
+    private updateSaveImage(keys: number[], imagePath: string, imageRotateClass: string) {
+        console.log('event 1', this.keys);
+        console.log('event 2', keys);
+
+        this.menus[keys[0]].items![keys[1]].image = imagePath;
+        this.menus[keys[0]].items![keys[1]].image_rotate = imageRotateClass;
         this.save = this.makeCopy(this.menus);
         this.edits++;
     }
@@ -285,6 +294,7 @@ export default class MenuEdit extends Vue {
             name: null,
             description: null,
             image: null,
+            image_rotate: null,
             status: 1,
             deleted_at: null,
             items: [],

@@ -12,7 +12,7 @@
                 <div class="menu-card" v-for="sectionValue in menu.items"
                     v-bind:key="'section-'+sectionValue.id"
                     @click="openMenu(sectionValue)">
-                    <div class="menu-card-top lazy" :style="{ backgroundImage: 'url('+sectionValue.image+')'  }"></div>
+                    <div class="menu-card-top lazy" :class="sectionValue.image_rotate" :style="{ backgroundImage: 'url('+sectionValue.image+')'  }"></div>
                     <div class="menu-card-bottom" :style="{ 'border-top': '2px solid blue'}">
                         {{ sectionValue.name }}
                     </div>

@@ -15,6 +15,7 @@ class MenusTableSeeder extends Seeder
             'name' => 'Lunch',
             'description' => 'MONDAY - FRIDAY 11:00 A.M. - 3:00 P.M.(EXCEPT HOLIDAY)',
             'image'=>null,
+            'image_rotate'=>null,
             'status'=>1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -23,6 +24,7 @@ class MenusTableSeeder extends Seeder
             'name' => 'Happy Hour',
             'description' => 'Happy Hour (Mon-Fri 4pm-6pm)',
             'image'=>null,
+            'image_rotate'=>null,
             'status'=>1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -31,6 +33,7 @@ class MenusTableSeeder extends Seeder
             'name' => 'Hibachi',
             'description' => null,
             'image'=>null,
+            'image_rotate'=>null,
             'status'=>1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
@@ -39,6 +42,7 @@ class MenusTableSeeder extends Seeder
             'name' => 'Sushi',
             'description' => null,
             'image'=>null,
+            'image_rotate'=>null,
             'status'=>1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()

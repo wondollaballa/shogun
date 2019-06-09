@@ -16,7 +16,7 @@
                     <textarea class="pure-input-1 menu-description" type="text" v-model="mValue.description"/>
                     <ul id="sectionUl" class="menu-section-container">
                         <li class="menu-section" v-for="(msValue, msKey) in mValue.items" v-bind:key="'section-'+msKey" v-show="msValue.delete === false">
-                            <div class="menu-section-image" :style="{ backgroundImage: 'url('+msValue.image+')'}" @click="imageModalOpen(msValue)"></div>
+                            <div class="menu-section-image" :class="msValue.image_rotate" :style="{ backgroundImage: 'url('+msValue.image+')'}" @click="imageModalOpen(msValue, [mKey, msKey])"></div>
                             <input class="menu-section-name" v-model="msValue.name" @blur="makeEdits"/>
                             <div class="menu-button-group">
                                 <button type="button" class="pure-button button-error pure-input-1-2" @click="deleteSection(mValue.id, msValue.id, [mKey, msKey])">delete</button>

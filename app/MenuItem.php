@@ -13,6 +13,7 @@ class MenuItem extends Model
         'name',
         'description',
         'image',
+        'image_rotate',
         'price',
         'status'
     ];
@@ -32,6 +33,7 @@ class MenuItem extends Model
         $this->menu_section_id = $menu_section_id;
         $this->description = $item['description'];
         $this->image = $item['image'];
+        $this->image_rotate = $item['image_rotate'];
         $this->price = $item['price'];
         $this->status = $item['status'];
         $this->order = $item['order'];
@@ -51,6 +53,7 @@ class MenuItem extends Model
             $menuItem->menu_section_id = $menu_section_id;
             $menuItem->description = $item['description'];
             $menuItem->image = $item['image'];
+            $menuItem->image_rotate = $item['image_rotate'];
             $menuItem->name = $item['name'];
             $menuItem->price = $item['price'];
             $menuItem->order = $item['order'];

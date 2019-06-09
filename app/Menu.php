@@ -14,6 +14,7 @@ class Menu extends Model
         'name',
         'description',
         'image',
+        'image_rotate',
         'status'
     ];
     public function menuSections()
@@ -33,6 +34,7 @@ class Menu extends Model
             $this->name = $title;
             $this->description = $obj->description;
             $this->image = null;
+            $this->image_rotate = null;
             $this->status = 1;
             $this->order = $order;
             if($this->save()) {
@@ -46,6 +48,7 @@ class Menu extends Model
                         $menuSection->name = $key;
                         $menuSection->description = (isset($value->description)) ? $value->description : null;
                         $menuSection->image = $value->image;
+                        $menuSection->image_rotate = null;
                         $menuSection->order = $sectionOrder;
                         $items = $value->items;
                         $itemOrder = 0;
@@ -61,6 +64,7 @@ class Menu extends Model
                                     $menuItem->price = $ivalue->price;
                                     $menuItem->status = 1;
                                     $menuItem->image = null;
+                                    $menuItem->image_rotate = null;
                                     $menuItem->order = $itemOrder;
                                     $menuItem->save();
                                 }
@@ -143,6 +147,7 @@ class Menu extends Model
         $this->name = $item['name'];
         $this->description = $item['description'];
         $this->image = $item['image'];
+        $this->image_rotate = $item['image_rotate'];
         $this->status = $item['status'];
         $this->order = $item['order'];
         if($this->save()) {
@@ -158,6 +163,7 @@ class Menu extends Model
         } else {
             $m->description = $item['description'];
             $m->image = $item['image'];
+            $m->image_rotate = $item['image_rotate'];
             $m->name =$item['name'];
             $m->order = $item['order'];
             $m->status = $item['status'];
