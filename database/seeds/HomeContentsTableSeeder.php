@@ -17,7 +17,7 @@ class HomeContentsTableSeeder extends Seeder
             'name' => 'header',
             'image_src' => '../images/hibachi-2.jpg',
             'image_rotate'=> null,
-            'html_content' => null,
+            'html_content' => 'put content here',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -27,7 +27,7 @@ class HomeContentsTableSeeder extends Seeder
             'name' => 'aboutus',
             'image_src' => '../images/hibachi-6.jpg',
             'image_rotate' => null,
-            'html_content' => null,
+            'html_content' => 'put content here',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -37,7 +37,7 @@ class HomeContentsTableSeeder extends Seeder
             'name' => 'theexperience',
             'image_src' => '../images/hibachi-7.jpg',
             'image_rotate' => null,
-            'html_content' => null,
+            'html_content' => 'put content here',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -47,7 +47,7 @@ class HomeContentsTableSeeder extends Seeder
             'name' => 'footer',
             'image_src' => null,
             'image_rotate' => null,
-            'html_content' => null,
+            'html_content' => 'put content here',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
