@@ -19,9 +19,14 @@ class HomeContent extends Model
 
     public function prepareContent($id) {
         $content = $this->find($id);
+        if (!isset($content)) {
+            // add in blank items
+            $this->createBlankRow($id);
+        }
         if (isset($content->html_content)) {
             $content->html_content = \html_entity_decode($content->html_content);
         }
+
 
         return $content;
     }
@@ -103,5 +108,49 @@ class HomeContent extends Model
             return true;
         }
         return false;
+    }
+
+    private function createBlankRow($id) {
+        $homecontent = new HomeContent;
+        switch($id) {
+            case 1:
+            $homecontent->hasImage = true;
+            $homecontent->hasHtml = false;
+            $homecontent->name = "header";
+            $homecontent->image_src = "./images/hibachi-1.jpg";
+            $homecontent->image_rotate = null;
+            $homecontent->html_content = null;
+            break;
+
+            case 2:
+            $homecontent->hasImage = true;
+            $homecontent->hasHtml = true;
+            $homecontent->name = "aboutus";
+            $homecontent->image_src = './images/hibachi-6.jpg';
+            $homecontent->image_rotate = null;
+            $homecontent->html_content = null;
+            break;
+
+            case 3:
+            $homecontent->hasImage = true;
+            $homecontent->hasHtml = true;
+            $homecontent->name = "theexperience";
+            $homecontent->image_src = './images/hibachi-7.jpg';
+            $homecontent->image_rotate = null;
+            $homecontent->html_content = null;
+            break;
+
+            case 4:
+            $homecontent->hasImage = false;
+            $homecontent->hasHtml = true;
+            $homecontent->name = "footer";
+            $homecontent->image_src = null;
+            $homecontent->image_rotate = null;
+            $homecontent->html_content = null;
+            break;
+        }
+
+        $homecontent->save();
+
     }
 }
