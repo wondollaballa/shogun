@@ -14,8 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
         UsersTableSeeder::class,
         CompaniesTableSeeder::class,
-        RulesTableSeeder::class,
-        HomeContentsTableSeeder::class
+        RulesTableSeeder::class
     ]);
     }
 }
