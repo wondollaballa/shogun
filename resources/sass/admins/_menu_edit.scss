@@ -64,7 +64,7 @@
 }
 .menu-section-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min-content, 150px));
     justify-content: center;
     align-content: center;
     padding:0;
