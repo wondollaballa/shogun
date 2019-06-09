@@ -117,7 +117,7 @@ class HomeContent extends Model
             $homecontent->hasImage = true;
             $homecontent->hasHtml = false;
             $homecontent->name = "header";
-            $homecontent->image_src = "./images/hibachi-1.jpg";
+            $homecontent->image_src = "../images/hibachi-1.jpg";
             $homecontent->image_rotate = null;
             $homecontent->html_content = null;
             break;
@@ -126,7 +126,7 @@ class HomeContent extends Model
             $homecontent->hasImage = true;
             $homecontent->hasHtml = true;
             $homecontent->name = "aboutus";
-            $homecontent->image_src = './images/hibachi-6.jpg';
+            $homecontent->image_src = '../images/hibachi-6.jpg';
             $homecontent->image_rotate = null;
             $homecontent->html_content = null;
             break;
@@ -135,7 +135,7 @@ class HomeContent extends Model
             $homecontent->hasImage = true;
             $homecontent->hasHtml = true;
             $homecontent->name = "theexperience";
-            $homecontent->image_src = './images/hibachi-7.jpg';
+            $homecontent->image_src = '../images/hibachi-7.jpg';
             $homecontent->image_rotate = null;
             $homecontent->html_content = null;
             break;
