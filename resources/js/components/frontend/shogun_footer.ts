@@ -18,7 +18,7 @@ export default class ShogunFooter extends Vue {
 
 
     get store(): IStoreInfo {
-		const content = (this.$props.conpanyInfo) ? JSON.parse(this.$props.companyInfo) : {
+		const content = (this.$props.companyInfo) ? JSON.parse(this.$props.companyInfo) : {
 			phone: '',
 			street: '',
 			zipcode: '',
